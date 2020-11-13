@@ -24,6 +24,7 @@ categories: 类别，用于对笔记进行分类
 - Review 关键知识点的复习与记忆
 - Messy 混乱的笔记，还未整理
 - Management 管理相关
+- Expansion 扩充知识点
 - ..
 ```
 
