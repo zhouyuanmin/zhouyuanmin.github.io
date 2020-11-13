@@ -106,3 +106,10 @@ deploy:
   type: git
   repository: git@github.com:zhouyuanmin/zhouyuanmin.github.io.git
   branch: blog
+
+# 搜索的配置
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
