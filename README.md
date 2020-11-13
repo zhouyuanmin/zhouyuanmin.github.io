@@ -15,9 +15,11 @@ level IV
 level V  # 抓紧时间，赶紧学会，并记忆
 categories: 类别，用于对笔记进行分类
 - Python .
+- Web .
 - Docker .
 - Linux .
 - Git .
+- Kali .
 - Develop 开发途中遇到的问题和解决办法
 - ComputerBasics 计算机基础=数据结构和算法+计算机网络+操作系统+编译原理+计算机组成原理
 - Database 数据库=Mysql+Redis+Mongo
