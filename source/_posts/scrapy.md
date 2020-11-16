@@ -1,6 +1,6 @@
 ---
 title: scrapy
-categories: Messy
+categories: Python
 tags: level V
 date: 2020-11-13 11:31:13
 ---
