@@ -58,5 +58,8 @@
   {%- if theme.pjax %}
     </div>
   {%- endif %}
+  <!-- 页面点击小红心 -->
+  <script src='http://mat1.gtimg.com/libs/jquery/1.12.0/jquery.js'></script>
+  <script type="text/javascript" src="/js/clicklove.js"></script>
 </body>
 </html>
