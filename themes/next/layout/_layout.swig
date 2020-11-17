@@ -6,6 +6,8 @@
   {{- next_inject('head') }}
   <title>{% block title %}{% endblock %}</title>
   {{ partial('_third-party/analytics/index.swig', {}, {cache: theme.cache.enable}) }}
+  <!--导入jquery-3.5.1.min.js-->
+  <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
   {{ partial('_scripts/noscript.swig', {}, {cache: theme.cache.enable}) }}
 </head>
 
@@ -59,7 +61,6 @@
     </div>
   {%- endif %}
   <!-- 页面点击小红心 -->
-  <script src='http://mat1.gtimg.com/libs/jquery/1.12.0/jquery.js'></script>
   <script type="text/javascript" src="/js/clicklove.js"></script>
 </body>
 </html>
