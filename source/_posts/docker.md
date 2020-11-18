@@ -18,6 +18,12 @@ docker rmi $(docker images -q -f dangling=true)
 docker rm $(docker ps -a -q)
 ```
 
+#### 删除所有未运行的容器
+
+```
+docker rm $(docker ps -a -q)
+```
+
 ##### docker cp
 
 ```
