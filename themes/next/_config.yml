@@ -59,7 +59,7 @@ footer:
   icon:
     # Icon name in Font Awesome. See: https://fontawesome.com/v4.7.0/icons/
     # `heart` is recommended with animation in red (#ff0000).
-    name: heart # user
+    name: heartbeat    # user
     # If you want to animate the icon, set it to true.
     animated: true # false
     # Change the color of icon, using Hex Code.
