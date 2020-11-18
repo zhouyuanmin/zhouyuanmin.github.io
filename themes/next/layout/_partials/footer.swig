@@ -71,8 +71,15 @@
 
 {{- next_inject('footer') }}
 
-<div class="theme-info">
-  <div class="powered-by"></div>
+{%- if (theme.footer.theme.enable or theme.footer.powered.enable)and theme.footer.words.enable %}
   <span class="post-meta-divider">|</span>
-  <span class="post-count">博客全站共&nbsp;{{ totalcount(site) }}&nbsp;字</span>
-</div>
+{%- endif %}
+
+{%- if theme.footer.words.enable %}
+  <div class="theme-info">
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    <span class="post-count">博客全站共&nbsp;{{ totalcount(site) }}&nbsp;字</span>
+  </div>
+{%- endif %}
+
+
