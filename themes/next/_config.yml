@@ -169,7 +169,9 @@ sidebar:
 # Sidebar Avatar
 avatar:
   # Replace the default image and set the url here.
-  url: https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201113162522.png #/images/avatar.gif
+  # url: https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201113162522.png
+  # url: /images/avatar.gif
+  url: https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100
   # If true, the avatar would be dispalyed in circle.
   rounded: false
   # If true, the avatar would be rotated with the cursor.
