@@ -15,6 +15,8 @@ find / -name mysqladmin
 ln -s /usr/local/mysql/bin/mysqladmin /usr/bin
 ```
 
+<!-- more -->
+
 二、python虚拟环境
 
 ```

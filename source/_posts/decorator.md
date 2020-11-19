@@ -21,6 +21,8 @@ def test():
     print('test')
 ```
 
+<!-- more -->
+
 #### 例子2
 
 ```python
