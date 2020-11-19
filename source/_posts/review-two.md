@@ -31,6 +31,8 @@ def tcplink(sock, addr):
     sock.close()    
 ```
 
+<!-- more -->
+
 - UDP
 
 ```python

@@ -36,6 +36,8 @@ m.connect()
 task = m.get_task_queue()
 ```
 
+<!-- more -->
+
 #### threading
 
 ```python

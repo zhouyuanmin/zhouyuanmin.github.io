@@ -5,7 +5,7 @@ tags: level V
 date: 2020-11-12 16:40:18
 ---
 
-# 复习-one
+**复习-one**
 
 1.创建项目
 
@@ -36,6 +36,8 @@ grant all on meiduo_mall.* to 'itcast'@'%';
 ```
 flush privileges;
 ```
+
+<!-- more -->
 
 6.日志
 
