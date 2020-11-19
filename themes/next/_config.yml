@@ -177,9 +177,9 @@ avatar:
   # url: /images/avatar.gif
   url: https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100
   # If true, the avatar would be dispalyed in circle.
-  rounded: false
+  rounded: true
   # If true, the avatar would be rotated with the cursor.
-  rotated: false
+  rotated: true
 
 # Posts / Categories / Tags in sidebar.
 site_state: true
