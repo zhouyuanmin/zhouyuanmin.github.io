@@ -370,11 +370,12 @@ codeblock:
   highlight_theme: solarized
   # Add copy button on codeblock
   copy_button:
-    enable: false
+    enable: true
     # Show text copy result.
-    show_result: false
+    show_result: true
     # Available values: default | flat | mac
     style:
+      flat
 
 back2top:
   enable: true
