@@ -1,7 +1,9 @@
 ---
 title: py-basics
 categories: Python
-tags: level V
+tags: 
+- level V
+- Python
 date: 2020-11-13 11:26:08
 ---
 
