@@ -15,6 +15,8 @@ supervisord：装好supervisor软件后，supervisord用于启动supervisor服�
 supervisorctl：用于管理supervisor配置文件中program。
 ```
 
+<!--more-->
+
 #### 环境
 
 - centos7

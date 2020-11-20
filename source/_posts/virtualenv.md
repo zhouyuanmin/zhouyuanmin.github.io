@@ -18,6 +18,8 @@ pip install virtualenv
 easy_install virtualenvwrapper
 ```
 
+<!--more-->
+
 #### 配置
 
 ```shell
