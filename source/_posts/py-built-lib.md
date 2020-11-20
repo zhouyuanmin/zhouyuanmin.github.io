@@ -1,16 +1,20 @@
 ---
 title: py-built-lib
 categories: Python
-tags: level V
+tags: 
+- level V
+- Python
 date: 2020-11-13 11:28:27
 ---
 
-# Python常用内置库
+### Python常用内置库
 
 ### 0.内置函数
 
 - chr()   转换一个[0, 255]之间的整数为对应的ASCII字符
 - ord()   将一个ASCII字符转换为对应整数
+
+<!--more-->
 
 ### 1.copy
 

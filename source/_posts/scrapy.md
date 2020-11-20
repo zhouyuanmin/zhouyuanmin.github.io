@@ -5,7 +5,7 @@ tags: level V
 date: 2020-11-13 11:31:13
 ---
 
-# scrapy的一些知识点
+#### scrapy的一些知识点
 
 ```
 命令加上参数 --nolog 可以去掉log日志输出
@@ -20,6 +20,8 @@ DOWNLOAD_TIMEOUT = 10
 RETRY_ENABLED = True  # 失败重试
 RETRY_TIMES = 5
 ```
+
+<!--more-->
 
 #### scrapy复习笔记
 

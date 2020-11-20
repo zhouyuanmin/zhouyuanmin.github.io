@@ -7,6 +7,19 @@ date: 2020-11-13 11:32:47
 
 #### Scrapy-redis
 
+##### spider编写
+
+```python
+class MySpider(RedisSpider):
+    name = 'myspider'
+
+    def parse(self, response):
+        # do stuff
+        pass
+```
+
+<!-- more -->
+
 ##### setting
 
 ```python
@@ -45,17 +58,6 @@ REDIS_START_URLS_AS_SET = False
 REDIS_START_URLS_KEY = '%(name)s:start_urls'
 # 使用utf-8以外的其他编码对redis进行编码，默认是utf-8
 # REDIS_ENCODING = 'latin1'
-```
-
-##### spider编写
-
-```python
-class MySpider(RedisSpider):
-    name = 'myspider'
-
-    def parse(self, response):
-        # do stuff
-        pass
 ```
 
 ##### 启动spider

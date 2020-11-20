@@ -15,3 +15,4 @@ req = scrapy.Request(url='url',headers=headers)
 fetch(req) # 如此就等价于scrapy shell url # 添加了headers
 ```
 
+<!--more-->
