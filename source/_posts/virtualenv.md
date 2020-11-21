@@ -1,7 +1,9 @@
 ---
 title: virtualenv
 categories: Python
-tags: level V
+tags: 
+- V
+- Virtualenv
 date: 2020-11-13 11:38:16
 ---
 

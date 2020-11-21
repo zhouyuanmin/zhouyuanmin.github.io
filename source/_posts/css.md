@@ -1,7 +1,9 @@
 ---
 title: css
 categories: Web
-tags: level V
+tags: 
+- V
+- CSS
 date: 2020-11-13 11:41:50
 ---
 
@@ -10,8 +12,7 @@ date: 2020-11-13 11:41:50
 #### 格式
 
 ```css
-h1
-{
+h1 {
     color:orange;
     text-align:center;
 }

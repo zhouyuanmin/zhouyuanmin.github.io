@@ -1,7 +1,9 @@
 ---
 title: shell
 categories: Linux
-tags: level V
+tags: 
+- V
+- Shell
 date: 2020-11-13 11:33:26
 ---
 

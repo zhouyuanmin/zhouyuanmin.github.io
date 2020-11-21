@@ -1,7 +1,9 @@
 ---
 title: py-call-c
 categories: Python
-tags: level V
+tags:
+- V
+- Python
 date: 2020-11-13 11:24:45
 ---
 

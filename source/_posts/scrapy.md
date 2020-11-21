@@ -1,7 +1,9 @@
 ---
 title: scrapy
 categories: Python
-tags: level V
+tags: 
+- V
+- Scrapy
 date: 2020-11-13 11:31:13
 ---
 

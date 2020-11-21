@@ -1,7 +1,9 @@
 ---
 title: supervisor
 categories: Linux
-tags: level V
+tags: 
+- V
+- Supervisor
 date: 2020-11-13 11:36:10
 ---
 

@@ -1,7 +1,9 @@
 ---
 title: py-oop
 categories: Python
-tags: level V
+tags: 
+- V
+- OOP
 date: 2020-11-13 11:18:56
 ---
 
