@@ -1,7 +1,9 @@
 ---
 title: git-commit-standard
 categories: Git
-tags: level V
+tags: 
+- V
+- Git
 date: 2020-11-18 15:21:12
 ---
 

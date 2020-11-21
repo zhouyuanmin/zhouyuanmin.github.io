@@ -1,7 +1,9 @@
 ---
 title: docker-compose
 categories: Docker
-tags: level V
+tags: 
+- V
+- Docker
 date: 2020-11-17 17:24:46
 ---
 

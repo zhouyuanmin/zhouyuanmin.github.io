@@ -2,7 +2,7 @@
 title: django-mysql
 categories: Python
 tags: 
-- level V
+- V
 - Django
 date: 2020-11-20 17:36:02
 ---
