@@ -23,6 +23,8 @@ nohup ping www.ibm.com &
 nohup python3 run.py >/dev/null 2>&1 &
 ```
 
+<!--more-->
+
 #### 2. setsid
 
 ```

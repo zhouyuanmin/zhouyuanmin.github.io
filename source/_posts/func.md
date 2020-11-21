@@ -1,7 +1,9 @@
 ---
 title: func
 categories: Python
-tags: level V
+tags: 
+- V
+- Python
 date: 2020-11-13 10:58:20
 ---
 
@@ -16,6 +18,8 @@ date: 2020-11-13 10:58:20
 ```
 累积计算  # func(x,y)必须两个参数
 ```
+
+<!-- more -->
 
 #### filter
 

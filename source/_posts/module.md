@@ -1,9 +1,21 @@
 ---
 title: module
 categories: Python
-tags: level V
+tags: 
+- V
+- Python
 date: 2020-11-13 11:09:03
 ---
+
+### 模块搜索路径
+
+```python
+import sys
+sys.path.append('模块路径')
+# 这种方法是在运行时修改（添加），运行结束后失效
+```
+
+<!--more-->
 
 ### 介绍模块相关一些知识
 
@@ -47,14 +59,4 @@ if __name__=='__main__':
 ```
 __author__变量是作者
 ```
-
-### 模块搜索路径
-
-```python
-import sys
-sys.path.append('模块路径')
-# 这种方法是在运行时修改（添加），运行结束后失效
-```
-
-
 

@@ -17,6 +17,8 @@ subclass 子类
 super class 父类
 ```
 
+<!--more-->
+
 #### Method
 
 ```python

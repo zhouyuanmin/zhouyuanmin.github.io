@@ -1,11 +1,14 @@
 ---
 title: kill-process
 categories: Linux
-tags: level V
+tags: 
+- V
+- Linux
+- Develop
 date: 2020-11-13 10:52:24
 ---
 
-杀死占用端口的进程
+### 杀死占用端口的进程
 
 ```shell
 # 查看占用端口的进程
@@ -18,3 +21,4 @@ kill 5014
 kill -9 5014  # 是pid
 ```
 
+<!-- more -->

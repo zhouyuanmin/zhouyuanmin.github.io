@@ -1,11 +1,13 @@
 ---
 title: utils
 categories: Linux
-tags: level V
+tags: 
+- V
+- Linux
 date: 2020-11-13 10:55:11
 ---
 
-# 一些好用的工具
+### 一些好用的工具
 
 #### axel
 
@@ -14,6 +16,8 @@ date: 2020-11-13 10:55:11
 # 使用
 axel -n 20 http://download.redis.io/releases/redis-5.0.7.tar.gz
 ```
+
+<!-- more -->
 
 #### lrzsz
 

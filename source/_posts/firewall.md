@@ -1,11 +1,13 @@
 ---
 title: firewall
 categories: Linux
-tags: level V
+tags: 
+- V
+- Linux
 date: 2020-11-13 10:53:33
 ---
 
-# 防火墙
+### 防火墙
 
 #### 开启端口
 
@@ -18,6 +20,8 @@ firewall-cmd --zone=public --add-port=80/tcp --permanent
 ```
 firewall-cmd --query-port=80/tcp
 ```
+
+<!-- more -->
 
 #### 重启防火墙
 

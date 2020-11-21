@@ -1,7 +1,9 @@
 ---
 title: logging
 categories: Python
-tags: level V
+tags: 
+- V
+- Python
 date: 2020-11-13 10:57:10
 ---
 
@@ -15,6 +17,8 @@ logging.warning("Hello") # 默认
 logging.error("Hello")
 logging.critical("Hello")
 ```
+
+<!-- more -->
 
 #### 控制级别
 
