@@ -8,11 +8,11 @@
 
 ```
 tags: 标签，用于描述学习的迫切性
-level I  # 用于查询即可
-level II
-level III
-level IV
-level V  # 抓紧时间，赶紧学会，并记忆
+I  # 用于查询即可
+II
+III
+IV
+V  # 抓紧时间，赶紧学会，并记忆
 categories: 类别，用于对笔记进行分类
 - Python .
 - Web .
