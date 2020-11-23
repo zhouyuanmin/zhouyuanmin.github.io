@@ -3,7 +3,7 @@ title: scrapy-redis
 categories: Python
 tags: 
 - V
-- Scrapy
+- Spider
 date: 2020-11-13 11:32:47
 ---
 

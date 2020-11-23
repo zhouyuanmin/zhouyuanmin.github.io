@@ -3,7 +3,7 @@ title: scrapy
 categories: Python
 tags: 
 - V
-- Scrapy
+- Spider
 date: 2020-11-13 11:31:13
 ---
 

@@ -3,7 +3,7 @@ title: scrapy-shell
 categories: Python
 tags: 
 - V
-- Scrapy
+- Spider
 date: 2020-11-13 11:29:45
 ---
 
