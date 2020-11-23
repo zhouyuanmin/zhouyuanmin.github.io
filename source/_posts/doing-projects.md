@@ -1,7 +1,9 @@
 ---
 title: doing-projects
 categories: Management
-tags: level IV
+tags: 
+- IV
+- Management
 date: 2020-11-12 16:52:25
 ---
 

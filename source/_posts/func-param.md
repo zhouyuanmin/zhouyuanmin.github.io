@@ -1,7 +1,9 @@
 ---
 title: func-param
 categories: Python
-tags: level V
+tags: 
+- V
+- Python
 date: 2020-11-13 01:10:09
 ---
 
@@ -11,7 +13,7 @@ date: 2020-11-13 01:10:09
 def power(x):
 	return x*x
 ```
-
+<!--more-->
 #### 2.默认参数
 
 ```python

@@ -1,7 +1,9 @@
 ---
 title: review-eight
 categories: Review
-tags: level V
+tags: 
+- V
+- Review
 date: 2020-11-13 01:17:14
 ---
 
@@ -17,7 +19,7 @@ date: 2020-11-13 01:17:14
 当不再被一个变量，减1，
 当引用计数等于0时对象被删除。
 ```
-
+<!--more-->
 ```python
 # 2.垃圾回收
 2.1 引用计数

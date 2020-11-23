@@ -1,7 +1,9 @@
 ---
 title: pydes-des
 categories: Python
-tags: level II
+tags: 
+- II
+- Python
 date: 2020-11-12 16:26:09
 ---
 

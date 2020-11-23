@@ -1,7 +1,9 @@
 ---
 title: review-ten
 categories: Review
-tags: level V
+tags: 
+- V
+- Review
 date: 2020-11-13 01:19:32
 ---
 
@@ -21,6 +23,7 @@ proc.terminate()  # 强制关闭
 proc.name
 proc.pid
 ```
+<!--more-->
 
 ```python
 # 进程之间的通信-Queue  # 只用于本机，不能注册到网络上

@@ -1,7 +1,9 @@
 ---
 title: review-three
 categories: Review
-tags: level V
+tags: 
+- V
+- Review
 date: 2020-11-12 17:03:21
 ---
 
@@ -12,7 +14,7 @@ import os
 os.getpid()
 os.getppid()
 ```
-
+<!--more-->
 #### multiprocessing
 
 ```python

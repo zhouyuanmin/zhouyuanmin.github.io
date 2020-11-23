@@ -1,13 +1,17 @@
 ---
 title: email
 categories: Messy
-tags: level V
+tags: 
+- V
+- Python
 date: 2020-11-13 01:07:09
 ---
 
-# 使用python发送邮件
+### 使用python发送邮件
 
 #### 发送邮件，带附件
+
+<!--more-->
 
 ```python
 import os

@@ -1,11 +1,13 @@
 ---
 title: git
 categories: Git
-tags: level V
+tags: 
+- V
+- Git
 date: 2020-11-13 01:11:20
 ---
 
-# Git常用命令
+### Git常用命令
 
 #### 查看不同
 
@@ -19,6 +21,7 @@ git diff
 git reset --hard HEAD^ 
 # HEAD 表示当前版本，^和^^, 或者直接是版本id号
 ```
+<!--more-->
 
 ```shell
 git reset --hard 1094a

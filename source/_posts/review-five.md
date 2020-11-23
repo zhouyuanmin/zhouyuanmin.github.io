@@ -1,11 +1,15 @@
 ---
 title: review-five
 categories: Review
-tags: level V
+tags: 
+- V
+- Review
 date: 2020-11-13 01:08:57
 ---
 
 #### 4G 内存怎么读取一个 5G 的数据？
+
+<!--more-->
 
 ```python
 # 方法一:

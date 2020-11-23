@@ -1,7 +1,9 @@
 ---
 title: review-nine
 categories: Review
-tags: level V
+tags: 
+- V
+- Review
 date: 2020-11-13 01:18:08
 ---
 
@@ -18,7 +20,7 @@ class A(object):
             cls._instance = object.__new__(cls)
         return cls._instance
 ```
-
+<!--more-->
 ```python
 # 应用场景
 1. 资源共享：日志文件，应用配置

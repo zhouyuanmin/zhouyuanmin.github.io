@@ -1,7 +1,9 @@
 ---
 title: review-six
 categories: Messy
-tags: level V
+tags: 
+- V
+- Review
 date: 2020-11-13 01:13:24
 ---
 
@@ -14,7 +16,7 @@ date: 2020-11-13 01:13:24
 ```python
 print 方法默认调用 sys.stdout.write 方法
 ```
-
+<!--more-->
 ```python
 # 文件路径操作
 def print_directory_contents(abs_path):

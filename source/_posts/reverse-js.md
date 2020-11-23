@@ -1,7 +1,9 @@
 ---
 title: reverse-js
 categories: Expansion
-tags: level III
+tags: 
+- III
+- JavaScript
 date: 2020-11-13 10:47:05
 ---
 
@@ -13,6 +15,8 @@ function getpwd(plaintext){  // 一定要先找到明文
     return ciphertext  // 返回格式有两种：Hex和base64
 }
 ```
+
+<!--more-->
 
 #### 常见加密方式
 

@@ -1,11 +1,15 @@
 ---
 title: linux-basics
 categories: Linux
-tags: level V
+tags: 
+- V
+- Linux
 date: 2020-11-13 10:51:05
 ---
 
 #### Linux笔记
+
+<!--more-->
 
 ##### 用户管理
 

@@ -1,7 +1,9 @@
 ---
 title: review-seven
 categories: Review
-tags: level V
+tags: 
+- V
+- Review
 date: 2020-11-13 01:16:01
 ---
 
@@ -15,7 +17,7 @@ date: 2020-11-13 01:16:01
 # 查看服务占用的端口
 netstat -anp | grep service_name
 ```
-
+<!--more-->
 ```python
 grep 是查找匹配条件的行
 find 是搜索匹配条件的文件（找文件）
