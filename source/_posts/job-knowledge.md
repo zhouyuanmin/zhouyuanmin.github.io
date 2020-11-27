@@ -42,3 +42,11 @@ flask
 django
 ```
 
+数据存储相关操作
+
+```
+jsonlines
+csv
+mongodb
+```
+
