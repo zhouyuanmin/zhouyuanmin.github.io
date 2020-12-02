@@ -2,7 +2,7 @@
 title: requirements.txt
 categories: Python
 tags:
-  - V
+  - IV
   - Python
 date: 2020-11-30 11:01:31
 ---
