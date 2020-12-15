@@ -9,6 +9,8 @@ date: 2020-11-13 11:40:10
 
 #### HTML笔记
 
+[HTML复习笔记](https://blog.csdn.net/weixin_43342105/article/details/106271856)
+
 #### 一、基础概念：
 
 - HTML：理解HTML是超文本标记语言，是使用标签(HTML tag)来描述网页
