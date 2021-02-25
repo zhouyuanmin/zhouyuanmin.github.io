@@ -9,6 +9,32 @@ date: 2020-11-13 11:44:04
 
 # unittest
 
+核心例子
+
+```python
+import unittest
+from unittest_demo.Calculator import Calculator
+
+class TestCalculator(unittest.TestCase):  # 1、继承unittest.TestCase类
+
+    def testDivide01(self):  # 2、以test开头的函数
+        cal = Calculator()
+        result = cal.divide(10, 2)
+        self.assertEqual(result, 5)  # 3、使用断言判断结果
+
+    def testDivide02(self):
+        cal = Calculator()
+        result = cal.divide(20, 0.5)
+        self.assertEqual(result, 40)
+
+if __name__ == '__main__':
+    unittest.main()  # 4、用unittest.main()执行所有test开头的函数，每个函数就是一个测试用例
+```
+
+<!-- more -->
+
+### unittest
+
 - 面向对象
 - 测试用例的组成：用例编号、模块、测试标题、前提条件、操作步骤、期望结果、世纪结果
 
@@ -19,7 +45,7 @@ date: 2020-11-13 11:44:04
 - 测试套件 test suite
 - 测试运行器 test runner
 
-<!-- more -->
+
 
 ### 使用
 
@@ -51,8 +77,6 @@ if __name__ == '__main__':
     runner = unittest.TextTestRunner()
     runner.run(suite())
 ```
-
-
 
 ### 跳过测试与预计的失败
 
