@@ -210,6 +210,400 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/unittest/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Beautiful is better than ugly.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/unittest/" class="post-title-link" itemprop="url">Unittest</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-13 11:44:04" itemprop="dateCreated datePublished" datetime="2020-11-13T11:44:04+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-25 17:13:17" itemprop="dateModified" datetime="2021-02-25T17:13:17+08:00">2021-02-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="unittest"><a href="#unittest" class="headerlink" title="unittest"></a>unittest</h1><p>核心例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">from</span> unittest_demo.Calculator <span class="keyword">import</span> Calculator</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestCalculator</span>(<span class="params">unittest.TestCase</span>):</span>  <span class="comment"># 1、继承unittest.TestCase类</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testDivide01</span>(<span class="params">self</span>):</span>  <span class="comment"># 2、以test开头的函数</span></span><br><span class="line">        cal = Calculator()</span><br><span class="line">        result = cal.divide(<span class="number">10</span>, <span class="number">2</span>)</span><br><span class="line">        self.assertEqual(result, <span class="number">5</span>)  <span class="comment"># 3、使用断言判断结果</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testDivide02</span>(<span class="params">self</span>):</span></span><br><span class="line">        cal = Calculator()</span><br><span class="line">        result = cal.divide(<span class="number">20</span>, <span class="number">0.5</span>)</span><br><span class="line">        self.assertEqual(result, <span class="number">40</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()  <span class="comment"># 4、用unittest.main()执行所有test开头的函数，每个函数就是一个测试用例</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/kali-wifi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Beautiful is better than ugly.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/kali-wifi/" class="post-title-link" itemprop="url">Kali-Wifi</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-13 11:42:33" itemprop="dateCreated datePublished" datetime="2020-11-13T11:42:33+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-25 15:03:11" itemprop="dateModified" datetime="2021-02-25T15:03:11+08:00">2021-02-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/kali/" itemprop="url" rel="index">
+                    <span itemprop="name">Kali</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>63</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="暴力破解wifi，获取wifi密码"><a href="#暴力破解wifi，获取wifi密码" class="headerlink" title="暴力破解wifi，获取wifi密码"></a>暴力破解wifi，获取wifi密码</h4><p>嘿嘿，wifi密码在我手上</p>
+<p>使用kail抓取wifi握手包🤝，然后枚举密码，并验证，得出密码</p>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Beautiful is better than ugly.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/css/" class="post-title-link" itemprop="url">Css</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-13 11:41:50" itemprop="dateCreated datePublished" datetime="2020-11-13T11:41:50+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-25 15:03:11" itemprop="dateModified" datetime="2021-02-25T15:03:11+08:00">2021-02-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="CSS笔记"><a href="#CSS笔记" class="headerlink" title="CSS笔记"></a>CSS笔记</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43342105/article/details/106325167">CSS复习笔记整理</a></p>
+<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>:orange;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/html/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Beautiful is better than ugly.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/html/" class="post-title-link" itemprop="url">Html</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-13 11:40:10" itemprop="dateCreated datePublished" datetime="2020-11-13T11:40:10+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-02-25 15:03:11" itemprop="dateModified" datetime="2021-02-25T15:03:11+08:00">2021-02-25</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">Web</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="HTML笔记"><a href="#HTML笔记" class="headerlink" title="HTML笔记"></a>HTML笔记</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43342105/article/details/106271856">HTML复习笔记</a></p>
+<h4 id="一、基础概念："><a href="#一、基础概念：" class="headerlink" title="一、基础概念："></a>一、基础概念：</h4><ul>
+<li>HTML：理解HTML是超文本标记语言，是使用标签(HTML tag)来描述网页</li>
+<li>标签：标签是由<em>尖括号</em>包围的关键词，通常是<em>成对出现</em>，对大小写<em>不敏感</em></li>
+<li>html文档等价于网页，由html标签和纯文本组成</li>
+<li>元素：指的是从开始标签到结束标签的所有代码</li>
+<li>属性：在开始标签中以key=value的形式存在</li>
+</ul>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/virtualenv/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -304,397 +698,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/supervisor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Beautiful is better than ugly.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/supervisor/" class="post-title-link" itemprop="url">Supervisor</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-11-13 11:36:10" itemprop="dateCreated datePublished" datetime="2020-11-13T11:36:10+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-25 15:03:11" itemprop="dateModified" datetime="2021-02-25T15:03:11+08:00">2021-02-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.2k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Supervisor"><a href="#Supervisor" class="headerlink" title="Supervisor"></a>Supervisor</h3><h4 id="专业名称解释"><a href="#专业名称解释" class="headerlink" title="专业名称解释"></a>专业名称解释</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">supervisor：要安装的软件的名称。</span><br><span class="line">supervisord：装好supervisor软件后，supervisord用于启动supervisor服务。</span><br><span class="line">supervisorctl：用于管理supervisor配置文件中program。</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/sort/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Beautiful is better than ugly.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/sort/" class="post-title-link" itemprop="url">Sort</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-11-13 11:34:57" itemprop="dateCreated datePublished" datetime="2020-11-13T11:34:57+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-25 15:03:11" itemprop="dateModified" datetime="2021-02-25T15:03:11+08:00">2021-02-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/computerbasics/" itemprop="url" rel="index">
-                    <span itemprop="name">ComputerBasics</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h3><h5 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">稳定：如果a原本在b前面，而a&#x3D;b，排序之后a仍然在b的前面；</span><br><span class="line">不稳定：如果a原本在b的前面，而a&#x3D;b，排序之后a可能会出现在b的后面；</span><br><span class="line">内排序：所有排序操作都在内存中完成；</span><br><span class="line">外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；</span><br><span class="line">时间复杂度：一个算法执行所耗费的时间。</span><br><span class="line">空间复杂度：运行完一个程序所需内存的大小。</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/shell/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Beautiful is better than ugly.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/shell/" class="post-title-link" itemprop="url">Shell</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-11-13 11:33:26" itemprop="dateCreated datePublished" datetime="2020-11-13T11:33:26+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-25 15:03:11" itemprop="dateModified" datetime="2021-02-25T15:03:11+08:00">2021-02-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Shell脚本格式"><a href="#Shell脚本格式" class="headerlink" title="Shell脚本格式"></a>Shell脚本格式</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash   开头指定解释器</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 输出</span><br><span class="line">echo &#39;Hello World...&#39;</span><br><span class="line">source 配置文件  # 让修改后的配置信息立即生效</span><br><span class="line"># chmod 744 myshell.sh  # 授权</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/scrapy-redis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Beautiful is better than ugly.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/scrapy-redis/" class="post-title-link" itemprop="url">Scrapy-Redis</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-11-13 11:32:47" itemprop="dateCreated datePublished" datetime="2020-11-13T11:32:47+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-02-25 15:03:11" itemprop="dateModified" datetime="2021-02-25T15:03:11+08:00">2021-02-25</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.6k</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Scrapy-redis"><a href="#Scrapy-redis" class="headerlink" title="Scrapy-redis"></a>Scrapy-redis</h4><h5 id="spider编写"><a href="#spider编写" class="headerlink" title="spider编写"></a>spider编写</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySpider</span>(<span class="params">RedisSpider</span>):</span></span><br><span class="line">    name = <span class="string">&#x27;myspider&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span>(<span class="params">self, response</span>):</span></span><br><span class="line">        <span class="comment"># do stuff</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -740,7 +748,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">71</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -753,7 +761,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -792,16 +800,16 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="Symbols count total">68k</span>
+    <span title="Symbols count total">86k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:02</span>
+    <span title="Reading time total">1:18</span>
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;21.7k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;27k&nbsp;字</span>
   </div>
 
 
