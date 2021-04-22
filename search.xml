@@ -43,6 +43,25 @@
       </tags>
   </entry>
   <entry>
+    <title>Create-New-Branch</title>
+    <url>/notes/create-new-branch/</url>
+    <content><![CDATA[<h4 id="在一个项目中创建一个完全空白的分支"><a href="#在一个项目中创建一个完全空白的分支" class="headerlink" title="在一个项目中创建一个完全空白的分支"></a>在一个项目中创建一个完全空白的分支</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">参数 --orphan，这个参数的主要作用有两个，一个是拷贝当前所在分支的所有文件，另一个是没有父结点，可以理解为没有历史记录，是一个完全独立背景干净的分支。</span><br></pre></td></tr></table></figure>
+
+<p>具体操作</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建一个orphan的分支，这个分支是独立的</span></span><br><span class="line">git checkout --orphan gh-pages</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除原来代码树下的所有文件</span></span><br><span class="line">git rm -rf .</span><br><span class="line"><span class="meta">#</span><span class="bash"> 提交初始化，才能在分支查看中出现</span></span><br><span class="line">git commit -am &quot;init this branch&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看</span></span><br><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+
+ <a id="more"></a>
+
+]]></content>
+      <categories>
+        <category>Git</category>
+      </categories>
+      <tags>
+        <tag>IV</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Common-Naming</title>
     <url>/notes/common-naming/</url>
     <content><![CDATA[<p><strong>命名-常用的词汇</strong></p>
@@ -56,6 +75,23 @@
       <tags>
         <tag>IV</tag>
         <tag>Messy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Debug-Print</title>
+    <url>/notes/debug-print/</url>
+    <content><![CDATA[<p>使用print在docker中调试</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">docker不会输出python的print(),需要这样写才会输出：加上flush=<span class="literal">True</span></span><br><span class="line">例子: print(<span class="string">&quot;debug...&quot;</span>, flush=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+]]></content>
+      <categories>
+        <category>Messy</category>
+      </categories>
+      <tags>
+        <tag>Messy</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -128,42 +164,6 @@
       <tags>
         <tag>V</tag>
         <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Debug-Print</title>
-    <url>/notes/debug-print/</url>
-    <content><![CDATA[<p>使用print在docker中调试</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">docker不会输出python的print(),需要这样写才会输出：加上flush=<span class="literal">True</span></span><br><span class="line">例子: print(<span class="string">&quot;debug...&quot;</span>, flush=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-]]></content>
-      <categories>
-        <category>Messy</category>
-      </categories>
-      <tags>
-        <tag>Messy</tag>
-        <tag>V</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Create-New-Branch</title>
-    <url>/notes/create-new-branch/</url>
-    <content><![CDATA[<h4 id="在一个项目中创建一个完全空白的分支"><a href="#在一个项目中创建一个完全空白的分支" class="headerlink" title="在一个项目中创建一个完全空白的分支"></a>在一个项目中创建一个完全空白的分支</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">参数 --orphan，这个参数的主要作用有两个，一个是拷贝当前所在分支的所有文件，另一个是没有父结点，可以理解为没有历史记录，是一个完全独立背景干净的分支。</span><br></pre></td></tr></table></figure>
-
-<p>具体操作</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建一个orphan的分支，这个分支是独立的</span></span><br><span class="line">git checkout --orphan gh-pages</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除原来代码树下的所有文件</span></span><br><span class="line">git rm -rf .</span><br><span class="line"><span class="meta">#</span><span class="bash"> 提交初始化，才能在分支查看中出现</span></span><br><span class="line">git commit -am &quot;init this branch&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看</span></span><br><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
-
- <a id="more"></a>
-
-]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>IV</tag>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -511,8 +511,8 @@
         <category>Git</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Git</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -584,8 +584,8 @@
         <category>Git</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Git</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -1221,22 +1221,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Report-Speech</title>
-    <url>/notes/report-speech/</url>
-    <content><![CDATA[<h4 id="总结一些做汇报和演讲时，需要注意的事情"><a href="#总结一些做汇报和演讲时，需要注意的事情" class="headerlink" title="总结一些做汇报和演讲时，需要注意的事情"></a>总结一些做汇报和演讲时，需要注意的事情</h4><p>主要从“演讲前的准备”、“演讲中”、“如何结束演讲”、“遇到提问，如何回答”这几个方面来阐述</p>
-<h5 id="一、演讲前的准备"><a href="#一、演讲前的准备" class="headerlink" title="一、演讲前的准备"></a>一、演讲前的准备</h5><p>基本上都需要有PPT，还需要符合风格，需要事先熟悉PPT，不要卡壳，不要读错字，</p>
-<p>最好是图片，和关键字，其他的全靠后面讲，把要讲的内容理清</p>
- <a id="more"></a>
-
-<h5 id="二、演讲中"><a href="#二、演讲中" class="headerlink" title="二、演讲中"></a>二、演讲中</h5><h5 id="三、如何结束演讲"><a href="#三、如何结束演讲" class="headerlink" title="三、如何结束演讲"></a>三、如何结束演讲</h5><h5 id="四、遇到提问，如何回答"><a href="#四、遇到提问，如何回答" class="headerlink" title="四、遇到提问，如何回答"></a>四、遇到提问，如何回答</h5>]]></content>
-      <categories>
-        <category>Expansion</category>
-      </categories>
-      <tags>
-        <tag>V</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>requirements.txt</title>
     <url>/notes/requirements-txt/</url>
     <content><![CDATA[<p><strong>quirements.txt可以通过<code>pip</code>命令自动生成和安装</strong></p>
@@ -1255,6 +1239,22 @@
       <tags>
         <tag>IV</tag>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Report-Speech</title>
+    <url>/notes/report-speech/</url>
+    <content><![CDATA[<h4 id="总结一些做汇报和演讲时，需要注意的事情"><a href="#总结一些做汇报和演讲时，需要注意的事情" class="headerlink" title="总结一些做汇报和演讲时，需要注意的事情"></a>总结一些做汇报和演讲时，需要注意的事情</h4><p>主要从“演讲前的准备”、“演讲中”、“如何结束演讲”、“遇到提问，如何回答”这几个方面来阐述</p>
+<h5 id="一、演讲前的准备"><a href="#一、演讲前的准备" class="headerlink" title="一、演讲前的准备"></a>一、演讲前的准备</h5><p>基本上都需要有PPT，还需要符合风格，需要事先熟悉PPT，不要卡壳，不要读错字，</p>
+<p>最好是图片，和关键字，其他的全靠后面讲，把要讲的内容理清</p>
+ <a id="more"></a>
+
+<h5 id="二、演讲中"><a href="#二、演讲中" class="headerlink" title="二、演讲中"></a>二、演讲中</h5><h5 id="三、如何结束演讲"><a href="#三、如何结束演讲" class="headerlink" title="三、如何结束演讲"></a>三、如何结束演讲</h5><h5 id="四、遇到提问，如何回答"><a href="#四、遇到提问，如何回答" class="headerlink" title="四、遇到提问，如何回答"></a>四、遇到提问，如何回答</h5>]]></content>
+      <categories>
+        <category>Expansion</category>
+      </categories>
+      <tags>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -1911,6 +1911,24 @@
       <tags>
         <tag>V</tag>
         <tag>Sort</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sql</title>
+    <url>/notes/sql/</url>
+    <content><![CDATA[<p>INSERT INTO… SELECT 与 自增id的冲突</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、缺少id会报错，缺少字段</span><br><span class="line">2、指定id，又不确定id应该是多少</span><br><span class="line">3、解决办法：设置id为null</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 例子</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`pt_rating`</span>.<span class="string">`paper_subject`</span> <span class="keyword">SELECT</span></span><br><span class="line"><span class="literal">NULL</span> <span class="keyword">AS</span> <span class="keyword">id</span>,  <span class="comment">-- 这个必须有id，可以设置为null</span></span><br><span class="line"><span class="number">168</span> <span class="keyword">AS</span> paper_id,</span><br><span class="line">subject_id,</span><br><span class="line">score,</span><br><span class="line"><span class="keyword">sort</span>,</span><br><span class="line"><span class="keyword">NOW</span>() <span class="keyword">AS</span> create_time </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	paper_subject </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	paper_id = <span class="number">167</span>;</span><br></pre></td></tr></table></figure>
+
+ <a id="more"></a>
+
+]]></content>
+      <categories>
+        <category>Messy</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
