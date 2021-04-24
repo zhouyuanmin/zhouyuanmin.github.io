@@ -43,6 +43,70 @@
       </tags>
   </entry>
   <entry>
+    <title>Argparse</title>
+    <url>/notes/argparse/</url>
+    <content><![CDATA[<h1 id="argparse简要用法总结"><a href="#argparse简要用法总结" class="headerlink" title="argparse简要用法总结"></a>argparse简要用法总结</h1><p><a href="https://docs.python.org/3/library/argparse.html">argparse</a> 是python自带的命令行参数解析包，可以用来方便地读取命令行参数，当你的代码需要频繁地修改参数的时候，使用这个工具可以将参数和代码分离开来，让你的代码更简洁，适用范围更广。<br>argparse使用比较简单，常用的功能可能较快地实现出来，下面我分几个步骤，<strong>以Python3为例</strong>，逐渐递增地讲述argparse的用法。</p>
+<h3 id="1-基本框架"><a href="#1-基本框架" class="headerlink" title="1. 基本框架"></a>1. 基本框架</h3><p>下面是使用argparse从命令行获取用户名，然后打印’Hello ‘+ 用户名，假设python文件名为<code>print_name.py</code>:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># file-name:print_name.py</span></span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_parser</span>():</span></span><br><span class="line">    parser = argparse.ArgumentParser(description=<span class="string">&quot;Demo of argparse&quot;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;--name&#x27;</span>, default=<span class="string">&#x27;Great&#x27;</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> parser</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    parser = get_parser()</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    name = args.name</span><br><span class="line">    print(<span class="string">&#x27;Hello &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(name))</span><br></pre></td></tr></table></figure>
+
+<p>在命令行执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python print_name.py --name Wang</span><br><span class="line">Hello Wang</span><br></pre></td></tr></table></figure>
+
+<p> 上面的代码段中，我们显示引入了<code>argparse</code>包，然后通过<code>argparse.ArgumentParser</code>函数生成argparse对象，其中这个函数的<code>description</code>函数表示在命令行显示帮助信息的时候，这个程序的描述信息。之后我们通过对象的<code>add_argument</code>函数来增加参数。这里我们只增加了一个<code>--name</code>的参数，然后后面的<code>default</code>参数表示如果没提供参数，我们默认采用的值。即如果像下面这样执行命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ python print_name.py</span><br></pre></td></tr></table></figure>
+
+<p>则输出是:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ Hello Great</span><br></pre></td></tr></table></figure>
+
+<p>最后我们通过argpaser对象的<code>parser_args</code>函数来获取所有参数<code>args</code>，然后通过<code>args.name</code>的方式得到我们设置的<code>--name</code>参数的值，可以看到这里argparse默认的参数名就是<code>--name</code>形式里面<code>--</code>后面的字符串。<br>整个流程就是这样，下面我们详细讲解<code>add_argument</code>函数的一些最常用的参数，使得你看完这个教程之后，能完成科研和工作中的大部分命令解析任务。</p>
+<a id="more"></a>
+
+<h3 id="2-default：没有设置值情况下的默认参数"><a href="#2-default：没有设置值情况下的默认参数" class="headerlink" title="2. default：没有设置值情况下的默认参数"></a>2. <code>default</code>：没有设置值情况下的默认参数</h3><p>如同上例中展示的，default表示命令行没有设置该参数的时候，程序中用什么值来代替。</p>
+<h3 id="3-required-表示这个参数是否一定需要设置"><a href="#3-required-表示这个参数是否一定需要设置" class="headerlink" title="3. required: 表示这个参数是否一定需要设置"></a>3. <code>required</code>: 表示这个参数是否一定需要设置</h3><p>如果设置了<code>required=True</code>,则在实际运行的时候不设置该参数将报错：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">parser.add_argument(&#39;-name&#39;, required&#x3D;True)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>则运行下面的命令会报错：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ python print_name.py</span><br><span class="line">usage: print_name.py [-h] --name NAME</span><br><span class="line">print_name.py: error: argument --name is required</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-type：参数类型"><a href="#4-type：参数类型" class="headerlink" title="4. type：参数类型"></a>4. <code>type</code>：参数类型</h3><p>默认的参数类型是str类型，如果你的程序需要一个整数或者布尔型参数，你需要设置<code>type=int</code>或<code>type=bool</code>，下面是一个打印平方的例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#name: square.py</span></span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_parser</span>():</span></span><br><span class="line">    parser = argparse.ArgumentParser(</span><br><span class="line">        description=<span class="string">&#x27;Calculate square of a given number&#x27;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;-number&#x27;</span>, <span class="built_in">type</span>=<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> parser</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    parser = get_parser()</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    res = args.number ** <span class="number">2</span></span><br><span class="line">    print(<span class="string">&#x27;square of &#123;&#125; is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(args.number, res))</span><br></pre></td></tr></table></figure>
+
+<p>执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ python square.py -number 5</span><br><span class="line">square of 5 is 25 </span><br></pre></td></tr></table></figure>
+
+<h3 id="5-choices：参数值只能从几个选项里面选择"><a href="#5-choices：参数值只能从几个选项里面选择" class="headerlink" title="5. choices：参数值只能从几个选项里面选择"></a>5. <code>choices</code>：参数值只能从几个选项里面选择</h3><p>如下面的代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># file-name: choices.py</span></span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_parser</span>():</span></span><br><span class="line">    parser = argparse.ArgumentParser(</span><br><span class="line">        description=<span class="string">&#x27;choices demo&#x27;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;-arch&#x27;</span>, required=<span class="literal">True</span>, choices=[<span class="string">&#x27;alexnet&#x27;</span>, <span class="string">&#x27;vgg&#x27;</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> parser</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    parser = get_parser()</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    print(<span class="string">&#x27;the arch of CNN is &#x27;</span>.<span class="built_in">format</span>(args.arch))</span><br></pre></td></tr></table></figure>
+
+<p>如果像下面这样执行会报错：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ python choices.py -arch resnet</span><br><span class="line">usage: choices.py [-h] -arch &#123;alexnet,vgg&#125;</span><br><span class="line">choices.py: error: argument -arch: invalid choice: &#39;resnet&#39; (choose from &#39;alexnet&#39;, &#39;vgg&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>因为我们所给的<code>-arch</code>参数<code>resnet</code>不在备选的<code>choices</code>之中，所以会报错</p>
+<h3 id="6-help：指定参数的说明信息"><a href="#6-help：指定参数的说明信息" class="headerlink" title="6. help：指定参数的说明信息"></a>6. <code>help</code>：指定参数的说明信息</h3><p>在现实帮助信息的时候，help参数的值可以给使用工具的人提供该参数是用来设置什么的说明，对于大型的项目，help参数和很有必要的，不然使用者不太明白每个参数的含义，增大了使用难度。<br>下面是个例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># file-name: help.py</span></span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_parser</span>():</span></span><br><span class="line">    parser = argparse.ArgumentParser(</span><br><span class="line">        description=<span class="string">&#x27;help demo&#x27;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;-arch&#x27;</span>, required=<span class="literal">True</span>, choices=[<span class="string">&#x27;alexnet&#x27;</span>, <span class="string">&#x27;vgg&#x27;</span>],</span><br><span class="line">        <span class="built_in">help</span>=<span class="string">&#x27;the architecture of CNN, at this time we only support alexnet and vgg.&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> parser</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    parser = get_parser()</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    print(<span class="string">&#x27;the arch of CNN is &#x27;</span>.<span class="built_in">format</span>(args.arch))</span><br></pre></td></tr></table></figure>
+
+<p>在命令行加<code>-h</code>或<code>--help</code>参数运行该命令，获取帮助信息的时候，结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ python help.py -h</span><br><span class="line">usage: help.py [-h] -arch &#123;alexnet,vgg&#125;</span><br><span class="line"></span><br><span class="line">choices demo</span><br><span class="line"></span><br><span class="line">optional arguments:</span><br><span class="line">  -h, --help           show this help message and exit</span><br><span class="line">  -arch &#123;alexnet,vgg&#125;  the architecture of CNN, at this time we only support</span><br><span class="line">                       alexnet and vgg.</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-dest：设置参数在代码中的变量名"><a href="#7-dest：设置参数在代码中的变量名" class="headerlink" title="7. dest：设置参数在代码中的变量名"></a>7. <code>dest</code>：设置参数在代码中的变量名</h3><p>argparse默认的变量名是<code>--</code>或<code>-</code>后面的字符串，但是你也可以通过<code>dest=xxx</code>来设置参数的变量名，然后在代码中用<code>args.xxx</code>来获取参数的值。</p>
+<h3 id="8-nargs：-设置参数在使用可以提供的个数"><a href="#8-nargs：-设置参数在使用可以提供的个数" class="headerlink" title="8. nargs： 设置参数在使用可以提供的个数"></a>8. <code>nargs</code>： 设置参数在使用可以提供的个数</h3><p>使用方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">parser.add_argument(&#39;-name&#39;, nargs&#x3D;x)</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>x</code>的候选值和含义如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">值  含义</span><br><span class="line">N   参数的绝对个数（例如：3）</span><br><span class="line">&#39;?&#39;   0或1个参数</span><br><span class="line">&#39;*&#39;   0或所有参数</span><br><span class="line">&#39;+&#39;   所有，并且至少一个参数</span><br></pre></td></tr></table></figure>
+
+<p>如下例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># file-name: nargs.py</span></span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_parser</span>():</span></span><br><span class="line">    parser = argparse.ArgumentParser(</span><br><span class="line">        description=<span class="string">&#x27;nargs demo&#x27;</span>)</span><br><span class="line">    parser.add_argument(<span class="string">&#x27;-name&#x27;</span>, required=<span class="literal">True</span>, nargs=<span class="string">&#x27;+&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> parser</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    parser = get_parser()</span><br><span class="line">    args = parser.parse_args()</span><br><span class="line">    names = <span class="string">&#x27;, &#x27;</span>.join(args.name)</span><br><span class="line">    print(<span class="string">&#x27;Hello to &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(names))</span><br></pre></td></tr></table></figure>
+
+<p>执行命令和结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ python nargs.py -name A B C</span><br><span class="line">Hello to A, B, C</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Create-New-Branch</title>
     <url>/notes/create-new-branch/</url>
     <content><![CDATA[<h4 id="在一个项目中创建一个完全空白的分支"><a href="#在一个项目中创建一个完全空白的分支" class="headerlink" title="在一个项目中创建一个完全空白的分支"></a>在一个项目中创建一个完全空白的分支</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">参数 --orphan，这个参数的主要作用有两个，一个是拷贝当前所在分支的所有文件，另一个是没有父结点，可以理解为没有历史记录，是一个完全独立背景干净的分支。</span><br></pre></td></tr></table></figure>
@@ -75,23 +139,6 @@
       <tags>
         <tag>IV</tag>
         <tag>Messy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Debug-Print</title>
-    <url>/notes/debug-print/</url>
-    <content><![CDATA[<p>使用print在docker中调试</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">docker不会输出python的print(),需要这样写才会输出：加上flush=<span class="literal">True</span></span><br><span class="line">例子: print(<span class="string">&quot;debug...&quot;</span>, flush=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-]]></content>
-      <categories>
-        <category>Messy</category>
-      </categories>
-      <tags>
-        <tag>Messy</tag>
-        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -167,6 +214,23 @@
       </tags>
   </entry>
   <entry>
+    <title>Debug-Print</title>
+    <url>/notes/debug-print/</url>
+    <content><![CDATA[<p>使用print在docker中调试</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">docker不会输出python的print(),需要这样写才会输出：加上flush=<span class="literal">True</span></span><br><span class="line">例子: print(<span class="string">&quot;debug...&quot;</span>, flush=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+]]></content>
+      <categories>
+        <category>Messy</category>
+      </categories>
+      <tags>
+        <tag>Messy</tag>
+        <tag>V</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Decorator</title>
     <url>/notes/decorator/</url>
     <content><![CDATA[<h3 id="装饰器（装饰模式）"><a href="#装饰器（装饰模式）" class="headerlink" title="装饰器（装饰模式）"></a>装饰器（装饰模式）</h3><h4 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 两层</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kw</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;log&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"><span class="meta">@log</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
@@ -182,8 +246,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -258,22 +322,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker-Compose</title>
-    <url>/notes/docker-compose/</url>
-    <content><![CDATA[<h3 id="Docker-compose笔记"><a href="#Docker-compose笔记" class="headerlink" title="Docker-compose笔记"></a>Docker-compose笔记</h3><ul>
-<li>这是一个docker-compose的小demo <a href="https://github.com/zhouyuanmin/DockerFileDemo">地址</a></li>
-<li>清晰的阐述了docker-compose的基本操作</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Docker</category>
-      </categories>
-      <tags>
-        <tag>V</tag>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker</title>
     <url>/notes/docker/</url>
     <content><![CDATA[<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 在docker反复build后，会存留很多none镜像，下面命令一键删除所有none镜像</span><br><span class="line">docker rmi &#96;docker images | grep  &#39;&lt;none&gt;&#39; | awk &#39;&#123;print $3&#125;&#39;&#96;</span><br><span class="line">或者</span><br><span class="line">docker rmi $(docker images -q -f dangling&#x3D;true)</span><br><span class="line"># 删除所有停止的容器</span><br><span class="line">docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
@@ -328,6 +376,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker-Compose</title>
+    <url>/notes/docker-compose/</url>
+    <content><![CDATA[<h3 id="Docker-compose笔记"><a href="#Docker-compose笔记" class="headerlink" title="Docker-compose笔记"></a>Docker-compose笔记</h3><ul>
+<li>这是一个docker-compose的小demo <a href="https://github.com/zhouyuanmin/DockerFileDemo">地址</a></li>
+<li>清晰的阐述了docker-compose的基本操作</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Docker</category>
+      </categories>
+      <tags>
+        <tag>V</tag>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Doing-Projects</title>
     <url>/notes/doing-projects/</url>
     <content><![CDATA[<p><strong>自己负责项目的时候</strong></p>
@@ -362,8 +426,8 @@
         <category>Messy</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -406,8 +470,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -439,6 +503,28 @@
       </tags>
   </entry>
   <entry>
+    <title>Func</title>
+    <url>/notes/func/</url>
+    <content><![CDATA[<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">把func作用在iterator每一个元素上，并返回一个iterator</span><br></pre></td></tr></table></figure>
+
+<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">累积计算  # func(x,y)必须两个参数</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">过滤函数 </span><br><span class="line"># 把func作用在iterator每一个元素上，然后根据返回值是Ture还是False决定保留还是丢弃该元素</span><br><span class="line"># 返回值是原来iterator的子序列</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">map、reduce、filter都是两个参数（第一个func，第二个iterator）</span><br><span class="line">返回值都是惰性iterator，需要list()才能转换为list</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>V</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Func-Param</title>
     <url>/notes/func-param/</url>
     <content><![CDATA[<h4 id="1-位置参数"><a href="#1-位置参数" class="headerlink" title="1.位置参数"></a>1.位置参数</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span>(<span class="params">x</span>):</span></span><br><span class="line">	<span class="keyword">return</span> x*x</span><br></pre></td></tr></table></figure>
@@ -460,30 +546,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Func</title>
-    <url>/notes/func/</url>
-    <content><![CDATA[<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">把func作用在iterator每一个元素上，并返回一个iterator</span><br></pre></td></tr></table></figure>
-
-<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">累积计算  # func(x,y)必须两个参数</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">过滤函数 </span><br><span class="line"># 把func作用在iterator每一个元素上，然后根据返回值是Ture还是False决定保留还是丢弃该元素</span><br><span class="line"># 返回值是原来iterator的子序列</span><br></pre></td></tr></table></figure>
-
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">map、reduce、filter都是两个参数（第一个func，第二个iterator）</span><br><span class="line">返回值都是惰性iterator，需要list()才能转换为list</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
         <tag>V</tag>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -497,8 +561,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -721,21 +785,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Kill-Process</title>
-    <url>/notes/kill-process/</url>
-    <content><![CDATA[<h3 id="杀死占用端口的进程"><a href="#杀死占用端口的进程" class="headerlink" title="杀死占用端口的进程"></a>杀死占用端口的进程</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看占用端口的进程</span></span><br><span class="line">netstat -tlnp|grep 6379  # t-tcp,l-listen,n-不解析(速度快),p-process</span><br><span class="line"><span class="meta">#</span><span class="bash"> 一次性的清除占用80端口的程序</span></span><br><span class="line">lsof -i :80|grep -v &quot;PID&quot;|awk &#x27;&#123;print &quot;kill -9&quot;,$2&#125;&#x27;|sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 终止进程</span></span><br><span class="line">kill 5014</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制终止进程</span></span><br><span class="line">kill -9 5014  # 是pid</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>V</tag>
-        <tag>Linux</tag>
-        <tag>Develop</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux-Basics</title>
     <url>/notes/linux-basics/</url>
     <content><![CDATA[<h4 id="Linux笔记"><a href="#Linux笔记" class="headerlink" title="Linux笔记"></a>Linux笔记</h4><a id="more"></a>
@@ -757,6 +806,21 @@
       <tags>
         <tag>V</tag>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kill-Process</title>
+    <url>/notes/kill-process/</url>
+    <content><![CDATA[<h3 id="杀死占用端口的进程"><a href="#杀死占用端口的进程" class="headerlink" title="杀死占用端口的进程"></a>杀死占用端口的进程</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看占用端口的进程</span></span><br><span class="line">netstat -tlnp|grep 6379  # t-tcp,l-listen,n-不解析(速度快),p-process</span><br><span class="line"><span class="meta">#</span><span class="bash"> 一次性的清除占用80端口的程序</span></span><br><span class="line">lsof -i :80|grep -v &quot;PID&quot;|awk &#x27;&#123;print &quot;kill -9&quot;,$2&#125;&#x27;|sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 终止进程</span></span><br><span class="line">kill 5014</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制终止进程</span></span><br><span class="line">kill -9 5014  # 是pid</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>V</tag>
+        <tag>Linux</tag>
+        <tag>Develop</tag>
       </tags>
   </entry>
   <entry>
@@ -805,8 +869,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -867,8 +931,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -922,8 +986,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -940,8 +1004,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -1040,8 +1104,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -1096,8 +1160,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -1130,8 +1194,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -1215,9 +1279,25 @@
         <category>Messy</category>
       </categories>
       <tags>
-        <tag>V</tag>
         <tag>Python</tag>
+        <tag>V</tag>
         <tag>Opp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Report-Speech</title>
+    <url>/notes/report-speech/</url>
+    <content><![CDATA[<h4 id="总结一些做汇报和演讲时，需要注意的事情"><a href="#总结一些做汇报和演讲时，需要注意的事情" class="headerlink" title="总结一些做汇报和演讲时，需要注意的事情"></a>总结一些做汇报和演讲时，需要注意的事情</h4><p>主要从“演讲前的准备”、“演讲中”、“如何结束演讲”、“遇到提问，如何回答”这几个方面来阐述</p>
+<h5 id="一、演讲前的准备"><a href="#一、演讲前的准备" class="headerlink" title="一、演讲前的准备"></a>一、演讲前的准备</h5><p>基本上都需要有PPT，还需要符合风格，需要事先熟悉PPT，不要卡壳，不要读错字，</p>
+<p>最好是图片，和关键字，其他的全靠后面讲，把要讲的内容理清</p>
+ <a id="more"></a>
+
+<h5 id="二、演讲中"><a href="#二、演讲中" class="headerlink" title="二、演讲中"></a>二、演讲中</h5><h5 id="三、如何结束演讲"><a href="#三、如何结束演讲" class="headerlink" title="三、如何结束演讲"></a>三、如何结束演讲</h5><h5 id="四、遇到提问，如何回答"><a href="#四、遇到提问，如何回答" class="headerlink" title="四、遇到提问，如何回答"></a>四、遇到提问，如何回答</h5>]]></content>
+      <categories>
+        <category>Expansion</category>
+      </categories>
+      <tags>
+        <tag>V</tag>
       </tags>
   </entry>
   <entry>
@@ -1237,24 +1317,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>IV</tag>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Report-Speech</title>
-    <url>/notes/report-speech/</url>
-    <content><![CDATA[<h4 id="总结一些做汇报和演讲时，需要注意的事情"><a href="#总结一些做汇报和演讲时，需要注意的事情" class="headerlink" title="总结一些做汇报和演讲时，需要注意的事情"></a>总结一些做汇报和演讲时，需要注意的事情</h4><p>主要从“演讲前的准备”、“演讲中”、“如何结束演讲”、“遇到提问，如何回答”这几个方面来阐述</p>
-<h5 id="一、演讲前的准备"><a href="#一、演讲前的准备" class="headerlink" title="一、演讲前的准备"></a>一、演讲前的准备</h5><p>基本上都需要有PPT，还需要符合风格，需要事先熟悉PPT，不要卡壳，不要读错字，</p>
-<p>最好是图片，和关键字，其他的全靠后面讲，把要讲的内容理清</p>
- <a id="more"></a>
-
-<h5 id="二、演讲中"><a href="#二、演讲中" class="headerlink" title="二、演讲中"></a>二、演讲中</h5><h5 id="三、如何结束演讲"><a href="#三、如何结束演讲" class="headerlink" title="三、如何结束演讲"></a>三、如何结束演讲</h5><h5 id="四、遇到提问，如何回答"><a href="#四、遇到提问，如何回答" class="headerlink" title="四、遇到提问，如何回答"></a>四、遇到提问，如何回答</h5>]]></content>
-      <categories>
-        <category>Expansion</category>
-      </categories>
-      <tags>
-        <tag>V</tag>
+        <tag>IV</tag>
       </tags>
   </entry>
   <entry>
