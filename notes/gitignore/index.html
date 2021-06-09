@@ -50,18 +50,20 @@
   };
 </script>
 
-  <meta name="description" content="Beautiful is better than ugly.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Myard">
-<meta property="og:url" content="https://blog.myard.cn/categories/management/index.html">
+  <meta name="description" content="gitignore文件常用配置 12345678910111213141516171819202122# Environments.DS_Store.idea&#x2F;.vscode&#x2F;__pycache__&#x2F;.env.venvenv&#x2F;venv&#x2F;ENV&#x2F;env.bak&#x2F;venv.bak&#x2F;*.log# Jupyter Notebook.ipynb_checkpoints# IPythonprofile_def">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Gitignore">
+<meta property="og:url" content="https://blog.myard.cn/notes/gitignore/index.html">
 <meta property="og:site_name" content="Myard">
-<meta property="og:description" content="Beautiful is better than ugly.">
+<meta property="og:description" content="gitignore文件常用配置 12345678910111213141516171819202122# Environments.DS_Store.idea&#x2F;.vscode&#x2F;__pycache__&#x2F;.env.venvenv&#x2F;venv&#x2F;ENV&#x2F;env.bak&#x2F;venv.bak&#x2F;*.log# Jupyter Notebook.ipynb_checkpoints# IPythonprofile_def">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-29T01:45:07.000Z">
+<meta property="article:modified_time" content="2021-04-29T01:51:11.237Z">
 <meta property="article:author" content="Myard">
-<meta property="article:tag" content="Myard">
+<meta property="article:tag" content="V">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.myard.cn/categories/management/">
+<link rel="canonical" href="https://blog.myard.cn/notes/gitignore/">
 
 
 <script id="page-configurations">
@@ -69,13 +71,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Category: Management | Myard</title>
+  <title>Gitignore | Myard</title>
   
 
 
@@ -205,70 +207,144 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">Management
-          <small>Category</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/gitignore/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Beautiful is better than ugly.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Gitignore
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-29 09:45:07 / Modified: 09:51:11" itemprop="dateCreated datePublished" datetime="2021-04-29T09:45:07+08:00">2021-04-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/messy/" itemprop="url" rel="index">
+                    <span itemprop="name">Messy</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>217</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
-    </div>
+        <p>gitignore文件常用配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Environments</span></span><br><span class="line">.DS_Store</span><br><span class="line">.idea/</span><br><span class="line">.vscode/</span><br><span class="line">__pycache__/</span><br><span class="line"></span><br><span class="line">.env</span><br><span class="line">.venv</span><br><span class="line">env/</span><br><span class="line">venv/</span><br><span class="line">ENV/</span><br><span class="line">env.bak/</span><br><span class="line">venv.bak/</span><br><span class="line"></span><br><span class="line">*.log</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Jupyter Notebook</span></span><br><span class="line">.ipynb_checkpoints</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> IPython</span></span><br><span class="line">profile_default/</span><br><span class="line">ipython_config.py</span><br></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+ <a id="more"></a>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-23T09:54:12+08:00"
-              content="2020-12-23">
-          12-23
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/notes/tome/" itemprop="url">
-            <span itemprop="name">Tome</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-11-12T16:52:25+08:00"
-              content="2020-11-12">
-          11-12
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/notes/doing-projects/" itemprop="url">
-            <span itemprop="name">Doing-Projects</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
 
     </div>
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+
+    
+    
+    
+      
+  <div class="popular-posts-header">Related Posts By Tag</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/notes/css/" rel="bookmark">Css</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/notes/decorator/" rel="bookmark">Decorator</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/notes/debug-print/" rel="bookmark">Debug-Print</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/notes/design-patterns/" rel="bookmark">Design-Patterns</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="/notes/django-jinja2/" rel="bookmark">Django-Jinja2</a></div>
+    </li>
+  </ul>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/v/" rel="tag"><i class="fa fa-tag">&nbsp;</i>V</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/notes/argparse/" rel="next" title="Argparse">
+                  <i class="fa fa-chevron-left"></i> Argparse
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
