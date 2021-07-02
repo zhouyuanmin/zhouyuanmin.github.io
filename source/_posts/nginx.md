@@ -1,0 +1,23 @@
+---
+title: nginx
+categories: Nginx
+tags:
+  - Nginx
+date: 2021-06-15 11:18:44
+---
+
+nginx的简单使用和配置笔记
+
+```
+# 配置文件
+/etc/nginx/nginx.conf
+```
+
+```
+在ubuntu系统上，找到nginx.conf文件的位置
+在终端窗口中，输入命令：nginx -t
+回显中就可以看到nginx.conf文件的路径了
+```
+
+<!-- more -->
+
