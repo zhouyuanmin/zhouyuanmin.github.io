@@ -20,6 +20,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Common-Naming</title>
+    <url>/notes/common-naming/</url>
+    <content><![CDATA[<p><strong>命名-常用的词汇</strong></p>
+<p><em>1</em>、auxiliary 辅助的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">aux_  辅助的</span><br><span class="line">aux_list, aux_set</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Messy</category>
+      </categories>
+      <tags>
+        <tag>IV</tag>
+        <tag>Messy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Anonymous-Proxy</title>
     <url>/notes/anonymous-proxy/</url>
     <content><![CDATA[<p><strong>基于adsl技术搭建高匿名代理</strong></p>
@@ -104,22 +120,6 @@
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Common-Naming</title>
-    <url>/notes/common-naming/</url>
-    <content><![CDATA[<p><strong>命名-常用的词汇</strong></p>
-<p><em>1</em>、auxiliary 辅助的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">aux_  辅助的</span><br><span class="line">aux_list, aux_set</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Messy</category>
-      </categories>
-      <tags>
-        <tag>IV</tag>
-        <tag>Messy</tag>
       </tags>
   </entry>
   <entry>
@@ -214,26 +214,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Decorator</title>
-    <url>/notes/decorator/</url>
-    <content><![CDATA[<h3 id="装饰器（装饰模式）"><a href="#装饰器（装饰模式）" class="headerlink" title="装饰器（装饰模式）"></a>装饰器（装饰模式）</h3><h4 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 两层</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kw</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;log&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"><span class="meta">@log</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h4 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 三层：针对decorator有参数的时候</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span>(<span class="params">text</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorater</span>(<span class="params">func</span>):</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kw</span>):</span></span><br><span class="line">            print(<span class="string">&#x27;log:&#x27;</span>, text)</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> decorater</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@log(&#x27;text&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="meta">@functools.wraps(func)  # 将函数func的一些特殊属性复制给wrapper函数（最里层函数）</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>V</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Debug-Print</title>
     <url>/notes/debug-print/</url>
     <content><![CDATA[<p>使用print在docker中调试</p>
@@ -261,6 +241,48 @@
       </categories>
       <tags>
         <tag>V</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Decorator</title>
+    <url>/notes/decorator/</url>
+    <content><![CDATA[<h3 id="装饰器（装饰模式）"><a href="#装饰器（装饰模式）" class="headerlink" title="装饰器（装饰模式）"></a>装饰器（装饰模式）</h3><h4 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 两层</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kw</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;log&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"><span class="meta">@log</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="例子2"><a href="#例子2" class="headerlink" title="例子2"></a>例子2</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 三层：针对decorator有参数的时候</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span>(<span class="params">text</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorater</span>(<span class="params">func</span>):</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kw</span>):</span></span><br><span class="line">            print(<span class="string">&#x27;log:&#x27;</span>, text)</span><br><span class="line">            <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> wrapper</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> decorater</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@log(&#x27;text&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> functools</span><br><span class="line"><span class="meta">@functools.wraps(func)  # 将函数func的一些特殊属性复制给wrapper函数（最里层函数）</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>V</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Django-Mysql</title>
+    <url>/notes/django-mysql/</url>
+    <content><![CDATA[<h4 id="Django配置mysql数据库"><a href="#Django配置mysql数据库" class="headerlink" title="Django配置mysql数据库"></a>Django配置mysql数据库</h4><h5 id="1、安装PyMySQL"><a href="#1、安装PyMySQL" class="headerlink" title="1、安装PyMySQL"></a>1、安装PyMySQL</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install PyMySQL</span><br></pre></td></tr></table></figure>
+
+<h5 id="2、-在Django的工程同名子目录的init-py文件中添加如下语句"><a href="#2、-在Django的工程同名子目录的init-py文件中添加如下语句" class="headerlink" title="2、 在Django的工程同名子目录的init.py文件中添加如下语句"></a>2、 在Django的工程同名子目录的<strong>init</strong>.py文件中添加如下语句</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pymysql <span class="keyword">import</span> install_as_MySQLdb</span><br><span class="line">install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h5 id="3、修改settings-py中DATABASES配置信息"><a href="#3、修改settings-py中DATABASES配置信息" class="headerlink" title="3、修改settings.py中DATABASES配置信息"></a>3、修改settings.py中DATABASES配置信息</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,  <span class="comment"># 数据库主机</span></span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="number">3306</span>,  <span class="comment"># 数据库端口</span></span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,  <span class="comment"># 数据库用户名</span></span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;mysql&#x27;</span>,  <span class="comment"># 数据库用户密码</span></span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;django_demo&#x27;</span>  <span class="comment"># 数据库名字</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4、在MySQL中创建数据库"><a href="#4、在MySQL中创建数据库" class="headerlink" title="4、在MySQL中创建数据库"></a>4、在MySQL中创建数据库</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">create database django_demo default charset=utf8;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>V</tag>
+        <tag>Django</tag>
       </tags>
   </entry>
   <entry>
@@ -300,28 +322,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Django-Mysql</title>
-    <url>/notes/django-mysql/</url>
-    <content><![CDATA[<h4 id="Django配置mysql数据库"><a href="#Django配置mysql数据库" class="headerlink" title="Django配置mysql数据库"></a>Django配置mysql数据库</h4><h5 id="1、安装PyMySQL"><a href="#1、安装PyMySQL" class="headerlink" title="1、安装PyMySQL"></a>1、安装PyMySQL</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install PyMySQL</span><br></pre></td></tr></table></figure>
-
-<h5 id="2、-在Django的工程同名子目录的init-py文件中添加如下语句"><a href="#2、-在Django的工程同名子目录的init-py文件中添加如下语句" class="headerlink" title="2、 在Django的工程同名子目录的init.py文件中添加如下语句"></a>2、 在Django的工程同名子目录的<strong>init</strong>.py文件中添加如下语句</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pymysql <span class="keyword">import</span> install_as_MySQLdb</span><br><span class="line">install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h5 id="3、修改settings-py中DATABASES配置信息"><a href="#3、修改settings-py中DATABASES配置信息" class="headerlink" title="3、修改settings.py中DATABASES配置信息"></a>3、修改settings.py中DATABASES配置信息</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,  <span class="comment"># 数据库主机</span></span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="number">3306</span>,  <span class="comment"># 数据库端口</span></span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,  <span class="comment"># 数据库用户名</span></span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;mysql&#x27;</span>,  <span class="comment"># 数据库用户密码</span></span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;django_demo&#x27;</span>  <span class="comment"># 数据库名字</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="4、在MySQL中创建数据库"><a href="#4、在MySQL中创建数据库" class="headerlink" title="4、在MySQL中创建数据库"></a>4、在MySQL中创建数据库</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">create database django_demo default charset=utf8;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>V</tag>
-        <tag>Django</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker-Compose</title>
     <url>/notes/docker-compose/</url>
     <content><![CDATA[<h3 id="Docker-compose笔记"><a href="#Docker-compose笔记" class="headerlink" title="Docker-compose笔记"></a>Docker-compose笔记</h3><ul>
@@ -335,6 +335,101 @@
       <tags>
         <tag>V</tag>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Excel-Csv</title>
+    <url>/notes/excel-csv/</url>
+    <content><![CDATA[<h3 id="使用csv操作excel、csv文件"><a href="#使用csv操作excel、csv文件" class="headerlink" title="使用csv操作excel、csv文件"></a>使用csv操作excel、csv文件</h3><p>Translation</p>
+<ul>
+<li>翻译官方文档-对应Python3.6</li>
+<li><em>dialect</em> 方言，这里指定格式为 csv</li>
+</ul>
+<a id="more"></a>
+
+<h4 id="模块内容"><a href="#模块内容" class="headerlink" title="模块内容"></a>模块内容</h4><ul>
+<li>functions</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># csv.reader(csvfile, dialect=&#x27;excel&#x27;, **fmtparams)</span></span><br><span class="line"><span class="comment"># return: a list of strings</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;eggs.csv&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    spamreader = csv.reader(csvfile, delimiter=<span class="string">&#x27; &#x27;</span>, quotechar=<span class="string">&#x27;|&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> spamreader:</span><br><span class="line">        print(<span class="string">&#x27;, &#x27;</span>.join(row))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># csv.writer(csvfile, dialect=&#x27;excel&#x27;, **fmtparams)</span></span><br><span class="line"><span class="comment"># 写入是 a list of strings</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;eggs.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    spamwriter = csv.writer(csvfile, delimiter=<span class="string">&#x27; &#x27;</span>,</span><br><span class="line">                            quotechar=<span class="string">&#x27;|&#x27;</span>, quoting=csv.QUOTE_MINIMAL)</span><br><span class="line">    spamwriter.writerow([<span class="string">&#x27;Spam&#x27;</span>] * <span class="number">5</span> + [<span class="string">&#x27;Baked Beans&#x27;</span>])</span><br><span class="line">    spamwriter.writerow([<span class="string">&#x27;Spam&#x27;</span>, <span class="string">&#x27;Lovely Spam&#x27;</span>, <span class="string">&#x27;Wonderful Spam&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>classes</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># csv.DictReader(f)</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;names.csv&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    reader = csv.DictReader(csvfile)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        print(row[<span class="string">&#x27;first_name&#x27;</span>], row[<span class="string">&#x27;last_name&#x27;</span>])</span><br><span class="line">print(row)</span><br><span class="line"><span class="comment"># 公开接口</span></span><br><span class="line">csvreader.__next__()  <span class="comment"># 让对象变为 iterable object，使用next(reader) </span></span><br><span class="line">csvreader.dialect  <span class="comment"># 只读</span></span><br><span class="line">csvreader.line_num <span class="comment"># 行数(包含首行目录), 这与返回的记录数不同，因为记录可以跨越多行。</span></span><br><span class="line">csvreader.fieldnames <span class="comment"># 目录（如果有，没有则是第一行）</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># csv.DictWriter(f)</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;names.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    fieldnames = [<span class="string">&#x27;first_name&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>]</span><br><span class="line">    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)  <span class="comment"># 指定目录</span></span><br><span class="line"></span><br><span class="line">    writer.writeheader()  <span class="comment"># 写入目录</span></span><br><span class="line">    writer.writerow(&#123;<span class="string">&#x27;first_name&#x27;</span>: <span class="string">&#x27;Baked&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>: <span class="string">&#x27;Beans&#x27;</span>&#125;)</span><br><span class="line">    writer.writerow(&#123;<span class="string">&#x27;first_name&#x27;</span>: <span class="string">&#x27;Lovely&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>: <span class="string">&#x27;Spam&#x27;</span>&#125;)</span><br><span class="line">    writer.writerow(&#123;<span class="string">&#x27;first_name&#x27;</span>: <span class="string">&#x27;Wonderful&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>: <span class="string">&#x27;Spam&#x27;</span>&#125;)</span><br><span class="line"><span class="comment"># 公开接口</span></span><br><span class="line">csvwriter.writerow(row)</span><br><span class="line">csvwriter.writerows(rows) <span class="comment"># an iterable of row objects</span></span><br><span class="line">DictWriter.writeheader()  <span class="comment"># 写入目录（必须先在构造函数中指定）。</span></span><br><span class="line">csvreader.dialect  <span class="comment"># 只读</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>exception</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">csv.Error</span><br><span class="line"><span class="comment"># 所有异常都是Error</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Dialects的默认参数"><a href="#Dialects的默认参数" class="headerlink" title="Dialects的默认参数"></a>Dialects的默认参数</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一下参数了解，我们一般用不到，（不会去手动创建dialect对象）</span></span><br><span class="line">Dialect.delimiter</span><br><span class="line"><span class="comment"># 分隔符，默认为 &#x27;,&#x27;</span></span><br><span class="line">Dialect.lineterminator</span><br><span class="line"><span class="comment"># 换行符 defaults &#x27;\r\n&#x27;</span></span><br><span class="line">Dialect.strict</span><br><span class="line"><span class="comment"># When True, raise exception Error on bad CSV input. The default is False.</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;some.csv&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        print(row)</span><br><span class="line"><span class="comment"># 偶尔是 encoding=&#x27;utf-8-sig&#x27; </span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> csv.reader([<span class="string">&#x27;one,two,three&#x27;</span>]): <span class="comment"># 解析字符串</span></span><br><span class="line">    print(row)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>V</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Doing-Projects</title>
+    <url>/notes/doing-projects/</url>
+    <content><![CDATA[<p><strong>自己负责项目的时候</strong></p>
+<p>注意点：</p>
+<ul>
+<li>做一个项目一定要先调</li>
+<li>可以节约时间成本（找到了一些资源代码）</li>
+<li>可以找到具体的方向，实现目的的技术方向</li>
+<li>可以查看市场现状，做出基本的评估</li>
+<li>重点是风险评估</li>
+</ul>
+<a id="more"></a>
+
+]]></content>
+      <categories>
+        <category>Management</category>
+      </categories>
+      <tags>
+        <tag>IV</tag>
+        <tag>Management</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Firewall</title>
+    <url>/notes/firewall/</url>
+    <content><![CDATA[<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><h4 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询端口号80-是否开启"><a href="#查询端口号80-是否开启" class="headerlink" title="查询端口号80 是否开启"></a>查询端口号80 是否开启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --query-port&#x3D;80&#x2F;tcp</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询有哪些端口是开启的"><a href="#查询有哪些端口是开启的" class="headerlink" title="查询有哪些端口是开启的"></a>查询有哪些端口是开启的</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
+
+<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="禁止防火墙开机自启"><a href="#禁止防火墙开机自启" class="headerlink" title="禁止防火墙开机自启"></a>禁止防火墙开机自启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>V</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -392,29 +487,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Doing-Projects</title>
-    <url>/notes/doing-projects/</url>
-    <content><![CDATA[<p><strong>自己负责项目的时候</strong></p>
-<p>注意点：</p>
-<ul>
-<li>做一个项目一定要先调</li>
-<li>可以节约时间成本（找到了一些资源代码）</li>
-<li>可以找到具体的方向，实现目的的技术方向</li>
-<li>可以查看市场现状，做出基本的评估</li>
-<li>重点是风险评估</li>
-</ul>
-<a id="more"></a>
-
-]]></content>
-      <categories>
-        <category>Management</category>
-      </categories>
-      <tags>
-        <tag>IV</tag>
-        <tag>Management</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Email</title>
     <url>/notes/email/</url>
     <content><![CDATA[<h3 id="使用python发送邮件"><a href="#使用python发送邮件" class="headerlink" title="使用python发送邮件"></a>使用python发送邮件</h3><h4 id="发送邮件，带附件"><a href="#发送邮件，带附件" class="headerlink" title="发送邮件，带附件"></a>发送邮件，带附件</h4><a id="more"></a>
@@ -428,78 +500,6 @@
       <tags>
         <tag>Python</tag>
         <tag>V</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Excel-Csv</title>
-    <url>/notes/excel-csv/</url>
-    <content><![CDATA[<h3 id="使用csv操作excel、csv文件"><a href="#使用csv操作excel、csv文件" class="headerlink" title="使用csv操作excel、csv文件"></a>使用csv操作excel、csv文件</h3><p>Translation</p>
-<ul>
-<li>翻译官方文档-对应Python3.6</li>
-<li><em>dialect</em> 方言，这里指定格式为 csv</li>
-</ul>
-<a id="more"></a>
-
-<h4 id="模块内容"><a href="#模块内容" class="headerlink" title="模块内容"></a>模块内容</h4><ul>
-<li>functions</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># csv.reader(csvfile, dialect=&#x27;excel&#x27;, **fmtparams)</span></span><br><span class="line"><span class="comment"># return: a list of strings</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;eggs.csv&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    spamreader = csv.reader(csvfile, delimiter=<span class="string">&#x27; &#x27;</span>, quotechar=<span class="string">&#x27;|&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> spamreader:</span><br><span class="line">        print(<span class="string">&#x27;, &#x27;</span>.join(row))</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># csv.writer(csvfile, dialect=&#x27;excel&#x27;, **fmtparams)</span></span><br><span class="line"><span class="comment"># 写入是 a list of strings</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;eggs.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    spamwriter = csv.writer(csvfile, delimiter=<span class="string">&#x27; &#x27;</span>,</span><br><span class="line">                            quotechar=<span class="string">&#x27;|&#x27;</span>, quoting=csv.QUOTE_MINIMAL)</span><br><span class="line">    spamwriter.writerow([<span class="string">&#x27;Spam&#x27;</span>] * <span class="number">5</span> + [<span class="string">&#x27;Baked Beans&#x27;</span>])</span><br><span class="line">    spamwriter.writerow([<span class="string">&#x27;Spam&#x27;</span>, <span class="string">&#x27;Lovely Spam&#x27;</span>, <span class="string">&#x27;Wonderful Spam&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>classes</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># csv.DictReader(f)</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;names.csv&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    reader = csv.DictReader(csvfile)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        print(row[<span class="string">&#x27;first_name&#x27;</span>], row[<span class="string">&#x27;last_name&#x27;</span>])</span><br><span class="line">print(row)</span><br><span class="line"><span class="comment"># 公开接口</span></span><br><span class="line">csvreader.__next__()  <span class="comment"># 让对象变为 iterable object，使用next(reader) </span></span><br><span class="line">csvreader.dialect  <span class="comment"># 只读</span></span><br><span class="line">csvreader.line_num <span class="comment"># 行数(包含首行目录), 这与返回的记录数不同，因为记录可以跨越多行。</span></span><br><span class="line">csvreader.fieldnames <span class="comment"># 目录（如果有，没有则是第一行）</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># csv.DictWriter(f)</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;names.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    fieldnames = [<span class="string">&#x27;first_name&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>]</span><br><span class="line">    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)  <span class="comment"># 指定目录</span></span><br><span class="line"></span><br><span class="line">    writer.writeheader()  <span class="comment"># 写入目录</span></span><br><span class="line">    writer.writerow(&#123;<span class="string">&#x27;first_name&#x27;</span>: <span class="string">&#x27;Baked&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>: <span class="string">&#x27;Beans&#x27;</span>&#125;)</span><br><span class="line">    writer.writerow(&#123;<span class="string">&#x27;first_name&#x27;</span>: <span class="string">&#x27;Lovely&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>: <span class="string">&#x27;Spam&#x27;</span>&#125;)</span><br><span class="line">    writer.writerow(&#123;<span class="string">&#x27;first_name&#x27;</span>: <span class="string">&#x27;Wonderful&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>: <span class="string">&#x27;Spam&#x27;</span>&#125;)</span><br><span class="line"><span class="comment"># 公开接口</span></span><br><span class="line">csvwriter.writerow(row)</span><br><span class="line">csvwriter.writerows(rows) <span class="comment"># an iterable of row objects</span></span><br><span class="line">DictWriter.writeheader()  <span class="comment"># 写入目录（必须先在构造函数中指定）。</span></span><br><span class="line">csvreader.dialect  <span class="comment"># 只读</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>exception</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">csv.Error</span><br><span class="line"><span class="comment"># 所有异常都是Error</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Dialects的默认参数"><a href="#Dialects的默认参数" class="headerlink" title="Dialects的默认参数"></a>Dialects的默认参数</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一下参数了解，我们一般用不到，（不会去手动创建dialect对象）</span></span><br><span class="line">Dialect.delimiter</span><br><span class="line"><span class="comment"># 分隔符，默认为 &#x27;,&#x27;</span></span><br><span class="line">Dialect.lineterminator</span><br><span class="line"><span class="comment"># 换行符 defaults &#x27;\r\n&#x27;</span></span><br><span class="line">Dialect.strict</span><br><span class="line"><span class="comment"># When True, raise exception Error on bad CSV input. The default is False.</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;some.csv&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        print(row)</span><br><span class="line"><span class="comment"># 偶尔是 encoding=&#x27;utf-8-sig&#x27; </span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> csv.reader([<span class="string">&#x27;one,two,three&#x27;</span>]): <span class="comment"># 解析字符串</span></span><br><span class="line">    print(row)</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>V</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Firewall</title>
-    <url>/notes/firewall/</url>
-    <content><![CDATA[<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><h4 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询端口号80-是否开启"><a href="#查询端口号80-是否开启" class="headerlink" title="查询端口号80 是否开启"></a>查询端口号80 是否开启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --query-port&#x3D;80&#x2F;tcp</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h4 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询有哪些端口是开启的"><a href="#查询有哪些端口是开启的" class="headerlink" title="查询有哪些端口是开启的"></a>查询有哪些端口是开启的</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
-
-<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="禁止防火墙开机自启"><a href="#禁止防火墙开机自启" class="headerlink" title="禁止防火墙开机自启"></a>禁止防火墙开机自启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>V</tag>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -801,30 +801,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux-Basics</title>
-    <url>/notes/linux-basics/</url>
-    <content><![CDATA[<h4 id="Linux笔记"><a href="#Linux笔记" class="headerlink" title="Linux笔记"></a>Linux笔记</h4><a id="more"></a>
-
-<h5 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 1.添加用户</span><br><span class="line">useradd xm</span><br><span class="line">useradd -d &#x2F;home&#x2F;xm xm  # 指定家目录</span><br><span class="line">useradd -g gxm xm  # 指定用户组gxm</span><br><span class="line"># 2.密码</span><br><span class="line">passwd xm</span><br><span class="line"># 3.删除用户</span><br><span class="line">userdel xm</span><br><span class="line">userdel -r xm  # 删除家目录</span><br><span class="line"># 4.查询用户信息</span><br><span class="line">id xm</span><br><span class="line"># 5.切换用户</span><br><span class="line">su xm</span><br><span class="line">exit  # 退回原来的用户</span><br><span class="line"># 6.修改用户的组</span><br><span class="line">usermod -g gxm xm</span><br><span class="line"># 7.修改用户家目录</span><br><span class="line">usermod -d &#x2F;home&#x2F;xm xm</span><br></pre></td></tr></table></figure>
-
-<h5 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 1.添加用户组</span><br><span class="line">groupadd xm</span><br><span class="line"># 2.删除用户组</span><br><span class="line">groupdel xm</span><br></pre></td></tr></table></figure>
-
-<h5 id="用户相关文件"><a href="#用户相关文件" class="headerlink" title="用户相关文件"></a>用户相关文件</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 用户的配置文件，记录用户的各种信息（用户名，用户id，组id，家目录，shell）</span><br><span class="line">&#x2F;etc&#x2F;passwd</span><br><span class="line"># 密码的配置文件（登录名:加密口令:最后修改时间:最小间隔:最大间隔:警告时间:不活动时间:失效时间:标志）</span><br><span class="line">&#x2F;etc&#x2F;shadow</span><br><span class="line"># 组的配置文件（组名，组id）</span><br><span class="line">&#x2F;etc&#x2F;group</span><br></pre></td></tr></table></figure>
-
-<h5 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="文件权限管理"></a>文件权限管理</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown xm a.txt  # 修改所属用户 </span><br><span class="line">chgrp gxm a.txt  # 修改所属组</span><br><span class="line">chown xm:gxm a.txt  # 同时修改（特殊用法）</span><br><span class="line">-R  递归生效</span><br><span class="line"># 修改文件权限 u g o a 可以 +- rwx</span><br><span class="line">chmod o-x a.txt</span><br><span class="line">chmod 421 a.txt # r-- -w- --x</span><br></pre></td></tr></table></figure>
-
-<h5 id="任务调度"><a href="#任务调度" class="headerlink" title="任务调度"></a>任务调度</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> /etc/crontab  <span class="comment"># 服务名为 crond  </span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl restart crond</span></span><br><span class="line">crontab  </span><br><span class="line">-e 编辑  # 格式*/1 8,12 * * 0-7 ll /root &gt;&gt; /root/to.log  # *和,和-和*/n</span><br><span class="line">        # 格式 * * * * * /home/mytask1.sh # 直接跟shell脚本 # 要注意执行权限</span><br><span class="line">-l 查询</span><br><span class="line">-r 删除当前用户所有的crontab任务</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>V</tag>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Kill-Process</title>
     <url>/notes/kill-process/</url>
     <content><![CDATA[<h3 id="杀死占用端口的进程"><a href="#杀死占用端口的进程" class="headerlink" title="杀死占用端口的进程"></a>杀死占用端口的进程</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看占用端口的进程</span></span><br><span class="line">netstat -tlnp|grep 6379  # t-tcp,l-listen,n-不解析(速度快),p-process</span><br><span class="line"><span class="meta">#</span><span class="bash"> 一次性的清除占用80端口的程序</span></span><br><span class="line">lsof -i :80|grep -v &quot;PID&quot;|awk &#x27;&#123;print &quot;kill -9&quot;,$2&#125;&#x27;|sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 终止进程</span></span><br><span class="line">kill 5014</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制终止进程</span></span><br><span class="line">kill -9 5014  # 是pid</span><br></pre></td></tr></table></figure>
@@ -863,6 +839,30 @@
         <category>Linux</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux-Basics</title>
+    <url>/notes/linux-basics/</url>
+    <content><![CDATA[<h4 id="Linux笔记"><a href="#Linux笔记" class="headerlink" title="Linux笔记"></a>Linux笔记</h4><a id="more"></a>
+
+<h5 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 1.添加用户</span><br><span class="line">useradd xm</span><br><span class="line">useradd -d &#x2F;home&#x2F;xm xm  # 指定家目录</span><br><span class="line">useradd -g gxm xm  # 指定用户组gxm</span><br><span class="line"># 2.密码</span><br><span class="line">passwd xm</span><br><span class="line"># 3.删除用户</span><br><span class="line">userdel xm</span><br><span class="line">userdel -r xm  # 删除家目录</span><br><span class="line"># 4.查询用户信息</span><br><span class="line">id xm</span><br><span class="line"># 5.切换用户</span><br><span class="line">su xm</span><br><span class="line">exit  # 退回原来的用户</span><br><span class="line"># 6.修改用户的组</span><br><span class="line">usermod -g gxm xm</span><br><span class="line"># 7.修改用户家目录</span><br><span class="line">usermod -d &#x2F;home&#x2F;xm xm</span><br></pre></td></tr></table></figure>
+
+<h5 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 1.添加用户组</span><br><span class="line">groupadd xm</span><br><span class="line"># 2.删除用户组</span><br><span class="line">groupdel xm</span><br></pre></td></tr></table></figure>
+
+<h5 id="用户相关文件"><a href="#用户相关文件" class="headerlink" title="用户相关文件"></a>用户相关文件</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 用户的配置文件，记录用户的各种信息（用户名，用户id，组id，家目录，shell）</span><br><span class="line">&#x2F;etc&#x2F;passwd</span><br><span class="line"># 密码的配置文件（登录名:加密口令:最后修改时间:最小间隔:最大间隔:警告时间:不活动时间:失效时间:标志）</span><br><span class="line">&#x2F;etc&#x2F;shadow</span><br><span class="line"># 组的配置文件（组名，组id）</span><br><span class="line">&#x2F;etc&#x2F;group</span><br></pre></td></tr></table></figure>
+
+<h5 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="文件权限管理"></a>文件权限管理</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chown xm a.txt  # 修改所属用户 </span><br><span class="line">chgrp gxm a.txt  # 修改所属组</span><br><span class="line">chown xm:gxm a.txt  # 同时修改（特殊用法）</span><br><span class="line">-R  递归生效</span><br><span class="line"># 修改文件权限 u g o a 可以 +- rwx</span><br><span class="line">chmod o-x a.txt</span><br><span class="line">chmod 421 a.txt # r-- -w- --x</span><br></pre></td></tr></table></figure>
+
+<h5 id="任务调度"><a href="#任务调度" class="headerlink" title="任务调度"></a>任务调度</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> /etc/crontab  <span class="comment"># 服务名为 crond  </span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl restart crond</span></span><br><span class="line">crontab  </span><br><span class="line">-e 编辑  # 格式*/1 8,12 * * 0-7 ll /root &gt;&gt; /root/to.log  # *和,和-和*/n</span><br><span class="line">        # 格式 * * * * * /home/mytask1.sh # 直接跟shell脚本 # 要注意执行权限</span><br><span class="line">-l 查询</span><br><span class="line">-r 删除当前用户所有的crontab任务</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>V</tag>
         <tag>Linux</tag>
       </tags>
   </entry>
@@ -912,6 +912,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Match-Zh</title>
+    <url>/notes/match-zh/</url>
+    <content><![CDATA[<h3 id="正则匹配中文"><a href="#正则匹配中文" class="headerlink" title="正则匹配中文"></a>正则匹配中文</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import re</span><br><span class="line">title &#x3D; &#39;你好，hello，世界&#39;</span><br><span class="line">pattern &#x3D; re.compile(r&#39;[\u4e00-\u9fa5]+&#39;)</span><br><span class="line">result &#x3D; pattern.findall(title)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Develop</category>
+      </categories>
+      <tags>
+        <tag>V</tag>
+        <tag>Re</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Module</title>
     <url>/notes/module/</url>
     <content><![CDATA[<h3 id="模块搜索路径"><a href="#模块搜索路径" class="headerlink" title="模块搜索路径"></a>模块搜索路径</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&#x27;模块路径&#x27;</span>)</span><br><span class="line"><span class="comment"># 这种方法是在运行时修改（添加），运行结束后失效</span></span><br></pre></td></tr></table></figure>
@@ -938,17 +952,21 @@
       </tags>
   </entry>
   <entry>
-    <title>Match-Zh</title>
-    <url>/notes/match-zh/</url>
-    <content><![CDATA[<h3 id="正则匹配中文"><a href="#正则匹配中文" class="headerlink" title="正则匹配中文"></a>正则匹配中文</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import re</span><br><span class="line">title &#x3D; &#39;你好，hello，世界&#39;</span><br><span class="line">pattern &#x3D; re.compile(r&#39;[\u4e00-\u9fa5]+&#39;)</span><br><span class="line">result &#x3D; pattern.findall(title)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+    <title>Nginx</title>
+    <url>/notes/nginx/</url>
+    <content><![CDATA[<p>nginx的简单使用和配置笔记</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 配置文件</span><br><span class="line">&#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在ubuntu系统上，找到nginx.conf文件的位置</span><br><span class="line">在终端窗口中，输入命令：nginx -t</span><br><span class="line">回显中就可以看到nginx.conf文件的路径了</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
 
 ]]></content>
       <categories>
-        <category>Develop</category>
+        <category>Nginx</category>
       </categories>
       <tags>
-        <tag>V</tag>
-        <tag>Re</tag>
+        <tag>Nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -1333,8 +1351,8 @@
         <category>Python</category>
       </categories>
       <tags>
-        <tag>Python</tag>
         <tag>IV</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
