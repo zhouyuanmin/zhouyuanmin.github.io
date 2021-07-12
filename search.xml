@@ -47,6 +47,18 @@
       </tags>
   </entry>
   <entry>
+    <title>Scrapy基础</title>
+    <url>/notes/10/</url>
+    <content><![CDATA[<h4 id="使用scrapy的shell测试网站"><a href="#使用scrapy的shell测试网站" class="headerlink" title="使用scrapy的shell测试网站"></a>使用scrapy的shell测试网站</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 给scrapy shell 调试加上headers</span></span><br><span class="line">scrapy shell <span class="comment"># 进入shell,但没有url</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;User-Agent:Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&#x27;</span>&#125;</span><br><span class="line">req = scrapy.Request(url=<span class="string">&#x27;url&#x27;</span>,headers=headers)</span><br><span class="line">fetch(req) <span class="comment"># 如此就等价于scrapy shell url # 添加了headers</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>scrapy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python调用C语言</title>
     <url>/notes/11/</url>
     <content><![CDATA[<h3 id="Python3-调用C语言代码"><a href="#Python3-调用C语言代码" class="headerlink" title="Python3 调用C语言代码"></a>Python3 调用C语言代码</h3><h5 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">centos7+python3.6</span><br></pre></td></tr></table></figure>
@@ -78,15 +90,17 @@
       </tags>
   </entry>
   <entry>
-    <title>Scrapy基础</title>
-    <url>/notes/10/</url>
-    <content><![CDATA[<h4 id="使用scrapy的shell测试网站"><a href="#使用scrapy的shell测试网站" class="headerlink" title="使用scrapy的shell测试网站"></a>使用scrapy的shell测试网站</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 给scrapy shell 调试加上headers</span></span><br><span class="line">scrapy shell <span class="comment"># 进入shell,但没有url</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;User-Agent:Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&#x27;</span>&#125;</span><br><span class="line">req = scrapy.Request(url=<span class="string">&#x27;url&#x27;</span>,headers=headers)</span><br><span class="line">fetch(req) <span class="comment"># 如此就等价于scrapy shell url # 添加了headers</span></span><br></pre></td></tr></table></figure>
+    <title>Numpy</title>
+    <url>/notes/12/</url>
+    <content><![CDATA[<p>numpy学习资源整理</p>
+<p><a href="https://github.com/zhaohuicici/Python-lib/tree/master/numpy">练习题</a></p>
+<p><a href="https://github.com/zhouyuanmin/Data-Science-Notes/tree/master/2.numpy">笔记</a></p>
 ]]></content>
       <categories>
-        <category>Python</category>
+        <category>数据开发</category>
       </categories>
       <tags>
-        <tag>scrapy</tag>
+        <tag>numpy</tag>
       </tags>
   </entry>
   <entry>
@@ -124,20 +138,6 @@
       </categories>
       <tags>
         <tag>unittest</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Numpy</title>
-    <url>/notes/12/</url>
-    <content><![CDATA[<p>numpy学习资源整理</p>
-<p><a href="https://github.com/zhaohuicici/Python-lib/tree/master/numpy">练习题</a></p>
-<p><a href="https://github.com/zhouyuanmin/Data-Science-Notes/tree/master/2.numpy">笔记</a></p>
-]]></content>
-      <categories>
-        <category>数据开发</category>
-      </categories>
-      <tags>
-        <tag>numpy</tag>
       </tags>
   </entry>
   <entry>
@@ -374,6 +374,24 @@
       </categories>
   </entry>
   <entry>
+    <title>Python在docker中调试</title>
+    <url>/notes/22/</url>
+    <content><![CDATA[<p>使用print在docker中调试</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">docker不会输出python的print(),需要这样写才会输出：加上flush=<span class="literal">True</span></span><br><span class="line">例子: print(<span class="string">&quot;debug...&quot;</span>, flush=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>查看docker日志</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker logs container_id</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>开发经验</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Logging基础</title>
     <url>/notes/23/</url>
     <content><![CDATA[<h4 id="日志级别"><a href="#日志级别" class="headerlink" title="日志级别"></a>日志级别</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.debug(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.info(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.warning(<span class="string">&quot;Hello&quot;</span>) <span class="comment"># 默认</span></span><br><span class="line">logging.error(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.critical(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
@@ -391,24 +409,6 @@
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python在docker中调试</title>
-    <url>/notes/22/</url>
-    <content><![CDATA[<p>使用print在docker中调试</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">docker不会输出python的print(),需要这样写才会输出：加上flush=<span class="literal">True</span></span><br><span class="line">例子: print(<span class="string">&quot;debug...&quot;</span>, flush=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<p>查看docker日志</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker logs container_id</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>运维测试</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>开发经验</tag>
       </tags>
   </entry>
   <entry>
@@ -691,18 +691,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Html笔记</title>
-    <url>/notes/35/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_43342105/article/details/106271856">HTML复习笔记</a></p>
-]]></content>
-      <categories>
-        <category>前端开发</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>拨号代理服务器</title>
     <url>/notes/34/</url>
     <content><![CDATA[<p><strong>基于adsl技术搭建高匿名代理</strong></p>
@@ -720,9 +708,21 @@
       </categories>
   </entry>
   <entry>
-    <title>Wed Dec 30 2020 08:00:00 GMT+0800 (中国标准时间)</title>
+    <title>Html笔记</title>
+    <url>/notes/35/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_43342105/article/details/106271856">HTML复习笔记</a></p>
+]]></content>
+      <categories>
+        <category>前端开发</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>部署事故</title>
     <url>/notes/36/</url>
-    <content><![CDATA[<p>线上事故</p>
+    <content><![CDATA[<p>部署事故</p>
 <p>原因是docker打包的时候，使用了本地的缓存基础镜像，云端的基础镜像被修改后，没有同步到本地。</p>
 <p>处理办法：</p>
 <p>回滚上次版本，暂时规避异常</p>
@@ -795,29 +795,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python模块</title>
-    <url>/notes/40/</url>
-    <content><![CDATA[<h3 id="模块搜索路径"><a href="#模块搜索路径" class="headerlink" title="模块搜索路径"></a>模块搜索路径</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&#x27;模块路径&#x27;</span>)</span><br><span class="line"><span class="comment"># 这种方法是在运行时修改（添加），运行结束后失效</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="介绍模块相关一些知识"><a href="#介绍模块相关一些知识" class="headerlink" title="介绍模块相关一些知识"></a>介绍模块相关一些知识</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&#x27;Jason &#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    args = sys.argv   <span class="comment"># 命令行参数，第一个默认为文件名</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args)==<span class="number">1</span>:</span><br><span class="line">        print(<span class="string">&#x27;Hello, world!&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        print(<span class="string">&#x27;Hello, %s!&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&#x27;Too many arguments!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line">可以让文件直接在Unix/Linux/Mac上运行</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">统一使用标准utf-8编码</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">任何模块代码的第一个字符串都被视为模块的文档注释</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">__author__变量是作者</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>排序算法</title>
     <url>/notes/4/</url>
     <content><![CDATA[<h3 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h3><h5 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">稳定：如果a原本在b前面，而a&#x3D;b，排序之后a仍然在b的前面；</span><br><span class="line">不稳定：如果a原本在b的前面，而a&#x3D;b，排序之后a可能会出现在b的后面；</span><br><span class="line">内排序：所有排序操作都在内存中完成；</span><br><span class="line">外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；</span><br><span class="line">时间复杂度：一个算法执行所耗费的时间。</span><br><span class="line">空间复杂度：运行完一个程序所需内存的大小。</span><br></pre></td></tr></table></figure>
@@ -877,6 +854,45 @@
       </tags>
   </entry>
   <entry>
+    <title>Python模块</title>
+    <url>/notes/40/</url>
+    <content><![CDATA[<h3 id="模块搜索路径"><a href="#模块搜索路径" class="headerlink" title="模块搜索路径"></a>模块搜索路径</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&#x27;模块路径&#x27;</span>)</span><br><span class="line"><span class="comment"># 这种方法是在运行时修改（添加），运行结束后失效</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="介绍模块相关一些知识"><a href="#介绍模块相关一些知识" class="headerlink" title="介绍模块相关一些知识"></a>介绍模块相关一些知识</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&#x27;Jason &#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    args = sys.argv   <span class="comment"># 命令行参数，第一个默认为文件名</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args)==<span class="number">1</span>:</span><br><span class="line">        print(<span class="string">&#x27;Hello, world!&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        print(<span class="string">&#x27;Hello, %s!&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&#x27;Too many arguments!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line">可以让文件直接在Unix/Linux/Mac上运行</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">统一使用标准utf-8编码</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">任何模块代码的第一个字符串都被视为模块的文档注释</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">__author__变量是作者</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sql技巧</title>
+    <url>/notes/41/</url>
+    <content><![CDATA[<p>INSERT INTO… SELECT 与 自增id的冲突</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、缺少id会报错，缺少字段</span><br><span class="line">2、指定id，又不确定id应该是多少</span><br><span class="line">3、解决办法：设置id为null</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 例子</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`pt_rating`</span>.<span class="string">`paper_subject`</span> <span class="keyword">SELECT</span></span><br><span class="line"><span class="literal">NULL</span> <span class="keyword">AS</span> <span class="keyword">id</span>,  <span class="comment">-- 这个必须有id，可以设置为null</span></span><br><span class="line"><span class="number">168</span> <span class="keyword">AS</span> paper_id,</span><br><span class="line">subject_id,</span><br><span class="line">score,</span><br><span class="line"><span class="keyword">sort</span>,</span><br><span class="line"><span class="keyword">NOW</span>() <span class="keyword">AS</span> create_time </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	paper_subject </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	paper_id = <span class="number">167</span>;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>开发经验</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>复习笔记</title>
     <url>/notes/42/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">修改不可变数据会抛出TypeError异常</span><br></pre></td></tr></table></figure>
@@ -905,22 +921,6 @@
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Sql技巧</title>
-    <url>/notes/41/</url>
-    <content><![CDATA[<p>INSERT INTO… SELECT 与 自增id的冲突</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、缺少id会报错，缺少字段</span><br><span class="line">2、指定id，又不确定id应该是多少</span><br><span class="line">3、解决办法：设置id为null</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 例子</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`pt_rating`</span>.<span class="string">`paper_subject`</span> <span class="keyword">SELECT</span></span><br><span class="line"><span class="literal">NULL</span> <span class="keyword">AS</span> <span class="keyword">id</span>,  <span class="comment">-- 这个必须有id，可以设置为null</span></span><br><span class="line"><span class="number">168</span> <span class="keyword">AS</span> paper_id,</span><br><span class="line">subject_id,</span><br><span class="line">score,</span><br><span class="line"><span class="keyword">sort</span>,</span><br><span class="line"><span class="keyword">NOW</span>() <span class="keyword">AS</span> create_time </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	paper_subject </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	paper_id = <span class="number">167</span>;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>开发经验</tag>
       </tags>
   </entry>
   <entry>
@@ -1775,7 +1775,7 @@
       </categories>
   </entry>
   <entry>
-    <title>Argparse</title>
+    <title>命令行参数解析</title>
     <url>/notes/71/</url>
     <content><![CDATA[<h4 id="argparse简要用法总结"><a href="#argparse简要用法总结" class="headerlink" title="argparse简要用法总结"></a>argparse简要用法总结</h4><p><a href="https://docs.python.org/3/library/argparse.html">argparse</a> 是python自带的命令行参数解析包，可以用来方便地读取命令行参数，当你的代码需要频繁地修改参数的时候，使用这个工具可以将参数和代码分离开来，让你的代码更简洁，适用范围更广。<br>argparse使用比较简单，常用的功能可能较快地实现出来，下面我分几个步骤，<strong>以Python3为例</strong>，逐渐递增地讲述argparse的用法。</p>
 <h4 id="1-基本框架"><a href="#1-基本框架" class="headerlink" title="1. 基本框架"></a>1. 基本框架</h4><p>下面是使用argparse从命令行获取用户名，然后打印’Hello ‘+ 用户名，假设python文件名为<code>print_name.py</code>:</p>
