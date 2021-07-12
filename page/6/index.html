@@ -210,6 +210,139 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/9/" class="post-title-link" itemprop="url">Docker基础</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-16 16:07:54" itemprop="dateCreated datePublished" datetime="2020-11-16T16:07:54+08:00">2020-11-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-10 15:10:49" itemprop="dateModified" datetime="2021-07-10T15:10:49+08:00">2021-07-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BF%90%E7%BB%B4%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">运维测试</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>3.5k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 在docker反复build后，会存留很多none镜像，下面命令一键删除所有none镜像</span><br><span class="line">docker rmi &#96;docker images | grep  &#39;&lt;none&gt;&#39; | awk &#39;&#123;print $3&#125;&#39;&#96;</span><br><span class="line">或者</span><br><span class="line">docker rmi $(docker images -q -f dangling&#x3D;true)</span><br><span class="line"># 删除所有停止的容器</span><br><span class="line">docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除所有未运行的容器"><a href="#删除所有未运行的容器" class="headerlink" title="删除所有未运行的容器"></a>删除所有未运行的容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
+
+<h5 id="docker-cp"><a href="#docker-cp" class="headerlink" title="docker cp"></a>docker cp</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 将主机&#x2F;www&#x2F;runoob目录拷贝到容器96f7f14e99ab的&#x2F;www目录下。</span><br><span class="line">docker cp &#x2F;www&#x2F;runoob 96f7f14e99ab:&#x2F;www&#x2F;</span><br><span class="line"># 将主机&#x2F;www&#x2F;runoob目录拷贝到容器96f7f14e99ab中，目录重命名为www。</span><br><span class="line">docker cp &#x2F;www&#x2F;runoob 96f7f14e99ab:&#x2F;www</span><br><span class="line"># 将容器96f7f14e99ab的&#x2F;www目录拷贝到主机的&#x2F;tmp目录中。</span><br><span class="line">docker cp  96f7f14e99ab:&#x2F;www &#x2F;tmp&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><ul>
+<li>镜像 Image</li>
+<li>容器 Container，镜像的一个实例</li>
+<li>仓库 Repository，用来存储镜像</li>
+</ul>
+<h5 id="容器使用-常用命令及参数"><a href="#容器使用-常用命令及参数" class="headerlink" title="容器使用-常用命令及参数"></a>容器使用-常用命令及参数</h5><p><em>运行容器命令 docker run</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 命令 docker run</span><br><span class="line">-i 标准输入，进行交互</span><br><span class="line">-t 指定伪终端</span><br><span class="line">-d 运行模式，后台运行</span><br><span class="line">-P 将容器内部使用的网络端口随机映射到我们使用的主机上</span><br><span class="line">-p 指定映射的端口</span><br><span class="line"># 例子</span><br><span class="line">docker run -i -t ubuntu:15.10 &#x2F;bin&#x2F;bash</span><br><span class="line">docker run ubuntu:15.10 &#x2F;bin&#x2F;echo &quot;Hello world&quot;</span><br><span class="line">docker run -d -p [127.0.0.1:]5000:5000[&#x2F;udp] training&#x2F;webapp python app.py</span><br></pre></td></tr></table></figure>
+
+<p><em>进入容器命令 docker exec</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 命令 docker exec</span><br><span class="line">docker exec -it container_id &#x2F;bin&#x2F;bash  # 退出不会停止容器</span><br><span class="line">docker attach container_id  # 退出会停止容器</span><br><span class="line"># 退出容器</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+
+<p><em>查看容器的命令 docker ps</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 命令 docker ps</span><br><span class="line">默认查看正在运行的容器</span><br><span class="line">-a 查看所有容器</span><br><span class="line">-l 查看最后一次创建的容器</span><br></pre></td></tr></table></figure>
+
+<p><em>其他命令</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 查看容器的标准输出  -f 让 docker logs 像使用 tail -f 一样来输出容器内部的标准输出。</span><br><span class="line">docker logs container_id</span><br><span class="line"># 运行容器</span><br><span class="line">docker start container_id</span><br><span class="line"># 停止容器</span><br><span class="line">docker stop container_id</span><br><span class="line"># 重启容器</span><br><span class="line">docker restart container_id</span><br><span class="line"># 获取容器</span><br><span class="line">docker pull ubuntu</span><br><span class="line"># 删除容器</span><br><span class="line">docker rm -f container_id</span><br><span class="line"># 导出容器</span><br><span class="line">docker export container_id &gt; ubuntu.tar</span><br><span class="line"># 导入容器</span><br><span class="line">cat docker&#x2F;ubuntu.tar | docker import - test&#x2F;ubuntu:v1</span><br><span class="line"># 通过url来导入</span><br><span class="line">docker import http:&#x2F;&#x2F;example.com&#x2F;exampleimage.tgz example&#x2F;imagerepo</span><br><span class="line"># 查看容器端口映射情况</span><br><span class="line">docker port container_id</span><br><span class="line"># 容器命名</span><br><span class="line">docker run -d -P --name mingzi training&#x2F;webapp python app.py</span><br></pre></td></tr></table></figure>
+
+<h5 id="镜像使用-常用命令及参数"><a href="#镜像使用-常用命令及参数" class="headerlink" title="镜像使用-常用命令及参数"></a>镜像使用-常用命令及参数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 查看已有镜像</span><br><span class="line">docker images</span><br><span class="line"># 在网络中搜索镜像</span><br><span class="line">docker search python3</span><br><span class="line"># 下载镜像</span><br><span class="line">docker pull python3</span><br><span class="line"># 删除镜像</span><br><span class="line">docker rmi hello-world</span><br><span class="line"># --更新镜像--</span><br><span class="line">docker run -t -i ubuntu:15.10 &#x2F;bin&#x2F;bash # 运行一个容器</span><br><span class="line">在运行的容器内使用 apt-get update 命令进行更新。</span><br><span class="line">在完成操作之后，输入 exit 命令来退出这个容器。</span><br><span class="line">此时 ID 为 e218edb10161 的容器，是按我们的需求更改的容器。通过命令docker commit来提交容器副本。</span><br><span class="line">docker commit -m&#x3D;&quot;has update&quot; -a&#x3D;&quot;zuozhe&quot; e218edb10161 runoob&#x2F;ubuntu:v2</span><br><span class="line"># --使用Dockerfile文件来创建镜像--， -t指定创建的目标镜像名</span><br><span class="line">docker build -t runoob&#x2F;centos:biaoqian .  # 点好表示Dockerfile文件所在目录</span><br><span class="line"># 设置镜像标签</span><br><span class="line">docker tag image_id runoob&#x2F;centos:dev</span><br></pre></td></tr></table></figure>
+
+<h5 id="Docker-容器连接"><a href="#Docker-容器连接" class="headerlink" title="Docker 容器连接"></a>Docker 容器连接</h5><p><em>网络端口映射</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -P training&#x2F;webapp python app.py</span><br><span class="line">docker run -d -p 5000:5000 training&#x2F;webapp python app.py</span><br><span class="line">docker run -d -p 127.0.0.1:5001:5000 training&#x2F;webapp python app.py</span><br><span class="line">docker run -d -p 127.0.0.1:5000:5000&#x2F;udp training&#x2F;webapp python app.py</span><br></pre></td></tr></table></figure>
+
+<p><em>容器互联</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 新建网络</span><br><span class="line">docker network create -d bridge test-net </span><br><span class="line"># 查询网络</span><br><span class="line">docker network ls</span><br><span class="line"># 运行一个容器并连接到新建的 test-net 网络</span><br><span class="line">docker run -itd --name test1 --network test-net ubuntu &#x2F;bin&#x2F;bash </span><br><span class="line">docker run -itd --name test2 --network test-net ubuntu &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
+
+<h5 id="Docker-仓库管理"><a href="#Docker-仓库管理" class="headerlink" title="Docker 仓库管理"></a>Docker 仓库管理</h5><h5 id="Docker-Dockerfile"><a href="#Docker-Dockerfile" class="headerlink" title="Docker Dockerfile"></a>Docker Dockerfile</h5><p><em>例子 - 创建一个Dockerfile文件，内容如下：</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM nginx</span><br><span class="line">RUN echo &#39;这是一个本地构建的nginx镜像&#39; &gt; &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html&#x2F;index.html</span><br><span class="line">COPY hom?.txt &#x2F;mydir&#x2F;</span><br><span class="line"># ADD</span><br><span class="line"># CMD</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 构造命令</span><br><span class="line">docker build -t nginx:v3 .</span><br><span class="line">&amp;&amp;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 常用命令</span></span><br><span class="line">RUN &lt;命令行命令&gt;   # 多个命令，以 &amp;&amp; 符号连接命令</span><br><span class="line">COPY [--chown=&lt;user&gt;:&lt;group&gt;] &lt;源路径1&gt;...  &lt;目标路径&gt;</span><br><span class="line">ADD # ADD 指令和 COPY 的使用格式一致,官方推荐使用 COPY</span><br><span class="line">CMD [&quot;&lt;可执行文件或命令&gt;&quot;,&quot;&lt;param1&gt;&quot;,&quot;&lt;param2&gt;&quot;,...]  # CMD 在docker run 时运行。</span><br><span class="line">ENTRYPOINT [&quot;&lt;executeable&gt;&quot;,&quot;&lt;param1&gt;&quot;,&quot;&lt;param2&gt;&quot;,...]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 环境变量</span></span><br><span class="line">ENV &lt;key&gt; &lt;value&gt;</span><br><span class="line">ENV &lt;key1&gt;=&lt;value1&gt; &lt;key2&gt;=&lt;value2&gt;...</span><br><span class="line">ARG &lt;参数名&gt;[=&lt;默认值&gt;]  # 仅 docker build 的过程中有效</span><br><span class="line"><span class="meta">#</span><span class="bash"> 匿名数据卷</span></span><br><span class="line">VOLUME &lt;路径&gt;</span><br><span class="line">WORKDIR &lt;工作目录路径&gt;</span><br><span class="line">USER &lt;用户名&gt;[:&lt;用户组&gt;]</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/50/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -595,101 +728,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/30/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/30/" class="post-title-link" itemprop="url">Kali破解wifi</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 11:42:33" itemprop="dateCreated datePublished" datetime="2020-11-13T11:42:33+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 10:22:11" itemprop="dateModified" datetime="2021-07-12T10:22:11+08:00">2021-07-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>63</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="暴力破解wifi，获取wifi密码"><a href="#暴力破解wifi，获取wifi密码" class="headerlink" title="暴力破解wifi，获取wifi密码"></a>暴力破解wifi，获取wifi密码</h4><p>嘿嘿，wifi密码在我手上</p>
-<p>使用kail抓取wifi握手包🤝，然后枚举密码，并验证，得出密码</p>
-<img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201024100509.png" alt="image-20201024100509256" style="zoom:50%;" />
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -740,7 +778,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">73</span>
+          <span class="site-state-item-count">74</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -792,7 +830,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">89k</span>
+    <span title="站点总字数">90k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
@@ -801,7 +839,7 @@
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;27.8k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;27.9k&nbsp;字</span>
   </div>
 
 
