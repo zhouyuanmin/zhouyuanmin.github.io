@@ -210,7 +210,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/4/">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/72/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
@@ -224,7 +224,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/notes/4/" class="post-title-link" itemprop="url">排序算法</a>
+            <a href="/notes/72/" class="post-title-link" itemprop="url">正则匹配中文</a>
         </h1>
 
         <div class="post-meta">
@@ -234,14 +234,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-13 11:34:57" itemprop="dateCreated datePublished" datetime="2020-11-13T11:34:57+08:00">2020-11-13</time>
+              <time title="创建时间：2020-11-13 11:48:11" itemprop="dateCreated datePublished" datetime="2020-11-13T11:48:11+08:00">2020-11-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 15:05:53" itemprop="dateModified" datetime="2021-07-10T15:05:53+08:00">2021-07-10</time>
+                <time title="修改时间：2021-07-12 11:09:06" itemprop="dateModified" datetime="2021-07-12T11:09:06+08:00">2021-07-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -249,8 +249,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机基础</span>
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">数据开发</span>
                   </a>
                 </span>
             </span>
@@ -261,14 +261,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
+              <span>150</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>1 分钟</span>
             </span>
 
         </div>
@@ -280,53 +280,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h3><h5 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">稳定：如果a原本在b前面，而a&#x3D;b，排序之后a仍然在b的前面；</span><br><span class="line">不稳定：如果a原本在b的前面，而a&#x3D;b，排序之后a可能会出现在b的后面；</span><br><span class="line">内排序：所有排序操作都在内存中完成；</span><br><span class="line">外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；</span><br><span class="line">时间复杂度：一个算法执行所耗费的时间。</span><br><span class="line">空间复杂度：运行完一个程序所需内存的大小。</span><br></pre></td></tr></table></figure>
-
-<h5 id="算法总结"><a href="#算法总结" class="headerlink" title="算法总结"></a>算法总结</h5><p><img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015233043168-1867817869.png" alt="算法总结.png"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">图片名词解释</span><br><span class="line">n: 数据规模</span><br><span class="line">k: “桶”的个数</span><br><span class="line">In-place: 占用常数内存，不占用额外内存</span><br><span class="line">Out-place: 占用额外内存</span><br></pre></td></tr></table></figure>
-
-<h5 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a>算法分类</h5><p><img src="https://images2017.cnblogs.com/blog/849589/201710/849589-20171015233220637-1055088118.png" alt="算法分类.png"></p>
-<h3 id="算法详解"><a href="#算法详解" class="headerlink" title="算法详解"></a>算法详解</h3><h5 id="1-冒泡-Bubble-Sort"><a href="#1-冒泡-Bubble-Sort" class="headerlink" title="1. 冒泡 Bubble Sort"></a>1. 冒泡 Bubble Sort</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">相邻两两比较、交换</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最佳情况：T(n) &#x3D; O(n)   最差情况：T(n) &#x3D; O(n2)   平均情况：T(n) &#x3D; O(n2)</span><br></pre></td></tr></table></figure>
-
-<h5 id="2-选择排序-Selection-Sort"><a href="#2-选择排序-Selection-Sort" class="headerlink" title="2. 选择排序 Selection Sort"></a>2. 选择排序 Selection Sort</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在未排list中找到最小，放到排序后的list末尾</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最佳情况：T(n) &#x3D; O(n2)  最差情况：T(n) &#x3D; O(n2)  平均情况：T(n) &#x3D; O(n2)</span><br></pre></td></tr></table></figure>
-
-<h5 id="3-插入排序-Insertion-Sort"><a href="#3-插入排序-Insertion-Sort" class="headerlink" title="3. 插入排序 Insertion Sort"></a>3. 插入排序 Insertion Sort</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将未排序的list，一个一个插入到已排序的list中</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最佳情况：T(n) &#x3D; O(n)   最坏情况：T(n) &#x3D; O(n2)   平均情况：T(n) &#x3D; O(n2)</span><br></pre></td></tr></table></figure>
-
-<h5 id="4-希尔排序-Shell-Sort"><a href="#4-希尔排序-Shell-Sort" class="headerlink" title="4. 希尔排序 Shell Sort"></a>4. 希尔排序 Shell Sort</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">插入排序的变种：定义增量，以增量为间隔，进行插入排序，逐渐减小增量</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最佳情况：T(n) &#x3D; O(nlog2 n)  最坏情况：T(n) &#x3D; O(nlog2 n)  平均情况：T(n) &#x3D;O(nlog n)</span><br></pre></td></tr></table></figure>
-
-<h5 id="5-归并排序-Merge-Sort"><a href="#5-归并排序-Merge-Sort" class="headerlink" title="5. 归并排序 Merge Sort"></a>5. 归并排序 Merge Sort</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">将list不断分为两个子序列，直到只有1个或者2个元素（递归）</span><br><span class="line">将两个排序好的子序列合并成一个最终的排序序列（返回值）</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最佳情况：T(n) &#x3D; O(n)  最差情况：T(n) &#x3D; O(nlogn)  平均情况：T(n) &#x3D; O(nlogn)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort</span>(<span class="params">arr</span>):</span></span><br><span class="line">    <span class="comment"># divide to two</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(arr) &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> arr</span><br><span class="line">    mid = <span class="built_in">int</span>(<span class="built_in">len</span>(arr)/<span class="number">2</span>)</span><br><span class="line">    left = merge_sort(arr[:mid])</span><br><span class="line">    right = merge_sort(arr[mid:])</span><br><span class="line">    <span class="keyword">return</span> merge(left, right)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span>(<span class="params">left, right</span>):</span></span><br><span class="line">    result = []</span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(left) <span class="keyword">and</span> j &lt; <span class="built_in">len</span>(right):</span><br><span class="line">        <span class="keyword">if</span> left[i] &lt; right[j]:</span><br><span class="line">            result.append(left[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(right[j])</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    <span class="comment"># add the larger part both left and right</span></span><br><span class="line">    result += left[i:]</span><br><span class="line">    result += right[j:]</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-
-<h5 id="6-快速排序-Quick-Sort"><a href="#6-快速排序-Quick-Sort" class="headerlink" title="6. 快速排序 Quick Sort"></a>6. 快速排序 Quick Sort</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">一个基准，左边list小于或等于基准，右边list大于list</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最佳情况：T(n) &#x3D; O(nlogn)   最差情况：T(n) &#x3D; O(n2)   平均情况：T(n) &#x3D; O(nlogn)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">qucik_sort</span>(<span class="params">alist</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(alist) &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> alist</span><br><span class="line">    <span class="keyword">return</span> qucik_sort([i <span class="keyword">for</span> i <span class="keyword">in</span> alist[<span class="number">1</span>:] <span class="keyword">if</span> i &lt; alist[<span class="number">0</span>]]) + alist[<span class="number">0</span>:<span class="number">1</span>] + qucik_sort([i <span class="keyword">for</span> i <span class="keyword">in</span> alist[<span class="number">1</span>:] <span class="keyword">if</span> i &gt;= alist[<span class="number">0</span>]])</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">一行快排</span><br><span class="line">def qs(a): return qs([i for i in a[1:] if i &lt;&#x3D; a[0]]) + a[0:1] + qs([i for i in a[1:] if i &gt; a[0]]) if len(a) &gt; 1 else a</span><br></pre></td></tr></table></figure>
-
-<h5 id="7-堆排序-Heap-Sort"><a href="#7-堆排序-Heap-Sort" class="headerlink" title="7. 堆排序 Heap Sort"></a>7. 堆排序 Heap Sort</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;blog.csdn.net&#x2F;weixin_40596016&#x2F;article&#x2F;details&#x2F;79711682</span><br></pre></td></tr></table></figure>
-
-<h5 id="8-计数排序-Counting-Sort"><a href="#8-计数排序-Counting-Sort" class="headerlink" title="8. 计数排序 Counting Sort"></a>8. 计数排序 Counting Sort</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">它只能对整数进行排序</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最佳情况：T(n) &#x3D; O(n+k)  最差情况：T(n) &#x3D; O(n+k)  平均情况：T(n) &#x3D; O(n+k)</span><br></pre></td></tr></table></figure>
-
-<h5 id="9-桶排序-Bucket-Sort"><a href="#9-桶排序-Bucket-Sort" class="headerlink" title="9. 桶排序 Bucket Sort"></a>9. 桶排序 Bucket Sort</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">桶排序是计数排序的升级版</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最佳情况：T(n) &#x3D; O(n+k)   最差情况：T(n) &#x3D; O(n+k)   平均情况：T(n) &#x3D; O(n2)</span><br></pre></td></tr></table></figure>
-
-<h5 id="10-基数排序-Radix-Sort"><a href="#10-基数排序-Radix-Sort" class="headerlink" title="10. 基数排序 Radix Sort"></a>10. 基数排序 Radix Sort</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">最佳情况：T(n) &#x3D; O(n * k)   最差情况：T(n) &#x3D; O(n * k)   平均情况：T(n) &#x3D; O(n * k)</span><br></pre></td></tr></table></figure>
+          <h3 id="正则匹配中文"><a href="#正则匹配中文" class="headerlink" title="正则匹配中文"></a>正则匹配中文</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">title &#x3D; &#39;你好，hello，世界&#39;</span><br><span class="line">pattern &#x3D; re.compile(r&#39;[\u4e00-\u9fa5]+&#39;)</span><br><span class="line">result &#x3D; pattern.findall(title)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
 
 
       
@@ -351,7 +305,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/1/">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/68/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
@@ -365,7 +319,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/notes/1/" class="post-title-link" itemprop="url">Shell脚本基础</a>
+            <a href="/notes/68/" class="post-title-link" itemprop="url">运行中获取代码源码</a>
         </h1>
 
         <div class="post-meta">
@@ -375,14 +329,110 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-13 11:33:26" itemprop="dateCreated datePublished" datetime="2020-11-13T11:33:26+08:00">2020-11-13</time>
+              <time title="创建时间：2020-11-13 11:45:05" itemprop="dateCreated datePublished" datetime="2020-11-13T11:45:05+08:00">2020-11-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 15:02:46" itemprop="dateModified" datetime="2021-07-10T15:02:46+08:00">2021-07-10</time>
+                <time title="修改时间：2021-07-12 11:07:01" itemprop="dateModified" datetime="2021-07-12T11:07:01+08:00">2021-07-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端开发</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>138</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这个inspect库可以获取函数的源代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> inspect</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">arg1, arg2</span>):</span></span><br><span class="line">    <span class="comment"># do something with args</span></span><br><span class="line">    a = arg1 + arg2</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">lines = inspect.getsource(foo)</span><br><span class="line">print(lines)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/13/" class="post-title-link" itemprop="url">Unittest基础</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 11:44:04" itemprop="dateCreated datePublished" datetime="2020-11-13T11:44:04+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-10 15:14:44" itemprop="dateModified" datetime="2021-07-10T15:14:44+08:00">2021-07-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -402,7 +452,199 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2k</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="unittest"><a href="#unittest" class="headerlink" title="unittest"></a>unittest</h1><p>核心例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">from</span> unittest_demo.Calculator <span class="keyword">import</span> Calculator</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestCalculator</span>(<span class="params">unittest.TestCase</span>):</span>  <span class="comment"># 1、继承unittest.TestCase类</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testDivide01</span>(<span class="params">self</span>):</span>  <span class="comment"># 2、以test开头的函数</span></span><br><span class="line">        cal = Calculator()</span><br><span class="line">        result = cal.divide(<span class="number">10</span>, <span class="number">2</span>)</span><br><span class="line">        self.assertEqual(result, <span class="number">5</span>)  <span class="comment"># 3、使用断言判断结果</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testDivide02</span>(<span class="params">self</span>):</span></span><br><span class="line">        cal = Calculator()</span><br><span class="line">        result = cal.divide(<span class="number">20</span>, <span class="number">0.5</span>)</span><br><span class="line">        self.assertEqual(result, <span class="number">40</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()  <span class="comment"># 4、用unittest.main()执行所有test开头的函数，每个函数就是一个测试用例</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/30/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/30/" class="post-title-link" itemprop="url">Kali破解wifi</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 11:42:33" itemprop="dateCreated datePublished" datetime="2020-11-13T11:42:33+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-12 10:22:11" itemprop="dateModified" datetime="2021-07-12T10:22:11+08:00">2021-07-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>63</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="暴力破解wifi，获取wifi密码"><a href="#暴力破解wifi，获取wifi密码" class="headerlink" title="暴力破解wifi，获取wifi密码"></a>暴力破解wifi，获取wifi密码</h4><p>嘿嘿，wifi密码在我手上</p>
+<p>使用kail抓取wifi握手包🤝，然后枚举密码，并验证，得出密码</p>
+<img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201024100509.png" alt="image-20201024100509256" style="zoom:50%;" />
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/44/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/44/" class="post-title-link" itemprop="url">Css笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 11:41:50" itemprop="dateCreated datePublished" datetime="2020-11-13T11:41:50+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-12 10:36:21" itemprop="dateModified" datetime="2021-07-12T10:36:21+08:00">2021-07-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">前端开发</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.7k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -421,354 +663,64 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="Shell脚本格式"><a href="#Shell脚本格式" class="headerlink" title="Shell脚本格式"></a>Shell脚本格式</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash   开头指定解释器</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 输出</span><br><span class="line">echo &#39;Hello World...&#39;</span><br><span class="line">source 配置文件  # 让修改后的配置信息立即生效</span><br><span class="line"># chmod 744 myshell.sh  # 授权</span><br></pre></td></tr></table></figure>
-
-<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 系统变量</span><br><span class="line">env命令 可以查看系统全局变量</span><br><span class="line">printenv命令 查看指定环境变量的值 等价于$USER</span><br><span class="line">例子 $HOME $PWD $SHELL $USER</span><br><span class="line"># 用户自定义变量</span><br><span class="line">声明是 echo $A # 可以直接定义,不声明</span><br><span class="line">A&#x3D;100  # 定义  如果变量值有空格时，必须加双引号。</span><br><span class="line">使用是 B&#x3D;$A  # 定义静态变量：readonly A&#x3D;90 但是不能unset  </span><br><span class="line">unset a  # 删除变量 在unset引用变量名时，不要加$。</span><br><span class="line"># set 显示当前shell中所有变量</span><br><span class="line"># 变量一般为大写，等号左右不能有空格</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">创建全局变量的方法是先创建一个局部变量,然后导出到全局环境中</span><br><span class="line">export A</span><br><span class="line">在子shell中修改全局变量并不会影响到父shell中该变量的值。</span><br></pre></td></tr></table></figure>
-
-<h5 id="将命令结果赋值给变量"><a href="#将命令结果赋值给变量" class="headerlink" title="将命令结果赋值给变量"></a>将命令结果赋值给变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A&#x3D;$(ls -a)  等价于 A&#x3D;&#96;ls -a&#96;  # 反引号 </span><br></pre></td></tr></table></figure>
-
-<h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 单行注释</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 多行注释如下</span></span><br><span class="line">:&lt;&lt;!</span><br><span class="line">语句</span><br><span class="line">!</span><br></pre></td></tr></table></figure>
-
-<h5 id="位置参数变量"><a href="#位置参数变量" class="headerlink" title="位置参数变量"></a>位置参数变量</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">语法有$n和$*和$@和$#和$&#123;10&#125;</span><br><span class="line">$$ 当前进程PID</span><br><span class="line">$! 后台运行的最后一个进程的PID</span><br><span class="line">$? 最后一次执行的命令的返回状态,0正确，非零执行不正确</span><br></pre></td></tr></table></figure>
-
-<h5 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">((运算式))和$[运算式]  # 推荐使用$[运算式]  # 没有expr</span><br><span class="line"># expr m + n  # 可以 + - \* &#x2F; % 加 减 乘 除 取余</span><br></pre></td></tr></table></figure>
-
-<h5 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 基本语法和格式</span></span><br><span class="line">[ condition ]（注意 condition 前后要有空格）</span><br><span class="line">非空返回 true，可使用$?验证（结果为：0 为 true，&gt;1 为 false）</span><br><span class="line"><span class="meta">#</span><span class="bash"> 常用判断条件（左右两边有空格）</span></span><br><span class="line">= 字符串比较</span><br><span class="line">-lt 小于</span><br><span class="line">-le 小于等于</span><br><span class="line">-eq 等于</span><br><span class="line">-gt 大于</span><br><span class="line">-ge 大于等于</span><br><span class="line">-ne 不等于</span><br><span class="line"><span class="meta">#</span><span class="bash"> 按照文件权限进行判断</span></span><br><span class="line">-r 有读的权限 [ -r 文件 ]</span><br><span class="line">-w 有写的权限</span><br><span class="line">-x 有执行的权限</span><br><span class="line"><span class="meta">#</span><span class="bash"> 按照文件类型进行判断  <span class="comment"># 例子 [ -e /root/a.txt ]</span></span></span><br><span class="line">-f 文件存在并且是一个常规的文件</span><br><span class="line">-e 文件存在</span><br><span class="line">-d 文件存在并是一个目录</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">if</span> 格式</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">if [ &quot;str&quot; = &quot;s1tr&quot; ]</span><br><span class="line">then</span><br><span class="line">    echo &quot;str equal&quot;</span><br><span class="line">elif [ 100 = 101 ]</span><br><span class="line">then</span><br><span class="line">    echo &quot;100 equal&quot;</span><br><span class="line">elif [ &quot;str1&quot; = &quot;str1&quot; ]</span><br><span class="line">then</span><br><span class="line">    echo &quot;str1 equal&quot;</span><br><span class="line">	if [ 123 = 123 ]</span><br><span class="line">    then</span><br><span class="line">        echo &quot;123 equal&quot;</span><br><span class="line">    else</span><br><span class="line">        echo &quot;123 not equal&quot;</span><br><span class="line">	fi</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">case</span>语句</span></span><br><span class="line">case $变量名 in </span><br><span class="line">    &quot;值1&quot;)</span><br><span class="line">        语句</span><br><span class="line">        ;;</span><br><span class="line">    &quot;值2&quot;)</span><br><span class="line">        语句</span><br><span class="line">        ;;</span><br><span class="line">    *)</span><br><span class="line">        语句</span><br><span class="line">        ;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">for</span> 语句</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 实例1</span></span><br><span class="line">for i in 1 2 3 4  # 1 2 3 4 可以替换为 &quot;$*&quot;和&quot;$@&quot;</span><br><span class="line">do</span><br><span class="line">   echo &quot;$i&quot;</span><br><span class="line">done</span><br><span class="line"><span class="meta">#</span><span class="bash"> 实例2</span></span><br><span class="line">for((i=1;i&lt;=100;i++))</span><br><span class="line">do</span><br><span class="line">    echo &quot;$i&quot;</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">while</span> 语句</span></span><br><span class="line">i=1</span><br><span class="line">while [ $i -le 10 ]</span><br><span class="line">do </span><br><span class="line">    echo &quot;num=$i&quot;</span><br><span class="line">    i=$[$i+1]  # 加一</span><br><span class="line">    let i=$i+1 # 加一   # let ：用来执行算数运算和数值表达式测试</span><br><span class="line">    let i++    # 加一   # let 命令的替代表示形式是 ((算术表达式))</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
-
-<h5 id="控制台输入"><a href="#控制台输入" class="headerlink" title="控制台输入"></a>控制台输入</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">read -p &quot;请输入一个数num1=&quot; -t 10 NUM1  # -p 为提示符 -t 是等待时间</span><br></pre></td></tr></table></figure>
-
-<h5 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 系统函数</span></span><br><span class="line">basename [string] [suffix] # 返回文件名</span><br><span class="line">suffix 为后缀，如果 suffix 被指定了，basename 会将 string 中的 suffix 去掉。</span><br><span class="line"><span class="meta">#</span><span class="bash"> 系统函数</span></span><br><span class="line">dirname 文件绝对路径  # 返回目录</span><br><span class="line">返回完整路径最后&#x27;/&#x27;的前面的部分，常用于返回路径部分</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 自定义函数</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">function get_sum()&#123;</span><br><span class="line">    local sum=0  #局部变量</span><br><span class="line">    sum=$[$sum+$1+$2]</span><br><span class="line">    echo $sum</span><br><span class="line">    return $?</span><br><span class="line">&#125;</span><br><span class="line">m=100</span><br><span class="line">n=200</span><br><span class="line">total=$(get_sum $m $n)</span><br><span class="line">echo &quot;The sum is $total&quot;</span><br></pre></td></tr></table></figure>
-
-<h5 id="附加"><a href="#附加" class="headerlink" title="附加"></a>附加</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vim命令</span><br><span class="line">set tabstop=4</span><br><span class="line">set nu</span><br><span class="line">set nonu</span><br><span class="line">G</span><br><span class="line">gg</span><br><span class="line">u # 撤销</span><br><span class="line">shift+g</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/69/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/69/" class="post-title-link" itemprop="url">Scrapy-Redis笔记</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 11:32:47" itemprop="dateCreated datePublished" datetime="2020-11-13T11:32:47+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 11:12:32" itemprop="dateModified" datetime="2021-07-12T11:12:32+08:00">2021-07-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">数据开发</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.6k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Scrapy-redis"><a href="#Scrapy-redis" class="headerlink" title="Scrapy-redis"></a>Scrapy-redis</h4><h5 id="spider编写"><a href="#spider编写" class="headerlink" title="spider编写"></a>spider编写</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySpider</span>(<span class="params">RedisSpider</span>):</span></span><br><span class="line">    name = <span class="string">&#x27;myspider&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span>(<span class="params">self, response</span>):</span></span><br><span class="line">        <span class="comment"># do stuff</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="setting"><a href="#setting" class="headerlink" title="setting"></a>setting</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用调度redis中的存储请求队列</span></span><br><span class="line">SCHEDULER = <span class="string">&quot;scrapy_redis.scheduler.Scheduler&quot;</span></span><br><span class="line"><span class="comment"># 确保所有蜘蛛通过redis共享同一个过滤器。</span></span><br><span class="line">DUPEFILTER_CLASS = <span class="string">&quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span></span><br><span class="line"><span class="comment"># 不清理redis队列，允许暂停/恢复爬网。</span></span><br><span class="line">SCHEDULER_PERSIST = <span class="literal">True</span></span><br><span class="line"><span class="comment"># 使用优先级队列调度请求。（默认）</span></span><br><span class="line">SCHEDULER_QUEUE_CLASS = <span class="string">&#x27;scrapy_redis.queue.PriorityQueue&#x27;</span></span><br><span class="line"><span class="comment"># 备用队列。</span></span><br><span class="line">SCHEDULER_QUEUE_CLASS = <span class="string">&#x27;scrapy_redis.queue.FifoQueue&#x27;</span></span><br><span class="line">SCHEDULER_QUEUE_CLASS = <span class="string">&#x27;scrapy_redis.queue.LifoQueue&#x27;</span></span><br><span class="line"><span class="comment"># 防止蜘蛛在分布式爬网时关闭的最大空闲时间。这仅在队列类为SpiderQueue或SpiderStack时有效，并且在蜘蛛第一次启动时也可能会阻止这么长的时间（因为队列为空）。</span></span><br><span class="line">SCHEDULER_IDLE_BEFORE_CLOSE = <span class="number">10</span></span><br><span class="line"><span class="comment"># 将爬取的item存储在redis数据库中</span></span><br><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">    <span class="string">&#x27;scrapy_redis.pipelines.RedisPipeline&#x27;</span>: <span class="number">300</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 存储item的redis的key</span></span><br><span class="line">REDIS_ITEMS_KEY = <span class="string">&#x27;%(spider)s:items&#x27;</span></span><br><span class="line"><span class="comment"># 默认情况下，item的序列化程序是ScrapyJSONEncoder。</span></span><br><span class="line">REDIS_ITEMS_SERIALIZER = <span class="string">&#x27;json.dumps&#x27;</span></span><br><span class="line"><span class="comment"># 连接Redis时，使用的主机和端口（可选）。</span></span><br><span class="line">REDIS_HOST = <span class="string">&#x27;localhost&#x27;</span></span><br><span class="line">REDIS_PORT = <span class="number">6379</span></span><br><span class="line"><span class="comment"># 指定用于连接Redis的完整URL（可选）。</span></span><br><span class="line"><span class="comment"># 如果设置，它将优先于REDIS_HOST和REDIS_PORT设置。</span></span><br><span class="line">REDIS_URL = <span class="string">&#x27;redis://user:pass@hostname:9001&#x27;</span></span><br><span class="line"><span class="comment"># 自定义Redis客户端参数（即：套接字超时等）</span></span><br><span class="line">REDIS_PARAMS  = &#123;&#125;</span><br><span class="line"><span class="comment"># 是否对初始urls去重，默认False，为不去重</span></span><br><span class="line">REDIS_START_URLS_AS_SET = <span class="literal">False</span></span><br><span class="line"><span class="comment"># 获取起始URL默认的redis key。</span></span><br><span class="line">REDIS_START_URLS_KEY = <span class="string">&#x27;%(name)s:start_urls&#x27;</span></span><br><span class="line"><span class="comment"># 使用utf-8以外的其他编码对redis进行编码，默认是utf-8</span></span><br><span class="line"><span class="comment"># REDIS_ENCODING = &#x27;latin1&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="启动spider"><a href="#启动spider" class="headerlink" title="启动spider"></a>启动spider</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. run the spider:</span></span><br><span class="line">scrapy runspider myspider.py</span><br><span class="line"><span class="comment"># 2. push urls to redis:</span></span><br><span class="line">redis-cli lpush myspider:start_urls http://google.com</span><br><span class="line"><span class="comment"># 两者先后顺序不重要，因为 SCHEDULER_IDLE_BEFORE_CLOSE = 10 会等待</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/56/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/56/" class="post-title-link" itemprop="url">Scrapy笔记</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 11:31:13" itemprop="dateCreated datePublished" datetime="2020-11-13T11:31:13+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 10:55:37" itemprop="dateModified" datetime="2021-07-12T10:55:37+08:00">2021-07-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">数据开发</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.9k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="scrapy的一些知识点"><a href="#scrapy的一些知识点" class="headerlink" title="scrapy的一些知识点"></a>scrapy的一些知识点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令加上参数 --nolog 可以去掉log日志输出</span><br></pre></td></tr></table></figure>
-
-<h4 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scrapy.downloadermiddlewares.retry <span class="keyword">import</span> RetryMiddleware <span class="comment"># 参考这个写即可</span></span><br><span class="line"><span class="comment"># 设置最大等待时间、失败重试次数</span></span><br><span class="line">DOWNLOAD_TIMEOUT = <span class="number">10</span></span><br><span class="line">RETRY_ENABLED = <span class="literal">True</span>  <span class="comment"># 失败重试</span></span><br><span class="line">RETRY_TIMES = <span class="number">5</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="scrapy复习笔记"><a href="#scrapy复习笔记" class="headerlink" title="scrapy复习笔记"></a>scrapy复习笔记</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allowed_domains = [] <span class="comment"># 与OffsiteMiddleware中间件挂钩</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy.FormRequest() <span class="comment"># post请求</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scrapy.downloadermiddlewares.retry <span class="keyword">import</span> RetryMiddleware </span><br><span class="line"><span class="comment"># 异常处理，必须看源码，必须对异常进行处理</span></span><br></pre></td></tr></table></figure>
-
-<h5 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">get()和getall()</span><br><span class="line">get(default&#x3D;&#39;not-found&#39;) #设置默认值</span><br><span class="line">.attrib[&#39;src&#39;]  # 获取属性值，它返回第一个匹配元素的属性</span><br><span class="line">scrapy css特有的::text和::attr(name)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; response.css(&#39;base&#39;).attrib   # 变成dict了</span><br><span class="line">&#123;&#39;href&#39;: &#39;http:&#x2F;&#x2F;example.com&#x2F;&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; response.css(&#39;base&#39;).attrib[&#39;href&#39;]</span><br><span class="line">&#39;http:&#x2F;&#x2F;example.com&#x2F;&#39; </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># 例子</span><br><span class="line">&gt;&gt;&gt; response.xpath(&#39;&#x2F;&#x2F;base&#x2F;@href&#39;).get()</span><br><span class="line">&#39;http:&#x2F;&#x2F;example.com&#x2F;&#39;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.css(&#39;base::attr(href)&#39;).get()</span><br><span class="line">&#39;http:&#x2F;&#x2F;example.com&#x2F;&#39;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.css(&#39;base&#39;).attrib[&#39;href&#39;]</span><br><span class="line">&#39;http:&#x2F;&#x2F;example.com&#x2F;&#39;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.xpath(&#39;&#x2F;&#x2F;a[contains(@href, &quot;image&quot;)]&#x2F;@href&#39;).getall()</span><br><span class="line">[&#39;image1.html&#39;,</span><br><span class="line"> &#39;image2.html&#39;,</span><br><span class="line"> &#39;image3.html&#39;,</span><br><span class="line"> &#39;image4.html&#39;,</span><br><span class="line"> &#39;image5.html&#39;]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.css(&#39;a[href*&#x3D;image]::attr(href)&#39;).getall()</span><br><span class="line">[&#39;image1.html&#39;,</span><br><span class="line"> &#39;image2.html&#39;,</span><br><span class="line"> &#39;image3.html&#39;,</span><br><span class="line"> &#39;image4.html&#39;,</span><br><span class="line"> &#39;image5.html&#39;]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.xpath(&#39;&#x2F;&#x2F;a[contains(@href, &quot;image&quot;)]&#x2F;img&#x2F;@src&#39;).getall()</span><br><span class="line">[&#39;image1_thumb.jpg&#39;,</span><br><span class="line"> &#39;image2_thumb.jpg&#39;,</span><br><span class="line"> &#39;image3_thumb.jpg&#39;,</span><br><span class="line"> &#39;image4_thumb.jpg&#39;,</span><br><span class="line"> &#39;image5_thumb.jpg&#39;]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.css(&#39;a[href*&#x3D;image] img::attr(src)&#39;).getall()</span><br><span class="line">[&#39;image1_thumb.jpg&#39;,</span><br><span class="line"> &#39;image2_thumb.jpg&#39;,</span><br><span class="line"> &#39;image3_thumb.jpg&#39;,</span><br><span class="line"> &#39;image4_thumb.jpg&#39;,</span><br><span class="line"> &#39;image5_thumb.jpg&#39;]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; response.xpath(&#39;&#x2F;&#x2F;span&#x2F;text()&#39;).get()</span><br><span class="line">&#39;good&#39;</span><br><span class="line">&gt;&gt;&gt; response.css(&#39;span::text&#39;).get()</span><br><span class="line">&#39;good&#39;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Selector类可以用文本直接构造，用于xpath解析</span><br><span class="line">&gt;&gt;&gt; from scrapy.selector import Selector</span><br><span class="line">&gt;&gt;&gt; body &#x3D; &#39;&lt;html&gt;&lt;body&gt;&lt;span&gt;good&lt;&#x2F;span&gt;&lt;&#x2F;body&gt;&lt;&#x2F;html&gt;&#39;</span><br><span class="line">&gt;&gt;&gt; Selector(text&#x3D;body).xpath(&#39;&#x2F;&#x2F;span&#x2F;text()&#39;).get()</span><br><span class="line">&#39;good&#39;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.css(&#39;.shout&#39;).xpath(&#39;.&#x2F;time&#x2F;@datetime&#39;).getall()  # xpath的&#39;.&#39;点号必须加上</span><br></pre></td></tr></table></figure>
-
-<h5 id="scrapy-shell"><a href="#scrapy-shell" class="headerlink" title="scrapy shell"></a>scrapy shell</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fetch(url[, redirect=<span class="literal">True</span>])   <span class="comment">#  Fetch URL and update local objects</span></span><br><span class="line">fetch(req)                    <span class="comment">#  Fetch a scrapy.Request and update local objects</span></span><br><span class="line">shelp()           <span class="comment"># Shell help (print this help)  很重要，常用，类似于help</span></span><br><span class="line">view(response)    <span class="comment"># View response in a browser</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># scrapy.shell.inspect_response的用法如下：便于运行时，检查</span></span><br><span class="line"><span class="keyword">from</span> scrapy.shell <span class="keyword">import</span> inspect_response</span><br><span class="line">inspect_response(response, self)</span><br></pre></td></tr></table></figure>
-
-<h5 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FormRequest.from_response()</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/10/" class="post-title-link" itemprop="url">Scrapy基础</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 11:29:45" itemprop="dateCreated datePublished" datetime="2020-11-13T11:29:45+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 15:12:48" itemprop="dateModified" datetime="2021-07-10T15:12:48+08:00">2021-07-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>297</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="使用scrapy的shell测试网站"><a href="#使用scrapy的shell测试网站" class="headerlink" title="使用scrapy的shell测试网站"></a>使用scrapy的shell测试网站</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 给scrapy shell 调试加上headers</span></span><br><span class="line">scrapy shell <span class="comment"># 进入shell,但没有url</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;User-Agent:Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&#x27;</span>&#125;</span><br><span class="line">req = scrapy.Request(url=<span class="string">&#x27;url&#x27;</span>,headers=headers)</span><br><span class="line">fetch(req) <span class="comment"># 如此就等价于scrapy shell url # 添加了headers</span></span><br></pre></td></tr></table></figure>
+          <h4 id="CSS笔记"><a href="#CSS笔记" class="headerlink" title="CSS笔记"></a>CSS笔记</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43342105/article/details/106325167">CSS复习笔记整理</a></p>
+<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>:orange;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*这是个注释*/</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="id选择器"><a href="#id选择器" class="headerlink" title="id选择器"></a>id选择器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#para1</span><br><span class="line">&#123;</span><br><span class="line">    text-align:center;</span><br><span class="line">    color:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="class选择权"><a href="#class选择权" class="headerlink" title="class选择权"></a>class选择权</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.center &#123;text-align:center;&#125;</span><br><span class="line"># 指定p元素使用class&#x3D;&quot;center&quot;</span><br><span class="line">p.center &#123;text-align:center;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="样式表-3种导入方式"><a href="#样式表-3种导入方式" class="headerlink" title="样式表-3种导入方式"></a>样式表-3种导入方式</h4><p><strong>外部样式表</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;mystyle.css&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>内部样式表</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-tag">hr</span> &#123;<span class="attribute">color</span>:sienna;&#125;</span></span><br><span class="line"><span class="css"><span class="selector-tag">p</span> &#123;<span class="attribute">margin-left</span>:<span class="number">20px</span>;&#125;</span></span><br><span class="line"><span class="css"><span class="selector-tag">body</span> &#123;<span class="attribute">background-image</span>:<span class="built_in">url</span>(<span class="string">&quot;images/back40.gif&quot;</span>);&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>内联样式</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style&#x3D;&quot;color:sienna;margin-left:20px&quot;&gt;这是一个段落。&lt;&#x2F;p&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="常用样式"><a href="#常用样式" class="headerlink" title="常用样式"></a>常用样式</h4><ul>
+<li>背景 – 可以定义颜色，图片</li>
+<li>文本 – 颜色、对齐、修饰等</li>
+<li>字体 – 字体、大小、粗细等</li>
+<li>链接 – 点击等</li>
+<li>边框样式 – 上下左右可以分别设置</li>
+<li>轮廓 – 不占位置</li>
+</ul>
+<h4 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h4> <img src="/Users/zhou/Library/Application Support/typora-user-images/image-20201006132106262.png" alt="image-20201006132106262" style="zoom:50%;" />
+
+<p><strong>例子：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">div &#123;</span><br><span class="line">    width: 300px;</span><br><span class="line">    border: 25px solid green;</span><br><span class="line">    padding: 25px;</span><br><span class="line">    margin: 25px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="分组和嵌套"><a href="#分组和嵌套" class="headerlink" title="分组和嵌套"></a>分组和嵌套</h4><ul>
+<li>分组：每个选择器用逗号分隔</li>
+<li>嵌套：空格隔开</li>
+</ul>
+<h3 id="元素显示和隐藏"><a href="#元素显示和隐藏" class="headerlink" title="元素显示和隐藏"></a>元素显示和隐藏</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">visibility</span><span class="selector-pseudo">:hidden</span>;  <span class="comment">/* 隐藏，占位 */</span></span><br><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:none</span>;  <span class="comment">/* 隐藏，不占位 */</span></span><br><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:inline</span>;  <span class="comment">/* 内联元素 */</span></span><br><span class="line"><span class="selector-tag">display</span><span class="selector-pseudo">:block</span>;  <span class="comment">/* 块元素 */</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* top, bottom, left, right */</span></span><br><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">static</span>; <span class="comment">/* 静态定位的元素不会受到 top, bottom, left, right影响。 */</span></span><br><span class="line"><span class="selector-tag">position</span><span class="selector-pseudo">:fixed</span>;  <span class="comment">/* 元素的位置相对于浏览器窗口是固定位置。 */</span></span><br><span class="line"><span class="selector-tag">position</span><span class="selector-pseudo">:relative</span>;  <span class="comment">/* 相对定位元素的定位是相对其正常位置。*/</span></span><br><span class="line"><span class="selector-tag">position</span><span class="selector-pseudo">:absolute</span>;  <span class="comment">/* absolute 定位使元素的位置与文档流无关，因此不占据空间。*/</span></span><br><span class="line"><span class="selector-tag">position</span>: <span class="selector-tag">sticky</span>;  <span class="comment">/* 粘性定位 */</span></span><br><span class="line"><span class="selector-tag">z-index</span><span class="selector-pseudo">:-1</span>; <span class="comment">/* z-index属性指定了一个元素的堆叠顺序（哪个元素应该放在前面，或后面）*/</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="常用属性"><a href="#常用属性" class="headerlink" title="常用属性"></a>常用属性</h4><ul>
+<li>overflow 属性用于控制内容溢出元素框时显示的方式</li>
+<li>浮动 float</li>
+<li>对齐 margin: auto;</li>
+<li>图片透明 opacity:1.0;</li>
+</ul>
+<h4 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a:link &#123;color:#000000;&#125;      &#x2F;* 未访问链接*&#x2F;</span><br><span class="line">a:visited &#123;color:#00FF00;&#125;  &#x2F;* 已访问链接 *&#x2F;</span><br><span class="line">a:hover &#123;color:#FF00FF;&#125;  &#x2F;* 鼠标移动到链接上 *&#x2F;</span><br><span class="line">a:active &#123;color:#0000FF;&#125;  &#x2F;* 鼠标点击时 *&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CSS3规范"><a href="#CSS3规范" class="headerlink" title="CSS3规范"></a>CSS3规范</h4><ul>
+<li><p>边框</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">border-radius:10px; 圆角</span><br><span class="line">box-shadow: 10px 10px 5px #888888;  阴影</span><br><span class="line">border-image:url(border.png) 30 30 round;  边界图片</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>背景、渐变、文本效果、字体</p>
+</li>
+<li><p>2D和3D</p>
+</li>
+<li><p>过渡、动画等</p>
+</li>
+</ul>
 
       
     </div>
@@ -792,7 +744,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -838,20 +790,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -890,16 +842,16 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">90k</span>
+    <span title="站点总字数">92k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:21</span>
+    <span title="站点阅读时长">1:23</span>
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;27.9k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;29.6k&nbsp;字</span>
   </div>
 
 

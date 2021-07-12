@@ -210,7 +210,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/9/">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/49/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
@@ -224,7 +224,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/notes/9/" class="post-title-link" itemprop="url">Docker基础</a>
+            <a href="/notes/49/" class="post-title-link" itemprop="url">第三方库的导入导出</a>
         </h1>
 
         <div class="post-meta">
@@ -234,147 +234,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-16 16:07:54" itemprop="dateCreated datePublished" datetime="2020-11-16T16:07:54+08:00">2020-11-16</time>
+              <time title="创建时间：2020-11-30 11:01:31" itemprop="dateCreated datePublished" datetime="2020-11-30T11:01:31+08:00">2020-11-30</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 15:10:49" itemprop="dateModified" datetime="2021-07-10T15:10:49+08:00">2021-07-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BF%90%E7%BB%B4%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
-                    <span itemprop="name">运维测试</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>3.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 在docker反复build后，会存留很多none镜像，下面命令一键删除所有none镜像</span><br><span class="line">docker rmi &#96;docker images | grep  &#39;&lt;none&gt;&#39; | awk &#39;&#123;print $3&#125;&#39;&#96;</span><br><span class="line">或者</span><br><span class="line">docker rmi $(docker images -q -f dangling&#x3D;true)</span><br><span class="line"># 删除所有停止的容器</span><br><span class="line">docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除所有未运行的容器"><a href="#删除所有未运行的容器" class="headerlink" title="删除所有未运行的容器"></a>删除所有未运行的容器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
-
-<h5 id="docker-cp"><a href="#docker-cp" class="headerlink" title="docker cp"></a>docker cp</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 将主机&#x2F;www&#x2F;runoob目录拷贝到容器96f7f14e99ab的&#x2F;www目录下。</span><br><span class="line">docker cp &#x2F;www&#x2F;runoob 96f7f14e99ab:&#x2F;www&#x2F;</span><br><span class="line"># 将主机&#x2F;www&#x2F;runoob目录拷贝到容器96f7f14e99ab中，目录重命名为www。</span><br><span class="line">docker cp &#x2F;www&#x2F;runoob 96f7f14e99ab:&#x2F;www</span><br><span class="line"># 将容器96f7f14e99ab的&#x2F;www目录拷贝到主机的&#x2F;tmp目录中。</span><br><span class="line">docker cp  96f7f14e99ab:&#x2F;www &#x2F;tmp&#x2F;</span><br></pre></td></tr></table></figure>
-
-<h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><ul>
-<li>镜像 Image</li>
-<li>容器 Container，镜像的一个实例</li>
-<li>仓库 Repository，用来存储镜像</li>
-</ul>
-<h5 id="容器使用-常用命令及参数"><a href="#容器使用-常用命令及参数" class="headerlink" title="容器使用-常用命令及参数"></a>容器使用-常用命令及参数</h5><p><em>运行容器命令 docker run</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 命令 docker run</span><br><span class="line">-i 标准输入，进行交互</span><br><span class="line">-t 指定伪终端</span><br><span class="line">-d 运行模式，后台运行</span><br><span class="line">-P 将容器内部使用的网络端口随机映射到我们使用的主机上</span><br><span class="line">-p 指定映射的端口</span><br><span class="line"># 例子</span><br><span class="line">docker run -i -t ubuntu:15.10 &#x2F;bin&#x2F;bash</span><br><span class="line">docker run ubuntu:15.10 &#x2F;bin&#x2F;echo &quot;Hello world&quot;</span><br><span class="line">docker run -d -p [127.0.0.1:]5000:5000[&#x2F;udp] training&#x2F;webapp python app.py</span><br></pre></td></tr></table></figure>
-
-<p><em>进入容器命令 docker exec</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 命令 docker exec</span><br><span class="line">docker exec -it container_id &#x2F;bin&#x2F;bash  # 退出不会停止容器</span><br><span class="line">docker attach container_id  # 退出会停止容器</span><br><span class="line"># 退出容器</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
-
-<p><em>查看容器的命令 docker ps</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 命令 docker ps</span><br><span class="line">默认查看正在运行的容器</span><br><span class="line">-a 查看所有容器</span><br><span class="line">-l 查看最后一次创建的容器</span><br></pre></td></tr></table></figure>
-
-<p><em>其他命令</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 查看容器的标准输出  -f 让 docker logs 像使用 tail -f 一样来输出容器内部的标准输出。</span><br><span class="line">docker logs container_id</span><br><span class="line"># 运行容器</span><br><span class="line">docker start container_id</span><br><span class="line"># 停止容器</span><br><span class="line">docker stop container_id</span><br><span class="line"># 重启容器</span><br><span class="line">docker restart container_id</span><br><span class="line"># 获取容器</span><br><span class="line">docker pull ubuntu</span><br><span class="line"># 删除容器</span><br><span class="line">docker rm -f container_id</span><br><span class="line"># 导出容器</span><br><span class="line">docker export container_id &gt; ubuntu.tar</span><br><span class="line"># 导入容器</span><br><span class="line">cat docker&#x2F;ubuntu.tar | docker import - test&#x2F;ubuntu:v1</span><br><span class="line"># 通过url来导入</span><br><span class="line">docker import http:&#x2F;&#x2F;example.com&#x2F;exampleimage.tgz example&#x2F;imagerepo</span><br><span class="line"># 查看容器端口映射情况</span><br><span class="line">docker port container_id</span><br><span class="line"># 容器命名</span><br><span class="line">docker run -d -P --name mingzi training&#x2F;webapp python app.py</span><br></pre></td></tr></table></figure>
-
-<h5 id="镜像使用-常用命令及参数"><a href="#镜像使用-常用命令及参数" class="headerlink" title="镜像使用-常用命令及参数"></a>镜像使用-常用命令及参数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 查看已有镜像</span><br><span class="line">docker images</span><br><span class="line"># 在网络中搜索镜像</span><br><span class="line">docker search python3</span><br><span class="line"># 下载镜像</span><br><span class="line">docker pull python3</span><br><span class="line"># 删除镜像</span><br><span class="line">docker rmi hello-world</span><br><span class="line"># --更新镜像--</span><br><span class="line">docker run -t -i ubuntu:15.10 &#x2F;bin&#x2F;bash # 运行一个容器</span><br><span class="line">在运行的容器内使用 apt-get update 命令进行更新。</span><br><span class="line">在完成操作之后，输入 exit 命令来退出这个容器。</span><br><span class="line">此时 ID 为 e218edb10161 的容器，是按我们的需求更改的容器。通过命令docker commit来提交容器副本。</span><br><span class="line">docker commit -m&#x3D;&quot;has update&quot; -a&#x3D;&quot;zuozhe&quot; e218edb10161 runoob&#x2F;ubuntu:v2</span><br><span class="line"># --使用Dockerfile文件来创建镜像--， -t指定创建的目标镜像名</span><br><span class="line">docker build -t runoob&#x2F;centos:biaoqian .  # 点好表示Dockerfile文件所在目录</span><br><span class="line"># 设置镜像标签</span><br><span class="line">docker tag image_id runoob&#x2F;centos:dev</span><br></pre></td></tr></table></figure>
-
-<h5 id="Docker-容器连接"><a href="#Docker-容器连接" class="headerlink" title="Docker 容器连接"></a>Docker 容器连接</h5><p><em>网络端口映射</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -P training&#x2F;webapp python app.py</span><br><span class="line">docker run -d -p 5000:5000 training&#x2F;webapp python app.py</span><br><span class="line">docker run -d -p 127.0.0.1:5001:5000 training&#x2F;webapp python app.py</span><br><span class="line">docker run -d -p 127.0.0.1:5000:5000&#x2F;udp training&#x2F;webapp python app.py</span><br></pre></td></tr></table></figure>
-
-<p><em>容器互联</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 新建网络</span><br><span class="line">docker network create -d bridge test-net </span><br><span class="line"># 查询网络</span><br><span class="line">docker network ls</span><br><span class="line"># 运行一个容器并连接到新建的 test-net 网络</span><br><span class="line">docker run -itd --name test1 --network test-net ubuntu &#x2F;bin&#x2F;bash </span><br><span class="line">docker run -itd --name test2 --network test-net ubuntu &#x2F;bin&#x2F;bash</span><br></pre></td></tr></table></figure>
-
-<h5 id="Docker-仓库管理"><a href="#Docker-仓库管理" class="headerlink" title="Docker 仓库管理"></a>Docker 仓库管理</h5><h5 id="Docker-Dockerfile"><a href="#Docker-Dockerfile" class="headerlink" title="Docker Dockerfile"></a>Docker Dockerfile</h5><p><em>例子 - 创建一个Dockerfile文件，内容如下：</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM nginx</span><br><span class="line">RUN echo &#39;这是一个本地构建的nginx镜像&#39; &gt; &#x2F;usr&#x2F;share&#x2F;nginx&#x2F;html&#x2F;index.html</span><br><span class="line">COPY hom?.txt &#x2F;mydir&#x2F;</span><br><span class="line"># ADD</span><br><span class="line"># CMD</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 构造命令</span><br><span class="line">docker build -t nginx:v3 .</span><br><span class="line">&amp;&amp;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 常用命令</span></span><br><span class="line">RUN &lt;命令行命令&gt;   # 多个命令，以 &amp;&amp; 符号连接命令</span><br><span class="line">COPY [--chown=&lt;user&gt;:&lt;group&gt;] &lt;源路径1&gt;...  &lt;目标路径&gt;</span><br><span class="line">ADD # ADD 指令和 COPY 的使用格式一致,官方推荐使用 COPY</span><br><span class="line">CMD [&quot;&lt;可执行文件或命令&gt;&quot;,&quot;&lt;param1&gt;&quot;,&quot;&lt;param2&gt;&quot;,...]  # CMD 在docker run 时运行。</span><br><span class="line">ENTRYPOINT [&quot;&lt;executeable&gt;&quot;,&quot;&lt;param1&gt;&quot;,&quot;&lt;param2&gt;&quot;,...]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 环境变量</span></span><br><span class="line">ENV &lt;key&gt; &lt;value&gt;</span><br><span class="line">ENV &lt;key1&gt;=&lt;value1&gt; &lt;key2&gt;=&lt;value2&gt;...</span><br><span class="line">ARG &lt;参数名&gt;[=&lt;默认值&gt;]  # 仅 docker build 的过程中有效</span><br><span class="line"><span class="meta">#</span><span class="bash"> 匿名数据卷</span></span><br><span class="line">VOLUME &lt;路径&gt;</span><br><span class="line">WORKDIR &lt;工作目录路径&gt;</span><br><span class="line">USER &lt;用户名&gt;[:&lt;用户组&gt;]</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/50/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/50/" class="post-title-link" itemprop="url">模块的导入</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 13:06:07" itemprop="dateCreated datePublished" datetime="2020-11-13T13:06:07+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 10:53:26" itemprop="dateModified" datetime="2021-07-12T10:53:26+08:00">2021-07-12</time>
+                <time title="修改时间：2021-07-12 10:40:29" itemprop="dateModified" datetime="2021-07-12T10:40:29+08:00">2021-07-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -394,7 +261,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>257</span>
+              <span>129</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -413,13 +280,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="import异常"><a href="#import异常" class="headerlink" title="import异常"></a>import异常</h1><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>导入其他包里的模块，当在项目外执行run.py文件的时候，会出现找不到模块路径</p>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>将项目根目录加入到Python 解释器搜索路径里</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os,sys</span><br><span class="line">project_dir = os.path.abspath(os.path.dirname(os.path.abspath(__file__)))</span><br><span class="line">sys.path.append(project)</span><br><span class="line"><span class="comment"># os.path.abspath(__file__) 是获取本文件的绝对路径</span></span><br><span class="line"><span class="comment"># os.path.dirname() 返回路径字符串的目录部分</span></span><br></pre></td></tr></table></figure>
+          <p><strong>quirements.txt可以通过<code>pip</code>命令自动生成和安装</strong></p>
+<p>生成requirements.txt文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
 
-
-
-
+<p>安装requirements.txt依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
 
 
       
@@ -444,7 +310,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/72/">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/17/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
@@ -458,7 +324,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/notes/72/" class="post-title-link" itemprop="url">正则匹配中文</a>
+            <a href="/notes/17/" class="post-title-link" itemprop="url">面向对象(Python)</a>
         </h1>
 
         <div class="post-meta">
@@ -468,109 +334,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-13 11:48:11" itemprop="dateCreated datePublished" datetime="2020-11-13T11:48:11+08:00">2020-11-13</time>
+              <time title="创建时间：2020-11-25 15:33:13" itemprop="dateCreated datePublished" datetime="2020-11-25T15:33:13+08:00">2020-11-25</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 11:09:06" itemprop="dateModified" datetime="2021-07-12T11:09:06+08:00">2021-07-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">数据开发</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>150</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="正则匹配中文"><a href="#正则匹配中文" class="headerlink" title="正则匹配中文"></a>正则匹配中文</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import re</span><br><span class="line">title &#x3D; &#39;你好，hello，世界&#39;</span><br><span class="line">pattern &#x3D; re.compile(r&#39;[\u4e00-\u9fa5]+&#39;)</span><br><span class="line">result &#x3D; pattern.findall(title)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/68/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/68/" class="post-title-link" itemprop="url">运行中获取代码源码</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 11:45:05" itemprop="dateCreated datePublished" datetime="2020-11-13T11:45:05+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 11:07:01" itemprop="dateModified" datetime="2021-07-12T11:07:01+08:00">2021-07-12</time>
+                <time title="修改时间：2021-07-10 15:18:27" itemprop="dateModified" datetime="2021-07-10T15:18:27+08:00">2021-07-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -590,7 +361,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>138</span>
+              <span>9</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -609,8 +380,223 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>这个inspect库可以获取函数的源代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> inspect</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span>(<span class="params">arg1, arg2</span>):</span></span><br><span class="line">    <span class="comment"># do something with args</span></span><br><span class="line">    a = arg1 + arg2</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line">lines = inspect.getsource(foo)</span><br><span class="line">print(lines)</span><br></pre></td></tr></table></figure>
+          <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/23625909">super</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/61042358">面向对象</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/29/" class="post-title-link" itemprop="url">Django-Jinja2配置</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-24 14:06:58" itemprop="dateCreated datePublished" datetime="2020-11-24T14:06:58+08:00">2020-11-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-12 10:21:48" itemprop="dateModified" datetime="2021-07-12T10:21:48+08:00">2021-07-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="配置Jinja2模板引擎"><a href="#配置Jinja2模板引擎" class="headerlink" title="配置Jinja2模板引擎"></a>配置Jinja2模板引擎</h4><h5 id="1-安装Jinja2扩展包"><a href="#1-安装Jinja2扩展包" class="headerlink" title="1. 安装Jinja2扩展包"></a>1. 安装Jinja2扩展包</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip install Jinja2</span><br></pre></td></tr></table></figure>
+
+<h5 id="2-配置Jinja2模板引擎"><a href="#2-配置Jinja2模板引擎" class="headerlink" title="2. 配置Jinja2模板引擎"></a>2. 配置Jinja2模板引擎</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">TEMPLATES = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&#x27;BACKEND&#x27;</span>: <span class="string">&#x27;django.template.backends.jinja2.Jinja2&#x27;</span>,  <span class="comment"># jinja2模板引擎</span></span><br><span class="line">        <span class="string">&#x27;DIRS&#x27;</span>: [os.path.join(BASE_DIR, <span class="string">&#x27;templates&#x27;</span>)],</span><br><span class="line">        <span class="string">&#x27;APP_DIRS&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">        <span class="string">&#x27;OPTIONS&#x27;</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;context_processors&#x27;</span>: [</span><br><span class="line">                <span class="string">&#x27;django.template.context_processors.debug&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;django.template.context_processors.request&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;django.contrib.auth.context_processors.auth&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;django.contrib.messages.context_processors.messages&#x27;</span>,</span><br><span class="line">            ],</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-补充Jinja2模板引擎环境"><a href="#3-补充Jinja2模板引擎环境" class="headerlink" title="3. 补充Jinja2模板引擎环境"></a>3. 补充Jinja2模板引擎环境</h3><blockquote>
+<p><strong>1.Jinja2创建模板引擎环境配置文件</strong></p>
+</blockquote>
+ <img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201124141009.png" alt="img" style="zoom:50%;" />
+
+<blockquote>
+<p><strong>2.编写Jinja2创建模板引擎环境配置代码</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.contrib.staticfiles.storage <span class="keyword">import</span> staticfiles_storage</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> reverse</span><br><span class="line"><span class="keyword">from</span> jinja2 <span class="keyword">import</span> Environment</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">jinja2_environment</span>(<span class="params">**options</span>):</span></span><br><span class="line">    env = Environment(**options)</span><br><span class="line">    env.<span class="built_in">globals</span>.update(&#123;</span><br><span class="line">        <span class="string">&#x27;static&#x27;</span>: staticfiles_storage.url,</span><br><span class="line">        <span class="string">&#x27;url&#x27;</span>: reverse,</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> env</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">确保可以使用Django模板引擎中的&#123;% url(&#x27;&#x27;) %&#125; &#123;% static(&#x27;&#x27;) %&#125;这类的语句 </span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>3.补充Jinja2模板引擎环境</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">TEMPLATES = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&#x27;BACKEND&#x27;</span>: <span class="string">&#x27;django.template.backends.jinja2.Jinja2&#x27;</span>,  <span class="comment"># jinja2模板引擎</span></span><br><span class="line">        <span class="string">&#x27;DIRS&#x27;</span>: [os.path.join(BASE_DIR, <span class="string">&#x27;templates&#x27;</span>)],</span><br><span class="line">        <span class="string">&#x27;APP_DIRS&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">        <span class="string">&#x27;OPTIONS&#x27;</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;context_processors&#x27;</span>: [</span><br><span class="line">                <span class="string">&#x27;django.template.context_processors.debug&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;django.template.context_processors.request&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;django.contrib.auth.context_processors.auth&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;django.contrib.messages.context_processors.messages&#x27;</span>,</span><br><span class="line">            ],</span><br><span class="line">            <span class="comment"># 补充Jinja2模板引擎环境</span></span><br><span class="line">            <span class="string">&#x27;environment&#x27;</span>: <span class="string">&#x27;meiduo_mall.utils.jinja2_env.jinja2_environment&#x27;</span>, </span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>配置完成后：运行程序，测试结果。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/37/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/37/" class="post-title-link" itemprop="url">Django-Mysql配置</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-20 17:36:02" itemprop="dateCreated datePublished" datetime="2020-11-20T17:36:02+08:00">2020-11-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-12 10:31:21" itemprop="dateModified" datetime="2021-07-12T10:31:21+08:00">2021-07-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端开发</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>553</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Django配置mysql数据库"><a href="#Django配置mysql数据库" class="headerlink" title="Django配置mysql数据库"></a>Django配置mysql数据库</h4><h5 id="1、安装PyMySQL"><a href="#1、安装PyMySQL" class="headerlink" title="1、安装PyMySQL"></a>1、安装PyMySQL</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install PyMySQL</span><br></pre></td></tr></table></figure>
+
+<h5 id="2、-在Django的工程同名子目录的init-py文件中添加如下语句"><a href="#2、-在Django的工程同名子目录的init-py文件中添加如下语句" class="headerlink" title="2、 在Django的工程同名子目录的init.py文件中添加如下语句"></a>2、 在Django的工程同名子目录的<strong>init</strong>.py文件中添加如下语句</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pymysql <span class="keyword">import</span> install_as_MySQLdb</span><br><span class="line">install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
+
+<h5 id="3、修改settings-py中DATABASES配置信息"><a href="#3、修改settings-py中DATABASES配置信息" class="headerlink" title="3、修改settings.py中DATABASES配置信息"></a>3、修改settings.py中DATABASES配置信息</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,  <span class="comment"># 数据库主机</span></span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="number">3306</span>,  <span class="comment"># 数据库端口</span></span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,  <span class="comment"># 数据库用户名</span></span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;mysql&#x27;</span>,  <span class="comment"># 数据库用户密码</span></span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;django_demo&#x27;</span>  <span class="comment"># 数据库名字</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4、在MySQL中创建数据库"><a href="#4、在MySQL中创建数据库" class="headerlink" title="4、在MySQL中创建数据库"></a>4、在MySQL中创建数据库</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database django_demo default charset=utf8;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -635,7 +621,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/13/">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/58/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
@@ -649,7 +635,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/notes/13/" class="post-title-link" itemprop="url">Unittest基础</a>
+            <a href="/notes/58/" class="post-title-link" itemprop="url">Git基础</a>
         </h1>
 
         <div class="post-meta">
@@ -659,14 +645,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-13 11:44:04" itemprop="dateCreated datePublished" datetime="2020-11-13T11:44:04+08:00">2020-11-13</time>
+              <time title="创建时间：2020-11-19 15:00:08" itemprop="dateCreated datePublished" datetime="2020-11-19T15:00:08+08:00">2020-11-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 15:14:44" itemprop="dateModified" datetime="2021-07-10T15:14:44+08:00">2021-07-10</time>
+                <time title="修改时间：2021-07-12 10:57:55" itemprop="dateModified" datetime="2021-07-12T10:57:55+08:00">2021-07-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -674,8 +660,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BF%90%E7%BB%B4%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
-                    <span itemprop="name">运维测试</span>
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础</span>
                   </a>
                 </span>
             </span>
@@ -686,7 +672,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
+              <span>250</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -705,11 +691,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="unittest"><a href="#unittest" class="headerlink" title="unittest"></a>unittest</h1><p>核心例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">from</span> unittest_demo.Calculator <span class="keyword">import</span> Calculator</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestCalculator</span>(<span class="params">unittest.TestCase</span>):</span>  <span class="comment"># 1、继承unittest.TestCase类</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testDivide01</span>(<span class="params">self</span>):</span>  <span class="comment"># 2、以test开头的函数</span></span><br><span class="line">        cal = Calculator()</span><br><span class="line">        result = cal.divide(<span class="number">10</span>, <span class="number">2</span>)</span><br><span class="line">        self.assertEqual(result, <span class="number">5</span>)  <span class="comment"># 3、使用断言判断结果</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testDivide02</span>(<span class="params">self</span>):</span></span><br><span class="line">        cal = Calculator()</span><br><span class="line">        result = cal.divide(<span class="number">20</span>, <span class="number">0.5</span>)</span><br><span class="line">        self.assertEqual(result, <span class="number">40</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()  <span class="comment"># 4、用unittest.main()执行所有test开头的函数，每个函数就是一个测试用例</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
+          <h4 id="在一个项目中创建一个完全空白的分支"><a href="#在一个项目中创建一个完全空白的分支" class="headerlink" title="在一个项目中创建一个完全空白的分支"></a>在一个项目中创建一个完全空白的分支</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">参数 --orphan，这个参数的主要作用有两个，一个是拷贝当前所在分支的所有文件，另一个是没有父结点，可以理解为没有历史记录，是一个完全独立背景干净的分支。</span><br></pre></td></tr></table></figure>
+
+<p>具体操作</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建一个orphan的分支，这个分支是独立的</span></span><br><span class="line">git checkout --orphan gh-pages</span><br><span class="line"><span class="meta">#</span><span class="bash"> 删除原来代码树下的所有文件</span></span><br><span class="line">git rm -rf .</span><br><span class="line"><span class="meta">#</span><span class="bash"> 提交初始化，才能在分支查看中出现</span></span><br><span class="line">git commit -am &quot;init this branch&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看</span></span><br><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -732,7 +719,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -778,20 +765,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -830,16 +817,16 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">90k</span>
+    <span title="站点总字数">92k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:21</span>
+    <span title="站点阅读时长">1:23</span>
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;27.9k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;29.6k&nbsp;字</span>
   </div>
 
 

@@ -210,7 +210,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/8/">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
@@ -224,7 +224,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/notes/8/" class="post-title-link" itemprop="url">终结进程</a>
+            <a href="/notes/11/" class="post-title-link" itemprop="url">Python调用C语言</a>
         </h1>
 
         <div class="post-meta">
@@ -234,14 +234,127 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-13 10:52:24" itemprop="dateCreated datePublished" datetime="2020-11-13T10:52:24+08:00">2020-11-13</time>
+              <time title="创建时间：2020-11-13 11:24:45" itemprop="dateCreated datePublished" datetime="2020-11-13T11:24:45+08:00">2020-11-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 15:11:58" itemprop="dateModified" datetime="2021-07-10T15:11:58+08:00">2021-07-10</time>
+                <time title="修改时间：2021-07-10 15:13:39" itemprop="dateModified" datetime="2021-07-10T15:13:39+08:00">2021-07-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端开发</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Python3-调用C语言代码"><a href="#Python3-调用C语言代码" class="headerlink" title="Python3 调用C语言代码"></a>Python3 调用C语言代码</h3><h5 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">centos7+python3.6</span><br></pre></td></tr></table></figure>
+
+<h5 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Python中的ctypes模块可能是Python调用C方法中最简单的一种。</span><br><span class="line">ctypes模块提供了和C语言兼容的数据类型和函数来加载dll文件，</span><br><span class="line">因此在调用时不需对源文件做任何的修改，也正是如此奠定了这种方法的简单性。</span><br></pre></td></tr></table></figure>
+
+<h5 id="准备文件"><a href="#准备文件" class="headerlink" title="准备文件"></a>准备文件</h5><h6 id="1-准备C语言程序，保存为add-c"><a href="#1-准备C语言程序，保存为add-c" class="headerlink" title="1.准备C语言程序，保存为add.c"></a>1.准备C语言程序，保存为add.c</h6><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add_int</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">add_float</span><span class="params">(<span class="keyword">float</span>, <span class="keyword">float</span>)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add_int</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">add_float</span><span class="params">(<span class="keyword">float</span> num1, <span class="keyword">float</span> num2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-编译成so库"><a href="#2-编译成so库" class="headerlink" title="2.编译成so库"></a>2.编译成so库</h6><p>输入命令即可，会出现一个.so文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -Wl,-soname,adder -o adder.so -fPIC add.c</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-准备python代码，保存为python-c-py"><a href="#3-准备python代码，保存为python-c-py" class="headerlink" title="3.准备python代码，保存为python-c.py"></a>3.准备python代码，保存为python-c.py</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"> </span><br><span class="line"><span class="comment">#load the shared object file</span></span><br><span class="line">adder = ctypes.cdll.LoadLibrary(<span class="string">&#x27;./adder.so&#x27;</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment">#Find sum of integers</span></span><br><span class="line">res_int = adder.add_int(<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">print(<span class="string">&quot;4 + 5 = &quot;</span> + <span class="built_in">str</span>(res_int))</span><br><span class="line"> </span><br><span class="line"><span class="comment">#Find sum of floats</span></span><br><span class="line">a = ctypes.c_float(<span class="number">5.5</span>)</span><br><span class="line">b = ctypes.c_float(<span class="number">4.1</span>)</span><br><span class="line"> </span><br><span class="line">add_float = adder.add_float</span><br><span class="line">add_float.restype = ctypes.c_float</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;5.5 + 4.1 = &quot;</span> + <span class="built_in">str</span>(add_float(a, b)))</span><br></pre></td></tr></table></figure>
+
+<h6 id="4-执行"><a href="#4-执行" class="headerlink" title="4.执行"></a>4.执行</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 python-c.py</span><br></pre></td></tr></table></figure>
+
+<p>执行结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">4 + 5 &#x3D; 9</span><br><span class="line">5.5 + 4.1 &#x3D; 9.600000381469727</span><br></pre></td></tr></table></figure>
+
+<h6 id="5-特殊说明"><a href="#5-特殊说明" class="headerlink" title="5.特殊说明"></a>5.特殊说明</h6><ul>
+<li>在Python文件中，一开始先导入ctypes模块，然后使用cdll.LoadLibrary函数来加载我们创建的库文件。这样我们就可以通过变量adder来使用C类库中的函数了。当adder.add_int()被调用时，内部将发起一个对C函数add_int的调用。ctypes接口允许我们在调用C函数时使用原生Python中默认的字符串型和整型。</li>
+<li>而对于其他类似布尔型和浮点型这样的类型，必须要使用正确的ctype类型才可以。如向adder.add_float()函数传参时, 我们要先将Python中的十进制值转化为c_float类型，然后才能传送给C函数。这种方法虽然简单，清晰，但是却很受限。例如，并不能在C中对对象进行操作。</li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/26/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/26/" class="post-title-link" itemprop="url">后台运行程序</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 11:24:08" itemprop="dateCreated datePublished" datetime="2020-11-13T11:24:08+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-12 10:19:25" itemprop="dateModified" datetime="2021-07-12T10:19:25+08:00">2021-07-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +374,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>223</span>
+              <span>447</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -280,111 +393,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="杀死占用端口的进程"><a href="#杀死占用端口的进程" class="headerlink" title="杀死占用端口的进程"></a>杀死占用端口的进程</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看占用端口的进程</span></span><br><span class="line">netstat -tlnp|grep 6379  # t-tcp,l-listen,n-不解析(速度快),p-process</span><br><span class="line"><span class="meta">#</span><span class="bash"> 一次性的清除占用80端口的程序</span></span><br><span class="line">lsof -i :80|grep -v &quot;PID&quot;|awk &#x27;&#123;print &quot;kill -9&quot;,$2&#125;&#x27;|sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 终止进程</span></span><br><span class="line">kill 5014</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制终止进程</span></span><br><span class="line">kill -9 5014  # 是pid</span><br></pre></td></tr></table></figure>
+          <h4 id="0-“-amp-”"><a href="#0-“-amp-”" class="headerlink" title="0. “&amp;”"></a>0. “&amp;”</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">一般我们可在结尾加上&quot;&amp;&quot;来将命令同时放入后台运行</span><br><span class="line">但是关掉会话之后，进程就会被杀掉</span><br></pre></td></tr></table></figure>
 
+<h4 id="1-nohup"><a href="#1-nohup" class="headerlink" title="1. nohup"></a>1. nohup</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nohup ping www.ibm.com &amp;</span><br><span class="line"># nohup 的用途就是让提交的命令忽略 hangup 信号</span><br><span class="line"># 标准输出和标准错误缺省会被重定向到 nohup.out 文件中，也可使用 &gt;filename 2&gt;&amp;1 来重定向文件名</span><br><span class="line">nohup python3 run.py &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    
-    <div>
-      
-    </div>
+<h4 id="2-setsid"><a href="#2-setsid" class="headerlink" title="2. setsid"></a>2. setsid</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setsid ping www.ibm.com</span><br><span class="line"># 将命令进程放到1号进程下面（就不是子进程了，不再接收hangup信号）</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+<h4 id="3-subshell-的小技巧"><a href="#3-subshell-的小技巧" class="headerlink" title="3. subshell 的小技巧"></a>3. subshell 的小技巧</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(ping www.ibm.com &amp;)</span><br><span class="line"># 括号包起来</span><br><span class="line"># 让命令在subshell运行</span><br><span class="line"># 父 ID（PPID）为1，不属于当前终端的子进程，从而也就不会受到当前终端的 HUP 信号的影响了。</span><br></pre></td></tr></table></figure>
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/55/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/55/" class="post-title-link" itemprop="url">Linux笔记</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 10:51:05" itemprop="dateCreated datePublished" datetime="2020-11-13T10:51:05+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 10:56:59" itemprop="dateModified" datetime="2021-07-12T10:56:59+08:00">2021-07-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BF%90%E7%BB%B4%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
-                    <span itemprop="name">运维测试</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>810</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="Linux笔记"><a href="#Linux笔记" class="headerlink" title="Linux笔记"></a>Linux笔记</h4><h5 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 1.添加用户</span><br><span class="line">useradd xm</span><br><span class="line">useradd -d &#x2F;home&#x2F;xm xm  # 指定家目录</span><br><span class="line">useradd -g gxm xm  # 指定用户组gxm</span><br><span class="line"># 2.密码</span><br><span class="line">passwd xm</span><br><span class="line"># 3.删除用户</span><br><span class="line">userdel xm</span><br><span class="line">userdel -r xm  # 删除家目录</span><br><span class="line"># 4.查询用户信息</span><br><span class="line">id xm</span><br><span class="line"># 5.切换用户</span><br><span class="line">su xm</span><br><span class="line">exit  # 退回原来的用户</span><br><span class="line"># 6.修改用户的组</span><br><span class="line">usermod -g gxm xm</span><br><span class="line"># 7.修改用户家目录</span><br><span class="line">usermod -d &#x2F;home&#x2F;xm xm</span><br></pre></td></tr></table></figure>
-
-<h5 id="用户组管理"><a href="#用户组管理" class="headerlink" title="用户组管理"></a>用户组管理</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 1.添加用户组</span><br><span class="line">groupadd xm</span><br><span class="line"># 2.删除用户组</span><br><span class="line">groupdel xm</span><br></pre></td></tr></table></figure>
-
-<h5 id="用户相关文件"><a href="#用户相关文件" class="headerlink" title="用户相关文件"></a>用户相关文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 用户的配置文件，记录用户的各种信息（用户名，用户id，组id，家目录，shell）</span><br><span class="line">&#x2F;etc&#x2F;passwd</span><br><span class="line"># 密码的配置文件（登录名:加密口令:最后修改时间:最小间隔:最大间隔:警告时间:不活动时间:失效时间:标志）</span><br><span class="line">&#x2F;etc&#x2F;shadow</span><br><span class="line"># 组的配置文件（组名，组id）</span><br><span class="line">&#x2F;etc&#x2F;group</span><br></pre></td></tr></table></figure>
-
-<h5 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="文件权限管理"></a>文件权限管理</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">chown xm a.txt  # 修改所属用户 </span><br><span class="line">chgrp gxm a.txt  # 修改所属组</span><br><span class="line">chown xm:gxm a.txt  # 同时修改（特殊用法）</span><br><span class="line">-R  递归生效</span><br><span class="line"># 修改文件权限 u g o a 可以 +- rwx</span><br><span class="line">chmod o-x a.txt</span><br><span class="line">chmod 421 a.txt # r-- -w- --x</span><br></pre></td></tr></table></figure>
-
-<h5 id="任务调度"><a href="#任务调度" class="headerlink" title="任务调度"></a>任务调度</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> /etc/crontab  <span class="comment"># 服务名为 crond  </span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> systemctl restart crond</span></span><br><span class="line">crontab  </span><br><span class="line">-e 编辑  # 格式*/1 8,12 * * 0-7 ll /root &gt;&gt; /root/to.log  # *和,和-和*/n</span><br><span class="line">        # 格式 * * * * * /home/mytask1.sh # 直接跟shell脚本 # 要注意执行权限</span><br><span class="line">-l 查询</span><br><span class="line">-r 删除当前用户所有的crontab任务</span><br></pre></td></tr></table></figure>
-
+<h4 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h4><p><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/">让进程在后台运行更可靠的几种方法</a></p>
 
       
     </div>
@@ -408,7 +425,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/45/">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/24/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
@@ -422,7 +439,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/notes/45/" class="post-title-link" itemprop="url">Js逆向分析</a>
+            <a href="/notes/24/" class="post-title-link" itemprop="url">面向对象(Python)</a>
         </h1>
 
         <div class="post-meta">
@@ -432,14 +449,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-13 10:47:05" itemprop="dateCreated datePublished" datetime="2020-11-13T10:47:05+08:00">2020-11-13</time>
+              <time title="创建时间：2020-11-13 11:18:56" itemprop="dateCreated datePublished" datetime="2020-11-13T11:18:56+08:00">2020-11-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 10:37:21" itemprop="dateModified" datetime="2021-07-12T10:37:21+08:00">2021-07-12</time>
+                <time title="修改时间：2021-07-10 15:22:54" itemprop="dateModified" datetime="2021-07-10T15:22:54+08:00">2021-07-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -447,8 +464,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">数据开发</span>
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端开发</span>
                   </a>
                 </span>
             </span>
@@ -459,7 +476,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.5k</span>
+              <span>2k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -478,140 +495,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getpwd</span>(<span class="params">plaintext</span>)</span>&#123;  <span class="comment">// 一定要先找到明文</span></span><br><span class="line">    ;</span><br><span class="line">    <span class="keyword">return</span> ciphertext  <span class="comment">// 返回格式有两种：Hex和base64</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="常见加密方式"><a href="#常见加密方式" class="headerlink" title="常见加密方式"></a>常见加密方式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MD5, SHA <span class="comment"># 不可逆 # 常用</span></span><br><span class="line">HMAC, RC4, </span><br><span class="line">AES, DES, <span class="number">3</span>DES <span class="comment"># 可逆 # 常用</span></span><br><span class="line">Base64, Rabbit, PBKDF2/EvpKDF</span><br><span class="line">RSA</span><br></pre></td></tr></table></figure>
-
-<h4 id="chrome-F12"><a href="#chrome-F12" class="headerlink" title="chrome-F12"></a>chrome-F12</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">search</span><br><span class="line">sensors <span class="comment"># 设置经纬度</span></span><br><span class="line">下断点</span><br><span class="line">Breakpoints <span class="comment"># 管理断点</span></span><br><span class="line">Call Stack <span class="comment"># 堆栈</span></span><br><span class="line">抓包勾选Preserve log（保存日志），页面跳转，也能保存上一个界面的日志</span><br></pre></td></tr></table></figure>
-
-<h4 id="工具网站"><a href="#工具网站" class="headerlink" title="工具网站"></a>工具网站</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">http://tool.chacuo.net/cryptdes</span><br><span class="line"><span class="comment"># 用来解析公钥（RSA加密），可获取key长度，模数，指数  </span></span><br><span class="line"><span class="comment"># 公钥没有反斜杠&#x27;\&#x27;,只有&#x27;/&#x27;</span></span><br><span class="line"><span class="comment"># 指数看0x，一般为0x10001,所以就是10001</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 雷电模拟器 3.63</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="哈希系列通杀"><a href="#哈希系列通杀" class="headerlink" title="哈希系列通杀"></a>哈希系列通杀</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CryptoJS.MD5(&#x27;word&#x27;)</span></span><br><span class="line"><span class="comment"># 哈希加密系列有一个固定值1732584193，可以直接搜索</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="AES加密"><a href="#AES加密" class="headerlink" title="AES加密"></a>AES加密</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mode <span class="comment"># 类型，常用CBC和ECB</span></span><br><span class="line">padding <span class="comment"># 常用Pkos7和Iso10126</span></span><br><span class="line">IV <span class="comment"># 一般为固定值,要选最初值</span></span><br><span class="line">key <span class="comment"># 一般为固定值</span></span><br><span class="line"><span class="comment"># IV和key都有Eno编码规则，如UTF8</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="RAS加密"><a href="#RAS加密" class="headerlink" title="RAS加密"></a>RAS加密</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">指数:一般为<span class="number">10001</span></span><br><span class="line">公钥:(很长)要找出来  <span class="comment"># 1.上一个请求的返回值(getpublickey) 2.js文件中默认 3.js代码生成</span></span><br><span class="line"><span class="comment"># B64编码</span></span><br><span class="line"><span class="comment"># PKCS1指的每次生成值不一样</span></span><br><span class="line"><span class="comment"># 内容反转</span></span><br><span class="line"><span class="comment"># 内存反转</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 小块弹窗，右键检查源码找到目标网址，放入浏览器打开，会出现一个干净的登录界面，方便抓包</span></span><br><span class="line"><span class="comment"># 密码一般为哈希加密</span></span><br><span class="line"><span class="comment"># 遇到Encrypt加断点</span></span><br><span class="line"><span class="comment"># 方法有传参数，就可能是的</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS逆向工具"><a href="#JS逆向工具" class="headerlink" title="JS逆向工具"></a>JS逆向工具</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WT-JS_DEBUG  <span class="comment"># 找安全版本，其他的好像有病毒</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS加密实例"><a href="#JS加密实例" class="headerlink" title="JS加密实例"></a>JS加密实例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">中关村登录</span><br><span class="line">pwd: <span class="number">3</span>b8aaa16fa213573513038281774d9c0  <span class="comment"># wuyao666</span></span><br><span class="line"><span class="comment"># pwd : md5Password</span></span><br><span class="line"><span class="comment"># var md5Password = CryptoJS.MD5(password+&quot;zol&quot;) + &#x27;&#x27;;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">今目标登录</span><br><span class="line">password: a2c13e941f4f68fde8d92399ddeb3bf25111a434 <span class="comment"># wuyao666</span></span><br><span class="line"><span class="comment"># var result = &#123;&#125;</span></span><br><span class="line"><span class="comment"># result.password = sha1(resultData.password)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">升学e网通 <span class="comment"># AES</span></span><br><span class="line">password: <span class="string">&quot;590d9a610747ab5392a8a164793516a8&quot;</span> <span class="comment"># wuyao666</span></span><br><span class="line"><span class="comment"># password: i = (0, v.Encrypt)(i)</span></span><br><span class="line">t.Encrypt = function(e) &#123;</span><br><span class="line">            var t = n[<span class="string">&quot;default&quot;</span>].enc.Utf8.parse(e);</span><br><span class="line">            <span class="keyword">return</span> n[<span class="string">&quot;default&quot;</span>].AES.encrypt(t, i, &#123;</span><br><span class="line">                iv: o,</span><br><span class="line">                mode: n[<span class="string">&quot;default&quot;</span>].mode.CBC,</span><br><span class="line">                padding: n[<span class="string">&quot;default&quot;</span>].pad.Pkcs7</span><br><span class="line">            &#125;).ciphertext.toString().toUpperCase()</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment"># o = n[&quot;default&quot;].enc.Utf8.parse(&quot;2017110912453698&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">有赞 <span class="comment">// AES # 网站已经改了</span></span><br><span class="line">Fiddler抓包</span><br><span class="line"><span class="comment">// 对password 加密</span></span><br><span class="line">password: d.a.encrypt(e.password)</span><br><span class="line"><span class="comment">// 源码:</span></span><br><span class="line">n = e.enc.Utf8.parse(<span class="string">&quot;youzan.com.aesiv&quot;</span>)</span><br><span class="line">i = e.enc.Utf8.parse(&quot;youzan.com._key_&quot;)  # i在此处是key</span><br><span class="line"><span class="keyword">var</span> r = e.AES.encrypt(t, i, &#123;</span><br><span class="line">    mode: e.mode.CBC,</span><br><span class="line">    padding: e.pad.Iso10126,</span><br><span class="line">	iv: n  <span class="comment">// 这个值很容易混淆,要找初始值，即enc.Utf8.parse()之前的值.</span></span><br><span class="line">&#125;).toString()</span><br><span class="line"><span class="comment">// 对ticket 加密</span></span><br><span class="line">fingerPrint  <span class="comment">// 指纹，其实就是加密后的一个字符串</span></span><br><span class="line">date:&#123;</span><br><span class="line">    fingerPrint: t ? t + c.default.encrypt(r) : <span class="string">&quot;&quot;</span>,  <span class="comment">// a?b:c</span></span><br><span class="line">    youzanType: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 也是AES加密</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">华特东方注册加密 <span class="comment"># 都是AES</span></span><br><span class="line"><span class="comment"># password </span></span><br><span class="line"><span class="comment"># token</span></span><br><span class="line"><span class="comment"># tokens  #参数unid </span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">网页百度登录加密 <span class="comment"># RSA</span></span><br><span class="line"><span class="comment"># token和codestring都是可以固定值的</span></span><br><span class="line"><span class="comment"># gid是随机的，随机数</span></span><br><span class="line"><span class="comment"># password是加密了的RSA,公钥通过请求获取 # password = </span></span><br><span class="line"><span class="comment"># 手机和网页端加密不一样</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">手机百度登录加密 <span class="comment"># RSA</span></span><br><span class="line"><span class="comment"># l.password = window.encryptedString(r,l.password)  # 前面明码经过了拼接</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">运动潮流单品交易平台 <span class="comment"># 拼接+md5</span></span><br><span class="line"><span class="comment"># sign 加密了</span></span><br><span class="line"><span class="comment"># 搜索sign</span></span><br><span class="line"><span class="comment"># t.data.sign || (t.data.sign = Object(I[&quot;b&quot;])(t.data))</span></span><br><span class="line"><span class="comment"># t.transformRequest = M : t.params.sign = Object(I[&quot;b&quot;])(t.params)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 京东登录 #RSA</span></span><br><span class="line"><span class="comment"># nloginpwd</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 微博 # RSA和SHA1</span></span><br><span class="line">sp  <span class="comment"># e.sp = b;   # sp是密码</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 享物说 # 滑动验证(一般都是假的,提交的请求包,没有这些参数值)</span></span><br><span class="line">模拟器有时候会被识别为<span class="string">&quot;高风险设备:伪造设备&quot;</span>，就不会抓到真的包，需要用自己真的手机来抓包  <span class="comment"># fengkong</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/18/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/18/" class="post-title-link" itemprop="url">复习笔记</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 01:19:32" itemprop="dateCreated datePublished" datetime="2020-11-13T01:19:32+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 15:20:02" itemprop="dateModified" datetime="2021-07-10T15:20:02+08:00">2021-07-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">温故而知新</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="系统编程"><a href="#系统编程" class="headerlink" title="系统编程"></a>系统编程</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进程总结</span></span><br><span class="line"><span class="comment"># 程序运行在操作系统上的一个实例，就称之为进程。</span></span><br><span class="line"><span class="comment"># 进程需要相应的系统资源：内存、时间片、pid</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"></span><br><span class="line">proc = Process(target=func, args=(<span class="number">1</span>,), kwargs=&#123;<span class="string">&#x27;a&#x27;</span>: <span class="string">&#x27;a&#x27;</span>&#125;, name=<span class="string">&#x27;proc_1&#x27;</span>)</span><br><span class="line">proc.start()</span><br><span class="line">proc.is_alive()  <span class="comment"># 是否还活着</span></span><br><span class="line">proc.join(timeout=<span class="number">10</span>)  <span class="comment"># 等结束，或者等10秒</span></span><br><span class="line">proc.terminate()  <span class="comment"># 强制关闭</span></span><br><span class="line">proc.name</span><br><span class="line">proc.pid</span><br></pre></td></tr></table></figure>
+          <h4 id="Technical-Term"><a href="#Technical-Term" class="headerlink" title="Technical Term"></a>Technical Term</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class 类</span><br><span class="line">instance 实例</span><br><span class="line">method 方法</span><br><span class="line">subclass 子类</span><br><span class="line">super class 父类</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <!--/noindex-->
         
@@ -637,7 +521,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/73/">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/40/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
@@ -651,7 +535,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/notes/73/" class="post-title-link" itemprop="url">复习笔记</a>
+            <a href="/notes/40/" class="post-title-link" itemprop="url">Python模块</a>
         </h1>
 
         <div class="post-meta">
@@ -661,14 +545,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-13 01:18:08" itemprop="dateCreated datePublished" datetime="2020-11-13T01:18:08+08:00">2020-11-13</time>
+              <time title="创建时间：2020-11-13 11:09:03" itemprop="dateCreated datePublished" datetime="2020-11-13T11:09:03+08:00">2020-11-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 11:09:42" itemprop="dateModified" datetime="2021-07-12T11:09:42+08:00">2021-07-12</time>
+                <time title="修改时间：2021-07-12 10:32:40" itemprop="dateModified" datetime="2021-07-12T10:32:40+08:00">2021-07-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -676,8 +560,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">温故而知新</span>
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端开发</span>
                   </a>
                 </span>
             </span>
@@ -688,7 +572,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>521</span>
+              <span>557</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -707,16 +591,118 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 简单案例</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    _instance = <span class="literal">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">if</span> cls._instance <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            cls._instance = <span class="built_in">object</span>.__new__(cls)</span><br><span class="line">        <span class="keyword">return</span> cls._instance</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 应用场景</span></span><br><span class="line"><span class="number">1.</span> 资源共享：日志文件，应用配置</span><br><span class="line"><span class="number">2.</span> 资源控制：应用配置，日志文件，网站计数器，多线程池，数据库配置，数据库连接池</span><br></pre></td></tr></table></figure>
+          <h3 id="模块搜索路径"><a href="#模块搜索路径" class="headerlink" title="模块搜索路径"></a>模块搜索路径</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&#x27;模块路径&#x27;</span>)</span><br><span class="line"><span class="comment"># 这种方法是在运行时修改（添加），运行结束后失效</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">定义：在函数内部再定义一个函数，并且这个函数用到了外边函数的变量，那么将这个函数以及用到的一些变量称之为闭包。</span><br></pre></td></tr></table></figure>
+<h3 id="介绍模块相关一些知识"><a href="#介绍模块相关一些知识" class="headerlink" title="介绍模块相关一些知识"></a>介绍模块相关一些知识</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&#x27;Jason &#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    args = sys.argv   <span class="comment"># 命令行参数，第一个默认为文件名</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args)==<span class="number">1</span>:</span><br><span class="line">        print(<span class="string">&#x27;Hello, world!&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        print(<span class="string">&#x27;Hello, %s!&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&#x27;Too many arguments!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
 
-<h4 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用于有切面需求的场景</span></span><br><span class="line"><span class="comment"># 插入日志、性能测试、事务处理、缓存、权限的校验等场景</span></span><br><span class="line"><span class="comment"># 有了装饰器就可以抽离出大量的与函数功能本身无关的雷同代码并发并继续使用</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line">可以让文件直接在Unix/Linux/Mac上运行</span><br></pre></td></tr></table></figure>
 
-<h4 id="Python-中-is-和-的区别？"><a href="#Python-中-is-和-的区别？" class="headerlink" title="Python 中 is 和==的区别？"></a>Python 中 is 和==的区别？</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">is</span> 通过<span class="built_in">id</span>判断</span><br><span class="line">== 通过value判断</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">统一使用标准utf-8编码</span><br></pre></td></tr></table></figure>
 
-<h4 id="谈谈你对面向对象的理解？"><a href="#谈谈你对面向对象的理解？" class="headerlink" title="谈谈你对面向对象的理解？"></a>谈谈你对面向对象的理解？</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">面向对象是相对于面向过程而言的。面向过程语言是一种基于功能分析的、以算法为中心的程序设计方法；</span><br><span class="line">而面向对象是一种基于结构分析的、以数据为中心的程序设计思想。</span><br><span class="line">在面向对象语言中有一个有很重要东西，叫做类。</span><br><span class="line">面向对象有三大特性：封装、继承、多态。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">任何模块代码的第一个字符串都被视为模块的文档注释</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__author__变量是作者</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/52/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/52/" class="post-title-link" itemprop="url">高阶函数</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 10:58:20" itemprop="dateCreated datePublished" datetime="2020-11-13T10:58:20+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-12 10:55:04" itemprop="dateModified" datetime="2021-07-12T10:55:04+08:00">2021-07-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端开发</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>234</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把func作用在iterator每一个元素上，并返回一个iterator</span><br></pre></td></tr></table></figure>
+
+<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">累积计算  # func(x,y)必须两个参数</span><br></pre></td></tr></table></figure>
+
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">过滤函数 </span><br><span class="line"># 把func作用在iterator每一个元素上，然后根据返回值是Ture还是False决定保留还是丢弃该元素</span><br><span class="line"># 返回值是原来iterator的子序列</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">map、reduce、filter都是两个参数（第一个func，第二个iterator）</span><br><span class="line">返回值都是惰性iterator，需要list()才能转换为list</span><br></pre></td></tr></table></figure>
 
 
       
@@ -741,7 +727,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/10/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/12/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -787,20 +773,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -839,16 +825,16 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">90k</span>
+    <span title="站点总字数">92k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:21</span>
+    <span title="站点阅读时长">1:23</span>
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;27.9k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;29.6k&nbsp;字</span>
   </div>
 
 

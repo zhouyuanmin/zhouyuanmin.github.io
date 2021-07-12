@@ -632,19 +632,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Kali破解wifi</title>
-    <url>/notes/30/</url>
-    <content><![CDATA[<h4 id="暴力破解wifi，获取wifi密码"><a href="#暴力破解wifi，获取wifi密码" class="headerlink" title="暴力破解wifi，获取wifi密码"></a>暴力破解wifi，获取wifi密码</h4><p>嘿嘿，wifi密码在我手上</p>
-<p>使用kail抓取wifi握手包🤝，然后枚举密码，并验证，得出密码</p>
-<img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201024100509.png" alt="image-20201024100509256" style="zoom:50%;" />]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>kali</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>复习笔记</title>
     <url>/notes/31/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">日志以文本可以存储在“&#x2F;var&#x2F;log&#x2F;”目录下后缀名为.log</span><br></pre></td></tr></table></figure>
@@ -661,6 +648,36 @@
 ]]></content>
       <categories>
         <category>温故而知新</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Kali破解wifi</title>
+    <url>/notes/30/</url>
+    <content><![CDATA[<h4 id="暴力破解wifi，获取wifi密码"><a href="#暴力破解wifi，获取wifi密码" class="headerlink" title="暴力破解wifi，获取wifi密码"></a>暴力破解wifi，获取wifi密码</h4><p>嘿嘿，wifi密码在我手上</p>
+<p>使用kail抓取wifi握手包🤝，然后枚举密码，并验证，得出密码</p>
+<img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201024100509.png" alt="image-20201024100509256" style="zoom:50%;" />]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>kali</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>拨号代理服务器</title>
+    <url>/notes/34/</url>
+    <content><![CDATA[<p><strong>基于adsl技术搭建高匿名代理</strong></p>
+<ul>
+<li>需要vps主机</li>
+<li>使用高匿名代理软件tinyproxy</li>
+<li>redis作为代理池</li>
+<li>使用tornado搭建api接口服务</li>
+</ul>
+<p><strong>参考链接</strong></p>
+<p><a href="https://cuiqingcai.com/8361.html">崔老师-ADSL 拨号代理</a></p>
+]]></content>
+      <categories>
+        <category>数据开发</category>
       </categories>
   </entry>
   <entry>
@@ -688,35 +705,6 @@
       </categories>
       <tags>
         <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>拨号代理服务器</title>
-    <url>/notes/34/</url>
-    <content><![CDATA[<p><strong>基于adsl技术搭建高匿名代理</strong></p>
-<ul>
-<li>需要vps主机</li>
-<li>使用高匿名代理软件tinyproxy</li>
-<li>redis作为代理池</li>
-<li>使用tornado搭建api接口服务</li>
-</ul>
-<p><strong>参考链接</strong></p>
-<p><a href="https://cuiqingcai.com/8361.html">崔老师-ADSL 拨号代理</a></p>
-]]></content>
-      <categories>
-        <category>数据开发</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Html笔记</title>
-    <url>/notes/35/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_43342105/article/details/106271856">HTML复习笔记</a></p>
-]]></content>
-      <categories>
-        <category>前端开发</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -754,6 +742,18 @@
       </categories>
       <tags>
         <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Html笔记</title>
+    <url>/notes/35/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_43342105/article/details/106271856">HTML复习笔记</a></p>
+]]></content>
+      <categories>
+        <category>前端开发</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -877,22 +877,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Sql技巧</title>
-    <url>/notes/41/</url>
-    <content><![CDATA[<p>INSERT INTO… SELECT 与 自增id的冲突</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、缺少id会报错，缺少字段</span><br><span class="line">2、指定id，又不确定id应该是多少</span><br><span class="line">3、解决办法：设置id为null</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 例子</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`pt_rating`</span>.<span class="string">`paper_subject`</span> <span class="keyword">SELECT</span></span><br><span class="line"><span class="literal">NULL</span> <span class="keyword">AS</span> <span class="keyword">id</span>,  <span class="comment">-- 这个必须有id，可以设置为null</span></span><br><span class="line"><span class="number">168</span> <span class="keyword">AS</span> paper_id,</span><br><span class="line">subject_id,</span><br><span class="line">score,</span><br><span class="line"><span class="keyword">sort</span>,</span><br><span class="line"><span class="keyword">NOW</span>() <span class="keyword">AS</span> create_time </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	paper_subject </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	paper_id = <span class="number">167</span>;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>开发经验</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>复习笔记</title>
     <url>/notes/42/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">修改不可变数据会抛出TypeError异常</span><br></pre></td></tr></table></figure>
@@ -962,6 +946,22 @@
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sql技巧</title>
+    <url>/notes/41/</url>
+    <content><![CDATA[<p>INSERT INTO… SELECT 与 自增id的冲突</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、缺少id会报错，缺少字段</span><br><span class="line">2、指定id，又不确定id应该是多少</span><br><span class="line">3、解决办法：设置id为null</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 例子</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`pt_rating`</span>.<span class="string">`paper_subject`</span> <span class="keyword">SELECT</span></span><br><span class="line"><span class="literal">NULL</span> <span class="keyword">AS</span> <span class="keyword">id</span>,  <span class="comment">-- 这个必须有id，可以设置为null</span></span><br><span class="line"><span class="number">168</span> <span class="keyword">AS</span> paper_id,</span><br><span class="line">subject_id,</span><br><span class="line">score,</span><br><span class="line"><span class="keyword">sort</span>,</span><br><span class="line"><span class="keyword">NOW</span>() <span class="keyword">AS</span> create_time </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	paper_subject </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	paper_id = <span class="number">167</span>;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>开发经验</tag>
       </tags>
   </entry>
   <entry>
@@ -1891,6 +1891,95 @@
       </tags>
   </entry>
   <entry>
+    <title>语言汉化</title>
+    <url>/notes/75/</url>
+    <content><![CDATA[<h4 id="中文配置"><a href="#中文配置" class="headerlink" title="中文配置"></a>中文配置</h4><p>zh-CN：地区限制匹配规范，表示用在中国大陆区域的中文。包括各种大方言、小方言、繁体、简体等等都可以被匹配到。</p>
+<p>zh-Hans：语言限制匹配规范，表示简体中文。适用区域范围是全宇宙用中文简体的地方，内容包括各种用简体的方言等。</p>
+<p>具体配置的时候，都试一下，谁生效啦，就是谁</p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>开发经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mac还原</title>
+    <url>/notes/76/</url>
+    <content><![CDATA[<p>重装mac没问题，重装mac mini翻车啦，记录一下怎么还原</p>
+<p><a href="https://support.apple.com/zh-cn/HT201065">出售、赠送或折抵 Mac 前该怎么做</a></p>
+<p><a href="https://support.apple.com/zh-cn/HT201372">如何创建可引导的 macOS 安装器</a></p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>七种设计原则</title>
+    <url>/notes/77/</url>
+    <content><![CDATA[<p>七种设计原则</p>
+<h4 id="一、开闭原则："><a href="#一、开闭原则：" class="headerlink" title="一、开闭原则："></a>一、开闭原则：</h4><p>这一条放在第一位来理解，它的含义是<strong>对扩展开放，对改动关闭</strong>。</p>
+<p>解释一下就是，我们写完的代码，不能由于需求变化就改动。我们能够通过新增代码的方式来解决变化的需求。</p>
+<p>当然，这是一种理想的状态，在现实中。我们要尽量的缩小这样的改动。</p>
+<p>再解释一下这条原则的意义所在，我们採用逆向思维方式来想。假设每次需求变动都去改动原有的代码，那原有的代码就存在被改动错误的风险。当然这当中存在有意和无意的改动。都会导致原有正常执行的功能失效的风险，这样非常有可能会展开可怕的蝴蝶效应。使维护工作剧增。</p>
+<p>说究竟，开闭原则除了表面上的可扩展性强以外。在企业中更看重的是维护成本。</p>
+<p>所以，开闭原则是设计模式的第一大原则，它的潜台词是：控制需求变动风险。缩小维护成本。</p>
+<p>下面几种原则，都是为此原则服务的。</p>
+<h4 id="二、里氏替换选择："><a href="#二、里氏替换选择：" class="headerlink" title="二、里氏替换选择："></a>二、里氏替换选择：</h4><p>此原则的含义是<strong>子类能够在不论什么地方替换它的父类</strong>。解释一下。这是多态的前提，我们后面非常多所谓的灵活，都是不改变声明类型的情况下，改变实例化类来完毕的需求变更。</p>
+<p>当然，继承的特性看似天然就满足这个条件。</p>
+<p>但这里更注重的是继承的应用问题。我们必须保证我们的子类和父类划分是精准的。</p>
+<p>里氏替换原则的潜台词是：尽量使用精准的抽象类或者接口。</p>
+<h4 id="三、单一职责原则："><a href="#三、单一职责原则：" class="headerlink" title="三、单一职责原则："></a>三、单一职责原则：</h4><p>单一职责的含义是：<strong>类的职责单一，引起类变化的原因单一</strong>。解释一下。这也是灵活的前提，假设我们把类拆分成最小的职能单位，那组合与复用就简单的多了，假设一个类做的事情太多。在组合的时候，必定会产生不必要的方法出现。这实际上是一种污染。</p>
+<p>举个样例。我们在绘制图案的时候，用“点”组成图和用“直线”组成图，哪个更灵活呢？一定是“点”，它能够绘制不论什么图形，而直线仅仅能绘制带有直线条的图案。它起码无法画圆。</p>
+<p>单一职责的潜台词是：拆分到最小单位，解决复用和组合问题。</p>
+<h4 id="四、接口隔离原则："><a href="#四、接口隔离原则：" class="headerlink" title="四、接口隔离原则："></a>四、接口隔离原则：</h4><p>接口隔离原则能够说是单一职责的必要手段。它的含义是尽量使用职能单一的接口。而不使用职能复杂、全面的接口。</p>
+<p>非常好理解，接口是为了让子类实现的，假设子类想达到职能单一。那么接口也必须满足职能单一。</p>
+<p>相反，假设接口融合了多个不相关的方法，那它的子类就被迫要实现全部方法，虽然有些方法是根本用不到的。</p>
+<p>这就是接口污染。</p>
+<p>接口隔离原则的潜台词是：拆分，从接口開始。</p>
+<h4 id="五、依赖倒置原则："><a href="#五、依赖倒置原则：" class="headerlink" title="五、依赖倒置原则："></a>五、依赖倒置原则：</h4><p>想要理解依赖倒置原则。必须先理解传统的解决方式。面相对象的初期的程序，被调用者依赖于调用者。也就是调用者决定被调用者有什么方法，有什么样的实现方式，这样的结构在需求变更的时候，会付出非常大的代价，甚至推翻重写。</p>
+<p>依赖倒置原则就是<strong>要求调用者和被调用者都依赖抽象</strong>，这样两者没有直接的关联和接触。在变动的时候，一方的变动不会影响还有一方的变动。</p>
+<p>事实上。依赖倒置和前面的原则是相辅相成的，都强调了抽象的重要性。</p>
+<p>依赖倒置的潜台词是：面向抽象编程。解耦调用和被调用者。</p>
+<h4 id="六、迪米特原则："><a href="#六、迪米特原则：" class="headerlink" title="六、迪米特原则："></a>六、迪米特原则：</h4><p>迪米特原则<strong>要求尽量的封装，尽量的独立，尽量的使用低级别的訪问修饰符</strong>。这是封装特性的典型体现。</p>
+<p>一个类假设暴露太多私用的方法和字段，会让调用者非常茫然。而且会给类造成不必要的推断代码。所以，我们使用尽量低的訪问修饰符。让外界不知道我们的内部。这也是面向对象的基本思路。这是迪米特原则的一个特性，无法了解类很多其它的私有信息。</p>
+<p>另外，迪米特原则要求类之间的直接联系尽量的少。两个类的訪问。通过第三个中介类来实现。</p>
+<p>迪米特原则的潜台词是：不和陌生人说话，有事去中介。</p>
+<h4 id="七、组合-聚合复用原则："><a href="#七、组合-聚合复用原则：" class="headerlink" title="七、组合/聚合复用原则："></a>七、组合/聚合复用原则：</h4><p>此原则的含义是。假设<strong>仅仅是达到代码复用的目的。尽量使用组合与聚合。而不是继承</strong>。</p>
+<p>这里须要解释一下，组合聚合仅仅是引用其它的类的方法。而不会受引用的类的继承而改变血统。</p>
+<p>继承的耦合性更大，比方一个父类后来加入实现一个接口或者去掉一个接口，那子类可能会遭到毁灭性的编译错误。但假设仅仅是组合聚合，仅仅是引用类的方法，就不会有这样的巨大的风险。同一时候也实现了复用。</p>
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>开发经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker环境搭建mysql主从同步</title>
+    <url>/notes/78/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_30600503/article/details/96249133">docker环境搭建mysql主从同步</a></p>
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>商业-逆向思维</title>
+    <url>/notes/79/</url>
+    <content><![CDATA[<p><a href="http://www.360doc.com/content/21/0325/07/63548264_968859421.shtml">商业-逆向思维</a></p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
     <title>终结进程</title>
     <url>/notes/8/</url>
     <content><![CDATA[<h3 id="杀死占用端口的进程"><a href="#杀死占用端口的进程" class="headerlink" title="杀死占用端口的进程"></a>杀死占用端口的进程</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看占用端口的进程</span></span><br><span class="line">netstat -tlnp|grep 6379  # t-tcp,l-listen,n-不解析(速度快),p-process</span><br><span class="line"><span class="meta">#</span><span class="bash"> 一次性的清除占用80端口的程序</span></span><br><span class="line">lsof -i :80|grep -v &quot;PID&quot;|awk &#x27;&#123;print &quot;kill -9&quot;,$2&#125;&#x27;|sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 终止进程</span></span><br><span class="line">kill 5014</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制终止进程</span></span><br><span class="line">kill -9 5014  # 是pid</span><br></pre></td></tr></table></figure>
@@ -1901,6 +1990,45 @@
       </categories>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>80</title>
+    <url>/notes/80/</url>
+    <content><![CDATA[<p><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html">RESTful API 设计指南</a></p>
+]]></content>
+      <categories>
+        <category>Messy</category>
+      </categories>
+      <tags>
+        <tag>V</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sql男女性别</title>
+    <url>/notes/81/</url>
+    <content><![CDATA[<p>Sql语句将0，1转化为男女性别</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">id</span>,</span><br><span class="line">	user_cid,</span><br><span class="line">	phone,</span><br><span class="line">	<span class="keyword">name</span>,</span><br><span class="line"><span class="keyword">CASE</span></span><br><span class="line">		gender </span><br><span class="line">		<span class="keyword">WHEN</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">		<span class="string">&#x27;男&#x27;</span> </span><br><span class="line">		<span class="keyword">WHEN</span> <span class="string">&#x27;2&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">		<span class="string">&#x27;女&#x27;</span> </span><br><span class="line">	<span class="keyword">END</span> <span class="keyword">AS</span> gender,</span><br><span class="line">	start_city,</span><br><span class="line">	end_city,</span><br><span class="line">	story,</span><br><span class="line">	create_time </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	active_collection_story </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	create_time <span class="keyword">BETWEEN</span> <span class="string">&#x27;2019-01-25 00:00:00&#x27;</span> </span><br><span class="line">	<span class="keyword">AND</span> <span class="string">&#x27;2019-01-27 23:59:59&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>温故而知新</category>
+      </categories>
+      <tags>
+        <tag>开发经验</tag>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Super关键字</title>
+    <url>/notes/82/</url>
+    <content><![CDATA[<p><a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c08/p07_calling_method_on_parent_class.html">super关键字</a></p>
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>

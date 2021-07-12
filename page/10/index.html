@@ -210,7 +210,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/40/">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/69/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
@@ -224,7 +224,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/notes/40/" class="post-title-link" itemprop="url">Python模块</a>
+            <a href="/notes/69/" class="post-title-link" itemprop="url">Scrapy-Redis笔记</a>
         </h1>
 
         <div class="post-meta">
@@ -234,14 +234,328 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-13 11:09:03" itemprop="dateCreated datePublished" datetime="2020-11-13T11:09:03+08:00">2020-11-13</time>
+              <time title="创建时间：2020-11-13 11:32:47" itemprop="dateCreated datePublished" datetime="2020-11-13T11:32:47+08:00">2020-11-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 10:32:40" itemprop="dateModified" datetime="2021-07-12T10:32:40+08:00">2021-07-12</time>
+                <time title="修改时间：2021-07-12 11:12:32" itemprop="dateModified" datetime="2021-07-12T11:12:32+08:00">2021-07-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">数据开发</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="Scrapy-redis"><a href="#Scrapy-redis" class="headerlink" title="Scrapy-redis"></a>Scrapy-redis</h4><h5 id="spider编写"><a href="#spider编写" class="headerlink" title="spider编写"></a>spider编写</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySpider</span>(<span class="params">RedisSpider</span>):</span></span><br><span class="line">    name = <span class="string">&#x27;myspider&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span>(<span class="params">self, response</span>):</span></span><br><span class="line">        <span class="comment"># do stuff</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="setting"><a href="#setting" class="headerlink" title="setting"></a>setting</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启用调度redis中的存储请求队列</span></span><br><span class="line">SCHEDULER = <span class="string">&quot;scrapy_redis.scheduler.Scheduler&quot;</span></span><br><span class="line"><span class="comment"># 确保所有蜘蛛通过redis共享同一个过滤器。</span></span><br><span class="line">DUPEFILTER_CLASS = <span class="string">&quot;scrapy_redis.dupefilter.RFPDupeFilter&quot;</span></span><br><span class="line"><span class="comment"># 不清理redis队列，允许暂停/恢复爬网。</span></span><br><span class="line">SCHEDULER_PERSIST = <span class="literal">True</span></span><br><span class="line"><span class="comment"># 使用优先级队列调度请求。（默认）</span></span><br><span class="line">SCHEDULER_QUEUE_CLASS = <span class="string">&#x27;scrapy_redis.queue.PriorityQueue&#x27;</span></span><br><span class="line"><span class="comment"># 备用队列。</span></span><br><span class="line">SCHEDULER_QUEUE_CLASS = <span class="string">&#x27;scrapy_redis.queue.FifoQueue&#x27;</span></span><br><span class="line">SCHEDULER_QUEUE_CLASS = <span class="string">&#x27;scrapy_redis.queue.LifoQueue&#x27;</span></span><br><span class="line"><span class="comment"># 防止蜘蛛在分布式爬网时关闭的最大空闲时间。这仅在队列类为SpiderQueue或SpiderStack时有效，并且在蜘蛛第一次启动时也可能会阻止这么长的时间（因为队列为空）。</span></span><br><span class="line">SCHEDULER_IDLE_BEFORE_CLOSE = <span class="number">10</span></span><br><span class="line"><span class="comment"># 将爬取的item存储在redis数据库中</span></span><br><span class="line">ITEM_PIPELINES = &#123;</span><br><span class="line">    <span class="string">&#x27;scrapy_redis.pipelines.RedisPipeline&#x27;</span>: <span class="number">300</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 存储item的redis的key</span></span><br><span class="line">REDIS_ITEMS_KEY = <span class="string">&#x27;%(spider)s:items&#x27;</span></span><br><span class="line"><span class="comment"># 默认情况下，item的序列化程序是ScrapyJSONEncoder。</span></span><br><span class="line">REDIS_ITEMS_SERIALIZER = <span class="string">&#x27;json.dumps&#x27;</span></span><br><span class="line"><span class="comment"># 连接Redis时，使用的主机和端口（可选）。</span></span><br><span class="line">REDIS_HOST = <span class="string">&#x27;localhost&#x27;</span></span><br><span class="line">REDIS_PORT = <span class="number">6379</span></span><br><span class="line"><span class="comment"># 指定用于连接Redis的完整URL（可选）。</span></span><br><span class="line"><span class="comment"># 如果设置，它将优先于REDIS_HOST和REDIS_PORT设置。</span></span><br><span class="line">REDIS_URL = <span class="string">&#x27;redis://user:pass@hostname:9001&#x27;</span></span><br><span class="line"><span class="comment"># 自定义Redis客户端参数（即：套接字超时等）</span></span><br><span class="line">REDIS_PARAMS  = &#123;&#125;</span><br><span class="line"><span class="comment"># 是否对初始urls去重，默认False，为不去重</span></span><br><span class="line">REDIS_START_URLS_AS_SET = <span class="literal">False</span></span><br><span class="line"><span class="comment"># 获取起始URL默认的redis key。</span></span><br><span class="line">REDIS_START_URLS_KEY = <span class="string">&#x27;%(name)s:start_urls&#x27;</span></span><br><span class="line"><span class="comment"># 使用utf-8以外的其他编码对redis进行编码，默认是utf-8</span></span><br><span class="line"><span class="comment"># REDIS_ENCODING = &#x27;latin1&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="启动spider"><a href="#启动spider" class="headerlink" title="启动spider"></a>启动spider</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. run the spider:</span></span><br><span class="line">scrapy runspider myspider.py</span><br><span class="line"><span class="comment"># 2. push urls to redis:</span></span><br><span class="line">redis-cli lpush myspider:start_urls http://google.com</span><br><span class="line"><span class="comment"># 两者先后顺序不重要，因为 SCHEDULER_IDLE_BEFORE_CLOSE = 10 会等待</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/56/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/56/" class="post-title-link" itemprop="url">Scrapy笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 11:31:13" itemprop="dateCreated datePublished" datetime="2020-11-13T11:31:13+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-12 10:55:37" itemprop="dateModified" datetime="2021-07-12T10:55:37+08:00">2021-07-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">数据开发</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="scrapy的一些知识点"><a href="#scrapy的一些知识点" class="headerlink" title="scrapy的一些知识点"></a>scrapy的一些知识点</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令加上参数 --nolog 可以去掉log日志输出</span><br></pre></td></tr></table></figure>
+
+<h4 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scrapy.downloadermiddlewares.retry <span class="keyword">import</span> RetryMiddleware <span class="comment"># 参考这个写即可</span></span><br><span class="line"><span class="comment"># 设置最大等待时间、失败重试次数</span></span><br><span class="line">DOWNLOAD_TIMEOUT = <span class="number">10</span></span><br><span class="line">RETRY_ENABLED = <span class="literal">True</span>  <span class="comment"># 失败重试</span></span><br><span class="line">RETRY_TIMES = <span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="scrapy复习笔记"><a href="#scrapy复习笔记" class="headerlink" title="scrapy复习笔记"></a>scrapy复习笔记</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allowed_domains = [] <span class="comment"># 与OffsiteMiddleware中间件挂钩</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy.FormRequest() <span class="comment"># post请求</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scrapy.downloadermiddlewares.retry <span class="keyword">import</span> RetryMiddleware </span><br><span class="line"><span class="comment"># 异常处理，必须看源码，必须对异常进行处理</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">get()和getall()</span><br><span class="line">get(default&#x3D;&#39;not-found&#39;) #设置默认值</span><br><span class="line">.attrib[&#39;src&#39;]  # 获取属性值，它返回第一个匹配元素的属性</span><br><span class="line">scrapy css特有的::text和::attr(name)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; response.css(&#39;base&#39;).attrib   # 变成dict了</span><br><span class="line">&#123;&#39;href&#39;: &#39;http:&#x2F;&#x2F;example.com&#x2F;&#39;&#125;</span><br><span class="line">&gt;&gt;&gt; response.css(&#39;base&#39;).attrib[&#39;href&#39;]</span><br><span class="line">&#39;http:&#x2F;&#x2F;example.com&#x2F;&#39; </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># 例子</span><br><span class="line">&gt;&gt;&gt; response.xpath(&#39;&#x2F;&#x2F;base&#x2F;@href&#39;).get()</span><br><span class="line">&#39;http:&#x2F;&#x2F;example.com&#x2F;&#39;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.css(&#39;base::attr(href)&#39;).get()</span><br><span class="line">&#39;http:&#x2F;&#x2F;example.com&#x2F;&#39;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.css(&#39;base&#39;).attrib[&#39;href&#39;]</span><br><span class="line">&#39;http:&#x2F;&#x2F;example.com&#x2F;&#39;</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.xpath(&#39;&#x2F;&#x2F;a[contains(@href, &quot;image&quot;)]&#x2F;@href&#39;).getall()</span><br><span class="line">[&#39;image1.html&#39;,</span><br><span class="line"> &#39;image2.html&#39;,</span><br><span class="line"> &#39;image3.html&#39;,</span><br><span class="line"> &#39;image4.html&#39;,</span><br><span class="line"> &#39;image5.html&#39;]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.css(&#39;a[href*&#x3D;image]::attr(href)&#39;).getall()</span><br><span class="line">[&#39;image1.html&#39;,</span><br><span class="line"> &#39;image2.html&#39;,</span><br><span class="line"> &#39;image3.html&#39;,</span><br><span class="line"> &#39;image4.html&#39;,</span><br><span class="line"> &#39;image5.html&#39;]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.xpath(&#39;&#x2F;&#x2F;a[contains(@href, &quot;image&quot;)]&#x2F;img&#x2F;@src&#39;).getall()</span><br><span class="line">[&#39;image1_thumb.jpg&#39;,</span><br><span class="line"> &#39;image2_thumb.jpg&#39;,</span><br><span class="line"> &#39;image3_thumb.jpg&#39;,</span><br><span class="line"> &#39;image4_thumb.jpg&#39;,</span><br><span class="line"> &#39;image5_thumb.jpg&#39;]</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; response.css(&#39;a[href*&#x3D;image] img::attr(src)&#39;).getall()</span><br><span class="line">[&#39;image1_thumb.jpg&#39;,</span><br><span class="line"> &#39;image2_thumb.jpg&#39;,</span><br><span class="line"> &#39;image3_thumb.jpg&#39;,</span><br><span class="line"> &#39;image4_thumb.jpg&#39;,</span><br><span class="line"> &#39;image5_thumb.jpg&#39;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; response.xpath(&#39;&#x2F;&#x2F;span&#x2F;text()&#39;).get()</span><br><span class="line">&#39;good&#39;</span><br><span class="line">&gt;&gt;&gt; response.css(&#39;span::text&#39;).get()</span><br><span class="line">&#39;good&#39;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Selector类可以用文本直接构造，用于xpath解析</span><br><span class="line">&gt;&gt;&gt; from scrapy.selector import Selector</span><br><span class="line">&gt;&gt;&gt; body &#x3D; &#39;&lt;html&gt;&lt;body&gt;&lt;span&gt;good&lt;&#x2F;span&gt;&lt;&#x2F;body&gt;&lt;&#x2F;html&gt;&#39;</span><br><span class="line">&gt;&gt;&gt; Selector(text&#x3D;body).xpath(&#39;&#x2F;&#x2F;span&#x2F;text()&#39;).get()</span><br><span class="line">&#39;good&#39;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.css(&#39;.shout&#39;).xpath(&#39;.&#x2F;time&#x2F;@datetime&#39;).getall()  # xpath的&#39;.&#39;点号必须加上</span><br></pre></td></tr></table></figure>
+
+<h5 id="scrapy-shell"><a href="#scrapy-shell" class="headerlink" title="scrapy shell"></a>scrapy shell</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fetch(url[, redirect=<span class="literal">True</span>])   <span class="comment">#  Fetch URL and update local objects</span></span><br><span class="line">fetch(req)                    <span class="comment">#  Fetch a scrapy.Request and update local objects</span></span><br><span class="line">shelp()           <span class="comment"># Shell help (print this help)  很重要，常用，类似于help</span></span><br><span class="line">view(response)    <span class="comment"># View response in a browser</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># scrapy.shell.inspect_response的用法如下：便于运行时，检查</span></span><br><span class="line"><span class="keyword">from</span> scrapy.shell <span class="keyword">import</span> inspect_response</span><br><span class="line">inspect_response(response, self)</span><br></pre></td></tr></table></figure>
+
+<h5 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FormRequest.from_response()</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/10/" class="post-title-link" itemprop="url">Scrapy基础</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 11:29:45" itemprop="dateCreated datePublished" datetime="2020-11-13T11:29:45+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-10 15:12:48" itemprop="dateModified" datetime="2021-07-10T15:12:48+08:00">2021-07-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>297</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="使用scrapy的shell测试网站"><a href="#使用scrapy的shell测试网站" class="headerlink" title="使用scrapy的shell测试网站"></a>使用scrapy的shell测试网站</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 给scrapy shell 调试加上headers</span></span><br><span class="line">scrapy shell <span class="comment"># 进入shell,但没有url</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;User-Agent:Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&#x27;</span>&#125;</span><br><span class="line">req = scrapy.Request(url=<span class="string">&#x27;url&#x27;</span>,headers=headers)</span><br><span class="line">fetch(req) <span class="comment"># 如此就等价于scrapy shell url # 添加了headers</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/27/" class="post-title-link" itemprop="url">Python常用内置库</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 11:28:27" itemprop="dateCreated datePublished" datetime="2020-11-13T11:28:27+08:00">2020-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-12 10:20:34" itemprop="dateModified" datetime="2021-07-12T10:20:34+08:00">2021-07-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +575,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>557</span>
+              <span>752</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -280,18 +594,48 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="模块搜索路径"><a href="#模块搜索路径" class="headerlink" title="模块搜索路径"></a>模块搜索路径</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&#x27;模块路径&#x27;</span>)</span><br><span class="line"><span class="comment"># 这种方法是在运行时修改（添加），运行结束后失效</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="介绍模块相关一些知识"><a href="#介绍模块相关一些知识" class="headerlink" title="介绍模块相关一些知识"></a>介绍模块相关一些知识</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&#x27;Jason &#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    args = sys.argv   <span class="comment"># 命令行参数，第一个默认为文件名</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args)==<span class="number">1</span>:</span><br><span class="line">        print(<span class="string">&#x27;Hello, world!&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        print(<span class="string">&#x27;Hello, %s!&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&#x27;Too many arguments!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line">可以让文件直接在Unix/Linux/Mac上运行</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">统一使用标准utf-8编码</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">任何模块代码的第一个字符串都被视为模块的文档注释</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__author__变量是作者</span><br></pre></td></tr></table></figure>
-
+          <h3 id="Python常用内置库"><a href="#Python常用内置库" class="headerlink" title="Python常用内置库"></a>Python常用内置库</h3><h3 id="0-内置函数"><a href="#0-内置函数" class="headerlink" title="0.内置函数"></a>0.内置函数</h3><ul>
+<li>chr()   转换一个[0, 255]之间的整数为对应的ASCII字符</li>
+<li>ord()   将一个ASCII字符转换为对应整数</li>
+</ul>
+<h3 id="1-copy"><a href="#1-copy" class="headerlink" title="1.copy"></a>1.copy</h3><ul>
+<li>copy.deepcopy(a)</li>
+<li>copy.copy(a)</li>
+</ul>
+<h3 id="2-random"><a href="#2-random" class="headerlink" title="2.random"></a>2.random</h3><ul>
+<li>random.shuffle(list)  洗牌</li>
+<li>random.randint(a,b)  随机整数[a,b]</li>
+<li>random.random()  随机(0,1)</li>
+<li>random.choice(seq)</li>
+<li>random.randrange(0, 101, 2)   包前不包后</li>
+</ul>
+<h3 id="3-os"><a href="#3-os" class="headerlink" title="3.os"></a>3.os</h3><ul>
+<li>负责与操作系统交互</li>
+<li>os.remove()</li>
+<li>os.rename(src, dst)  重命名</li>
+<li>os.mkdir()</li>
+<li>os.remkdir()  删除目录</li>
+<li>os.getcwd()</li>
+<li>os.chdir()  改变当前脚本的工作路径，相当于shell下的cd</li>
+</ul>
+<h3 id="4-sys"><a href="#4-sys" class="headerlink" title="4.sys"></a>4.sys</h3><ul>
+<li>负责与Python解释器交互</li>
+<li>sys.exit(0)</li>
+<li>sys.path 解释器的环境变量是list格式</li>
+</ul>
+<h3 id="5-time"><a href="#5-time" class="headerlink" title="5.time"></a>5.time</h3><ul>
+<li>time.time()  时间戳数字</li>
+<li>time.localtime()   返回struct_time对象</li>
+<li>time.asctime()  格式化输出</li>
+<li>time.strftime(“%Y-%m-%d %H:%M:%S”)   格式化输出</li>
+<li>time.strptime(“2016/05/22”,”%Y/%m/%d”)    返回struct_time对象</li>
+</ul>
+<h3 id="6-datetime"><a href="#6-datetime" class="headerlink" title="6.datetime"></a>6.datetime</h3><ul>
+<li>a = datetime.datetime.now()</li>
+<li>a.strftime(“%Y-%m-%d %H:%M:%S”)   格式化输出</li>
+<li>a.utctimetuple()   # 返回struct_time对象，与time.localtime()对象类型相同，值也相同</li>
+<li>datetime.timedelta(day=3, hours=12, minutes=30, seconds=30)</li>
+</ul>
 
       
     </div>
@@ -315,7 +659,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/52/">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/46/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
@@ -329,7 +673,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/notes/52/" class="post-title-link" itemprop="url">高阶函数</a>
+            <a href="/notes/46/" class="post-title-link" itemprop="url">Python数据结构</a>
         </h1>
 
         <div class="post-meta">
@@ -339,14 +683,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-13 10:58:20" itemprop="dateCreated datePublished" datetime="2020-11-13T10:58:20+08:00">2020-11-13</time>
+              <time title="创建时间：2020-11-13 11:26:08" itemprop="dateCreated datePublished" datetime="2020-11-13T11:26:08+08:00">2020-11-13</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 10:55:04" itemprop="dateModified" datetime="2021-07-12T10:55:04+08:00">2021-07-12</time>
+                <time title="修改时间：2021-07-12 10:39:16" itemprop="dateModified" datetime="2021-07-12T10:39:16+08:00">2021-07-12</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -366,7 +710,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>234</span>
+              <span>1.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -385,323 +729,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">把func作用在iterator每一个元素上，并返回一个iterator</span><br></pre></td></tr></table></figure>
-
-<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">累积计算  # func(x,y)必须两个参数</span><br></pre></td></tr></table></figure>
-
-<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">过滤函数 </span><br><span class="line"># 把func作用在iterator每一个元素上，然后根据返回值是Ture还是False决定保留还是丢弃该元素</span><br><span class="line"># 返回值是原来iterator的子序列</span><br></pre></td></tr></table></figure>
-
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">map、reduce、filter都是两个参数（第一个func，第二个iterator）</span><br><span class="line">返回值都是惰性iterator，需要list()才能转换为list</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
+          <h3 id="Python标准数据结构"><a href="#Python标准数据结构" class="headerlink" title="Python标准数据结构"></a>Python标准数据结构</h3><h3 id="一、数字-Number"><a href="#一、数字-Number" class="headerlink" title="一、数字 Number"></a>一、数字 Number</h3><h5 id="1-支持类型"><a href="#1-支持类型" class="headerlink" title="1.支持类型"></a>1.支持类型</h5><ul>
+<li>int、float、complex </li>
+</ul>
+<h5 id="2-转换"><a href="#2-转换" class="headerlink" title="2.转换"></a>2.转换</h5><ul>
+<li>int(x) , float(x) , complex(x[,y])</li>
+</ul>
+<h5 id="3-整数表示"><a href="#3-整数表示" class="headerlink" title="3.整数表示"></a>3.整数表示</h5><ul>
+<li>0xA1 , 0o241 , 161 ,  0b10100001</li>
+<li>hex() , otc() , int() , bin()</li>
+</ul>
+          <!--noindex-->
+          <!--/noindex-->
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/23/" class="post-title-link" itemprop="url">Logging基础</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 10:57:10" itemprop="dateCreated datePublished" datetime="2020-11-13T10:57:10+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-10 15:21:28" itemprop="dateModified" datetime="2021-07-10T15:21:28+08:00">2021-07-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">服务端开发</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.2k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="日志级别"><a href="#日志级别" class="headerlink" title="日志级别"></a>日志级别</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.debug(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.info(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.warning(<span class="string">&quot;Hello&quot;</span>) <span class="comment"># 默认</span></span><br><span class="line">logging.error(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.critical(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h4 id="控制级别"><a href="#控制级别" class="headerlink" title="控制级别"></a>控制级别</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.basicConfig(level=logging.NOTSET)  <span class="comment"># 设置日志级别</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="控制日志格式"><a href="#控制日志格式" class="headerlink" title="控制日志格式"></a>控制日志格式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">logging.basicConfig(level=logging.DEBUG,</span><br><span class="line">             <span class="built_in">format</span>=<span class="string">&#x27;[%(levelname)s][%(asctime)s][%(filename)s][%(message)s]&#x27;</span>)</span><br><span class="line"><span class="comment"># 推荐格式&#x27;[%(levelname)s][%(asctime)s][%(filename)s][%(message)s]&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="基本操作流程（经典案例）"><a href="#基本操作流程（经典案例）" class="headerlink" title="基本操作流程（经典案例）"></a>基本操作流程（经典案例）</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">logger = logging.getLogger()</span><br><span class="line">logger.setLevel(logging.DEBUG)  <span class="comment"># 设置为最低</span></span><br><span class="line"></span><br><span class="line">log_dir = os.path.join(os.getcwd(), <span class="string">&#x27;Logs&#x27;</span>)</span><br><span class="line">log_file = os.path.join(log_dir, <span class="string">&#x27;spider_error.log&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(log_dir):</span><br><span class="line">    os.mkdir(log_dir)</span><br><span class="line"></span><br><span class="line">file_handler = logging.FileHandler(log_file, mode=<span class="string">&#x27;a&#x27;</span>)  <span class="comment"># 日志文件</span></span><br><span class="line">file_handler.setLevel(logging.ERROR)</span><br><span class="line">file_handler.setFormatter(logging.Formatter(<span class="string">&#x27;[%(levelname)s][%(asctime)s][%(message)s]&#x27;</span>))</span><br><span class="line">logger.addHandler(file_handler)</span><br><span class="line"></span><br><span class="line">console_handler = logging.StreamHandler()  <span class="comment"># 控制台</span></span><br><span class="line">console_handler.setLevel(logging.INFO)</span><br><span class="line">console_handler.setFormatter(logging.Formatter(<span class="string">&#x27;[%(levelname)s][%(asctime)s][%(message)s]&#x27;</span>))</span><br><span class="line">logger.addHandler(console_handler)</span><br><span class="line"><span class="comment"># 所有日志都到logger里面,需要输出到哪里，就过滤，拷贝到哪里。</span></span><br></pre></td></tr></table></figure>
-
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/CJOKER/p/8295272.html">logging参考连接</a></p>
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/60/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/60/" class="post-title-link" itemprop="url">Linux工具</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 10:55:11" itemprop="dateCreated datePublished" datetime="2020-11-13T10:55:11+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 10:59:24" itemprop="dateModified" datetime="2021-07-12T10:59:24+08:00">2021-07-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BF%90%E7%BB%B4%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
-                    <span itemprop="name">运维测试</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>465</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="一些好用的工具"><a href="#一些好用的工具" class="headerlink" title="一些好用的工具"></a>一些好用的工具</h3><h4 id="axel"><a href="#axel" class="headerlink" title="axel"></a>axel</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 多线程下载工具-替代curl和wget</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用</span></span><br><span class="line">axel -n 20 http://download.redis.io/releases/redis-5.0.7.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h4 id="lrzsz"><a href="#lrzsz" class="headerlink" title="lrzsz"></a>lrzsz</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一款linux下命令行界面上支持上传和下载的第三方工具</span></span><br><span class="line">rz  <span class="comment"># 选择文件进行上传</span></span><br><span class="line">sz 文件名  <span class="comment"># sz后面跟文件名可以进行文件从linux上面下载</span></span><br><span class="line">yum install -y lrzsz  <span class="comment"># yum 安装完毕之后可以直接rz尝试使用</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">python3</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">(status, output) = subprocess.getstatusoutput(<span class="string">&#x27;ps -ef | grep python3&#x27;</span>)</span><br><span class="line">subprocess.getstatusoutput(<span class="string">&#x27;kill -9 &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="built_in">set</span>(re.findall(<span class="string">r&#x27;\d&#123;3,6&#125;&#x27;</span>, output)))))</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/28/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/28/" class="post-title-link" itemprop="url">防火墙</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 10:53:33" itemprop="dateCreated datePublished" datetime="2020-11-13T10:53:33+08:00">2020-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-12 10:21:18" itemprop="dateModified" datetime="2021-07-12T10:21:18+08:00">2021-07-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BF%90%E7%BB%B4%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
-                    <span itemprop="name">运维测试</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>298</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><h4 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询端口号80-是否开启"><a href="#查询端口号80-是否开启" class="headerlink" title="查询端口号80 是否开启"></a>查询端口号80 是否开启</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --query-port&#x3D;80&#x2F;tcp</span><br></pre></td></tr></table></figure>
-
-<h4 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询有哪些端口是开启的"><a href="#查询有哪些端口是开启的" class="headerlink" title="查询有哪些端口是开启的"></a>查询有哪些端口是开启的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
-
-<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="禁止防火墙开机自启"><a href="#禁止防火墙开机自启" class="headerlink" title="禁止防火墙开机自启"></a>禁止防火墙开机自启</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
-
-
       
     </div>
     
@@ -724,7 +764,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -770,20 +810,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">82</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -822,16 +862,16 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">90k</span>
+    <span title="站点总字数">92k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:21</span>
+    <span title="站点阅读时长">1:23</span>
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;27.9k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;29.6k&nbsp;字</span>
   </div>
 
 
