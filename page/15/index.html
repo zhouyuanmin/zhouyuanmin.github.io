@@ -210,6 +210,99 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/57/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/57/" class="post-title-link" itemprop="url">复习笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 01:08:57" itemprop="dateCreated datePublished" datetime="2020-11-13T01:08:57+08:00">2020-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">温故而知新</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>575</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="4G-内存怎么读取一个-5G-的数据？"><a href="#4G-内存怎么读取一个-5G-的数据？" class="headerlink" title="4G 内存怎么读取一个 5G 的数据？"></a>4G 内存怎么读取一个 5G 的数据？</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一:</span></span><br><span class="line"><span class="comment"># 生成器，分多次读取</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_read</span>(<span class="params">file, separator</span>):</span>  <span class="comment"># 流对象，分隔符</span></span><br><span class="line">    buffer = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">while</span> separator <span class="keyword">in</span> buffer:  <span class="comment"># 此处while比if更合适, 处理buffer有多个separator</span></span><br><span class="line">            pos = buffer.index(separator)  <span class="comment"># 获取第一个下标</span></span><br><span class="line">            <span class="keyword">yield</span> separator[:pos]</span><br><span class="line">            buffer = buffer[pos + <span class="built_in">len</span>(separator):]</span><br><span class="line">        chunk = file.read(<span class="number">2000</span>)  <span class="comment"># 太小也会降低效率</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> chunk:</span><br><span class="line">            <span class="keyword">yield</span> buffer</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        buffer = buffer + chunk</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;f.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> my_read(f, separator=<span class="string">&#x27;\n&#x27;</span>):</span><br><span class="line">        print(line)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法二:</span></span><br><span class="line"><span class="comment"># linux命令split切割成小文件</span></span><br><span class="line">split -l <span class="number">300</span> big.txt -d -a <span class="number">4</span> big_  <span class="comment"># 系数不是字母而是数字（-d），后缀系数为四位数（-a 4）</span></span><br><span class="line">split -b <span class="number">10</span>m big.txt big_          <span class="comment"># 按照大小切割</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/mxgsgtc/article/details/12048919">linux命令split切割成小文件</a></li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/62/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -595,96 +688,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/67/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/67/" class="post-title-link" itemprop="url">复习笔记</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-12 17:03:21" itemprop="dateCreated datePublished" datetime="2020-11-12T17:03:21+08:00">2020-11-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">温故而知新</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>4.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>4 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="os"><a href="#os" class="headerlink" title="os"></a>os</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.getpid()</span><br><span class="line">os.getppid()</span><br></pre></td></tr></table></figure>
-<h4 id="multiprocessing"><a href="#multiprocessing" class="headerlink" title="multiprocessing"></a>multiprocessing</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 部署分布式（master）</span></span><br><span class="line"><span class="keyword">import</span> queue</span><br><span class="line">task_queue = queue.Queue()  <span class="comment"># 队列，后面会通过BaseManager封装，注册到网络上</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing.managers <span class="keyword">import</span> BaseManager</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QueueManager</span>(<span class="params">BaseManager</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">QueueManager.register(<span class="string">&#x27;get_task_queue&#x27;</span>, <span class="built_in">callable</span>=<span class="keyword">lambda</span>: task_queue)  <span class="comment"># 必须注册</span></span><br><span class="line">manager = QueueManager(address=(<span class="string">&#x27;&#x27;</span>, <span class="number">5000</span>), authkey=<span class="string">b&#x27;abc&#x27;</span>)</span><br><span class="line">task = manager.get_task_queue()  <span class="comment"># 获取队列queue</span></span><br><span class="line">manager.start()  <span class="comment"># 开启</span></span><br><span class="line">manager.shutdown()  <span class="comment"># 关闭</span></span><br><span class="line"><span class="comment"># slave</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">QueueManager</span>(<span class="params">BaseManager</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">QueueManager.register(<span class="string">&#x27;get_task_queue&#x27;</span>)  <span class="comment"># 一定要注册</span></span><br><span class="line">m = QueueManager(address=(master_ip, <span class="number">5000</span>), authkey=<span class="string">b&#x27;abc&#x27;</span>)</span><br><span class="line">m.connect()</span><br><span class="line">task = m.get_task_queue()</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -735,7 +738,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -787,16 +790,16 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">93k</span>
+    <span title="站点总字数">94k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:25</span>
+    <span title="站点阅读时长">1:26</span>
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;29.9k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;30.2k&nbsp;字</span>
   </div>
 
 
