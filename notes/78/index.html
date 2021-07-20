@@ -50,19 +50,21 @@
   };
 </script>
 
-  <meta name="description" content="docker环境搭建mysql主从同步">
+  <meta name="description" content="目录结构12345678.├── master│   └── conf│       └── my.cnf├── readme.md└── slave    └── conf        └── my.cnf  配置描述12345678910[mysqld]server_id &#x3D; 1   # 服务id，不能相同log-bin&#x3D; mysql-binread-only&#x3D;0     # 为1时，为只读">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker环境搭建mysql主从同步">
 <meta property="og:url" content="https://blog.myard.cn/notes/78/index.html">
 <meta property="og:site_name" content="Myard">
-<meta property="og:description" content="docker环境搭建mysql主从同步">
+<meta property="og:description" content="目录结构12345678.├── master│   └── conf│       └── my.cnf├── readme.md└── slave    └── conf        └── my.cnf  配置描述12345678910[mysqld]server_id &#x3D; 1   # 服务id，不能相同log-bin&#x3D; mysql-binread-only&#x3D;0     # 为1时，为只读">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20210720141844.png">
 <meta property="article:published_time" content="2021-07-12T07:27:48.000Z">
 <meta property="article:modified_time" content="2021-07-12T07:27:48.000Z">
 <meta property="article:author" content="Myard">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20210720141844.png">
 
 <link rel="canonical" href="https://blog.myard.cn/notes/78/">
 
@@ -256,14 +258,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>19</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>2 分钟</span>
             </span>
 
         </div>
@@ -275,7 +277,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30600503/article/details/96249133">docker环境搭建mysql主从同步</a></p>
+        <h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── master</span><br><span class="line">│   └── conf</span><br><span class="line">│       └── my.cnf</span><br><span class="line">├── readme.md</span><br><span class="line">└── slave</span><br><span class="line">    └── conf</span><br><span class="line">        └── my.cnf</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置描述"><a href="#配置描述" class="headerlink" title="配置描述"></a>配置描述</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">server_id = 1   # 服务id，不能相同</span><br><span class="line">log-bin= mysql-bin</span><br><span class="line">read-only=0     # 为1时，为只读模式，只限制普通用户</span><br><span class="line">replicate-ignore-db=mysql   # 不需要同步的库，不会同步用户</span><br><span class="line">replicate-ignore-db=sys</span><br><span class="line">replicate-ignore-db=information_schema</span><br><span class="line">replicate-ignore-db=performance_schema</span><br><span class="line">!includedir /etc/mysql/conf.d/</span><br><span class="line">!includedir /etc/mysql/mysql.conf.d/</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql-master -d -p 3307:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /tmp/mysql/master/data:/var/lib/mysql -v /tmp/mysql/master/conf/my.cnf:/etc/mysql/my.cnf  mysql:5.7 </span><br><span class="line">docker run --name mysql-slave -d -p 3308:3306 -e MYSQL_ROOT_PASSWORD=123456 -v /tmp/mysql/slave/data:/var/lib/mysql -v /tmp/mysql/slave/conf/my.cnf:/etc/mysql/my.cnf  mysql:5.7</span><br></pre></td></tr></table></figure>
+
+<h4 id="迁移数据"><a href="#迁移数据" class="headerlink" title="迁移数据"></a>迁移数据</h4><ul>
+<li>没有数据，则跳过</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 导出数据</span></span><br><span class="line">mysqldump -u root -p --all-databases --lock-all-tables &gt; ~/master_db.sql</span><br><span class="line"><span class="meta">#</span><span class="bash"> 拷贝</span></span><br><span class="line">docker cp mysql-master:/root/master_db.sql /Users/myard/Desktop/master_db.sql</span><br><span class="line">docker cp /Users/myard/Desktop/master_db.sql mysql-slave:/root/master_db.sql</span><br><span class="line"><span class="meta">#</span><span class="bash"> 导入数据</span></span><br><span class="line">mysql -u root -p -h 127.0.0.1 --port=3306 &lt; ~/master_db.sql</span><br></pre></td></tr></table></figure>
+
+<h3 id="主从配置"><a href="#主从配置" class="headerlink" title="主从配置"></a>主从配置</h3><p>master配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 创建用于从服务器同步数据使用的帐号</span><br><span class="line">grant replication slave on *.* to &#39;slave&#39;@&#39;%&#39; identified by &#39;slave&#39;;</span><br><span class="line">-- 刷新权限</span><br><span class="line">flush privileges;</span><br><span class="line">-- 查看主机状态，并记录File和Position的值</span><br><span class="line">show master status;</span><br><span class="line">-- &quot;&quot;&quot;</span><br><span class="line">-- File	Position	Binlog_Do_DB	Binlog_Ignore_DB	Executed_Gtid_Set</span><br><span class="line">-- mysql-bin.000003	520			</span><br><span class="line">-- &quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+ <img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20210720141844.png" alt="image-20210720141844193" style="zoom:50%;" />
+
+<p>slave配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">-- 从机连接主机</span><br><span class="line">-- 在docker上，用127.0.0.1访问不到主机</span><br><span class="line">CHANGE MASTER TO master_host &#x3D; &#39;1.15.144.243&#39;,  </span><br><span class="line">master_user &#x3D; &#39;slave&#39;,</span><br><span class="line">master_password &#x3D; &#39;slave&#39;,</span><br><span class="line">master_log_file &#x3D; &#39;mysql-bin.000003&#39;,</span><br><span class="line">master_log_pos &#x3D; 520,</span><br><span class="line">master_port &#x3D; 3307;</span><br><span class="line">-- &quot;&quot;&quot;</span><br><span class="line">-- master_host：主服务器Ubuntu的ip地址</span><br><span class="line">-- master_log_file: 前面查询到的主服务器日志文件名</span><br><span class="line">-- master_log_pos: 前面查询到的主服务器日志文件位置</span><br><span class="line">-- &quot;&quot;&quot;</span><br><span class="line">-- 启动slave服务器，并查看同步状态</span><br><span class="line">start slave;  -- stop slave;</span><br><span class="line">show slave status;</span><br><span class="line">-- &quot;&quot;&quot;</span><br><span class="line">-- 检查</span><br><span class="line">-- Slave_IO_Running项是Yes</span><br><span class="line">-- Slave_SQL_Running项是Yes</span><br><span class="line">-- 则没有问题</span><br><span class="line">-- &quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/mbytes/article/details/86711508">Mysql主从同步失败的解决办法</a></p>
 
     </div>
     
@@ -373,6 +394,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">配置描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.</span> <span class="nav-text">启动服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E6%95%B0%E6%8D%AE"><span class="nav-number">3.1.</span> <span class="nav-text">迁移数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">主从配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85"><span class="nav-number">5.</span> <span class="nav-text">补充</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -440,16 +462,16 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">96k</span>
+    <span title="站点总字数">98k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:27</span>
+    <span title="站点阅读时长">1:29</span>
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;30.6k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;31k&nbsp;字</span>
   </div>
 
 
