@@ -60,7 +60,7 @@
 <meta property="article:published_time" content="2021-07-19T07:19:46.000Z">
 <meta property="article:modified_time" content="2021-07-19T07:19:46.000Z">
 <meta property="article:author" content="Myard">
-<meta property="article:tag" content="开发经验">
+<meta property="article:tag" content="fastdfs">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://blog.myard.cn/notes/84/">
@@ -255,7 +255,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>983</span>
+              <span>1.1k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -289,10 +289,15 @@
 </ul>
 <h3 id="默认配置"><a href="#默认配置" class="headerlink" title="默认配置"></a>默认配置</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nginx/nginx.conf文件</span></span><br><span class="line">listen  <span class="number">8888</span>;</span><br><span class="line"><span class="comment"># tracker/conf/client.conf文件需要自己去修改</span></span><br><span class="line">base_path=/tmp</span><br><span class="line">tracker_server=公网ip:<span class="number">22122</span> </span><br><span class="line">http.tracker_server_port=<span class="number">8888</span>  <span class="comment"># 需要保证nginx.conf监听端口一样</span></span><br><span class="line"><span class="comment"># docker-compose.yml</span></span><br><span class="line">TRACKER_SERVER 需要修改为公网ip</span><br></pre></td></tr></table></figure>
 
-<p>python客户端简单使用(测试)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install py3Fdfs</span><br></pre></td></tr></table></figure>
+<h3 id="python客户端简单使用-测试"><a href="#python客户端简单使用-测试" class="headerlink" title="python客户端简单使用(测试)"></a>python客户端简单使用(测试)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install py3Fdfs</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> fdfs_client.client <span class="keyword">import</span> Fdfs_client, get_tracker_conf</span><br><span class="line">tracker_path = get_tracker_conf(<span class="string">&#x27;tracker/conf/client.conf&#x27;</span>)</span><br><span class="line">client = Fdfs_client(tracker_path)</span><br><span class="line">ret = client.upload_by_filename(<span class="string">&#x27;/Users/myard/Desktop/cover.png&#x27;</span>)</span><br><span class="line">print(ret)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&#123;&#x27;Group name&#x27;: b&#x27;group1&#x27;, &#x27;Remote file_id&#x27;: b&#x27;group1/M00/00/00/CgAEA2D1I6qALZ3lAABu0uHYmQI601.png&#x27;, &#x27;Status&#x27;: &#x27;Upload successed.&#x27;, &#x27;Local file name&#x27;: &#x27;/Users/myard/Desktop/cover.png&#x27;, &#x27;Uploaded size&#x27;: &#x27;27.71KB&#x27;, &#x27;Storage IP&#x27;: b&#x27;1.15.144.243&#x27;&#125;</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="fastdfs使用技巧"><a href="#fastdfs使用技巧" class="headerlink" title="fastdfs使用技巧"></a>fastdfs使用技巧</h3><h5 id="自定义下载文件名"><a href="#自定义下载文件名" class="headerlink" title="自定义下载文件名"></a>自定义下载文件名</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 通过增加参数 filename=xxx</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 示例</span></span><br><span class="line">http://file.myard.cn:8888/group1/M00/00/00/CgAEA2D1KkeAY9CxAABu0uHYmQI574.png?filename=newfile.png</span><br></pre></td></tr></table></figure>
+
+
+
+
 
 
     </div>
@@ -312,29 +317,11 @@
     
     
       
-  <div class="popular-posts-header">Related Posts By Tag</div>
-  <ul class="popular-posts">
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/notes/2/" rel="bookmark">查找数据API</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/notes/22/" rel="bookmark">Python在docker中调试</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/notes/36/" rel="bookmark">部署事故</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/notes/41/" rel="bookmark">Sql技巧</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/notes/64/" rel="bookmark">第三方库的版本异常</a></div>
-    </li>
-  </ul>
 
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/" rel="tag"><i class="fa fa-tag">&nbsp;</i>开发经验</a>
+              <a href="/tags/fastdfs/" rel="tag"><i class="fa fa-tag">&nbsp;</i>fastdfs</a>
           </div>
 
         
@@ -349,6 +336,9 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
+                <a href="/notes/85/" rel="prev" title="配置数据库">
+                  配置数据库 <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
       </footer>
@@ -387,7 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2fastdfs%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.</span> <span class="nav-text">一键部署fastdfs服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">默认配置</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2fastdfs%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.</span> <span class="nav-text">一键部署fastdfs服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">默认配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8-%E6%B5%8B%E8%AF%95"><span class="nav-number">3.</span> <span class="nav-text">python客户端简单使用(测试)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fastdfs%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="nav-number">4.</span> <span class="nav-text">fastdfs使用技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%90%8D"><span class="nav-number">4.0.1.</span> <span class="nav-text">自定义下载文件名</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -403,7 +393,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">84</span>
+          <span class="site-state-item-count">85</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -416,7 +406,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -455,16 +445,16 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">94k</span>
+    <span title="站点总字数">96k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:26</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;30.2k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;30.6k&nbsp;字</span>
   </div>
 
 

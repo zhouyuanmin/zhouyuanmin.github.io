@@ -50,20 +50,20 @@
   };
 </script>
 
-  <meta name="description" content="Virtualenv&amp;Virtualenvwrappervirtualenv是一个python虚拟环境，能够和系统环境相隔离，保持环境的纯净。 virtualenvwrapper可以方便的管理虚拟环境。 安装12pip install virtualenveasy_install virtualenvwrapper  配置123456# vim ~&#x2F;.bash_profileexport">
+  <meta name="description" content="创建用户，并配置权限12345678-- 创建数据库create database database_name default charset&#x3D;utf8mb4;-- 创建用户create user user_name identified by &#39;password&#39;; -- 配置权限grant all on database_name.* to &#39;user_nam">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python虚拟环境">
-<meta property="og:url" content="https://blog.myard.cn/notes/51/index.html">
+<meta property="og:title" content="配置数据库">
+<meta property="og:url" content="https://blog.myard.cn/notes/85/index.html">
 <meta property="og:site_name" content="Myard">
-<meta property="og:description" content="Virtualenv&amp;Virtualenvwrappervirtualenv是一个python虚拟环境，能够和系统环境相隔离，保持环境的纯净。 virtualenvwrapper可以方便的管理虚拟环境。 安装12pip install virtualenveasy_install virtualenvwrapper  配置123456# vim ~&#x2F;.bash_profileexport">
+<meta property="og:description" content="创建用户，并配置权限12345678-- 创建数据库create database database_name default charset&#x3D;utf8mb4;-- 创建用户create user user_name identified by &#39;password&#39;; -- 配置权限grant all on database_name.* to &#39;user_nam">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-13T03:38:16.000Z">
-<meta property="article:modified_time" content="2020-11-13T03:38:16.000Z">
+<meta property="article:published_time" content="2021-07-20T05:21:49.000Z">
+<meta property="article:modified_time" content="2021-07-20T05:21:49.000Z">
 <meta property="article:author" content="Myard">
-<meta property="article:tag" content="python">
+<meta property="article:tag" content="django">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.myard.cn/notes/51/">
+<link rel="canonical" href="https://blog.myard.cn/notes/85/">
 
 
 <script id="page-configurations">
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>Python虚拟环境 | Myard</title>
+  <title>配置数据库 | Myard</title>
   
 
 
@@ -212,7 +212,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/51/">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
@@ -225,7 +225,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Python虚拟环境
+          配置数据库
         </h1>
 
         <div class="post-meta">
@@ -235,7 +235,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-11-13 11:38:16" itemprop="dateCreated datePublished" datetime="2020-11-13T11:38:16+08:00">2020-11-13</time>
+              <time title="创建时间：2021-07-20 13:21:49" itemprop="dateCreated datePublished" datetime="2021-07-20T13:21:49+08:00">2021-07-20</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,7 +255,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>840</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -274,16 +274,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Virtualenv-amp-Virtualenvwrapper"><a href="#Virtualenv-amp-Virtualenvwrapper" class="headerlink" title="Virtualenv&amp;Virtualenvwrapper"></a>Virtualenv&amp;Virtualenvwrapper</h2><p>virtualenv是一个python虚拟环境，能够和系统环境相隔离，保持环境的纯净。</p>
-<p>virtualenvwrapper可以方便的管理虚拟环境。</p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv</span><br><span class="line">easy_install virtualenvwrapper</span><br></pre></td></tr></table></figure>
+        <h3 id="创建用户，并配置权限"><a href="#创建用户，并配置权限" class="headerlink" title="创建用户，并配置权限"></a>创建用户，并配置权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- 创建数据库</span><br><span class="line">create database database_name default charset&#x3D;utf8mb4;</span><br><span class="line">-- 创建用户</span><br><span class="line">create user user_name identified by &#39;password&#39;; </span><br><span class="line">-- 配置权限</span><br><span class="line">grant all on database_name.* to &#39;user_name&#39;@&#39;%&#39;; </span><br><span class="line">-- 刷新权限</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
 
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> vim ~/.bash_profile</span></span><br><span class="line">export WORKON_HOME=$HOME/virtualenvs</span><br><span class="line">export VIRTUALENVWRAPPER_SCRIPT=/Library/Frameworks/Python.framework/Versions/3.6/bin/virtualenvwrapper.sh</span><br><span class="line">export VIRTUALENVWRAPPER_PYTHON=/Library/Frameworks/Python.framework/Versions/3.6/bin/python3</span><br><span class="line">export VIRTUALENVWRAPPER_VIRTUALENV=/Library/Frameworks/Python.framework/Versions/3.6/bin/virtualenv</span><br><span class="line">source /Library/Frameworks/Python.framework/Versions/3.6/bin/virtualenvwrapper.sh</span><br></pre></td></tr></table></figure>
+<h3 id="配置mysql"><a href="#配置mysql" class="headerlink" title="配置mysql"></a>配置mysql</h3><p>settings.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;  <span class="comment"># 主机: 增删改</span></span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;192.168.103.210&#x27;</span>,  <span class="comment"># 数据库主机</span></span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="number">3306</span>,  <span class="comment"># 数据库端口</span></span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;user_name&#x27;</span>,  <span class="comment"># 数据库用户名</span></span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;password&#x27;</span>,  <span class="comment"># 数据库用户密码</span></span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;database_name&#x27;</span>  <span class="comment"># 数据库名字</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">&#x27;slave&#x27;</span>: &#123;  <span class="comment"># 从机: 查</span></span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;192.168.103.210&#x27;</span>,  <span class="comment"># 数据库主机</span></span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="number">8306</span>,  <span class="comment"># 数据库端口</span></span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;user_name&#x27;</span>,  <span class="comment"># 数据库用户名</span></span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;password&#x27;</span>,  <span class="comment"># 数据库用户密码</span></span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;database_name&#x27;</span>  <span class="comment"># 数据库名字</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="使用virtualenv"><a href="#使用virtualenv" class="headerlink" title="使用virtualenv"></a>使用virtualenv</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtualenv virenv1</span><br></pre></td></tr></table></figure>
+<p>init.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
 
-<h4 id="使用virtualenvwrapper"><a href="#使用virtualenvwrapper" class="headerlink" title="使用virtualenvwrapper"></a>使用virtualenvwrapper</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mkvirtualenv env1  # 默认创建</span><br><span class="line">mkvirtualenv --python=/usr/bin/python2.7 env  # 创建 --python可以指定python</span><br><span class="line">lsvirtualenv -b # 列出虚拟环境</span><br><span class="line">workon env1 # 切换虚拟环境</span><br><span class="line">cpvirtualenv env1 env3  # 复制虚拟环境</span><br><span class="line">deactivate # 退出虚拟环境</span><br><span class="line">rmvirtualenv env1 # 删除虚拟环境</span><br></pre></td></tr></table></figure>
+<h3 id="数据库路由分发"><a href="#数据库路由分发" class="headerlink" title="数据库路由分发"></a>数据库路由分发</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MasterSlaveDBRouter</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;数据库主从读写分离路由&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">db_for_read</span>(<span class="params">self, model, **hints</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;读数据库&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;slave&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">db_for_write</span>(<span class="params">self, model, **hints</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;写数据库&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;default&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">allow_relation</span>(<span class="params">self, obj1, obj2, **hints</span>):</span></span><br><span class="line">        <span class="string">&quot;&quot;&quot;是否运行关联操作&quot;&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
 
+<p>settings.py</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置读写分离</span></span><br><span class="line">DATABASE_ROUTERS = [<span class="string">&#x27;project.utils.db_router.MasterSlaveDBRouter&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置mysql主从同步"><a href="#配置mysql主从同步" class="headerlink" title="配置mysql主从同步"></a>配置mysql主从同步</h3><p><a href="https://blog.myard.cn/notes/78/">用docker快速搭建mysql，配置主从同步</a></p>
 
     </div>
     
@@ -305,43 +309,34 @@
   <div class="popular-posts-header">Related Posts By Tag</div>
   <ul class="popular-posts">
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/notes/11/" rel="bookmark">Python调用C语言</a></div>
+      <div class="popular-posts-title"><a href="/notes/29/" rel="bookmark">Django-Jinja2配置</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/notes/17/" rel="bookmark">面向对象(Python)</a></div>
+      <div class="popular-posts-title"><a href="/notes/37/" rel="bookmark">Django-Mysql配置</a></div>
     </li>
     <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/notes/19/" rel="bookmark">设计模式</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/notes/23/" rel="bookmark">Logging基础</a></div>
-    </li>
-    <li class="popular-posts-item">
-      <div class="popular-posts-title"><a href="/notes/24/" rel="bookmark">面向对象(Python)</a></div>
+      <div class="popular-posts-title"><a href="/notes/80/" rel="bookmark">RESTful API 设计指南</a></div>
     </li>
   </ul>
 
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/python/" rel="tag"><i class="fa fa-tag">&nbsp;</i>python</a>
+              <a href="/tags/django/" rel="tag"><i class="fa fa-tag">&nbsp;</i>django</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/notes/3/" rel="next" title="Supervisor基础使用">
-                  <i class="fa fa-chevron-left"></i> Supervisor基础使用
+                <a href="/notes/84/" rel="next" title="一键部署Fastdfs服务">
+                  <i class="fa fa-chevron-left"></i> 一键部署Fastdfs服务
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/notes/35/" rel="prev" title="Html笔记">
-                  Html笔记 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
       </footer>
@@ -380,7 +375,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Virtualenv-amp-Virtualenvwrapper"><span class="nav-number">1.</span> <span class="nav-text">Virtualenv&amp;Virtualenvwrapper</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">1.0.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8virtualenv"><span class="nav-number">1.0.3.</span> <span class="nav-text">使用virtualenv</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8virtualenvwrapper"><span class="nav-number">1.0.4.</span> <span class="nav-text">使用virtualenvwrapper</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%EF%BC%8C%E5%B9%B6%E9%85%8D%E7%BD%AE%E6%9D%83%E9%99%90"><span class="nav-number">1.</span> <span class="nav-text">创建用户，并配置权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEmysql"><span class="nav-number">2.</span> <span class="nav-text">配置mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E8%B7%AF%E7%94%B1%E5%88%86%E5%8F%91"><span class="nav-number">3.</span> <span class="nav-text">数据库路由分发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEmysql%E4%B8%BB%E4%BB%8E%E5%90%8C%E6%AD%A5"><span class="nav-number">4.</span> <span class="nav-text">配置mysql主从同步</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

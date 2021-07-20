@@ -210,6 +210,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/70/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/70/" class="post-title-link" itemprop="url">复习笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 01:01:42" itemprop="dateCreated datePublished" datetime="2020-11-13T01:01:42+08:00">2020-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">温故而知新</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>一、linux环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">执行命令，如何在任何目录下都可以执行这个命令</span><br><span class="line"># 查找“指定命令”的完整路径，格式：find &#x2F; -name 命令名</span><br><span class="line">find &#x2F; -name mysqladmin</span><br><span class="line"># 把路径直接链接到&#x2F;usr&#x2F;bin下，格式：ln -s 指定命令的路径 &#x2F;usr&#x2F;bin</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;bin&#x2F;mysqladmin &#x2F;usr&#x2F;bin</span><br></pre></td></tr></table></figure>
+
+<p>二、python虚拟环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">创建空的虚拟环境，pip指定位pip3，python指定位python3</span><br><span class="line"># 安装python3的虚拟环境包，格式：pip3 install virtualenv</span><br><span class="line">例子：pip3 install virtualenv</span><br><span class="line"># 执行命令，加上--no-site-packages，格式：virtualenv --no-site-packages 虚拟环境名</span><br><span class="line">例子：virtualenv --no-site-packages test</span><br><span class="line"># 进入命令，格式：source 虚拟环境名&#x2F;bin&#x2F;activate</span><br><span class="line">例子：source test&#x2F;bin&#x2F;activate</span><br><span class="line"># 退出命令，格式：deactivate</span><br><span class="line">例子：deactivate</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.安装python3</span></span><br><span class="line">yum install python36</span><br><span class="line"><span class="comment"># 2.安装virtualenv和virtualenvwrapper</span></span><br><span class="line">pip3 install virtualenv</span><br><span class="line">pip3 install virtualenvwrapper</span><br><span class="line"><span class="comment"># 3.配置信息</span></span><br><span class="line">vim ~/.bashrc</span><br><span class="line"><span class="comment"># 在末尾加上如下信息：</span></span><br><span class="line">---------------------------</span><br><span class="line"><span class="comment"># virtualenvwrapper配置</span></span><br><span class="line">export WORKON_HOME=/home/dev/virtualenv   <span class="comment"># 指定虚拟环境存放的目录 </span></span><br><span class="line">export VIRTUALENVWRAPPER_PYTHON=/usr/<span class="built_in">bin</span>/python3     <span class="comment">#指定python解释器</span></span><br><span class="line">source /usr/local/<span class="built_in">bin</span>/virtualenvwrapper.sh  <span class="comment"># 执行脚本</span></span><br><span class="line">---------------------------</span><br><span class="line">source ~/.bashrc</span><br><span class="line"><span class="comment"># 4.常见命令</span></span><br><span class="line">mkvirtualenv -p python3 虚拟环境名称  <span class="comment"># 创建一个python3的虚拟环境</span></span><br><span class="line">deactivate                <span class="comment"># 退出当前虚拟环境</span></span><br><span class="line">workon [虚拟环境名称]       <span class="comment"># 使用某个虚拟环境</span></span><br><span class="line">rmvirtualenv [虚拟环境名称] <span class="comment"># 删除某个虚拟环境</span></span><br><span class="line">lsvirtualenv              <span class="comment"># 列出所有虚拟环境</span></span><br><span class="line"><span class="comment"># 5.包管理</span></span><br><span class="line"><span class="comment"># 导出</span></span><br><span class="line">pip freeze -l &gt; packages.txt  <span class="comment"># 其中-l参数是只列出当前虚拟环境的包（字母l）</span></span><br><span class="line"><span class="comment"># 导入</span></span><br><span class="line">pip install -r packages.txt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># window环境</span><br><span class="line"># 1.安装virtualenv和virtualenvwrapper</span><br><span class="line">pip install virtualenv</span><br><span class="line">pip install virtualenvwrapper-win</span><br><span class="line"># 2.指定虚拟环境存放的目录（配置系统环境变量）</span><br><span class="line">变量名：WORKON_HOME</span><br><span class="line">变量值：指定路径即可，eg：D:\virtualenv</span><br><span class="line"># 3.其他等同于linux环境</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/67/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -578,98 +674,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/22/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/22/" class="post-title-link" itemprop="url">Python在docker中调试</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-12 16:48:49" itemprop="dateCreated datePublished" datetime="2020-11-12T16:48:49+08:00">2020-11-12</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BF%90%E7%BB%B4%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
-                    <span itemprop="name">运维测试</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>140</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>使用print在docker中调试</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker不会输出python的print(),需要这样写才会输出：加上flush=<span class="literal">True</span></span><br><span class="line">例子: print(<span class="string">&quot;debug...&quot;</span>, flush=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<p>查看docker日志</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker logs container_id</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -720,7 +724,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">84</span>
+          <span class="site-state-item-count">85</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -733,7 +737,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -772,16 +776,16 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">94k</span>
+    <span title="站点总字数">96k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:26</span>
+    <span title="站点阅读时长">1:27</span>
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;30.2k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;30.6k&nbsp;字</span>
   </div>
 
 
