@@ -210,6 +210,453 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/38/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/38/" class="post-title-link" itemprop="url">Python内存管理</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 01:17:14" itemprop="dateCreated datePublished" datetime="2020-11-13T01:17:14+08:00">2020-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端开发</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>434</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Python-的内存管理机制及调优手段？"><a href="#Python-的内存管理机制及调优手段？" class="headerlink" title="Python 的内存管理机制及调优手段？"></a>Python 的内存管理机制及调优手段？</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 内存管理机制：引用计数、垃圾回收、内存池</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.引用计数</span></span><br><span class="line">当一个 Python 对象被引用时，引用计数加<span class="number">1</span>，</span><br><span class="line">当不再被一个变量，减<span class="number">1</span>，</span><br><span class="line">当引用计数等于<span class="number">0</span>时对象被删除。</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2.垃圾回收</span></span><br><span class="line"><span class="number">2.1</span> 引用计数</span><br><span class="line">当引用计数为<span class="number">0</span>,则被回收 （对循环引用，失效）</span><br><span class="line"><span class="number">2.2</span> 标记清除 </span><br><span class="line">针对循环引用，先将循环引用摘掉，得出有效计数</span><br><span class="line"><span class="number">2.3</span> 分代回收</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3. 内存池</span></span><br><span class="line">用于管理对小块内存的申请和释放（小于<span class="number">256</span>字节的，直接在内存池申请内存）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">调优手段（了解）</span><br><span class="line"><span class="number">1.</span>手动垃圾回收</span><br><span class="line"><span class="number">2.</span>调高垃圾回收阈值</span><br><span class="line"><span class="number">3.</span>避免循环引用（手动解循环引用和使用弱引用）</span><br></pre></td></tr></table></figure>
+
+<h3 id="内存泄露是什么？如何避免？"><a href="#内存泄露是什么？如何避免？" class="headerlink" title="内存泄露是什么？如何避免？"></a>内存泄露是什么？如何避免？</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 由于设计错误，失去对该段内存的控制，造成内存浪费。</span></span><br><span class="line"><span class="comment"># 有 __del__() 函数的对象间的循环引用是导致内存泄漏的主凶</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 避免</span></span><br><span class="line">不使用一个对象时使用 <span class="keyword">del</span> <span class="built_in">object</span> 删除一个引用计数</span><br><span class="line">可以通过 sys.getrefcount(obj) 获取对象的引用计数，根据返回值是否为 <span class="number">0</span> 判断是否内存泄漏</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/31/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/31/" class="post-title-link" itemprop="url">复习笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 01:16:01" itemprop="dateCreated datePublished" datetime="2020-11-13T01:16:01+08:00">2020-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">温故而知新</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>705</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">日志以文本可以存储在“&#x2F;var&#x2F;log&#x2F;”目录下后缀名为.log</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看服务占用的端口</span></span><br><span class="line">netstat -anp | grep service_name</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">grep 是查找匹配条件的行</span><br><span class="line">find 是搜索匹配条件的文件（找文件）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Linux 重定向命令有哪些？有什么区别?</span></span><br><span class="line"><span class="number">1.</span> 重定向&gt;   覆盖</span><br><span class="line"><span class="number">2.</span> 重定向&gt;&gt;  追加</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 10 个常用的 Linux 命令</span></span><br><span class="line">pwd 显示工作路径</span><br><span class="line">ls 查看目录中的文件</span><br><span class="line">rm -f file1   <span class="comment"># 删文件 -f 不给提示</span></span><br><span class="line">rmdir dir1    <span class="comment"># 删目录</span></span><br><span class="line">groupadd group_name <span class="comment"># 创建一个新用户组</span></span><br><span class="line">groupdel group_name <span class="comment"># 删除一个用户组</span></span><br><span class="line">tar -cvf archive.tar file1 file2 dir1  <span class="comment"># 创建一个非压缩的 tar包</span></span><br><span class="line">tar -tf archive.tar <span class="comment"># 显示一个包中的内容</span></span><br><span class="line">tar -xvf archive.tar -C /tmp <span class="comment"># 解压压缩包到/tmp目录下</span></span><br><span class="line"><span class="comment"># -c 压缩 -x 解压 -v 显示所有过程 -f 压缩包名字</span></span><br><span class="line">tar -cvfj archive.tar.bz2 dir1  <span class="comment"># 创建一个 bzip2 格式的压缩包</span></span><br><span class="line">tar -xvfj archive.tar.bz2       <span class="comment"># 解压一个 bzip2 格式的压缩包</span></span><br><span class="line">tar -cvfz archive.tar.gz dir1   <span class="comment"># 创建一个 gzip 格式的压缩包</span></span><br><span class="line">tar -xvfz archive.tar.gz        <span class="comment"># 解压一个 gzip 格式的压缩包</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 关机</span></span><br><span class="line">reboot  <span class="comment"># 重启</span></span><br><span class="line">shutdown –r now  <span class="comment"># 重启，会给其他用户提示</span></span><br><span class="line">shutdown -h <span class="number">20</span>:<span class="number">25</span>   <span class="comment">#  定时关机</span></span><br><span class="line">shutdown -h +<span class="number">10</span>  <span class="comment"># 十分钟后关机</span></span><br><span class="line">init <span class="number">0</span>  <span class="comment"># 关机</span></span><br><span class="line">init <span class="number">6</span>  <span class="comment"># 重启</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/42/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/42/" class="post-title-link" itemprop="url">复习笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 01:13:24" itemprop="dateCreated datePublished" datetime="2020-11-13T01:13:24+08:00">2020-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">温故而知新</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.9k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">修改不可变数据会抛出TypeError异常</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span> 方法默认调用 sys.stdout.write 方法</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件路径操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_directory_contents</span>(<span class="params">abs_path</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    :param abs_path: 文件夹绝对地址</span></span><br><span class="line"><span class="string">    :return: 该文件夹中文件路径+包含的文件夹的文件路径</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">import</span> os</span><br><span class="line">    <span class="keyword">for</span> child_path <span class="keyword">in</span> os.listdir(abs_path):</span><br><span class="line">        abs_child_path = os.path.join(abs_path, child_path)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(abs_child_path):</span><br><span class="line">            print_directory_contents(abs_child_path)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(abs_child_path)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">os.remove()删除文件</span></span><br><span class="line"><span class="string">os.rename()重命名文件</span></span><br><span class="line"><span class="string">os.walk()生成目录树下的所有文件名</span></span><br><span class="line"><span class="string">os.chdir()改变目录</span></span><br><span class="line"><span class="string">os.mkdir/makedirs 创建目录/多层目录</span></span><br><span class="line"><span class="string">os.rmdir/removedirs 删除目录/多层目录</span></span><br><span class="line"><span class="string">os.listdir()列出指定目录的文件</span></span><br><span class="line"><span class="string">os.getcwd()取得当前工作目录</span></span><br><span class="line"><span class="string">os.chmod()改变目录权限</span></span><br><span class="line"><span class="string">os.path.basename()去掉目录路径，返回文件名</span></span><br><span class="line"><span class="string">os.path.dirname()去掉文件名，返回目录路径</span></span><br><span class="line"><span class="string">os.path.join()将分离的各部分组合成一个路径名</span></span><br><span class="line"><span class="string">os.path.split()返回（dirname(),basename())元组</span></span><br><span class="line"><span class="string">os.path.splitext()(返回 filename,extension)元组</span></span><br><span class="line"><span class="string">os.path.getatime\ctime\mtime 分别返回最近访问、创建、修改时间</span></span><br><span class="line"><span class="string">os.path.getsize()返回文件大小</span></span><br><span class="line"><span class="string">os.path.exists()是否存在</span></span><br><span class="line"><span class="string">os.path.isabs()是否为绝对路径</span></span><br><span class="line"><span class="string">os.path.isdir()是否为目录</span></span><br><span class="line"><span class="string">os.path.isfile()是否为文件</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拷贝</span></span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">copy.deepcopy(a)  <span class="comment"># 深拷贝</span></span><br><span class="line"><span class="comment"># &#x27;原子&#x27;类型的对象拷贝,都是返回引用,不是新创建</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># random模块</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line">random.random()  <span class="comment"># [0,1) float</span></span><br><span class="line">random.uniform(a, b)  <span class="comment"># [a,b] float</span></span><br><span class="line">random.randint(a, b)  <span class="comment"># [a,b] int</span></span><br><span class="line">random.randrange(a, b, step)  <span class="comment"># [a,b) step为步长，随机一个数字</span></span><br><span class="line">random.choice(sequence)  <span class="comment"># list中随机一个元素</span></span><br><span class="line">random.shuffle(alist)  <span class="comment"># 打乱顺序，无返回值</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># datetime</span></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line">date1 = datetime.date(year=<span class="built_in">int</span>(<span class="number">100</span>),month=<span class="built_in">int</span>(<span class="number">2</span>),day=<span class="built_in">int</span>(<span class="number">22</span>))</span><br><span class="line">print((date1-date1).days + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sys模块</span></span><br><span class="line">sys.path 主要是对 Python 解释器的系统环境参数的操作（动态的改变 Python 解释器搜索路径）</span><br><span class="line">sys.argv 命令行参数 List，第一个元素是程序本身代码（即此.py程序）<span class="comment"># 有时候带路径</span></span><br><span class="line">sys.exit(n) 退出程序，正常退出时 exit(<span class="number">0</span>)</span><br><span class="line">sys.maxint 最大的 Int 值</span><br><span class="line">sys.maxunicode 最大的 Unicode 值</span><br><span class="line">sys.stdout 标准输出</span><br><span class="line">sys.stdin 标准输入</span><br><span class="line">sys.stderr 错误输出</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Python 是强语言类型还是弱语言类型?</span></span><br><span class="line">Python 是强类型的动态脚本语言。  <span class="comment"># 强类型</span></span><br><span class="line">强类型：不允许不同类型相加。</span><br><span class="line">动态：不使用显示数据类型声明，且确定一个变量的类型是在第一次给它赋值的时候。</span><br><span class="line">脚本语言：一般也是解释型语言，运行代码只需要一个解释器，不需要编译。</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.woola.net/detail/2016-08-28-python-object-introspection.html">Python自省 (introspection)</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># PEP8 规范</span></span><br><span class="line"><span class="comment"># 模块和包:除特殊模块 __init__ 之外，模块名称都使用不带下划线的小写字母。若是它们实现一个协议，那么通常使用lib为后缀</span></span><br><span class="line"><span class="comment"># 使用 has 或 is 前缀命名布尔元素 is_connect = True  has_member = False</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 性能分析</span></span><br><span class="line"><span class="keyword">import</span> cProfile</span><br><span class="line">cProfile.run(<span class="string">&#x27;func(agrs)&#x27;</span>)   <span class="comment"># 字符串</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/15/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/15/" class="post-title-link" itemprop="url">Git基础</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 01:11:20" itemprop="dateCreated datePublished" datetime="2020-11-13T01:11:20+08:00">2020-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h3><h4 id="查看不同"><a href="#查看不同" class="headerlink" title="查看不同"></a>查看不同</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+
+<h4 id="回退"><a href="#回退" class="headerlink" title="回退"></a>回退</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^ </span><br><span class="line"><span class="meta">#</span><span class="bash"> HEAD 表示当前版本，^和^^, 或者直接是版本id号</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 1094a</span><br><span class="line"><span class="meta">#</span><span class="bash"> git reset --hard commit_id</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log [--pretty=oneline]</span><br><span class="line"><span class="meta">#</span><span class="bash"> git <span class="built_in">log</span> --graph命令可以看到分支合并图</span></span><br><span class="line">git log --graph --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看历史命令"><a href="#查看历史命令" class="headerlink" title="查看历史命令"></a>查看历史命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看工作区和版本库里面最新版本的区别"><a href="#查看工作区和版本库里面最新版本的区别" class="headerlink" title="查看工作区和版本库里面最新版本的区别"></a>查看工作区和版本库里面最新版本的区别</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff HEAD -- readme.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="丢弃修改"><a href="#丢弃修改" class="headerlink" title="丢弃修改"></a>丢弃修改</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- readme.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> git checkout -- file</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 只能丢弃未add的</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 如果已经add了，则需要使用git reset HEAD &lt;file&gt;命令，再调用git checkout -- readme.txt</span></span><br><span class="line">git reset HEAD readme.txt # 撤销add的文件</span><br><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 先删除文件，再使用命令删除版本库里面的文件，并且再commit</span></span><br><span class="line">git rm test.txt</span><br><span class="line">git commit -m &quot;remove test.txt&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果误删则git checkout -- test.txt还原</span></span><br><span class="line">git checkout -- test.txt</span><br></pre></td></tr></table></figure>
+
+<h4 id="关联仓库"><a href="#关联仓库" class="headerlink" title="关联仓库"></a>关联仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin &quot;url&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 把本地库的所有内容推送到远程库上</span></span><br><span class="line">git push -u origin master</span><br><span class="line"><span class="meta">#</span><span class="bash"> 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="推送代码"><a href="#推送代码" class="headerlink" title="推送代码"></a>推送代码</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br><span class="line"><span class="meta">#</span><span class="bash"> master 是仓库</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建+切换分支</span></span><br><span class="line">git checkout -b dev</span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建分支</span></span><br><span class="line">git branch &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;name&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 会列出所有分支，当前分支前面会标一个*号</span></span><br><span class="line">git branch</span><br></pre></td></tr></table></figure>
+
+<h4 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 分支走在了主分支前面，并没有变成两个不同分支</span></span><br><span class="line">git merge dev</span><br><span class="line"><span class="meta">#</span><span class="bash"> Fast-forward <span class="string">&quot;快进模式&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 切换回主分支，再合并（重点理解为什么）</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -d dev # 和查看当前分支相同</span><br><span class="line">git branch -D feature-vulcan # 强制删除未合并的分支</span><br></pre></td></tr></table></figure>
+
+<h4 id="禁用Fast-forward-：”快进模式”"><a href="#禁用Fast-forward-：”快进模式”" class="headerlink" title="禁用Fast-forward ：”快进模式”"></a>禁用Fast-forward ：”快进模式”</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff -m &quot;merge with no-ff&quot; dev</span><br><span class="line"><span class="meta">#</span><span class="bash"> 因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="保存现场"><a href="#保存现场" class="headerlink" title="保存现场"></a>保存现场</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看保存的现场</span></span><br><span class="line">git stash list</span><br><span class="line"><span class="meta">#</span><span class="bash"> 恢复现场方法一</span></span><br><span class="line">git stash apply</span><br><span class="line">git stash drop</span><br><span class="line">git stash apply stash@&#123;0&#125; # 好像没什么区别</span><br><span class="line"><span class="meta">#</span><span class="bash"> 恢复现场方法二</span></span><br><span class="line">git stash pop # 常用</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看远程库信息"><a href="#查看远程库信息" class="headerlink" title="查看远程库信息"></a>查看远程库信息</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote [-v]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 加上-v，信息更详细</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="分支推送原则"><a href="#分支推送原则" class="headerlink" title="分支推送原则"></a>分支推送原则</h4><ul>
+<li><code>master</code>分支是主分支，因此要时刻与远程同步；</li>
+<li><code>dev</code>分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</li>
+<li><code>bug</code>分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</li>
+<li><code>feature</code>分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</li>
+</ul>
+<h4 id="拷贝远程分支到本地（远程合作常用）"><a href="#拷贝远程分支到本地（远程合作常用）" class="headerlink" title="拷贝远程分支到本地（远程合作常用）"></a>拷贝远程分支到本地（远程合作常用）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev origin/dev</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置dev和origin/dev的链接</span></span><br><span class="line">git branch --set-upstream-to=origin/dev dev</span><br><span class="line"><span class="meta">#</span><span class="bash"> git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;</span></span><br><span class="line">git pull # 下载更新 </span><br></pre></td></tr></table></figure>
+
+<h4 id="特殊命令（多人合作）"><a href="#特殊命令（多人合作）" class="headerlink" title="特殊命令（多人合作）"></a>特殊命令（多人合作）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rebase</span><br><span class="line"><span class="meta">#</span><span class="bash"> rebase操作可以把本地未push的分叉提交历史整理成直线；</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> rebase的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag v1.0</span><br><span class="line"><span class="meta">#</span><span class="bash"> git tag &lt;name&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="对commit打标签"><a href="#对commit打标签" class="headerlink" title="对commit打标签"></a>对commit打标签</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag v0.9 f52c633  # id号</span><br></pre></td></tr></table></figure>
+
+<h4 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git tag # 查看标签</span><br><span class="line">git show v0.9  # git show &lt;tagname&gt;查看标签信息</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注意，标签不是按时间顺序列出，而是按字母排序的。</span></span><br><span class="line"></span><br><span class="line">git tag -a v0.1 -m &quot;version 0.1 released&quot; 1094adb</span><br><span class="line"><span class="meta">#</span><span class="bash"> 还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 标签总是和某个commit挂钩。如果这个commit既出现在master分支，又出现在dev分支，那么在这两个分支上都可以看到这个标签</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 删除标签</span></span><br><span class="line">git tag -d v0.1  # 命令git tag -d &lt;tagname&gt;可以删除一个本地标签；</span><br><span class="line"><span class="meta">#</span><span class="bash"> git push origin &lt;tagname&gt; 推送标签到远程库</span></span><br><span class="line">git push origin v1.0 # 某一个</span><br><span class="line">git push origin --tags  # 所有标签</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除</span></span><br><span class="line">git tag -d v0.9</span><br><span class="line">git push origin :refs/tags/v0.9</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令git push origin :refs/tags/&lt;tagname&gt;可以删除一个远程标签。</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> .gitignore文件（不想被git提示的，文件名写入其中即可）</span></span><br><span class="line">git check-ignore # 查找错误规则</span><br><span class="line">git add -f App.class # 强制添加</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 别名</span></span><br><span class="line">git config --global alias.st status # git status改为git st (即status改为st)</span><br><span class="line"><span class="meta">#</span><span class="bash"> 丧心病狂</span></span><br><span class="line">git config --global alias.lg &quot;log --color --graph --pretty=format:&#x27;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#x27; --abbrev-commit&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置文件cat .git/config ,直接修改[<span class="built_in">alias</span>]即可还原</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -305,397 +752,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/57/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/57/" class="post-title-link" itemprop="url">复习笔记</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 01:08:57" itemprop="dateCreated datePublished" datetime="2020-11-13T01:08:57+08:00">2020-11-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/" itemprop="url" rel="index">
-                    <span itemprop="name">温故而知新</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>575</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="4G-内存怎么读取一个-5G-的数据？"><a href="#4G-内存怎么读取一个-5G-的数据？" class="headerlink" title="4G 内存怎么读取一个 5G 的数据？"></a>4G 内存怎么读取一个 5G 的数据？</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一:</span></span><br><span class="line"><span class="comment"># 生成器，分多次读取</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_read</span>(<span class="params">file, separator</span>):</span>  <span class="comment"># 流对象，分隔符</span></span><br><span class="line">    buffer = <span class="string">&quot;&quot;</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">while</span> separator <span class="keyword">in</span> buffer:  <span class="comment"># 此处while比if更合适, 处理buffer有多个separator</span></span><br><span class="line">            pos = buffer.index(separator)  <span class="comment"># 获取第一个下标</span></span><br><span class="line">            <span class="keyword">yield</span> separator[:pos]</span><br><span class="line">            buffer = buffer[pos + <span class="built_in">len</span>(separator):]</span><br><span class="line">        chunk = file.read(<span class="number">2000</span>)  <span class="comment"># 太小也会降低效率</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> chunk:</span><br><span class="line">            <span class="keyword">yield</span> buffer</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        buffer = buffer + chunk</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;f.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> my_read(f, separator=<span class="string">&#x27;\n&#x27;</span>):</span><br><span class="line">        print(line)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法二:</span></span><br><span class="line"><span class="comment"># linux命令split切割成小文件</span></span><br><span class="line">split -l <span class="number">300</span> big.txt -d -a <span class="number">4</span> big_  <span class="comment"># 系数不是字母而是数字（-d），后缀系数为四位数（-a 4）</span></span><br><span class="line">split -b <span class="number">10</span>m big.txt big_          <span class="comment"># 按照大小切割</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/mxgsgtc/article/details/12048919">linux命令split切割成小文件</a></li>
-</ul>
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/62/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/62/" class="post-title-link" itemprop="url">发送邮件</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 01:07:09" itemprop="dateCreated datePublished" datetime="2020-11-13T01:07:09+08:00">2020-11-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">服务端开发</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="使用python发送邮件"><a href="#使用python发送邮件" class="headerlink" title="使用python发送邮件"></a>使用python发送邮件</h3><h4 id="发送邮件，带附件"><a href="#发送邮件，带附件" class="headerlink" title="发送邮件，带附件"></a>发送邮件，带附件</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> smtplib</span><br><span class="line"><span class="keyword">from</span> email <span class="keyword">import</span> encoders</span><br><span class="line"><span class="keyword">from</span> email.header <span class="keyword">import</span> Header</span><br><span class="line"><span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText</span><br><span class="line"><span class="keyword">from</span> email.mime.multipart <span class="keyword">import</span> MIMEMultipart</span><br><span class="line"><span class="keyword">from</span> email.mime.base <span class="keyword">import</span> MIMEBase</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_email</span>():</span></span><br><span class="line">    <span class="comment"># 邮件一般是由标题，发信人，收件人，邮件内容，附件等构成</span></span><br><span class="line">    msg = MIMEMultipart()</span><br><span class="line">    msg[<span class="string">&#x27;From&#x27;</span>] = Header(<span class="string">&#x27;Worker&lt;1837@qq.com&gt;&#x27;</span>)  <span class="comment"># 发件人</span></span><br><span class="line">    msg[<span class="string">&#x27;To&#x27;</span>] = Header(<span class="string">&#x27;Administrators&lt;17859@163.com&gt;&#x27;</span>)  <span class="comment"># 收件人</span></span><br><span class="line">    msg[<span class="string">&#x27;Subject&#x27;</span>] = Header(<span class="string">&#x27;Work in 2020.&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>).encode()  <span class="comment"># 标题</span></span><br><span class="line">    msg.attach(MIMEText(<span class="string">&#x27;hello, work completed.&#x27;</span>, <span class="string">&#x27;plain&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>))  <span class="comment"># 内容</span></span><br><span class="line"></span><br><span class="line">    zip_path = os.path.join(os.path.abspath(<span class="string">&#x27;.&#x27;</span>), <span class="string">&#x27;test.zip&#x27;</span>)</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(zip_path, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        mime = MIMEBase(<span class="string">&#x27;zip&#x27;</span>, <span class="string">&#x27;zip&#x27;</span>, filename=zip_path)</span><br><span class="line">        <span class="comment"># 加上必要的头信息:</span></span><br><span class="line">        mime.add_header(<span class="string">&#x27;Content-Disposition&#x27;</span>, <span class="string">&#x27;attachment&#x27;</span>, filename=(<span class="string">&#x27;utf8&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;test1.zip&#x27;</span>))</span><br><span class="line">        mime.add_header(<span class="string">&#x27;Content-ID&#x27;</span>, <span class="string">&#x27;&lt;0&gt;&#x27;</span>)</span><br><span class="line">        mime.add_header(<span class="string">&#x27;X-Attachment-Id&#x27;</span>, <span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">        <span class="comment"># 把附件的内容读进来:</span></span><br><span class="line">        mime.set_payload(f.read())</span><br><span class="line">    encoders.encode_base64(mime)</span><br><span class="line">    msg.attach(mime)</span><br><span class="line"></span><br><span class="line">    server = smtplib.SMTP(<span class="string">&quot;smtp.qq.com&quot;</span>, <span class="number">25</span>)</span><br><span class="line">    server.starttls()  <span class="comment"># 加密</span></span><br><span class="line">    server.login(<span class="string">&quot;196@qq.com&quot;</span>, <span class="string">&quot;gphf&quot;</span>)  <span class="comment"># 授权码</span></span><br><span class="line">    server.sendmail(<span class="string">&quot;186@qq.com&quot;</span>, [<span class="string">&quot;17@163.com&quot;</span>, ], msg.as_string())</span><br><span class="line">    server.quit()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    send_email()</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/5/" class="post-title-link" itemprop="url">装饰器简单使用</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 01:06:08" itemprop="dateCreated datePublished" datetime="2020-11-13T01:06:08+08:00">2020-11-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">服务端开发</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>462</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="装饰器（装饰模式）"><a href="#装饰器（装饰模式）" class="headerlink" title="装饰器（装饰模式）"></a>装饰器（装饰模式）</h3><h4 id="例子1"><a href="#例子1" class="headerlink" title="例子1"></a>例子1</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 两层</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">log</span>(<span class="params">func</span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wrapper</span>(<span class="params">*args, **kw</span>):</span></span><br><span class="line">        print(<span class="string">&#x27;log&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kw)</span><br><span class="line">    <span class="keyword">return</span> wrapper</span><br><span class="line"><span class="meta">@log</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    print(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/43/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/43/" class="post-title-link" itemprop="url">操作Csv文件</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 01:04:12" itemprop="dateCreated datePublished" datetime="2020-11-13T01:04:12+08:00">2020-11-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">服务端开发</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.4k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="使用csv操作excel、csv文件"><a href="#使用csv操作excel、csv文件" class="headerlink" title="使用csv操作excel、csv文件"></a>使用csv操作excel、csv文件</h3><p>Translation</p>
-<ul>
-<li>翻译官方文档-对应Python3.6</li>
-<li><em>dialect</em> 方言，这里指定格式为 csv</li>
-</ul>
-<h4 id="模块内容"><a href="#模块内容" class="headerlink" title="模块内容"></a>模块内容</h4><ul>
-<li>functions</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># csv.reader(csvfile, dialect=&#x27;excel&#x27;, **fmtparams)</span></span><br><span class="line"><span class="comment"># return: a list of strings</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;eggs.csv&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    spamreader = csv.reader(csvfile, delimiter=<span class="string">&#x27; &#x27;</span>, quotechar=<span class="string">&#x27;|&#x27;</span>)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> spamreader:</span><br><span class="line">        print(<span class="string">&#x27;, &#x27;</span>.join(row))</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># csv.writer(csvfile, dialect=&#x27;excel&#x27;, **fmtparams)</span></span><br><span class="line"><span class="comment"># 写入是 a list of strings</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;eggs.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    spamwriter = csv.writer(csvfile, delimiter=<span class="string">&#x27; &#x27;</span>,</span><br><span class="line">                            quotechar=<span class="string">&#x27;|&#x27;</span>, quoting=csv.QUOTE_MINIMAL)</span><br><span class="line">    spamwriter.writerow([<span class="string">&#x27;Spam&#x27;</span>] * <span class="number">5</span> + [<span class="string">&#x27;Baked Beans&#x27;</span>])</span><br><span class="line">    spamwriter.writerow([<span class="string">&#x27;Spam&#x27;</span>, <span class="string">&#x27;Lovely Spam&#x27;</span>, <span class="string">&#x27;Wonderful Spam&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>classes</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># csv.DictReader(f)</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;names.csv&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    reader = csv.DictReader(csvfile)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        print(row[<span class="string">&#x27;first_name&#x27;</span>], row[<span class="string">&#x27;last_name&#x27;</span>])</span><br><span class="line">print(row)</span><br><span class="line"><span class="comment"># 公开接口</span></span><br><span class="line">csvreader.__next__()  <span class="comment"># 让对象变为 iterable object，使用next(reader) </span></span><br><span class="line">csvreader.dialect  <span class="comment"># 只读</span></span><br><span class="line">csvreader.line_num <span class="comment"># 行数(包含首行目录), 这与返回的记录数不同，因为记录可以跨越多行。</span></span><br><span class="line">csvreader.fieldnames <span class="comment"># 目录（如果有，没有则是第一行）</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># csv.DictWriter(f)</span></span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;names.csv&#x27;</span>, <span class="string">&#x27;w&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>) <span class="keyword">as</span> csvfile:</span><br><span class="line">    fieldnames = [<span class="string">&#x27;first_name&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>]</span><br><span class="line">    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)  <span class="comment"># 指定目录</span></span><br><span class="line"></span><br><span class="line">    writer.writeheader()  <span class="comment"># 写入目录</span></span><br><span class="line">    writer.writerow(&#123;<span class="string">&#x27;first_name&#x27;</span>: <span class="string">&#x27;Baked&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>: <span class="string">&#x27;Beans&#x27;</span>&#125;)</span><br><span class="line">    writer.writerow(&#123;<span class="string">&#x27;first_name&#x27;</span>: <span class="string">&#x27;Lovely&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>: <span class="string">&#x27;Spam&#x27;</span>&#125;)</span><br><span class="line">    writer.writerow(&#123;<span class="string">&#x27;first_name&#x27;</span>: <span class="string">&#x27;Wonderful&#x27;</span>, <span class="string">&#x27;last_name&#x27;</span>: <span class="string">&#x27;Spam&#x27;</span>&#125;)</span><br><span class="line"><span class="comment"># 公开接口</span></span><br><span class="line">csvwriter.writerow(row)</span><br><span class="line">csvwriter.writerows(rows) <span class="comment"># an iterable of row objects</span></span><br><span class="line">DictWriter.writeheader()  <span class="comment"># 写入目录（必须先在构造函数中指定）。</span></span><br><span class="line">csvreader.dialect  <span class="comment"># 只读</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>exception</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">csv.Error</span><br><span class="line"><span class="comment"># 所有异常都是Error</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Dialects的默认参数"><a href="#Dialects的默认参数" class="headerlink" title="Dialects的默认参数"></a>Dialects的默认参数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 一下参数了解，我们一般用不到，（不会去手动创建dialect对象）</span></span><br><span class="line">Dialect.delimiter</span><br><span class="line"><span class="comment"># 分隔符，默认为 &#x27;,&#x27;</span></span><br><span class="line">Dialect.lineterminator</span><br><span class="line"><span class="comment"># 换行符 defaults &#x27;\r\n&#x27;</span></span><br><span class="line">Dialect.strict</span><br><span class="line"><span class="comment"># When True, raise exception Error on bad CSV input. The default is False.</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;some.csv&#x27;</span>, newline=<span class="string">&#x27;&#x27;</span>, encoding=<span class="string">&#x27;utf-8&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    reader = csv.reader(f)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> reader:</span><br><span class="line">        print(row)</span><br><span class="line"><span class="comment"># 偶尔是 encoding=&#x27;utf-8-sig&#x27; </span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> csv.reader([<span class="string">&#x27;one,two,three&#x27;</span>]): <span class="comment"># 解析字符串</span></span><br><span class="line">    print(row)</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/14/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/16/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -741,7 +802,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">85</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -793,16 +854,16 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-area-chart"></i>
     </span>
-    <span title="站点总字数">98k</span>
+    <span title="站点总字数">102k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:29</span>
+    <span title="站点阅读时长">1:33</span>
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;31k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;31.9k&nbsp;字</span>
   </div>
 
 
