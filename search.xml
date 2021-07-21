@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Python调用C语言</title>
+    <url>/notes/11/</url>
+    <content><![CDATA[<h3 id="Python3-调用C语言代码"><a href="#Python3-调用C语言代码" class="headerlink" title="Python3 调用C语言代码"></a>Python3 调用C语言代码</h3><h5 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">centos7+python3.6</span><br></pre></td></tr></table></figure>
+
+<h5 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Python中的ctypes模块可能是Python调用C方法中最简单的一种。</span><br><span class="line">ctypes模块提供了和C语言兼容的数据类型和函数来加载dll文件，</span><br><span class="line">因此在调用时不需对源文件做任何的修改，也正是如此奠定了这种方法的简单性。</span><br></pre></td></tr></table></figure>
+
+<h5 id="准备文件"><a href="#准备文件" class="headerlink" title="准备文件"></a>准备文件</h5><h6 id="1-准备C语言程序，保存为add-c"><a href="#1-准备C语言程序，保存为add-c" class="headerlink" title="1.准备C语言程序，保存为add.c"></a>1.准备C语言程序，保存为add.c</h6><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add_int</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">add_float</span><span class="params">(<span class="keyword">float</span>, <span class="keyword">float</span>)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add_int</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">add_float</span><span class="params">(<span class="keyword">float</span> num1, <span class="keyword">float</span> num2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-编译成so库"><a href="#2-编译成so库" class="headerlink" title="2.编译成so库"></a>2.编译成so库</h6><p>输入命令即可，会出现一个.so文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc -shared -Wl,-soname,adder -o adder.so -fPIC add.c</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-准备python代码，保存为python-c-py"><a href="#3-准备python代码，保存为python-c-py" class="headerlink" title="3.准备python代码，保存为python-c.py"></a>3.准备python代码，保存为python-c.py</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"> </span><br><span class="line"><span class="comment">#load the shared object file</span></span><br><span class="line">adder = ctypes.cdll.LoadLibrary(<span class="string">&#x27;./adder.so&#x27;</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment">#Find sum of integers</span></span><br><span class="line">res_int = adder.add_int(<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">print(<span class="string">&quot;4 + 5 = &quot;</span> + <span class="built_in">str</span>(res_int))</span><br><span class="line"> </span><br><span class="line"><span class="comment">#Find sum of floats</span></span><br><span class="line">a = ctypes.c_float(<span class="number">5.5</span>)</span><br><span class="line">b = ctypes.c_float(<span class="number">4.1</span>)</span><br><span class="line"> </span><br><span class="line">add_float = adder.add_float</span><br><span class="line">add_float.restype = ctypes.c_float</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;5.5 + 4.1 = &quot;</span> + <span class="built_in">str</span>(add_float(a, b)))</span><br></pre></td></tr></table></figure>
+
+<h6 id="4-执行"><a href="#4-执行" class="headerlink" title="4.执行"></a>4.执行</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 python-c.py</span><br></pre></td></tr></table></figure>
+
+<p>执行结果如下</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4 + 5 &#x3D; 9</span><br><span class="line">5.5 + 4.1 &#x3D; 9.600000381469727</span><br></pre></td></tr></table></figure>
+
+<h6 id="5-特殊说明"><a href="#5-特殊说明" class="headerlink" title="5.特殊说明"></a>5.特殊说明</h6><ul>
+<li>在Python文件中，一开始先导入ctypes模块，然后使用cdll.LoadLibrary函数来加载我们创建的库文件。这样我们就可以通过变量adder来使用C类库中的函数了。当adder.add_int()被调用时，内部将发起一个对C函数add_int的调用。ctypes接口允许我们在调用C函数时使用原生Python中默认的字符串型和整型。</li>
+<li>而对于其他类似布尔型和浮点型这样的类型，必须要使用正确的ctype类型才可以。如向adder.add_float()函数传参时, 我们要先将Python中的十进制值转化为c_float类型，然后才能传送给C函数。这种方法虽然简单，清晰，但是却很受限。例如，并不能在C中对对象进行操作。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Unittest基础</title>
+    <url>/notes/13/</url>
+    <content><![CDATA[<h1 id="unittest"><a href="#unittest" class="headerlink" title="unittest"></a>unittest</h1><p>核心例子</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">from</span> unittest_demo.Calculator <span class="keyword">import</span> Calculator</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestCalculator</span>(<span class="params">unittest.TestCase</span>):</span>  <span class="comment"># 1、继承unittest.TestCase类</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testDivide01</span>(<span class="params">self</span>):</span>  <span class="comment"># 2、以test开头的函数</span></span><br><span class="line">        cal = Calculator()</span><br><span class="line">        result = cal.divide(<span class="number">10</span>, <span class="number">2</span>)</span><br><span class="line">        self.assertEqual(result, <span class="number">5</span>)  <span class="comment"># 3、使用断言判断结果</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testDivide02</span>(<span class="params">self</span>):</span></span><br><span class="line">        cal = Calculator()</span><br><span class="line">        result = cal.divide(<span class="number">20</span>, <span class="number">0.5</span>)</span><br><span class="line">        self.assertEqual(result, <span class="number">40</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()  <span class="comment"># 4、用unittest.main()执行所有test开头的函数，每个函数就是一个测试用例</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3 id="unittest-1"><a href="#unittest-1" class="headerlink" title="unittest"></a>unittest</h3><ul>
+<li>面向对象</li>
+<li>测试用例的组成：用例编号、模块、测试标题、前提条件、操作步骤、期望结果、世纪结果</li>
+</ul>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li>测试脚手架 test fixture</li>
+<li>测试用例 TestCase 基类</li>
+<li>测试套件 test suite</li>
+<li>测试运行器 test runner</li>
+</ul>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">setUp和tearDown 设置初始化和状态还原</span><br><span class="line">unittest.main() <span class="comment"># 开始执行测试</span></span><br><span class="line">self.assertEqual <span class="comment"># assertTrue、assertFalse</span></span><br><span class="line"><span class="comment"># assertRaises(), assertRaisesRegex(), assertWarns(), assertWarnsRegex()</span></span><br><span class="line"><span class="keyword">with</span> self.assertRaises(TypeError):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="comment"># 命令 python -m unittest ...</span></span><br></pre></td></tr></table></figure>
+
+<p> <em>常见判断方法：</em></p>
+ <img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201027100723.png" alt="image-20201027100723831" style="zoom: 33%;" />
+
+ <img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201027101027.png" alt="image-20201027101027126" style="zoom: 33%;" />
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 测试套件 test suite</span><br><span class="line">def suite():</span><br><span class="line">    suite &#x3D; unittest.TestSuite()</span><br><span class="line">    suite.addTest(WidgetTestCase(&#39;test_default_widget_size&#39;))  # 这是一个测试方法名</span><br><span class="line">    suite.addTest(WidgetTestCase(&#39;test_widget_resize&#39;)) # 这是一个测试方法名</span><br><span class="line">    return suite</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    runner &#x3D; unittest.TextTestRunner()</span><br><span class="line">    runner.run(suite())</span><br></pre></td></tr></table></figure>
+
+<h3 id="跳过测试与预计的失败"><a href="#跳过测试与预计的失败" class="headerlink" title="跳过测试与预计的失败"></a>跳过测试与预计的失败</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 跳过测试</span><br><span class="line">@unittest.skip</span><br><span class="line">@unittest.skipIf</span><br><span class="line">@unittest.skipUnless</span><br><span class="line"># 预计失败</span><br><span class="line">@unittest.expectedFailure</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>unittest</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Shell脚本基础</title>
     <url>/notes/1/</url>
     <content><![CDATA[<h4 id="Shell脚本格式"><a href="#Shell脚本格式" class="headerlink" title="Shell脚本格式"></a>Shell脚本格式</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash   开头指定解释器</span></span><br></pre></td></tr></table></figure>
@@ -61,37 +129,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python调用C语言</title>
-    <url>/notes/11/</url>
-    <content><![CDATA[<h3 id="Python3-调用C语言代码"><a href="#Python3-调用C语言代码" class="headerlink" title="Python3 调用C语言代码"></a>Python3 调用C语言代码</h3><h5 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">centos7+python3.6</span><br></pre></td></tr></table></figure>
-
-<h5 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Python中的ctypes模块可能是Python调用C方法中最简单的一种。</span><br><span class="line">ctypes模块提供了和C语言兼容的数据类型和函数来加载dll文件，</span><br><span class="line">因此在调用时不需对源文件做任何的修改，也正是如此奠定了这种方法的简单性。</span><br></pre></td></tr></table></figure>
-
-<h5 id="准备文件"><a href="#准备文件" class="headerlink" title="准备文件"></a>准备文件</h5><h6 id="1-准备C语言程序，保存为add-c"><a href="#1-准备C语言程序，保存为add-c" class="headerlink" title="1.准备C语言程序，保存为add.c"></a>1.准备C语言程序，保存为add.c</h6><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add_int</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">add_float</span><span class="params">(<span class="keyword">float</span>, <span class="keyword">float</span>)</span></span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add_int</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">add_float</span><span class="params">(<span class="keyword">float</span> num1, <span class="keyword">float</span> num2)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> num1 + num2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="2-编译成so库"><a href="#2-编译成so库" class="headerlink" title="2.编译成so库"></a>2.编译成so库</h6><p>输入命令即可，会出现一个.so文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gcc -shared -Wl,-soname,adder -o adder.so -fPIC add.c</span><br></pre></td></tr></table></figure>
-
-<h6 id="3-准备python代码，保存为python-c-py"><a href="#3-准备python代码，保存为python-c-py" class="headerlink" title="3.准备python代码，保存为python-c.py"></a>3.准备python代码，保存为python-c.py</h6><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"> </span><br><span class="line"><span class="comment">#load the shared object file</span></span><br><span class="line">adder = ctypes.cdll.LoadLibrary(<span class="string">&#x27;./adder.so&#x27;</span>)</span><br><span class="line"> </span><br><span class="line"><span class="comment">#Find sum of integers</span></span><br><span class="line">res_int = adder.add_int(<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">print(<span class="string">&quot;4 + 5 = &quot;</span> + <span class="built_in">str</span>(res_int))</span><br><span class="line"> </span><br><span class="line"><span class="comment">#Find sum of floats</span></span><br><span class="line">a = ctypes.c_float(<span class="number">5.5</span>)</span><br><span class="line">b = ctypes.c_float(<span class="number">4.1</span>)</span><br><span class="line"> </span><br><span class="line">add_float = adder.add_float</span><br><span class="line">add_float.restype = ctypes.c_float</span><br><span class="line"> </span><br><span class="line">print(<span class="string">&quot;5.5 + 4.1 = &quot;</span> + <span class="built_in">str</span>(add_float(a, b)))</span><br></pre></td></tr></table></figure>
-
-<h6 id="4-执行"><a href="#4-执行" class="headerlink" title="4.执行"></a>4.执行</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">python3 python-c.py</span><br></pre></td></tr></table></figure>
-
-<p>执行结果如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">4 + 5 &#x3D; 9</span><br><span class="line">5.5 + 4.1 &#x3D; 9.600000381469727</span><br></pre></td></tr></table></figure>
-
-<h6 id="5-特殊说明"><a href="#5-特殊说明" class="headerlink" title="5.特殊说明"></a>5.特殊说明</h6><ul>
-<li>在Python文件中，一开始先导入ctypes模块，然后使用cdll.LoadLibrary函数来加载我们创建的库文件。这样我们就可以通过变量adder来使用C类库中的函数了。当adder.add_int()被调用时，内部将发起一个对C函数add_int的调用。ctypes接口允许我们在调用C函数时使用原生Python中默认的字符串型和整型。</li>
-<li>而对于其他类似布尔型和浮点型这样的类型，必须要使用正确的ctype类型才可以。如向adder.add_float()函数传参时, 我们要先将Python中的十进制值转化为c_float类型，然后才能传送给C函数。这种方法虽然简单，清晰，但是却很受限。例如，并不能在C中对对象进行操作。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Scrapy基础</title>
     <url>/notes/10/</url>
     <content><![CDATA[<h4 id="使用scrapy的shell测试网站"><a href="#使用scrapy的shell测试网站" class="headerlink" title="使用scrapy的shell测试网站"></a>使用scrapy的shell测试网站</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 给scrapy shell 调试加上headers</span></span><br><span class="line">scrapy shell <span class="comment"># 进入shell,但没有url</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;User-Agent:Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&#x27;</span>&#125;</span><br><span class="line">req = scrapy.Request(url=<span class="string">&#x27;url&#x27;</span>,headers=headers)</span><br><span class="line">fetch(req) <span class="comment"># 如此就等价于scrapy shell url # 添加了headers</span></span><br></pre></td></tr></table></figure>
@@ -101,43 +138,6 @@
       </categories>
       <tags>
         <tag>scrapy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Unittest基础</title>
-    <url>/notes/13/</url>
-    <content><![CDATA[<h1 id="unittest"><a href="#unittest" class="headerlink" title="unittest"></a>unittest</h1><p>核心例子</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> unittest</span><br><span class="line"><span class="keyword">from</span> unittest_demo.Calculator <span class="keyword">import</span> Calculator</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestCalculator</span>(<span class="params">unittest.TestCase</span>):</span>  <span class="comment"># 1、继承unittest.TestCase类</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testDivide01</span>(<span class="params">self</span>):</span>  <span class="comment"># 2、以test开头的函数</span></span><br><span class="line">        cal = Calculator()</span><br><span class="line">        result = cal.divide(<span class="number">10</span>, <span class="number">2</span>)</span><br><span class="line">        self.assertEqual(result, <span class="number">5</span>)  <span class="comment"># 3、使用断言判断结果</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">testDivide02</span>(<span class="params">self</span>):</span></span><br><span class="line">        cal = Calculator()</span><br><span class="line">        result = cal.divide(<span class="number">20</span>, <span class="number">0.5</span>)</span><br><span class="line">        self.assertEqual(result, <span class="number">40</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    unittest.main()  <span class="comment"># 4、用unittest.main()执行所有test开头的函数，每个函数就是一个测试用例</span></span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-
-<h3 id="unittest-1"><a href="#unittest-1" class="headerlink" title="unittest"></a>unittest</h3><ul>
-<li>面向对象</li>
-<li>测试用例的组成：用例编号、模块、测试标题、前提条件、操作步骤、期望结果、世纪结果</li>
-</ul>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
-<li>测试脚手架 test fixture</li>
-<li>测试用例 TestCase 基类</li>
-<li>测试套件 test suite</li>
-<li>测试运行器 test runner</li>
-</ul>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">setUp和tearDown 设置初始化和状态还原</span><br><span class="line">unittest.main() <span class="comment"># 开始执行测试</span></span><br><span class="line">self.assertEqual <span class="comment"># assertTrue、assertFalse</span></span><br><span class="line"><span class="comment"># assertRaises(), assertRaisesRegex(), assertWarns(), assertWarnsRegex()</span></span><br><span class="line"><span class="keyword">with</span> self.assertRaises(TypeError):</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="comment"># 命令 python -m unittest ...</span></span><br></pre></td></tr></table></figure>
-
-<p> <em>常见判断方法：</em></p>
- <img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201027100723.png" alt="image-20201027100723831" style="zoom: 33%;" />
-
- <img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201027101027.png" alt="image-20201027101027126" style="zoom: 33%;" />
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 测试套件 test suite</span><br><span class="line">def suite():</span><br><span class="line">    suite &#x3D; unittest.TestSuite()</span><br><span class="line">    suite.addTest(WidgetTestCase(&#39;test_default_widget_size&#39;))  # 这是一个测试方法名</span><br><span class="line">    suite.addTest(WidgetTestCase(&#39;test_widget_resize&#39;)) # 这是一个测试方法名</span><br><span class="line">    return suite</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    runner &#x3D; unittest.TextTestRunner()</span><br><span class="line">    runner.run(suite())</span><br></pre></td></tr></table></figure>
-
-<h3 id="跳过测试与预计的失败"><a href="#跳过测试与预计的失败" class="headerlink" title="跳过测试与预计的失败"></a>跳过测试与预计的失败</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 跳过测试</span><br><span class="line">@unittest.skip</span><br><span class="line">@unittest.skipIf</span><br><span class="line">@unittest.skipUnless</span><br><span class="line"># 预计失败</span><br><span class="line">@unittest.expectedFailure</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>运维测试</category>
-      </categories>
-      <tags>
-        <tag>unittest</tag>
       </tags>
   </entry>
   <entry>
@@ -153,6 +153,26 @@
       </categories>
       <tags>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>做项目注意事项</title>
+    <url>/notes/16/</url>
+    <content><![CDATA[<p><strong>自己负责项目的时候</strong></p>
+<p>注意点：</p>
+<ul>
+<li>做一个项目一定要先调研</li>
+<li>可以节约时间成本（找到了一些资源代码）</li>
+<li>可以找到具体的方向，实现目的的技术方向</li>
+<li>可以查看市场现状，做出基本的评估</li>
+<li>重点是风险评估</li>
+</ul>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>其他</tag>
       </tags>
   </entry>
   <entry>
@@ -226,39 +246,6 @@
       </tags>
   </entry>
   <entry>
-    <title>面向对象(Python)</title>
-    <url>/notes/17/</url>
-    <content><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/23625909">super</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/61042358">面向对象</a></p>
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>做项目注意事项</title>
-    <url>/notes/16/</url>
-    <content><![CDATA[<p><strong>自己负责项目的时候</strong></p>
-<p>注意点：</p>
-<ul>
-<li>做一个项目一定要先调研</li>
-<li>可以节约时间成本（找到了一些资源代码）</li>
-<li>可以找到具体的方向，实现目的的技术方向</li>
-<li>可以查看市场现状，做出基本的评估</li>
-<li>重点是风险评估</li>
-</ul>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>复习笔记</title>
     <url>/notes/18/</url>
     <content><![CDATA[<h4 id="系统编程"><a href="#系统编程" class="headerlink" title="系统编程"></a>系统编程</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进程总结</span></span><br><span class="line"><span class="comment"># 程序运行在操作系统上的一个实例，就称之为进程。</span></span><br><span class="line"><span class="comment"># 进程需要相应的系统资源：内存、时间片、pid</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"></span><br><span class="line">proc = Process(target=func, args=(<span class="number">1</span>,), kwargs=&#123;<span class="string">&#x27;a&#x27;</span>: <span class="string">&#x27;a&#x27;</span>&#125;, name=<span class="string">&#x27;proc_1&#x27;</span>)</span><br><span class="line">proc.start()</span><br><span class="line">proc.is_alive()  <span class="comment"># 是否还活着</span></span><br><span class="line">proc.join(timeout=<span class="number">10</span>)  <span class="comment"># 等结束，或者等10秒</span></span><br><span class="line">proc.terminate()  <span class="comment"># 强制关闭</span></span><br><span class="line">proc.name</span><br><span class="line">proc.pid</span><br></pre></td></tr></table></figure>
@@ -280,6 +267,19 @@
       <categories>
         <category>温故而知新</category>
       </categories>
+  </entry>
+  <entry>
+    <title>面向对象(Python)</title>
+    <url>/notes/17/</url>
+    <content><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/23625909">super</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/61042358">面向对象</a></p>
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
   </entry>
   <entry>
     <title>设计模式</title>
@@ -481,31 +481,6 @@
       </tags>
   </entry>
   <entry>
-    <title>防火墙</title>
-    <url>/notes/28/</url>
-    <content><![CDATA[<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><h4 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询端口号80-是否开启"><a href="#查询端口号80-是否开启" class="headerlink" title="查询端口号80 是否开启"></a>查询端口号80 是否开启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --query-port&#x3D;80&#x2F;tcp</span><br></pre></td></tr></table></figure>
-
-<h4 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询有哪些端口是开启的"><a href="#查询有哪些端口是开启的" class="headerlink" title="查询有哪些端口是开启的"></a>查询有哪些端口是开启的</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
-
-<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="禁止防火墙开机自启"><a href="#禁止防火墙开机自启" class="headerlink" title="禁止防火墙开机自启"></a>禁止防火墙开机自启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>运维测试</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python常用内置库</title>
     <url>/notes/27/</url>
     <content><![CDATA[<h3 id="Python常用内置库"><a href="#Python常用内置库" class="headerlink" title="Python常用内置库"></a>Python常用内置库</h3><h3 id="0-内置函数"><a href="#0-内置函数" class="headerlink" title="0.内置函数"></a>0.内置函数</h3><ul>
@@ -556,6 +531,31 @@
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>防火墙</title>
+    <url>/notes/28/</url>
+    <content><![CDATA[<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><h4 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询端口号80-是否开启"><a href="#查询端口号80-是否开启" class="headerlink" title="查询端口号80 是否开启"></a>查询端口号80 是否开启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --query-port&#x3D;80&#x2F;tcp</span><br></pre></td></tr></table></figure>
+
+<h4 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询有哪些端口是开启的"><a href="#查询有哪些端口是开启的" class="headerlink" title="查询有哪些端口是开启的"></a>查询有哪些端口是开启的</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
+
+<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="禁止防火墙开机自启"><a href="#禁止防火墙开机自启" class="headerlink" title="禁止防火墙开机自启"></a>禁止防火墙开机自启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1249,25 +1249,6 @@
       </tags>
   </entry>
   <entry>
-    <title>模块的导入</title>
-    <url>/notes/50/</url>
-    <content><![CDATA[<h1 id="import异常"><a href="#import异常" class="headerlink" title="import异常"></a>import异常</h1><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>导入其他包里的模块，当在项目外执行run.py文件的时候，会出现找不到模块路径</p>
-<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>将项目根目录加入到Python 解释器搜索路径里</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os,sys</span><br><span class="line">project_dir = os.path.dirname(os.path.abspath(__file__))</span><br><span class="line">sys.path.append(project)</span><br><span class="line">sys.path.insert(<span class="number">0</span>, project)  <span class="comment"># 推荐使用，可以避免不必要的路径搜索</span></span><br><span class="line"><span class="comment"># os.path.abspath(__file__) 是获取本文件的绝对路径</span></span><br><span class="line"><span class="comment"># os.path.dirname() 返回路径字符串的目录部分</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python虚拟环境</title>
     <url>/notes/51/</url>
     <content><![CDATA[<h2 id="Virtualenv-amp-Virtualenvwrapper"><a href="#Virtualenv-amp-Virtualenvwrapper" class="headerlink" title="Virtualenv&amp;Virtualenvwrapper"></a>Virtualenv&amp;Virtualenvwrapper</h2><p>virtualenv是一个python虚拟环境，能够和系统环境相隔离，保持环境的纯净。</p>
@@ -1279,6 +1260,25 @@
 <h4 id="使用virtualenv"><a href="#使用virtualenv" class="headerlink" title="使用virtualenv"></a>使用virtualenv</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">virtualenv virenv1</span><br></pre></td></tr></table></figure>
 
 <h4 id="使用virtualenvwrapper"><a href="#使用virtualenvwrapper" class="headerlink" title="使用virtualenvwrapper"></a>使用virtualenvwrapper</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkvirtualenv env1  # 默认创建</span><br><span class="line">mkvirtualenv --python=/usr/bin/python2.7 env  # 创建 --python可以指定python</span><br><span class="line">lsvirtualenv -b # 列出虚拟环境</span><br><span class="line">workon env1 # 切换虚拟环境</span><br><span class="line">cpvirtualenv env1 env3  # 复制虚拟环境</span><br><span class="line">deactivate # 退出虚拟环境</span><br><span class="line">rmvirtualenv env1 # 删除虚拟环境</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>模块的导入</title>
+    <url>/notes/50/</url>
+    <content><![CDATA[<h1 id="import异常"><a href="#import异常" class="headerlink" title="import异常"></a>import异常</h1><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>导入其他包里的模块，当在项目外执行run.py文件的时候，会出现找不到模块路径</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>将项目根目录加入到Python 解释器搜索路径里</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> os,sys</span><br><span class="line">project_dir = os.path.dirname(os.path.abspath(__file__))</span><br><span class="line">sys.path.append(project)</span><br><span class="line">sys.path.insert(<span class="number">0</span>, project)  <span class="comment"># 推荐使用，可以避免不必要的路径搜索</span></span><br><span class="line"><span class="comment"># os.path.abspath(__file__) 是获取本文件的绝对路径</span></span><br><span class="line"><span class="comment"># os.path.dirname() 返回路径字符串的目录部分</span></span><br></pre></td></tr></table></figure>
+
+
+
+
 
 ]]></content>
       <categories>
@@ -1435,22 +1435,6 @@
       </tags>
   </entry>
   <entry>
-    <title>对象之间的比较</title>
-    <url>/notes/59/</url>
-    <content><![CDATA[<h3 id="比较两个对象是否完全相等"><a href="#比较两个对象是否完全相等" class="headerlink" title="比较两个对象是否完全相等"></a>比较两个对象是否完全相等</h3><p>方法1，使用==</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; &#123;&#39;a&#39;: 1, &#39;b&#39;: 2&#125;</span><br><span class="line">b &#x3D; &#123;&#39;a&#39;: 1, &#39;b&#39;: 2&#125;</span><br><span class="line">c &#x3D; &#123;&#39;a&#39;: 1, &#39;b&#39;: 3&#125;</span><br><span class="line"></span><br><span class="line">print(a &#x3D;&#x3D; b)  # True</span><br><span class="line">print(a &#x3D;&#x3D; c)  # False</span><br></pre></td></tr></table></figure>
-
-<p>方法2，使用operator</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import operator</span><br><span class="line"></span><br><span class="line">a &#x3D; &#123;&#39;a&#39;: 1, &#39;b&#39;: 2&#125;</span><br><span class="line">b &#x3D; &#123;&#39;a&#39;: 1, &#39;b&#39;: 2&#125;</span><br><span class="line">c &#x3D; &#123;&#39;a&#39;: 2, &#39;b&#39;: 2&#125;</span><br><span class="line">print(operator.eq(a, b))  # True</span><br><span class="line">print(operator.eq(a, c))  # False</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>函数参数详解</title>
     <url>/notes/6/</url>
     <content><![CDATA[<h4 id="1-位置参数"><a href="#1-位置参数" class="headerlink" title="1.位置参数"></a>1.位置参数</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span>(<span class="params">x</span>):</span></span><br><span class="line">	<span class="keyword">return</span> x*x</span><br></pre></td></tr></table></figure>
@@ -1469,6 +1453,22 @@
 ]]></content>
       <categories>
         <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>对象之间的比较</title>
+    <url>/notes/59/</url>
+    <content><![CDATA[<h3 id="比较两个对象是否完全相等"><a href="#比较两个对象是否完全相等" class="headerlink" title="比较两个对象是否完全相等"></a>比较两个对象是否完全相等</h3><p>方法1，使用==</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; &#123;&#39;a&#39;: 1, &#39;b&#39;: 2&#125;</span><br><span class="line">b &#x3D; &#123;&#39;a&#39;: 1, &#39;b&#39;: 2&#125;</span><br><span class="line">c &#x3D; &#123;&#39;a&#39;: 1, &#39;b&#39;: 3&#125;</span><br><span class="line"></span><br><span class="line">print(a &#x3D;&#x3D; b)  # True</span><br><span class="line">print(a &#x3D;&#x3D; c)  # False</span><br></pre></td></tr></table></figure>
+
+<p>方法2，使用operator</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import operator</span><br><span class="line"></span><br><span class="line">a &#x3D; &#123;&#39;a&#39;: 1, &#39;b&#39;: 2&#125;</span><br><span class="line">b &#x3D; &#123;&#39;a&#39;: 1, &#39;b&#39;: 2&#125;</span><br><span class="line">c &#x3D; &#123;&#39;a&#39;: 2, &#39;b&#39;: 2&#125;</span><br><span class="line">print(operator.eq(a, b))  # True</span><br><span class="line">print(operator.eq(a, c))  # False</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
       </categories>
       <tags>
         <tag>python</tag>
@@ -1757,24 +1757,6 @@
       </tags>
   </entry>
   <entry>
-    <title>复习笔记</title>
-    <url>/notes/70/</url>
-    <content><![CDATA[<p>一、linux环境</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">执行命令，如何在任何目录下都可以执行这个命令</span><br><span class="line"># 查找“指定命令”的完整路径，格式：find &#x2F; -name 命令名</span><br><span class="line">find &#x2F; -name mysqladmin</span><br><span class="line"># 把路径直接链接到&#x2F;usr&#x2F;bin下，格式：ln -s 指定命令的路径 &#x2F;usr&#x2F;bin</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;bin&#x2F;mysqladmin &#x2F;usr&#x2F;bin</span><br></pre></td></tr></table></figure>
-
-<p>二、python虚拟环境</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">创建空的虚拟环境，pip指定位pip3，python指定位python3</span><br><span class="line"># 安装python3的虚拟环境包，格式：pip3 install virtualenv</span><br><span class="line">例子：pip3 install virtualenv</span><br><span class="line"># 执行命令，加上--no-site-packages，格式：virtualenv --no-site-packages 虚拟环境名</span><br><span class="line">例子：virtualenv --no-site-packages test</span><br><span class="line"># 进入命令，格式：source 虚拟环境名&#x2F;bin&#x2F;activate</span><br><span class="line">例子：source test&#x2F;bin&#x2F;activate</span><br><span class="line"># 退出命令，格式：deactivate</span><br><span class="line">例子：deactivate</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.安装python3</span></span><br><span class="line">yum install python36</span><br><span class="line"><span class="comment"># 2.安装virtualenv和virtualenvwrapper</span></span><br><span class="line">pip3 install virtualenv</span><br><span class="line">pip3 install virtualenvwrapper</span><br><span class="line"><span class="comment"># 3.配置信息</span></span><br><span class="line">vim ~/.bashrc</span><br><span class="line"><span class="comment"># 在末尾加上如下信息：</span></span><br><span class="line">---------------------------</span><br><span class="line"><span class="comment"># virtualenvwrapper配置</span></span><br><span class="line">export WORKON_HOME=/home/dev/virtualenv   <span class="comment"># 指定虚拟环境存放的目录 </span></span><br><span class="line">export VIRTUALENVWRAPPER_PYTHON=/usr/<span class="built_in">bin</span>/python3     <span class="comment">#指定python解释器</span></span><br><span class="line">source /usr/local/<span class="built_in">bin</span>/virtualenvwrapper.sh  <span class="comment"># 执行脚本</span></span><br><span class="line">---------------------------</span><br><span class="line">source ~/.bashrc</span><br><span class="line"><span class="comment"># 4.常见命令</span></span><br><span class="line">mkvirtualenv -p python3 虚拟环境名称  <span class="comment"># 创建一个python3的虚拟环境</span></span><br><span class="line">deactivate                <span class="comment"># 退出当前虚拟环境</span></span><br><span class="line">workon [虚拟环境名称]       <span class="comment"># 使用某个虚拟环境</span></span><br><span class="line">rmvirtualenv [虚拟环境名称] <span class="comment"># 删除某个虚拟环境</span></span><br><span class="line">lsvirtualenv              <span class="comment"># 列出所有虚拟环境</span></span><br><span class="line"><span class="comment"># 5.包管理</span></span><br><span class="line"><span class="comment"># 导出</span></span><br><span class="line">pip freeze -l &gt; packages.txt  <span class="comment"># 其中-l参数是只列出当前虚拟环境的包（字母l）</span></span><br><span class="line"><span class="comment"># 导入</span></span><br><span class="line">pip install -r packages.txt</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># window环境</span><br><span class="line"># 1.安装virtualenv和virtualenvwrapper</span><br><span class="line">pip install virtualenv</span><br><span class="line">pip install virtualenvwrapper-win</span><br><span class="line"># 2.指定虚拟环境存放的目录（配置系统环境变量）</span><br><span class="line">变量名：WORKON_HOME</span><br><span class="line">变量值：指定路径即可，eg：D:\virtualenv</span><br><span class="line"># 3.其他等同于linux环境</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>温故而知新</category>
-      </categories>
-  </entry>
-  <entry>
     <title>命令行参数解析</title>
     <url>/notes/71/</url>
     <content><![CDATA[<h4 id="argparse简要用法总结"><a href="#argparse简要用法总结" class="headerlink" title="argparse简要用法总结"></a>argparse简要用法总结</h4><p><a href="https://docs.python.org/3/library/argparse.html">argparse</a> 是python自带的命令行参数解析包，可以用来方便地读取命令行参数，当你的代码需要频繁地修改参数的时候，使用这个工具可以将参数和代码分离开来，让你的代码更简洁，适用范围更广。<br>argparse使用比较简单，常用的功能可能较快地实现出来，下面我分几个步骤，<strong>以Python3为例</strong>，逐渐递增地讲述argparse的用法。</p>
@@ -1837,6 +1819,24 @@
       <tags>
         <tag>Python</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>复习笔记</title>
+    <url>/notes/70/</url>
+    <content><![CDATA[<p>一、linux环境</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">执行命令，如何在任何目录下都可以执行这个命令</span><br><span class="line"># 查找“指定命令”的完整路径，格式：find &#x2F; -name 命令名</span><br><span class="line">find &#x2F; -name mysqladmin</span><br><span class="line"># 把路径直接链接到&#x2F;usr&#x2F;bin下，格式：ln -s 指定命令的路径 &#x2F;usr&#x2F;bin</span><br><span class="line">ln -s &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;bin&#x2F;mysqladmin &#x2F;usr&#x2F;bin</span><br></pre></td></tr></table></figure>
+
+<p>二、python虚拟环境</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">创建空的虚拟环境，pip指定位pip3，python指定位python3</span><br><span class="line"># 安装python3的虚拟环境包，格式：pip3 install virtualenv</span><br><span class="line">例子：pip3 install virtualenv</span><br><span class="line"># 执行命令，加上--no-site-packages，格式：virtualenv --no-site-packages 虚拟环境名</span><br><span class="line">例子：virtualenv --no-site-packages test</span><br><span class="line"># 进入命令，格式：source 虚拟环境名&#x2F;bin&#x2F;activate</span><br><span class="line">例子：source test&#x2F;bin&#x2F;activate</span><br><span class="line"># 退出命令，格式：deactivate</span><br><span class="line">例子：deactivate</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 1.安装python3</span></span><br><span class="line">yum install python36</span><br><span class="line"><span class="comment"># 2.安装virtualenv和virtualenvwrapper</span></span><br><span class="line">pip3 install virtualenv</span><br><span class="line">pip3 install virtualenvwrapper</span><br><span class="line"><span class="comment"># 3.配置信息</span></span><br><span class="line">vim ~/.bashrc</span><br><span class="line"><span class="comment"># 在末尾加上如下信息：</span></span><br><span class="line">---------------------------</span><br><span class="line"><span class="comment"># virtualenvwrapper配置</span></span><br><span class="line">export WORKON_HOME=/home/dev/virtualenv   <span class="comment"># 指定虚拟环境存放的目录 </span></span><br><span class="line">export VIRTUALENVWRAPPER_PYTHON=/usr/<span class="built_in">bin</span>/python3     <span class="comment">#指定python解释器</span></span><br><span class="line">source /usr/local/<span class="built_in">bin</span>/virtualenvwrapper.sh  <span class="comment"># 执行脚本</span></span><br><span class="line">---------------------------</span><br><span class="line">source ~/.bashrc</span><br><span class="line"><span class="comment"># 4.常见命令</span></span><br><span class="line">mkvirtualenv -p python3 虚拟环境名称  <span class="comment"># 创建一个python3的虚拟环境</span></span><br><span class="line">deactivate                <span class="comment"># 退出当前虚拟环境</span></span><br><span class="line">workon [虚拟环境名称]       <span class="comment"># 使用某个虚拟环境</span></span><br><span class="line">rmvirtualenv [虚拟环境名称] <span class="comment"># 删除某个虚拟环境</span></span><br><span class="line">lsvirtualenv              <span class="comment"># 列出所有虚拟环境</span></span><br><span class="line"><span class="comment"># 5.包管理</span></span><br><span class="line"><span class="comment"># 导出</span></span><br><span class="line">pip freeze -l &gt; packages.txt  <span class="comment"># 其中-l参数是只列出当前虚拟环境的包（字母l）</span></span><br><span class="line"><span class="comment"># 导入</span></span><br><span class="line">pip install -r packages.txt</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># window环境</span><br><span class="line"># 1.安装virtualenv和virtualenvwrapper</span><br><span class="line">pip install virtualenv</span><br><span class="line">pip install virtualenvwrapper-win</span><br><span class="line"># 2.指定虚拟环境存放的目录（配置系统环境变量）</span><br><span class="line">变量名：WORKON_HOME</span><br><span class="line">变量值：指定路径即可，eg：D:\virtualenv</span><br><span class="line"># 3.其他等同于linux环境</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>温故而知新</category>
+      </categories>
   </entry>
   <entry>
     <title>正则匹配中文</title>
@@ -1954,7 +1954,7 @@
         <category>服务端开发</category>
       </categories>
       <tags>
-        <tag>开发经验</tag>
+        <tag>计算机基础</tag>
       </tags>
   </entry>
   <entry>
@@ -2075,7 +2075,7 @@
         <category>服务端开发</category>
       </categories>
       <tags>
-        <tag>开发经验</tag>
+        <tag>django</tag>
       </tags>
   </entry>
   <entry>
@@ -2281,6 +2281,23 @@
       </categories>
       <tags>
         <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用CORS解决跨域访问</title>
+    <url>/notes/90/</url>
+    <content><![CDATA[<p>使用django-cors-headers扩展解决跨域访问</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install django-cors-headers</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>settings.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;corsheaders&#x27;</span>,</span><br><span class="line">    ...</span><br><span class="line">)</span><br><span class="line">MIDDLEWARE = [</span><br><span class="line">    <span class="string">&#x27;corsheaders.middleware.CorsMiddleware&#x27;</span>,  <span class="comment"># 放在最前面</span></span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"><span class="comment"># CORS白名单</span></span><br><span class="line">CORS_ORIGIN_WHITELIST = (</span><br><span class="line">    <span class="string">&#x27;127.0.0.1:8080&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;localhost:8080&#x27;</span>,</span><br><span class="line">)</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">CORS_ALLOW_CREDENTIALS = <span class="literal">True</span>  <span class="comment"># 跨域访问中,允许携带cookie</span></span><br><span class="line"><span class="comment"># CORS_ORIGIN_ALLOW_ALL为True, 指定所有域名(ip)都可以访问后端接口, 默认为False</span></span><br><span class="line">CORS_ORIGIN_ALLOW_ALL = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>django</tag>
       </tags>
   </entry>
 </search>
