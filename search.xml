@@ -282,6 +282,19 @@
       </categories>
   </entry>
   <entry>
+    <title>设计模式</title>
+    <url>/notes/19/</url>
+    <content><![CDATA[<p>笔记资源</p>
+<p><a href="https://www.cnblogs.com/tangkaishou/p/9246353.html">常见的设计模式python实现</a></p>
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>查找数据API</title>
     <url>/notes/2/</url>
     <content><![CDATA[<p><strong>如何查找一个网站的api接口</strong></p>
@@ -308,19 +321,6 @@
       </categories>
       <tags>
         <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>设计模式</title>
-    <url>/notes/19/</url>
-    <content><![CDATA[<p>笔记资源</p>
-<p><a href="https://www.cnblogs.com/tangkaishou/p/9246353.html">常见的设计模式python实现</a></p>
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -374,24 +374,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Python在docker中调试</title>
-    <url>/notes/22/</url>
-    <content><![CDATA[<p>使用print在docker中调试</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">docker不会输出python的print(),需要这样写才会输出：加上flush=<span class="literal">True</span></span><br><span class="line">例子: print(<span class="string">&quot;debug...&quot;</span>, flush=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
-<p>查看docker日志</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker logs container_id</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>运维测试</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
-        <tag>开发经验</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Logging基础</title>
     <url>/notes/23/</url>
     <content><![CDATA[<h4 id="日志级别"><a href="#日志级别" class="headerlink" title="日志级别"></a>日志级别</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.debug(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.info(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.warning(<span class="string">&quot;Hello&quot;</span>) <span class="comment"># 默认</span></span><br><span class="line">logging.error(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.critical(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
@@ -409,6 +391,24 @@
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python在docker中调试</title>
+    <url>/notes/22/</url>
+    <content><![CDATA[<p>使用print在docker中调试</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">docker不会输出python的print(),需要这样写才会输出：加上flush=<span class="literal">True</span></span><br><span class="line">例子: print(<span class="string">&quot;debug...&quot;</span>, flush=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>查看docker日志</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker logs container_id</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+        <tag>开发经验</tag>
       </tags>
   </entry>
   <entry>
@@ -481,6 +481,31 @@
       </tags>
   </entry>
   <entry>
+    <title>防火墙</title>
+    <url>/notes/28/</url>
+    <content><![CDATA[<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><h4 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询端口号80-是否开启"><a href="#查询端口号80-是否开启" class="headerlink" title="查询端口号80 是否开启"></a>查询端口号80 是否开启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --query-port&#x3D;80&#x2F;tcp</span><br></pre></td></tr></table></figure>
+
+<h4 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询有哪些端口是开启的"><a href="#查询有哪些端口是开启的" class="headerlink" title="查询有哪些端口是开启的"></a>查询有哪些端口是开启的</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
+
+<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="禁止防火墙开机自启"><a href="#禁止防火墙开机自启" class="headerlink" title="禁止防火墙开机自启"></a>禁止防火墙开机自启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python常用内置库</title>
     <url>/notes/27/</url>
     <content><![CDATA[<h3 id="Python常用内置库"><a href="#Python常用内置库" class="headerlink" title="Python常用内置库"></a>Python常用内置库</h3><h3 id="0-内置函数"><a href="#0-内置函数" class="headerlink" title="0.内置函数"></a>0.内置函数</h3><ul>
@@ -531,31 +556,6 @@
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>防火墙</title>
-    <url>/notes/28/</url>
-    <content><![CDATA[<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><h4 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询端口号80-是否开启"><a href="#查询端口号80-是否开启" class="headerlink" title="查询端口号80 是否开启"></a>查询端口号80 是否开启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --query-port&#x3D;80&#x2F;tcp</span><br></pre></td></tr></table></figure>
-
-<h4 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询有哪些端口是开启的"><a href="#查询有哪些端口是开启的" class="headerlink" title="查询有哪些端口是开启的"></a>查询有哪些端口是开启的</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
-
-<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="禁止防火墙开机自启"><a href="#禁止防火墙开机自启" class="headerlink" title="禁止防火墙开机自启"></a>禁止防火墙开机自启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>运维测试</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -691,6 +691,18 @@
       </tags>
   </entry>
   <entry>
+    <title>Html笔记</title>
+    <url>/notes/35/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_43342105/article/details/106271856">HTML复习笔记</a></p>
+]]></content>
+      <categories>
+        <category>前端开发</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>拨号代理服务器</title>
     <url>/notes/34/</url>
     <content><![CDATA[<p><strong>基于adsl技术搭建高匿名代理</strong></p>
@@ -706,18 +718,6 @@
       <categories>
         <category>数据开发</category>
       </categories>
-  </entry>
-  <entry>
-    <title>Html笔记</title>
-    <url>/notes/35/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_43342105/article/details/106271856">HTML复习笔记</a></p>
-]]></content>
-      <categories>
-        <category>前端开发</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
-      </tags>
   </entry>
   <entry>
     <title>部署事故</title>
@@ -1198,20 +1198,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Pymysql笔记</title>
-    <url>/notes/48/</url>
-    <content><![CDATA[<p>使用python操作mysql</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"><span class="keyword">from</span> pymysql <span class="keyword">import</span> MySQLError</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MysqlDemo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.db = pymysql.connect(</span><br><span class="line">            host=<span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">            user=<span class="string">&quot;****&quot;</span>,</span><br><span class="line">            passwd=<span class="string">&quot;******&quot;</span>,</span><br><span class="line">            database=<span class="string">&quot;******&quot;</span>,</span><br><span class="line">            port=<span class="number">3306</span></span><br><span class="line">        )</span><br><span class="line">        self.cursor = self.db.cursor()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_table</span>(<span class="params">self</span>):</span></span><br><span class="line">        sql = <span class="string">&quot;&quot;</span></span><br><span class="line">        self.cursor.execute(sql)  <span class="comment"># 直接就创建了,相对&quot;增改删&quot;,不需要数据库提交commit</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert_or_update_or_delete</span>(<span class="params">self</span>):</span>  <span class="comment"># 插入、更新、删除</span></span><br><span class="line">        sql = <span class="string">&quot;&quot;</span></span><br><span class="line">        self.cursor.execute(sql)</span><br><span class="line">        self.db.commit()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.cursor.execute(sql)</span><br><span class="line">            self.db.commit()</span><br><span class="line">        <span class="keyword">except</span> MySQLError <span class="keyword">as</span> e:  <span class="comment"># 基类</span></span><br><span class="line">            print(e.args)</span><br><span class="line">            self.db.rollback()  <span class="comment"># db.commit失败,则需要db.rollback,记住是连接对象db的</span></span><br><span class="line">        lines = self.cursor.rowcount  <span class="comment"># 影响的行数 或者 返回的数据条数</span></span><br><span class="line">        print(<span class="built_in">type</span>(lines), lines)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">select_data</span>(<span class="params">self</span>):</span></span><br><span class="line">        sql = <span class="string">&quot;SELECT * FROM access_log&quot;</span></span><br><span class="line">        self.cursor.execute(sql)</span><br><span class="line">        result = self.cursor.fetchone()  <span class="comment"># 一行数据,类似(),不可修改</span></span><br><span class="line">        results = self.cursor.fetchall()  <span class="comment"># 所以行的数据,类[(),()],不可修改</span></span><br><span class="line">        lines = self.cursor.rowcount  <span class="comment"># 影响的行数 或者 返回的数据条数</span></span><br><span class="line">        print(<span class="built_in">type</span>(result), result)</span><br><span class="line">        print(<span class="built_in">type</span>(results), results)</span><br><span class="line">        print(<span class="built_in">type</span>(lines), lines)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.db.close()</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>第三方库的导入导出</title>
     <url>/notes/49/</url>
     <content><![CDATA[<p><strong>quirements.txt可以通过<code>pip</code>命令自动生成和安装</strong></p>
@@ -1227,6 +1213,20 @@
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pymysql笔记</title>
+    <url>/notes/48/</url>
+    <content><![CDATA[<p>使用python操作mysql</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line"><span class="keyword">from</span> pymysql <span class="keyword">import</span> MySQLError</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MysqlDemo</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.db = pymysql.connect(</span><br><span class="line">            host=<span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">            user=<span class="string">&quot;****&quot;</span>,</span><br><span class="line">            passwd=<span class="string">&quot;******&quot;</span>,</span><br><span class="line">            database=<span class="string">&quot;******&quot;</span>,</span><br><span class="line">            port=<span class="number">3306</span></span><br><span class="line">        )</span><br><span class="line">        self.cursor = self.db.cursor()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create_table</span>(<span class="params">self</span>):</span></span><br><span class="line">        sql = <span class="string">&quot;&quot;</span></span><br><span class="line">        self.cursor.execute(sql)  <span class="comment"># 直接就创建了,相对&quot;增改删&quot;,不需要数据库提交commit</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert_or_update_or_delete</span>(<span class="params">self</span>):</span>  <span class="comment"># 插入、更新、删除</span></span><br><span class="line">        sql = <span class="string">&quot;&quot;</span></span><br><span class="line">        self.cursor.execute(sql)</span><br><span class="line">        self.db.commit()</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            self.cursor.execute(sql)</span><br><span class="line">            self.db.commit()</span><br><span class="line">        <span class="keyword">except</span> MySQLError <span class="keyword">as</span> e:  <span class="comment"># 基类</span></span><br><span class="line">            print(e.args)</span><br><span class="line">            self.db.rollback()  <span class="comment"># db.commit失败,则需要db.rollback,记住是连接对象db的</span></span><br><span class="line">        lines = self.cursor.rowcount  <span class="comment"># 影响的行数 或者 返回的数据条数</span></span><br><span class="line">        print(<span class="built_in">type</span>(lines), lines)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">select_data</span>(<span class="params">self</span>):</span></span><br><span class="line">        sql = <span class="string">&quot;SELECT * FROM access_log&quot;</span></span><br><span class="line">        self.cursor.execute(sql)</span><br><span class="line">        result = self.cursor.fetchone()  <span class="comment"># 一行数据,类似(),不可修改</span></span><br><span class="line">        results = self.cursor.fetchall()  <span class="comment"># 所以行的数据,类[(),()],不可修改</span></span><br><span class="line">        lines = self.cursor.rowcount  <span class="comment"># 影响的行数 或者 返回的数据条数</span></span><br><span class="line">        print(<span class="built_in">type</span>(result), result)</span><br><span class="line">        print(<span class="built_in">type</span>(results), results)</span><br><span class="line">        print(<span class="built_in">type</span>(lines), lines)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.db.close()</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -1451,23 +1451,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Linux工具</title>
-    <url>/notes/60/</url>
-    <content><![CDATA[<h3 id="一些好用的工具"><a href="#一些好用的工具" class="headerlink" title="一些好用的工具"></a>一些好用的工具</h3><h4 id="axel"><a href="#axel" class="headerlink" title="axel"></a>axel</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 多线程下载工具-替代curl和wget</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用</span></span><br><span class="line">axel -n 20 http://download.redis.io/releases/redis-5.0.7.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h4 id="lrzsz"><a href="#lrzsz" class="headerlink" title="lrzsz"></a>lrzsz</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一款linux下命令行界面上支持上传和下载的第三方工具</span></span><br><span class="line">rz  <span class="comment"># 选择文件进行上传</span></span><br><span class="line">sz 文件名  <span class="comment"># sz后面跟文件名可以进行文件从linux上面下载</span></span><br><span class="line">yum install -y lrzsz  <span class="comment"># yum 安装完毕之后可以直接rz尝试使用</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python3</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">(status, output) = subprocess.getstatusoutput(<span class="string">&#x27;ps -ef | grep python3&#x27;</span>)</span><br><span class="line">subprocess.getstatusoutput(<span class="string">&#x27;kill -9 &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="built_in">set</span>(re.findall(<span class="string">r&#x27;\d&#123;3,6&#125;&#x27;</span>, output)))))</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>运维测试</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>函数参数详解</title>
     <url>/notes/6/</url>
     <content><![CDATA[<h4 id="1-位置参数"><a href="#1-位置参数" class="headerlink" title="1.位置参数"></a>1.位置参数</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span>(<span class="params">x</span>):</span></span><br><span class="line">	<span class="keyword">return</span> x*x</span><br></pre></td></tr></table></figure>
@@ -1489,6 +1472,23 @@
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Linux工具</title>
+    <url>/notes/60/</url>
+    <content><![CDATA[<h3 id="一些好用的工具"><a href="#一些好用的工具" class="headerlink" title="一些好用的工具"></a>一些好用的工具</h3><h4 id="axel"><a href="#axel" class="headerlink" title="axel"></a>axel</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 多线程下载工具-替代curl和wget</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用</span></span><br><span class="line">axel -n 20 http://download.redis.io/releases/redis-5.0.7.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h4 id="lrzsz"><a href="#lrzsz" class="headerlink" title="lrzsz"></a>lrzsz</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一款linux下命令行界面上支持上传和下载的第三方工具</span></span><br><span class="line">rz  <span class="comment"># 选择文件进行上传</span></span><br><span class="line">sz 文件名  <span class="comment"># sz后面跟文件名可以进行文件从linux上面下载</span></span><br><span class="line">yum install -y lrzsz  <span class="comment"># yum 安装完毕之后可以直接rz尝试使用</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python3</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">(status, output) = subprocess.getstatusoutput(<span class="string">&#x27;ps -ef | grep python3&#x27;</span>)</span><br><span class="line">subprocess.getstatusoutput(<span class="string">&#x27;kill -9 &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="built_in">set</span>(re.findall(<span class="string">r&#x27;\d&#123;3,6&#125;&#x27;</span>, output)))))</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2292,12 +2292,47 @@
 <h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>settings.py</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;corsheaders&#x27;</span>,</span><br><span class="line">    ...</span><br><span class="line">)</span><br><span class="line">MIDDLEWARE = [</span><br><span class="line">    <span class="string">&#x27;corsheaders.middleware.CorsMiddleware&#x27;</span>,  <span class="comment"># 放在最前面</span></span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"><span class="comment"># CORS白名单</span></span><br><span class="line">CORS_ORIGIN_WHITELIST = (</span><br><span class="line">    <span class="string">&#x27;127.0.0.1:8080&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;localhost:8080&#x27;</span>,</span><br><span class="line">)</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">CORS_ALLOW_CREDENTIALS = <span class="literal">True</span>  <span class="comment"># 跨域访问中,允许携带cookie</span></span><br><span class="line"><span class="comment"># CORS_ORIGIN_ALLOW_ALL为True, 指定所有域名(ip)都可以访问后端接口, 默认为False</span></span><br><span class="line">CORS_ORIGIN_ALLOW_ALL = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
 
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>ALLOWED_HOSTS允许访问后端的域名</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ALLOWED_HOSTS = [&#x27;127.0.0.1&#x27;, &#x27;localhost&#x27;, &#x27;api.myard.cn&#x27;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ALLOWED_HOSTS = [<span class="string">&#x27;*&#x27;</span>]  <span class="comment"># 填写上“*”可以使所有的网址都能访问Django项目了</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>服务端开发</category>
       </categories>
       <tags>
         <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Celery的简单使用</title>
+    <url>/notes/91/</url>
+    <content><![CDATA[<p>目录结构</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── celery_tasks</span><br><span class="line">│   ├── __init__.py</span><br><span class="line">│   ├── config.py</span><br><span class="line">│   ├── email</span><br><span class="line">│   │   ├── __init__.py</span><br><span class="line">│   │   └── tasks.py</span><br><span class="line">│   ├── html</span><br><span class="line">│   │   ├── __init__.py</span><br><span class="line">│   │   └── tasks.py</span><br><span class="line">│   ├── main.py</span><br></pre></td></tr></table></figure>
+
+<p>config.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># celery配置文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定任务队列的位置</span></span><br><span class="line">broker_url = <span class="string">&quot;redis://192.168.103.210/7&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>main.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> celery <span class="keyword">import</span> Celery</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># 告诉celery 如果需要使用Django的配置文件,应该去那里加载</span></span><br><span class="line">os.environ.setdefault(<span class="string">&quot;DJANGO_SETTINGS_MODULE&quot;</span>, <span class="string">&quot;project.settings.dev&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.创建celery实例对象</span></span><br><span class="line">celery_app = Celery(<span class="string">&#x27;project&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.加载配置文件</span></span><br><span class="line">celery_app.config_from_object(<span class="string">&#x27;celery_tasks.config&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.自动注册异步任务</span></span><br><span class="line">celery_app.autodiscover_tasks([<span class="string">&#x27;celery_tasks.email&#x27;</span>, <span class="string">&#x27;celery_tasks.html&#x27;</span>])</span><br></pre></td></tr></table></figure>
+
+<p>celery_tasks/email/tasks.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> celery_tasks.main <span class="keyword">import</span> celery_app</span><br><span class="line"><span class="keyword">from</span> django.core.mail <span class="keyword">import</span> send_mail</span><br><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@celery_app.task(name=&#x27;send_verify_email&#x27;)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">send_verify_email</span>(<span class="params">to_email, verify_url</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    发激活邮箱的邮件</span></span><br><span class="line"><span class="string">    :param to_email: 收件人邮箱</span></span><br><span class="line"><span class="string">    :param verify_url: 邮箱激活url</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    subject = <span class="string">&quot;邮箱验证&quot;</span>  <span class="comment"># 邮件主题/标题</span></span><br><span class="line">    html_message = <span class="string">&#x27;&lt;p&gt;尊敬的用户您好！&lt;/p&gt;&#x27;</span> \</span><br><span class="line">                   <span class="string">&#x27;&lt;p&gt;您的邮箱为：%s 。请点击此链接激活您的邮箱：&lt;/p&gt;&#x27;</span> \</span><br><span class="line">                   <span class="string">&#x27;&lt;p&gt;&lt;a href=&quot;%s&quot;&gt;%s&lt;a&gt;&lt;/p&gt;&#x27;</span> % (to_email, verify_url, verify_url)</span><br><span class="line">    <span class="comment"># send_mail(subject:标题, message:普通邮件正文, 发件人, [收件人], html_message=超文本的邮件内容)</span></span><br><span class="line">    send_mail(subject, <span class="string">&#x27;&#x27;</span>, settings.EMAIL_FROM, [to_email], html_message=html_message)</span><br></pre></td></tr></table></figure>
+
+<p>运行celery</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">运行命令:</span><br><span class="line">celery -A celery_tasks.main worker -l info</span><br></pre></td></tr></table></figure>
+
+<p>函数调用</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmailSerializer</span>(<span class="params">serializers.ModelSerializer</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;更新邮箱序列化器&quot;&quot;&quot;</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span>(<span class="params">self, instance, validated_data</span>):</span></span><br><span class="line">        instance.email = validated_data.get(<span class="string">&#x27;email&#x27;</span>)</span><br><span class="line">        instance.save()</span><br><span class="line">        verify_url = instance.generate_email_verify_url()</span><br><span class="line">        <span class="comment"># 使用delay函数</span></span><br><span class="line">        send_verify_email.delay(instance.email, verify_url=verify_url)</span><br><span class="line">        <span class="keyword">return</span> instance</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>django</tag>
+        <tag>celery</tag>
       </tags>
   </entry>
 </search>
