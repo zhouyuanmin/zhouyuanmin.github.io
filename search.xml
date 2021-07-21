@@ -282,19 +282,6 @@
       </categories>
   </entry>
   <entry>
-    <title>设计模式</title>
-    <url>/notes/19/</url>
-    <content><![CDATA[<p>笔记资源</p>
-<p><a href="https://www.cnblogs.com/tangkaishou/p/9246353.html">常见的设计模式python实现</a></p>
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>查找数据API</title>
     <url>/notes/2/</url>
     <content><![CDATA[<p><strong>如何查找一个网站的api接口</strong></p>
@@ -321,6 +308,19 @@
       </categories>
       <tags>
         <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式</title>
+    <url>/notes/19/</url>
+    <content><![CDATA[<p>笔记资源</p>
+<p><a href="https://www.cnblogs.com/tangkaishou/p/9246353.html">常见的设计模式python实现</a></p>
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -1451,6 +1451,23 @@
       </tags>
   </entry>
   <entry>
+    <title>Linux工具</title>
+    <url>/notes/60/</url>
+    <content><![CDATA[<h3 id="一些好用的工具"><a href="#一些好用的工具" class="headerlink" title="一些好用的工具"></a>一些好用的工具</h3><h4 id="axel"><a href="#axel" class="headerlink" title="axel"></a>axel</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 多线程下载工具-替代curl和wget</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用</span></span><br><span class="line">axel -n 20 http://download.redis.io/releases/redis-5.0.7.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h4 id="lrzsz"><a href="#lrzsz" class="headerlink" title="lrzsz"></a>lrzsz</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一款linux下命令行界面上支持上传和下载的第三方工具</span></span><br><span class="line">rz  <span class="comment"># 选择文件进行上传</span></span><br><span class="line">sz 文件名  <span class="comment"># sz后面跟文件名可以进行文件从linux上面下载</span></span><br><span class="line">yum install -y lrzsz  <span class="comment"># yum 安装完毕之后可以直接rz尝试使用</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python3</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">(status, output) = subprocess.getstatusoutput(<span class="string">&#x27;ps -ef | grep python3&#x27;</span>)</span><br><span class="line">subprocess.getstatusoutput(<span class="string">&#x27;kill -9 &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="built_in">set</span>(re.findall(<span class="string">r&#x27;\d&#123;3,6&#125;&#x27;</span>, output)))))</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>函数参数详解</title>
     <url>/notes/6/</url>
     <content><![CDATA[<h4 id="1-位置参数"><a href="#1-位置参数" class="headerlink" title="1.位置参数"></a>1.位置参数</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">power</span>(<span class="params">x</span>):</span></span><br><span class="line">	<span class="keyword">return</span> x*x</span><br></pre></td></tr></table></figure>
@@ -1472,23 +1489,6 @@
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Linux工具</title>
-    <url>/notes/60/</url>
-    <content><![CDATA[<h3 id="一些好用的工具"><a href="#一些好用的工具" class="headerlink" title="一些好用的工具"></a>一些好用的工具</h3><h4 id="axel"><a href="#axel" class="headerlink" title="axel"></a>axel</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 多线程下载工具-替代curl和wget</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用</span></span><br><span class="line">axel -n 20 http://download.redis.io/releases/redis-5.0.7.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h4 id="lrzsz"><a href="#lrzsz" class="headerlink" title="lrzsz"></a>lrzsz</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 一款linux下命令行界面上支持上传和下载的第三方工具</span></span><br><span class="line">rz  <span class="comment"># 选择文件进行上传</span></span><br><span class="line">sz 文件名  <span class="comment"># sz后面跟文件名可以进行文件从linux上面下载</span></span><br><span class="line">yum install -y lrzsz  <span class="comment"># yum 安装完毕之后可以直接rz尝试使用</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">python3</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">(status, output) = subprocess.getstatusoutput(<span class="string">&#x27;ps -ef | grep python3&#x27;</span>)</span><br><span class="line">subprocess.getstatusoutput(<span class="string">&#x27;kill -9 &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="string">&#x27; &#x27;</span>.join(<span class="built_in">set</span>(re.findall(<span class="string">r&#x27;\d&#123;3,6&#125;&#x27;</span>, output)))))</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>运维测试</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1544,17 +1544,6 @@
       </categories>
   </entry>
   <entry>
-    <title>演讲注意事项</title>
-    <url>/notes/65/</url>
-    <content><![CDATA[<h4 id="总结一些做汇报和演讲时，需要注意的事情"><a href="#总结一些做汇报和演讲时，需要注意的事情" class="headerlink" title="总结一些做汇报和演讲时，需要注意的事情"></a>总结一些做汇报和演讲时，需要注意的事情</h4><p>主要从“演讲前的准备”、“演讲中”、“如何结束演讲”、“遇到提问，如何回答”这几个方面来阐述</p>
-<h5 id="一、演讲前的准备"><a href="#一、演讲前的准备" class="headerlink" title="一、演讲前的准备"></a>一、演讲前的准备</h5><p>基本上都需要有PPT，还需要符合风格，需要事先熟悉PPT，不要卡壳，不要读错字，</p>
-<p>最好是图片，和关键字，其他的全靠后面讲，把要讲的内容理清</p>
-<h5 id="二、演讲中"><a href="#二、演讲中" class="headerlink" title="二、演讲中"></a>二、演讲中</h5><h5 id="三、如何结束演讲"><a href="#三、如何结束演讲" class="headerlink" title="三、如何结束演讲"></a>三、如何结束演讲</h5><h5 id="四、遇到提问，如何回答"><a href="#四、遇到提问，如何回答" class="headerlink" title="四、遇到提问，如何回答"></a>四、遇到提问，如何回答</h5>]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-  </entry>
-  <entry>
     <title>第三方库的版本异常</title>
     <url>/notes/64/</url>
     <content><![CDATA[<p>python3 pip安装MarkupSafe==1.0失败解决过程</p>
@@ -1574,6 +1563,17 @@
         <tag>python</tag>
         <tag>开发经验</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>演讲注意事项</title>
+    <url>/notes/65/</url>
+    <content><![CDATA[<h4 id="总结一些做汇报和演讲时，需要注意的事情"><a href="#总结一些做汇报和演讲时，需要注意的事情" class="headerlink" title="总结一些做汇报和演讲时，需要注意的事情"></a>总结一些做汇报和演讲时，需要注意的事情</h4><p>主要从“演讲前的准备”、“演讲中”、“如何结束演讲”、“遇到提问，如何回答”这几个方面来阐述</p>
+<h5 id="一、演讲前的准备"><a href="#一、演讲前的准备" class="headerlink" title="一、演讲前的准备"></a>一、演讲前的准备</h5><p>基本上都需要有PPT，还需要符合风格，需要事先熟悉PPT，不要卡壳，不要读错字，</p>
+<p>最好是图片，和关键字，其他的全靠后面讲，把要讲的内容理清</p>
+<h5 id="二、演讲中"><a href="#二、演讲中" class="headerlink" title="二、演讲中"></a>二、演讲中</h5><h5 id="三、如何结束演讲"><a href="#三、如何结束演讲" class="headerlink" title="三、如何结束演讲"></a>三、如何结束演讲</h5><h5 id="四、遇到提问，如何回答"><a href="#四、遇到提问，如何回答" class="headerlink" title="四、遇到提问，如何回答"></a>四、遇到提问，如何回答</h5>]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
   </entry>
   <entry>
     <title>Des加密算法</title>
@@ -1753,7 +1753,7 @@
         <category>温故而知新</category>
       </categories>
       <tags>
-        <tag>Django</tag>
+        <tag>django</tag>
       </tags>
   </entry>
   <entry>
