@@ -210,6 +210,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/23/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/23/" class="post-title-link" itemprop="url">Logging基础</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 10:57:10" itemprop="dateCreated datePublished" datetime="2020-11-13T10:57:10+08:00">2020-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端开发</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="日志级别"><a href="#日志级别" class="headerlink" title="日志级别"></a>日志级别</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.debug(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.info(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.warning(<span class="string">&quot;Hello&quot;</span>) <span class="comment"># 默认</span></span><br><span class="line">logging.error(<span class="string">&quot;Hello&quot;</span>)</span><br><span class="line">logging.critical(<span class="string">&quot;Hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="控制级别"><a href="#控制级别" class="headerlink" title="控制级别"></a>控制级别</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line">logging.basicConfig(level=logging.NOTSET)  <span class="comment"># 设置日志级别</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="控制日志格式"><a href="#控制日志格式" class="headerlink" title="控制日志格式"></a>控制日志格式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">logging.basicConfig(level=logging.DEBUG,</span><br><span class="line">             <span class="built_in">format</span>=<span class="string">&#x27;[%(levelname)s][%(asctime)s][%(filename)s][%(message)s]&#x27;</span>)</span><br><span class="line"><span class="comment"># 推荐格式&#x27;[%(levelname)s][%(asctime)s][%(filename)s][%(message)s]&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="基本操作流程（经典案例）"><a href="#基本操作流程（经典案例）" class="headerlink" title="基本操作流程（经典案例）"></a>基本操作流程（经典案例）</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">logger = logging.getLogger()</span><br><span class="line">logger.setLevel(logging.DEBUG)  <span class="comment"># 设置为最低</span></span><br><span class="line"></span><br><span class="line">log_dir = os.path.join(os.getcwd(), <span class="string">&#x27;Logs&#x27;</span>)</span><br><span class="line">log_file = os.path.join(log_dir, <span class="string">&#x27;spider_error.log&#x27;</span>)</span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(log_dir):</span><br><span class="line">    os.mkdir(log_dir)</span><br><span class="line"></span><br><span class="line">file_handler = logging.FileHandler(log_file, mode=<span class="string">&#x27;a&#x27;</span>)  <span class="comment"># 日志文件</span></span><br><span class="line">file_handler.setLevel(logging.ERROR)</span><br><span class="line">file_handler.setFormatter(logging.Formatter(<span class="string">&#x27;[%(levelname)s][%(asctime)s][%(message)s]&#x27;</span>))</span><br><span class="line">logger.addHandler(file_handler)</span><br><span class="line"></span><br><span class="line">console_handler = logging.StreamHandler()  <span class="comment"># 控制台</span></span><br><span class="line">console_handler.setLevel(logging.INFO)</span><br><span class="line">console_handler.setFormatter(logging.Formatter(<span class="string">&#x27;[%(levelname)s][%(asctime)s][%(message)s]&#x27;</span>))</span><br><span class="line">logger.addHandler(console_handler)</span><br><span class="line"><span class="comment"># 所有日志都到logger里面,需要输出到哪里，就过滤，拷贝到哪里。</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/CJOKER/p/8295272.html">logging参考连接</a></p>
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/60/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -582,132 +677,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/45/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/45/" class="post-title-link" itemprop="url">Js逆向分析</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 10:47:05" itemprop="dateCreated datePublished" datetime="2020-11-13T10:47:05+08:00">2020-11-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">数据开发</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.5k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getpwd</span>(<span class="params">plaintext</span>)</span>&#123;  <span class="comment">// 一定要先找到明文</span></span><br><span class="line">    ;</span><br><span class="line">    <span class="keyword">return</span> ciphertext  <span class="comment">// 返回格式有两种：Hex和base64</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="常见加密方式"><a href="#常见加密方式" class="headerlink" title="常见加密方式"></a>常见加密方式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MD5, SHA <span class="comment"># 不可逆 # 常用</span></span><br><span class="line">HMAC, RC4, </span><br><span class="line">AES, DES, <span class="number">3</span>DES <span class="comment"># 可逆 # 常用</span></span><br><span class="line">Base64, Rabbit, PBKDF2/EvpKDF</span><br><span class="line">RSA</span><br></pre></td></tr></table></figure>
-
-<h4 id="chrome-F12"><a href="#chrome-F12" class="headerlink" title="chrome-F12"></a>chrome-F12</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">search</span><br><span class="line">sensors <span class="comment"># 设置经纬度</span></span><br><span class="line">下断点</span><br><span class="line">Breakpoints <span class="comment"># 管理断点</span></span><br><span class="line">Call Stack <span class="comment"># 堆栈</span></span><br><span class="line">抓包勾选Preserve log（保存日志），页面跳转，也能保存上一个界面的日志</span><br></pre></td></tr></table></figure>
-
-<h4 id="工具网站"><a href="#工具网站" class="headerlink" title="工具网站"></a>工具网站</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">http://tool.chacuo.net/cryptdes</span><br><span class="line"><span class="comment"># 用来解析公钥（RSA加密），可获取key长度，模数，指数  </span></span><br><span class="line"><span class="comment"># 公钥没有反斜杠&#x27;\&#x27;,只有&#x27;/&#x27;</span></span><br><span class="line"><span class="comment"># 指数看0x，一般为0x10001,所以就是10001</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 雷电模拟器 3.63</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="哈希系列通杀"><a href="#哈希系列通杀" class="headerlink" title="哈希系列通杀"></a>哈希系列通杀</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CryptoJS.MD5(&#x27;word&#x27;)</span></span><br><span class="line"><span class="comment"># 哈希加密系列有一个固定值1732584193，可以直接搜索</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="AES加密"><a href="#AES加密" class="headerlink" title="AES加密"></a>AES加密</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mode <span class="comment"># 类型，常用CBC和ECB</span></span><br><span class="line">padding <span class="comment"># 常用Pkos7和Iso10126</span></span><br><span class="line">IV <span class="comment"># 一般为固定值,要选最初值</span></span><br><span class="line">key <span class="comment"># 一般为固定值</span></span><br><span class="line"><span class="comment"># IV和key都有Eno编码规则，如UTF8</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="RAS加密"><a href="#RAS加密" class="headerlink" title="RAS加密"></a>RAS加密</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">指数:一般为<span class="number">10001</span></span><br><span class="line">公钥:(很长)要找出来  <span class="comment"># 1.上一个请求的返回值(getpublickey) 2.js文件中默认 3.js代码生成</span></span><br><span class="line"><span class="comment"># B64编码</span></span><br><span class="line"><span class="comment"># PKCS1指的每次生成值不一样</span></span><br><span class="line"><span class="comment"># 内容反转</span></span><br><span class="line"><span class="comment"># 内存反转</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 小块弹窗，右键检查源码找到目标网址，放入浏览器打开，会出现一个干净的登录界面，方便抓包</span></span><br><span class="line"><span class="comment"># 密码一般为哈希加密</span></span><br><span class="line"><span class="comment"># 遇到Encrypt加断点</span></span><br><span class="line"><span class="comment"># 方法有传参数，就可能是的</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS逆向工具"><a href="#JS逆向工具" class="headerlink" title="JS逆向工具"></a>JS逆向工具</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WT-JS_DEBUG  <span class="comment"># 找安全版本，其他的好像有病毒</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="JS加密实例"><a href="#JS加密实例" class="headerlink" title="JS加密实例"></a>JS加密实例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">中关村登录</span><br><span class="line">pwd: <span class="number">3</span>b8aaa16fa213573513038281774d9c0  <span class="comment"># wuyao666</span></span><br><span class="line"><span class="comment"># pwd : md5Password</span></span><br><span class="line"><span class="comment"># var md5Password = CryptoJS.MD5(password+&quot;zol&quot;) + &#x27;&#x27;;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">今目标登录</span><br><span class="line">password: a2c13e941f4f68fde8d92399ddeb3bf25111a434 <span class="comment"># wuyao666</span></span><br><span class="line"><span class="comment"># var result = &#123;&#125;</span></span><br><span class="line"><span class="comment"># result.password = sha1(resultData.password)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">升学e网通 <span class="comment"># AES</span></span><br><span class="line">password: <span class="string">&quot;590d9a610747ab5392a8a164793516a8&quot;</span> <span class="comment"># wuyao666</span></span><br><span class="line"><span class="comment"># password: i = (0, v.Encrypt)(i)</span></span><br><span class="line">t.Encrypt = function(e) &#123;</span><br><span class="line">            var t = n[<span class="string">&quot;default&quot;</span>].enc.Utf8.parse(e);</span><br><span class="line">            <span class="keyword">return</span> n[<span class="string">&quot;default&quot;</span>].AES.encrypt(t, i, &#123;</span><br><span class="line">                iv: o,</span><br><span class="line">                mode: n[<span class="string">&quot;default&quot;</span>].mode.CBC,</span><br><span class="line">                padding: n[<span class="string">&quot;default&quot;</span>].pad.Pkcs7</span><br><span class="line">            &#125;).ciphertext.toString().toUpperCase()</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment"># o = n[&quot;default&quot;].enc.Utf8.parse(&quot;2017110912453698&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">有赞 <span class="comment">// AES # 网站已经改了</span></span><br><span class="line">Fiddler抓包</span><br><span class="line"><span class="comment">// 对password 加密</span></span><br><span class="line">password: d.a.encrypt(e.password)</span><br><span class="line"><span class="comment">// 源码:</span></span><br><span class="line">n = e.enc.Utf8.parse(<span class="string">&quot;youzan.com.aesiv&quot;</span>)</span><br><span class="line">i = e.enc.Utf8.parse(&quot;youzan.com._key_&quot;)  # i在此处是key</span><br><span class="line"><span class="keyword">var</span> r = e.AES.encrypt(t, i, &#123;</span><br><span class="line">    mode: e.mode.CBC,</span><br><span class="line">    padding: e.pad.Iso10126,</span><br><span class="line">	iv: n  <span class="comment">// 这个值很容易混淆,要找初始值，即enc.Utf8.parse()之前的值.</span></span><br><span class="line">&#125;).toString()</span><br><span class="line"><span class="comment">// 对ticket 加密</span></span><br><span class="line">fingerPrint  <span class="comment">// 指纹，其实就是加密后的一个字符串</span></span><br><span class="line">date:&#123;</span><br><span class="line">    fingerPrint: t ? t + c.default.encrypt(r) : <span class="string">&quot;&quot;</span>,  <span class="comment">// a?b:c</span></span><br><span class="line">    youzanType: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 也是AES加密</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">华特东方注册加密 <span class="comment"># 都是AES</span></span><br><span class="line"><span class="comment"># password </span></span><br><span class="line"><span class="comment"># token</span></span><br><span class="line"><span class="comment"># tokens  #参数unid </span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">网页百度登录加密 <span class="comment"># RSA</span></span><br><span class="line"><span class="comment"># token和codestring都是可以固定值的</span></span><br><span class="line"><span class="comment"># gid是随机的，随机数</span></span><br><span class="line"><span class="comment"># password是加密了的RSA,公钥通过请求获取 # password = </span></span><br><span class="line"><span class="comment"># 手机和网页端加密不一样</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">手机百度登录加密 <span class="comment"># RSA</span></span><br><span class="line"><span class="comment"># l.password = window.encryptedString(r,l.password)  # 前面明码经过了拼接</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">运动潮流单品交易平台 <span class="comment"># 拼接+md5</span></span><br><span class="line"><span class="comment"># sign 加密了</span></span><br><span class="line"><span class="comment"># 搜索sign</span></span><br><span class="line"><span class="comment"># t.data.sign || (t.data.sign = Object(I[&quot;b&quot;])(t.data))</span></span><br><span class="line"><span class="comment"># t.transformRequest = M : t.params.sign = Object(I[&quot;b&quot;])(t.params)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 京东登录 #RSA</span></span><br><span class="line"><span class="comment"># nloginpwd</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 微博 # RSA和SHA1</span></span><br><span class="line">sp  <span class="comment"># e.sp = b;   # sp是密码</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 享物说 # 滑动验证(一般都是假的,提交的请求包,没有这些参数值)</span></span><br><span class="line">模拟器有时候会被识别为<span class="string">&quot;高风险设备:伪造设备&quot;</span>，就不会抓到真的包，需要用自己真的手机来抓包  <span class="comment"># fengkong</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -758,7 +727,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -819,7 +788,7 @@
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;32.4k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;32.6k&nbsp;字</span>
   </div>
 
 
