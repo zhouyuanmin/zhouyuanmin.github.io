@@ -255,7 +255,7 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>795</span>
+              <span>849</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -286,6 +286,10 @@
 </ul>
 <h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> heapq</span><br><span class="line"><span class="keyword">from</span> random <span class="keyword">import</span> shuffle</span><br><span class="line"></span><br><span class="line">heap = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">10</span>))</span><br><span class="line">shuffle(heap)</span><br><span class="line"></span><br><span class="line">heapq.heapify(heap)</span><br><span class="line">print(<span class="built_in">type</span>(heap))  <span class="comment"># &lt;class &#x27;list&#x27;&gt;</span></span><br><span class="line">print(heap)  <span class="comment"># [0, 3, 1, 4, 7, 8, 2, 5, 6, 9]</span></span><br><span class="line"></span><br><span class="line">heapq.heappush(heap, <span class="number">11</span>)</span><br><span class="line">print(heap)  <span class="comment"># [0, 3, 1, 4, 7, 8, 2, 5, 6, 9, 11]</span></span><br><span class="line"></span><br><span class="line">item = heapq.heappop(heap)</span><br><span class="line">print(item)  <span class="comment"># 0</span></span><br><span class="line">print(heap)  <span class="comment"># [1, 3, 2, 4, 7, 8, 11, 5, 6, 9]</span></span><br><span class="line"></span><br><span class="line">items = heapq.nlargest(<span class="number">3</span>, heap)</span><br><span class="line">print(items)  <span class="comment"># [11, 9, 8]</span></span><br><span class="line">print(heap)  <span class="comment"># [1, 3, 2, 4, 7, 8, 11, 5, 6, 9]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h4 id="在python中使用大顶堆"><a href="#在python中使用大顶堆" class="headerlink" title="在python中使用大顶堆"></a>在python中使用大顶堆</h4><ul>
+<li>将push(e)改为push(-e)、pop(e)改为-pop(e)</li>
+<li>其他参考小顶堆</li>
+</ul>
 
     </div>
     
@@ -379,7 +383,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%EF%BC%88heap%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">堆（heap）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">常用函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A0%86%E7%89%B9%E5%BE%81%EF%BC%88heap-property%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">堆特征（heap property）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.3.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86%EF%BC%88heap%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">堆（heap）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">常用函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A0%86%E7%89%B9%E5%BE%81%EF%BC%88heap-property%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">堆特征（heap property）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E5%AD%90"><span class="nav-number">1.3.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8python%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%A7%E9%A1%B6%E5%A0%86"><span class="nav-number">1.4.</span> <span class="nav-text">在python中使用大顶堆</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
