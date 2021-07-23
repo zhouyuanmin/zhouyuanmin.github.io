@@ -59,6 +59,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Numpy</title>
+    <url>/notes/12/</url>
+    <content><![CDATA[<p>numpy学习资源整理</p>
+<p><a href="https://github.com/zhaohuicici/Python-lib/tree/master/numpy">练习题</a></p>
+<p><a href="https://github.com/zhouyuanmin/Data-Science-Notes/tree/master/2.numpy">笔记</a></p>
+]]></content>
+      <categories>
+        <category>数据开发</category>
+      </categories>
+      <tags>
+        <tag>numpy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python调用C语言</title>
     <url>/notes/11/</url>
     <content><![CDATA[<h3 id="Python3-调用C语言代码"><a href="#Python3-调用C语言代码" class="headerlink" title="Python3 调用C语言代码"></a>Python3 调用C语言代码</h3><h5 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">centos7+python3.6</span><br></pre></td></tr></table></figure>
@@ -87,20 +101,6 @@
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Numpy</title>
-    <url>/notes/12/</url>
-    <content><![CDATA[<p>numpy学习资源整理</p>
-<p><a href="https://github.com/zhaohuicici/Python-lib/tree/master/numpy">练习题</a></p>
-<p><a href="https://github.com/zhouyuanmin/Data-Science-Notes/tree/master/2.numpy">笔记</a></p>
-]]></content>
-      <categories>
-        <category>数据开发</category>
-      </categories>
-      <tags>
-        <tag>numpy</tag>
       </tags>
   </entry>
   <entry>
@@ -153,26 +153,6 @@
       </categories>
       <tags>
         <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>做项目注意事项</title>
-    <url>/notes/16/</url>
-    <content><![CDATA[<p><strong>自己负责项目的时候</strong></p>
-<p>注意点：</p>
-<ul>
-<li>做一个项目一定要先调研</li>
-<li>可以节约时间成本（找到了一些资源代码）</li>
-<li>可以找到具体的方向，实现目的的技术方向</li>
-<li>可以查看市场现状，做出基本的评估</li>
-<li>重点是风险评估</li>
-</ul>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>其他</tag>
       </tags>
   </entry>
   <entry>
@@ -246,6 +226,26 @@
       </tags>
   </entry>
   <entry>
+    <title>做项目注意事项</title>
+    <url>/notes/16/</url>
+    <content><![CDATA[<p><strong>自己负责项目的时候</strong></p>
+<p>注意点：</p>
+<ul>
+<li>做一个项目一定要先调研</li>
+<li>可以节约时间成本（找到了一些资源代码）</li>
+<li>可以找到具体的方向，实现目的的技术方向</li>
+<li>可以查看市场现状，做出基本的评估</li>
+<li>重点是风险评估</li>
+</ul>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面向对象(Python)</title>
     <url>/notes/17/</url>
     <content><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/23625909">super</a></p>
@@ -256,6 +256,48 @@
       </categories>
       <tags>
         <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>设计模式</title>
+    <url>/notes/19/</url>
+    <content><![CDATA[<p>笔记资源</p>
+<p><a href="https://www.cnblogs.com/tangkaishou/p/9246353.html">常见的设计模式python实现</a></p>
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Css基础</title>
+    <url>/notes/20/</url>
+    <content><![CDATA[<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-CN&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>三种样式表<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--1、外部样式表--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;notes-css.css&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--2、内部样式表--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        div &#123;</span><br><span class="line">            color: pink;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--3、行内样式表--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color: pink; font-size: 20px;&quot;</span>&gt;</span>给我一个粉红的回忆<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>前端开发</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>查找数据API</title>
+    <url>/notes/2/</url>
+    <content><![CDATA[<p><strong>如何查找一个网站的api接口</strong></p>
+<ul>
+<li>主要是通过百度查询api，搜一下，基本上都有</li>
+</ul>
+<p><img src="https://i.loli.net/2020/09/08/387TvyMekhRQsNr.png" alt="那么如何判断一个网站是否开放api呢？有3种方法"></p>
+]]></content>
+      <categories>
+        <category>数据开发</category>
+      </categories>
+      <tags>
+        <tag>开发经验</tag>
       </tags>
   </entry>
   <entry>
@@ -280,48 +322,6 @@
       <categories>
         <category>温故而知新</category>
       </categories>
-  </entry>
-  <entry>
-    <title>设计模式</title>
-    <url>/notes/19/</url>
-    <content><![CDATA[<p>笔记资源</p>
-<p><a href="https://www.cnblogs.com/tangkaishou/p/9246353.html">常见的设计模式python实现</a></p>
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>查找数据API</title>
-    <url>/notes/2/</url>
-    <content><![CDATA[<p><strong>如何查找一个网站的api接口</strong></p>
-<ul>
-<li>主要是通过百度查询api，搜一下，基本上都有</li>
-</ul>
-<p><img src="https://i.loli.net/2020/09/08/387TvyMekhRQsNr.png" alt="那么如何判断一个网站是否开放api呢？有3种方法"></p>
-]]></content>
-      <categories>
-        <category>数据开发</category>
-      </categories>
-      <tags>
-        <tag>开发经验</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Css基础</title>
-    <url>/notes/20/</url>
-    <content><![CDATA[<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-CN&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>三种样式表<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--1、外部样式表--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;notes-css.css&quot;</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--2、内部样式表--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        div &#123;</span><br><span class="line">            color: pink;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--3、行内样式表--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;color: pink; font-size: 20px;&quot;</span>&gt;</span>给我一个粉红的回忆<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>前端开发</category>
-      </categories>
-      <tags>
-        <tag>css</tag>
-      </tags>
   </entry>
   <entry>
     <title>复习笔记</title>
@@ -461,26 +461,6 @@
       </tags>
   </entry>
   <entry>
-    <title>后台运行程序</title>
-    <url>/notes/26/</url>
-    <content><![CDATA[<h4 id="0-“-amp-”"><a href="#0-“-amp-”" class="headerlink" title="0. “&amp;”"></a>0. “&amp;”</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一般我们可在结尾加上&quot;&amp;&quot;来将命令同时放入后台运行</span><br><span class="line">但是关掉会话之后，进程就会被杀掉</span><br></pre></td></tr></table></figure>
-
-<h4 id="1-nohup"><a href="#1-nohup" class="headerlink" title="1. nohup"></a>1. nohup</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nohup ping www.ibm.com &amp;</span><br><span class="line"># nohup 的用途就是让提交的命令忽略 hangup 信号</span><br><span class="line"># 标准输出和标准错误缺省会被重定向到 nohup.out 文件中，也可使用 &gt;filename 2&gt;&amp;1 来重定向文件名</span><br><span class="line">nohup python3 run.py &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-setsid"><a href="#2-setsid" class="headerlink" title="2. setsid"></a>2. setsid</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">setsid ping www.ibm.com</span><br><span class="line"># 将命令进程放到1号进程下面（就不是子进程了，不再接收hangup信号）</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-subshell-的小技巧"><a href="#3-subshell-的小技巧" class="headerlink" title="3. subshell 的小技巧"></a>3. subshell 的小技巧</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(ping www.ibm.com &amp;)</span><br><span class="line"># 括号包起来</span><br><span class="line"># 让命令在subshell运行</span><br><span class="line"># 父 ID（PPID）为1，不属于当前终端的子进程，从而也就不会受到当前终端的 HUP 信号的影响了。</span><br></pre></td></tr></table></figure>
-
-<h4 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h4><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/">让进程在后台运行更可靠的几种方法</a></p>
-]]></content>
-      <categories>
-        <category>运维测试</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python常用内置库</title>
     <url>/notes/27/</url>
     <content><![CDATA[<h3 id="Python常用内置库"><a href="#Python常用内置库" class="headerlink" title="Python常用内置库"></a>Python常用内置库</h3><h3 id="0-内置函数"><a href="#0-内置函数" class="headerlink" title="0.内置函数"></a>0.内置函数</h3><ul>
@@ -550,6 +530,26 @@
 
 <h4 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>后台运行程序</title>
+    <url>/notes/26/</url>
+    <content><![CDATA[<h4 id="0-“-amp-”"><a href="#0-“-amp-”" class="headerlink" title="0. “&amp;”"></a>0. “&amp;”</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一般我们可在结尾加上&quot;&amp;&quot;来将命令同时放入后台运行</span><br><span class="line">但是关掉会话之后，进程就会被杀掉</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-nohup"><a href="#1-nohup" class="headerlink" title="1. nohup"></a>1. nohup</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nohup ping www.ibm.com &amp;</span><br><span class="line"># nohup 的用途就是让提交的命令忽略 hangup 信号</span><br><span class="line"># 标准输出和标准错误缺省会被重定向到 nohup.out 文件中，也可使用 &gt;filename 2&gt;&amp;1 来重定向文件名</span><br><span class="line">nohup python3 run.py &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-setsid"><a href="#2-setsid" class="headerlink" title="2. setsid"></a>2. setsid</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">setsid ping www.ibm.com</span><br><span class="line"># 将命令进程放到1号进程下面（就不是子进程了，不再接收hangup信号）</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-subshell-的小技巧"><a href="#3-subshell-的小技巧" class="headerlink" title="3. subshell 的小技巧"></a>3. subshell 的小技巧</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(ping www.ibm.com &amp;)</span><br><span class="line"># 括号包起来</span><br><span class="line"># 让命令在subshell运行</span><br><span class="line"># 父 ID（PPID）为1，不属于当前终端的子进程，从而也就不会受到当前终端的 HUP 信号的影响了。</span><br></pre></td></tr></table></figure>
+
+<h4 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h4><p><a href="https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/">让进程在后台运行更可靠的几种方法</a></p>
 ]]></content>
       <categories>
         <category>运维测试</category>
@@ -708,6 +708,18 @@
       </categories>
   </entry>
   <entry>
+    <title>Html笔记</title>
+    <url>/notes/35/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_43342105/article/details/106271856">HTML复习笔记</a></p>
+]]></content>
+      <categories>
+        <category>前端开发</category>
+      </categories>
+      <tags>
+        <tag>html</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>部署事故</title>
     <url>/notes/36/</url>
     <content><![CDATA[<p>部署事故</p>
@@ -723,18 +735,6 @@
       <tags>
         <tag>开发经验</tag>
         <tag>线上事故</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Html笔记</title>
-    <url>/notes/35/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_43342105/article/details/106271856">HTML复习笔记</a></p>
-]]></content>
-      <categories>
-        <category>前端开发</category>
-      </categories>
-      <tags>
-        <tag>html</tag>
       </tags>
   </entry>
   <entry>
@@ -854,6 +854,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Sql技巧</title>
+    <url>/notes/41/</url>
+    <content><![CDATA[<p>INSERT INTO… SELECT 与 自增id的冲突</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、缺少id会报错，缺少字段</span><br><span class="line">2、指定id，又不确定id应该是多少</span><br><span class="line">3、解决办法：设置id为null</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 例子</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`pt_rating`</span>.<span class="string">`paper_subject`</span> <span class="keyword">SELECT</span></span><br><span class="line"><span class="literal">NULL</span> <span class="keyword">AS</span> <span class="keyword">id</span>,  <span class="comment">-- 这个必须有id，可以设置为null</span></span><br><span class="line"><span class="number">168</span> <span class="keyword">AS</span> paper_id,</span><br><span class="line">subject_id,</span><br><span class="line">score,</span><br><span class="line"><span class="keyword">sort</span>,</span><br><span class="line"><span class="keyword">NOW</span>() <span class="keyword">AS</span> create_time </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	paper_subject </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	paper_id = <span class="number">167</span>;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>开发经验</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python模块</title>
     <url>/notes/40/</url>
     <content><![CDATA[<h3 id="模块搜索路径"><a href="#模块搜索路径" class="headerlink" title="模块搜索路径"></a>模块搜索路径</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&#x27;模块路径&#x27;</span>)</span><br><span class="line"><span class="comment"># 这种方法是在运行时修改（添加），运行结束后失效</span></span><br></pre></td></tr></table></figure>
@@ -874,22 +890,6 @@
       </categories>
       <tags>
         <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Sql技巧</title>
-    <url>/notes/41/</url>
-    <content><![CDATA[<p>INSERT INTO… SELECT 与 自增id的冲突</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、缺少id会报错，缺少字段</span><br><span class="line">2、指定id，又不确定id应该是多少</span><br><span class="line">3、解决办法：设置id为null</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 例子</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`pt_rating`</span>.<span class="string">`paper_subject`</span> <span class="keyword">SELECT</span></span><br><span class="line"><span class="literal">NULL</span> <span class="keyword">AS</span> <span class="keyword">id</span>,  <span class="comment">-- 这个必须有id，可以设置为null</span></span><br><span class="line"><span class="number">168</span> <span class="keyword">AS</span> paper_id,</span><br><span class="line">subject_id,</span><br><span class="line">score,</span><br><span class="line"><span class="keyword">sort</span>,</span><br><span class="line"><span class="keyword">NOW</span>() <span class="keyword">AS</span> create_time </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	paper_subject </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	paper_id = <span class="number">167</span>;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>开发经验</tag>
       </tags>
   </entry>
   <entry>
@@ -2011,6 +2011,19 @@
       </categories>
   </entry>
   <entry>
+    <title>终结进程</title>
+    <url>/notes/8/</url>
+    <content><![CDATA[<h3 id="杀死占用端口的进程"><a href="#杀死占用端口的进程" class="headerlink" title="杀死占用端口的进程"></a>杀死占用端口的进程</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看占用端口的进程</span></span><br><span class="line">netstat -tlnp|grep 6379  # t-tcp,l-listen,n-不解析(速度快),p-process</span><br><span class="line"><span class="meta">#</span><span class="bash"> 一次性的清除占用80端口的程序</span></span><br><span class="line">lsof -i :80|grep -v &quot;PID&quot;|awk &#x27;&#123;print &quot;kill -9&quot;,$2&#125;&#x27;|sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 终止进程</span></span><br><span class="line">kill 5014</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制终止进程</span></span><br><span class="line">kill -9 5014  # 是pid</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RESTful API 设计指南</title>
     <url>/notes/80/</url>
     <content><![CDATA[<p><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html">RESTful API 设计指南</a></p>
@@ -2023,16 +2036,18 @@
       </tags>
   </entry>
   <entry>
-    <title>终结进程</title>
-    <url>/notes/8/</url>
-    <content><![CDATA[<h3 id="杀死占用端口的进程"><a href="#杀死占用端口的进程" class="headerlink" title="杀死占用端口的进程"></a>杀死占用端口的进程</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看占用端口的进程</span></span><br><span class="line">netstat -tlnp|grep 6379  # t-tcp,l-listen,n-不解析(速度快),p-process</span><br><span class="line"><span class="meta">#</span><span class="bash"> 一次性的清除占用80端口的程序</span></span><br><span class="line">lsof -i :80|grep -v &quot;PID&quot;|awk &#x27;&#123;print &quot;kill -9&quot;,$2&#125;&#x27;|sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 终止进程</span></span><br><span class="line">kill 5014</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制终止进程</span></span><br><span class="line">kill -9 5014  # 是pid</span><br></pre></td></tr></table></figure>
+    <title>Sql男女性别</title>
+    <url>/notes/81/</url>
+    <content><![CDATA[<p>Sql语句将0，1转化为男女性别</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">id</span>,</span><br><span class="line">	user_cid,</span><br><span class="line">	phone,</span><br><span class="line">	<span class="keyword">name</span>,</span><br><span class="line"><span class="keyword">CASE</span></span><br><span class="line">		gender </span><br><span class="line">		<span class="keyword">WHEN</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">		<span class="string">&#x27;男&#x27;</span> </span><br><span class="line">		<span class="keyword">WHEN</span> <span class="string">&#x27;2&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">		<span class="string">&#x27;女&#x27;</span> </span><br><span class="line">	<span class="keyword">END</span> <span class="keyword">AS</span> gender,</span><br><span class="line">	start_city,</span><br><span class="line">	end_city,</span><br><span class="line">	story,</span><br><span class="line">	create_time </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	active_collection_story </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	create_time <span class="keyword">BETWEEN</span> <span class="string">&#x27;2019-01-25 00:00:00&#x27;</span> </span><br><span class="line">	<span class="keyword">AND</span> <span class="string">&#x27;2019-01-27 23:59:59&#x27;</span>;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
-        <category>运维测试</category>
+        <category>温故而知新</category>
       </categories>
       <tags>
-        <tag>linux</tag>
+        <tag>开发经验</tag>
+        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -2073,21 +2088,6 @@
       </categories>
       <tags>
         <tag>django</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Sql男女性别</title>
-    <url>/notes/81/</url>
-    <content><![CDATA[<p>Sql语句将0，1转化为男女性别</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	<span class="keyword">id</span>,</span><br><span class="line">	user_cid,</span><br><span class="line">	phone,</span><br><span class="line">	<span class="keyword">name</span>,</span><br><span class="line"><span class="keyword">CASE</span></span><br><span class="line">		gender </span><br><span class="line">		<span class="keyword">WHEN</span> <span class="string">&#x27;1&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">		<span class="string">&#x27;男&#x27;</span> </span><br><span class="line">		<span class="keyword">WHEN</span> <span class="string">&#x27;2&#x27;</span> <span class="keyword">THEN</span></span><br><span class="line">		<span class="string">&#x27;女&#x27;</span> </span><br><span class="line">	<span class="keyword">END</span> <span class="keyword">AS</span> gender,</span><br><span class="line">	start_city,</span><br><span class="line">	end_city,</span><br><span class="line">	story,</span><br><span class="line">	create_time </span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">	active_collection_story </span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">	create_time <span class="keyword">BETWEEN</span> <span class="string">&#x27;2019-01-25 00:00:00&#x27;</span> </span><br><span class="line">	<span class="keyword">AND</span> <span class="string">&#x27;2019-01-27 23:59:59&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>温故而知新</category>
-      </categories>
-      <tags>
-        <tag>开发经验</tag>
-        <tag>mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -2245,6 +2245,28 @@
       </tags>
   </entry>
   <entry>
+    <title>使用CORS解决跨域访问</title>
+    <url>/notes/90/</url>
+    <content><![CDATA[<p>使用django-cors-headers扩展解决跨域访问</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install django-cors-headers</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>settings.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;corsheaders&#x27;</span>,</span><br><span class="line">    ...</span><br><span class="line">)</span><br><span class="line">MIDDLEWARE = [</span><br><span class="line">    <span class="string">&#x27;corsheaders.middleware.CorsMiddleware&#x27;</span>,  <span class="comment"># 放在最前面</span></span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"><span class="comment"># CORS白名单</span></span><br><span class="line">CORS_ORIGIN_WHITELIST = (</span><br><span class="line">    <span class="string">&#x27;127.0.0.1:8080&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;localhost:8080&#x27;</span>,</span><br><span class="line">)</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">CORS_ALLOW_CREDENTIALS = <span class="literal">True</span>  <span class="comment"># 跨域访问中,允许携带cookie</span></span><br><span class="line"><span class="comment"># CORS_ORIGIN_ALLOW_ALL为True, 指定所有域名(ip)都可以访问后端接口, 默认为False</span></span><br><span class="line">CORS_ORIGIN_ALLOW_ALL = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>ALLOWED_HOSTS允许访问后端的域名</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ALLOWED_HOSTS = [&#x27;127.0.0.1&#x27;, &#x27;localhost&#x27;, &#x27;api.myard.cn&#x27;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ALLOWED_HOSTS = [<span class="string">&#x27;*&#x27;</span>]  <span class="comment"># 填写上“*”可以使所有的网址都能访问Django项目了</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker基础</title>
     <url>/notes/9/</url>
     <content><![CDATA[<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 在docker反复build后，会存留很多none镜像，下面命令一键删除所有none镜像</span><br><span class="line">docker rmi &#96;docker images | grep  &#39;&lt;none&gt;&#39; | awk &#39;&#123;print $3&#125;&#39;&#96;</span><br><span class="line">或者</span><br><span class="line">docker rmi $(docker images -q -f dangling&#x3D;true)</span><br><span class="line"># 删除所有停止的容器</span><br><span class="line">docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
@@ -2293,28 +2315,6 @@
       </categories>
       <tags>
         <tag>docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用CORS解决跨域访问</title>
-    <url>/notes/90/</url>
-    <content><![CDATA[<p>使用django-cors-headers扩展解决跨域访问</p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install django-cors-headers</span><br></pre></td></tr></table></figure>
-
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>settings.py</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">&#x27;corsheaders&#x27;</span>,</span><br><span class="line">    ...</span><br><span class="line">)</span><br><span class="line">MIDDLEWARE = [</span><br><span class="line">    <span class="string">&#x27;corsheaders.middleware.CorsMiddleware&#x27;</span>,  <span class="comment"># 放在最前面</span></span><br><span class="line">    ...</span><br><span class="line">]</span><br><span class="line"><span class="comment"># CORS白名单</span></span><br><span class="line">CORS_ORIGIN_WHITELIST = (</span><br><span class="line">    <span class="string">&#x27;127.0.0.1:8080&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;localhost:8080&#x27;</span>,</span><br><span class="line">)</span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">CORS_ALLOW_CREDENTIALS = <span class="literal">True</span>  <span class="comment"># 跨域访问中,允许携带cookie</span></span><br><span class="line"><span class="comment"># CORS_ORIGIN_ALLOW_ALL为True, 指定所有域名(ip)都可以访问后端接口, 默认为False</span></span><br><span class="line">CORS_ORIGIN_ALLOW_ALL = <span class="literal">True</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p>ALLOWED_HOSTS允许访问后端的域名</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ALLOWED_HOSTS = [&#x27;127.0.0.1&#x27;, &#x27;localhost&#x27;, &#x27;api.myard.cn&#x27;]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ALLOWED_HOSTS = [<span class="string">&#x27;*&#x27;</span>]  <span class="comment"># 填写上“*”可以使所有的网址都能访问Django项目了</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>django</tag>
       </tags>
   </entry>
   <entry>
@@ -2385,7 +2385,7 @@
       </tags>
   </entry>
   <entry>
-    <title>数据结构-堆的基本操作</title>
+    <title>堆的基本操作</title>
     <url>/notes/93/</url>
     <content><![CDATA[<h3 id="堆（heap）"><a href="#堆（heap）" class="headerlink" title="堆（heap）"></a>堆（heap）</h3><ul>
 <li>Python没有独立的堆类型，而只有一个包含一些堆操作函数的模块，只有小顶堆，没有大顶堆。</li>
