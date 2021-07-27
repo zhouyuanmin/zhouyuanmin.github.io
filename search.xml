@@ -481,6 +481,31 @@
       </tags>
   </entry>
   <entry>
+    <title>防火墙</title>
+    <url>/notes/28/</url>
+    <content><![CDATA[<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><h4 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询端口号80-是否开启"><a href="#查询端口号80-是否开启" class="headerlink" title="查询端口号80 是否开启"></a>查询端口号80 是否开启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --query-port&#x3D;80&#x2F;tcp</span><br></pre></td></tr></table></figure>
+
+<h4 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h4 id="查询有哪些端口是开启的"><a href="#查询有哪些端口是开启的" class="headerlink" title="查询有哪些端口是开启的"></a>查询有哪些端口是开启的</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
+
+<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="禁止防火墙开机自启"><a href="#禁止防火墙开机自启" class="headerlink" title="禁止防火墙开机自启"></a>禁止防火墙开机自启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
+
+<h4 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python常用内置库</title>
     <url>/notes/27/</url>
     <content><![CDATA[<h3 id="Python常用内置库"><a href="#Python常用内置库" class="headerlink" title="Python常用内置库"></a>Python常用内置库</h3><h3 id="0-内置函数"><a href="#0-内置函数" class="headerlink" title="0.内置函数"></a>0.内置函数</h3><ul>
@@ -534,31 +559,6 @@
       </tags>
   </entry>
   <entry>
-    <title>防火墙</title>
-    <url>/notes/28/</url>
-    <content><![CDATA[<h3 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h3><h4 id="开启端口"><a href="#开启端口" class="headerlink" title="开启端口"></a>开启端口</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;80&#x2F;tcp --permanent</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询端口号80-是否开启"><a href="#查询端口号80-是否开启" class="headerlink" title="查询端口号80 是否开启"></a>查询端口号80 是否开启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --query-port&#x3D;80&#x2F;tcp</span><br></pre></td></tr></table></figure>
-
-<h4 id="重启防火墙"><a href="#重启防火墙" class="headerlink" title="重启防火墙"></a>重启防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<h4 id="查询有哪些端口是开启的"><a href="#查询有哪些端口是开启的" class="headerlink" title="查询有哪些端口是开启的"></a>查询有哪些端口是开启的</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --list-port</span><br></pre></td></tr></table></figure>
-
-<h4 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="禁止防火墙开机自启"><a href="#禁止防火墙开机自启" class="headerlink" title="禁止防火墙开机自启"></a>禁止防火墙开机自启</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h4 id="启动防火墙"><a href="#启动防火墙" class="headerlink" title="启动防火墙"></a>启动防火墙</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>运维测试</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Django-Jinja2配置</title>
     <url>/notes/29/</url>
     <content><![CDATA[<h4 id="配置Jinja2模板引擎"><a href="#配置Jinja2模板引擎" class="headerlink" title="配置Jinja2模板引擎"></a>配置Jinja2模板引擎</h4><h5 id="1-安装Jinja2扩展包"><a href="#1-安装Jinja2扩展包" class="headerlink" title="1. 安装Jinja2扩展包"></a>1. 安装Jinja2扩展包</h5><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ pip install Jinja2</span><br></pre></td></tr></table></figure>
@@ -589,19 +589,6 @@
       </categories>
       <tags>
         <tag>django</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Kali破解wifi</title>
-    <url>/notes/30/</url>
-    <content><![CDATA[<h4 id="暴力破解wifi，获取wifi密码"><a href="#暴力破解wifi，获取wifi密码" class="headerlink" title="暴力破解wifi，获取wifi密码"></a>暴力破解wifi，获取wifi密码</h4><p>嘿嘿，wifi密码在我手上</p>
-<p>使用kail抓取wifi握手包🤝，然后枚举密码，并验证，得出密码</p>
-<img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201024100509.png" alt="image-20201024100509256" style="zoom:50%;" />]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>kali</tag>
       </tags>
   </entry>
   <entry>
@@ -642,6 +629,19 @@
       </categories>
       <tags>
         <tag>supervisor</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kali破解wifi</title>
+    <url>/notes/30/</url>
+    <content><![CDATA[<h4 id="暴力破解wifi，获取wifi密码"><a href="#暴力破解wifi，获取wifi密码" class="headerlink" title="暴力破解wifi，获取wifi密码"></a>暴力破解wifi，获取wifi密码</h4><p>嘿嘿，wifi密码在我手上</p>
+<p>使用kail抓取wifi握手包🤝，然后枚举密码，并验证，得出密码</p>
+<img src="https://gitee.com/zhouyuanmin/images/raw/master/imgs/20201024100509.png" alt="image-20201024100509256" style="zoom:50%;" />]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>kali</tag>
       </tags>
   </entry>
   <entry>
@@ -2002,6 +2002,15 @@
       </tags>
   </entry>
   <entry>
+    <title>商业-逆向思维</title>
+    <url>/notes/79/</url>
+    <content><![CDATA[<p><a href="http://www.360doc.com/content/21/0325/07/63548264_968859421.shtml">商业-逆向思维</a></p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+  </entry>
+  <entry>
     <title>终结进程</title>
     <url>/notes/8/</url>
     <content><![CDATA[<h3 id="杀死占用端口的进程"><a href="#杀死占用端口的进程" class="headerlink" title="杀死占用端口的进程"></a>杀死占用端口的进程</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看占用端口的进程</span></span><br><span class="line">netstat -tlnp|grep 6379  # t-tcp,l-listen,n-不解析(速度快),p-process</span><br><span class="line"><span class="meta">#</span><span class="bash"> 一次性的清除占用80端口的程序</span></span><br><span class="line">lsof -i :80|grep -v &quot;PID&quot;|awk &#x27;&#123;print &quot;kill -9&quot;,$2&#125;&#x27;|sh</span><br><span class="line"><span class="meta">#</span><span class="bash"> 终止进程</span></span><br><span class="line">kill 5014</span><br><span class="line"><span class="meta">#</span><span class="bash"> 强制终止进程</span></span><br><span class="line">kill -9 5014  # 是pid</span><br></pre></td></tr></table></figure>
@@ -2013,15 +2022,6 @@
       <tags>
         <tag>linux</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>商业-逆向思维</title>
-    <url>/notes/79/</url>
-    <content><![CDATA[<p><a href="http://www.360doc.com/content/21/0325/07/63548264_968859421.shtml">商业-逆向思维</a></p>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
   </entry>
   <entry>
     <title>RESTful API 设计指南</title>
@@ -2423,6 +2423,30 @@
       </categories>
       <tags>
         <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>大海我来了</title>
+    <url>/notes/95/</url>
+    <content><![CDATA[<h3 id="大海我来了"><a href="#大海我来了" class="headerlink" title="大海我来了"></a>大海我来了</h3><ul>
+<li><p>一个前端大佬的笔记，多去看看，总会有收获的</p>
+</li>
+<li><p>大佬的<a href="https://juejin.cn/user/3685218705745230/posts">主页</a></p>
+</li>
+<li><p><a href="https://juejin.cn/post/6946022649768181774">JS</a></p>
+</li>
+<li><p><a href="https://juejin.cn/post/6941206439624966152">CSS</a></p>
+</li>
+<li><p><a href="https://juejin.cn/post/6874007172578033677">Vue</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端开发</category>
+      </categories>
+      <tags>
+        <tag>开发经验</tag>
+        <tag>基础知识</tag>
       </tags>
   </entry>
 </search>
