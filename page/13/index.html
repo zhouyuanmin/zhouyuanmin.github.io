@@ -210,6 +210,134 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/27/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/27/" class="post-title-link" itemprop="url">Python常用内置库</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 11:28:27" itemprop="dateCreated datePublished" datetime="2020-11-13T11:28:27+08:00">2020-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
+                    <span itemprop="name">服务端开发</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>752</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Python常用内置库"><a href="#Python常用内置库" class="headerlink" title="Python常用内置库"></a>Python常用内置库</h3><h3 id="0-内置函数"><a href="#0-内置函数" class="headerlink" title="0.内置函数"></a>0.内置函数</h3><ul>
+<li>chr()   转换一个[0, 255]之间的整数为对应的ASCII字符</li>
+<li>ord()   将一个ASCII字符转换为对应整数</li>
+</ul>
+<h3 id="1-copy"><a href="#1-copy" class="headerlink" title="1.copy"></a>1.copy</h3><ul>
+<li>copy.deepcopy(a)</li>
+<li>copy.copy(a)</li>
+</ul>
+<h3 id="2-random"><a href="#2-random" class="headerlink" title="2.random"></a>2.random</h3><ul>
+<li>random.shuffle(list)  洗牌</li>
+<li>random.randint(a,b)  随机整数[a,b]</li>
+<li>random.random()  随机(0,1)</li>
+<li>random.choice(seq)</li>
+<li>random.randrange(0, 101, 2)   包前不包后</li>
+</ul>
+<h3 id="3-os"><a href="#3-os" class="headerlink" title="3.os"></a>3.os</h3><ul>
+<li>负责与操作系统交互</li>
+<li>os.remove()</li>
+<li>os.rename(src, dst)  重命名</li>
+<li>os.mkdir()</li>
+<li>os.remkdir()  删除目录</li>
+<li>os.getcwd()</li>
+<li>os.chdir()  改变当前脚本的工作路径，相当于shell下的cd</li>
+</ul>
+<h3 id="4-sys"><a href="#4-sys" class="headerlink" title="4.sys"></a>4.sys</h3><ul>
+<li>负责与Python解释器交互</li>
+<li>sys.exit(0)</li>
+<li>sys.path 解释器的环境变量是list格式</li>
+</ul>
+<h3 id="5-time"><a href="#5-time" class="headerlink" title="5.time"></a>5.time</h3><ul>
+<li>time.time()  时间戳数字</li>
+<li>time.localtime()   返回struct_time对象</li>
+<li>time.asctime()  格式化输出</li>
+<li>time.strftime(“%Y-%m-%d %H:%M:%S”)   格式化输出</li>
+<li>time.strptime(“2016/05/22”,”%Y/%m/%d”)    返回struct_time对象</li>
+</ul>
+<h3 id="6-datetime"><a href="#6-datetime" class="headerlink" title="6.datetime"></a>6.datetime</h3><ul>
+<li>a = datetime.datetime.now()</li>
+<li>a.strftime(“%Y-%m-%d %H:%M:%S”)   格式化输出</li>
+<li>a.utctimetuple()   # 返回struct_time对象，与time.localtime()对象类型相同，值也相同</li>
+<li>datetime.timedelta(day=3, hours=12, minutes=30, seconds=30)</li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/46/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -594,104 +722,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/40/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/40/" class="post-title-link" itemprop="url">Python模块</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 11:09:03" itemprop="dateCreated datePublished" datetime="2020-11-13T11:09:03+08:00">2020-11-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" itemprop="url" rel="index">
-                    <span itemprop="name">服务端开发</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>557</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="模块搜索路径"><a href="#模块搜索路径" class="headerlink" title="模块搜索路径"></a>模块搜索路径</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">&#x27;模块路径&#x27;</span>)</span><br><span class="line"><span class="comment"># 这种方法是在运行时修改（添加），运行结束后失效</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="介绍模块相关一些知识"><a href="#介绍模块相关一些知识" class="headerlink" title="介绍模块相关一些知识"></a>介绍模块相关一些知识</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27; a test module &#x27;</span></span><br><span class="line"></span><br><span class="line">__author__ = <span class="string">&#x27;Jason &#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>():</span></span><br><span class="line">    args = sys.argv   <span class="comment"># 命令行参数，第一个默认为文件名</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args)==<span class="number">1</span>:</span><br><span class="line">        print(<span class="string">&#x27;Hello, world!&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span> <span class="built_in">len</span>(args)==<span class="number">2</span>:</span><br><span class="line">        print(<span class="string">&#x27;Hello, %s!&#x27;</span> % args[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&#x27;Too many arguments!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    test()</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line">可以让文件直接在Unix/Linux/Mac上运行</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line">统一使用标准utf-8编码</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">任何模块代码的第一个字符串都被视为模块的文档注释</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__author__变量是作者</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -742,7 +772,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">93</span>
+          <span class="site-state-item-count">94</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -755,7 +785,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
