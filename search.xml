@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Scrapy基础</title>
+    <url>/notes/10/</url>
+    <content><![CDATA[<h4 id="使用scrapy的shell测试网站"><a href="#使用scrapy的shell测试网站" class="headerlink" title="使用scrapy的shell测试网站"></a>使用scrapy的shell测试网站</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 给scrapy shell 调试加上headers</span></span><br><span class="line">scrapy shell <span class="comment"># 进入shell,但没有url</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;User-Agent:Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&#x27;</span>&#125;</span><br><span class="line">req = scrapy.Request(url=<span class="string">&#x27;url&#x27;</span>,headers=headers)</span><br><span class="line">fetch(req) <span class="comment"># 如此就等价于scrapy shell url # 添加了headers</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>scrapy</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python调用C语言</title>
     <url>/notes/11/</url>
     <content><![CDATA[<h3 id="Python3-调用C语言代码"><a href="#Python3-调用C语言代码" class="headerlink" title="Python3 调用C语言代码"></a>Python3 调用C语言代码</h3><h5 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">centos7+python3.6</span><br></pre></td></tr></table></figure>
@@ -78,18 +90,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Scrapy基础</title>
-    <url>/notes/10/</url>
-    <content><![CDATA[<h4 id="使用scrapy的shell测试网站"><a href="#使用scrapy的shell测试网站" class="headerlink" title="使用scrapy的shell测试网站"></a>使用scrapy的shell测试网站</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 给scrapy shell 调试加上headers</span></span><br><span class="line">scrapy shell <span class="comment"># 进入shell,但没有url</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;User-Agent:Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1&#x27;</span>&#125;</span><br><span class="line">req = scrapy.Request(url=<span class="string">&#x27;url&#x27;</span>,headers=headers)</span><br><span class="line">fetch(req) <span class="comment"># 如此就等价于scrapy shell url # 添加了headers</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>scrapy</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Numpy</title>
     <url>/notes/12/</url>
     <content><![CDATA[<p>numpy学习资源整理</p>
@@ -138,21 +138,6 @@
       </categories>
       <tags>
         <tag>unittest</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker-Compose基础</title>
-    <url>/notes/14/</url>
-    <content><![CDATA[<p>Docker-compose笔记</p>
-<ul>
-<li>这是一个docker-compose的小demo <a href="https://github.com/zhouyuanmin/DockerFileDemo">地址</a>，清晰的阐述了docker-compose的基本操作</li>
-</ul>
-]]></content>
-      <categories>
-        <category>运维测试</category>
-      </categories>
-      <tags>
-        <tag>docker</tag>
       </tags>
   </entry>
   <entry>
@@ -226,6 +211,21 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker-Compose基础</title>
+    <url>/notes/14/</url>
+    <content><![CDATA[<p>Docker-compose笔记</p>
+<ul>
+<li>这是一个docker-compose的小demo <a href="https://github.com/zhouyuanmin/DockerFileDemo">地址</a>，清晰的阐述了docker-compose的基本操作</li>
+</ul>
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>做项目注意事项</title>
     <url>/notes/16/</url>
     <content><![CDATA[<p><strong>自己负责项目的时候</strong></p>
@@ -259,19 +259,6 @@
       </tags>
   </entry>
   <entry>
-    <title>设计模式</title>
-    <url>/notes/19/</url>
-    <content><![CDATA[<p>笔记资源</p>
-<p><a href="https://www.cnblogs.com/tangkaishou/p/9246353.html">常见的设计模式python实现</a></p>
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>复习笔记</title>
     <url>/notes/18/</url>
     <content><![CDATA[<h4 id="系统编程"><a href="#系统编程" class="headerlink" title="系统编程"></a>系统编程</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 进程总结</span></span><br><span class="line"><span class="comment"># 程序运行在操作系统上的一个实例，就称之为进程。</span></span><br><span class="line"><span class="comment"># 进程需要相应的系统资源：内存、时间片、pid</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"></span><br><span class="line">proc = Process(target=func, args=(<span class="number">1</span>,), kwargs=&#123;<span class="string">&#x27;a&#x27;</span>: <span class="string">&#x27;a&#x27;</span>&#125;, name=<span class="string">&#x27;proc_1&#x27;</span>)</span><br><span class="line">proc.start()</span><br><span class="line">proc.is_alive()  <span class="comment"># 是否还活着</span></span><br><span class="line">proc.join(timeout=<span class="number">10</span>)  <span class="comment"># 等结束，或者等10秒</span></span><br><span class="line">proc.terminate()  <span class="comment"># 强制关闭</span></span><br><span class="line">proc.name</span><br><span class="line">proc.pid</span><br></pre></td></tr></table></figure>
@@ -295,19 +282,16 @@
       </categories>
   </entry>
   <entry>
-    <title>查找数据API</title>
-    <url>/notes/2/</url>
-    <content><![CDATA[<p><strong>如何查找一个网站的api接口</strong></p>
-<ul>
-<li>主要是通过百度查询api，搜一下，基本上都有</li>
-</ul>
-<p><img src="https://i.loli.net/2020/09/08/387TvyMekhRQsNr.png" alt="那么如何判断一个网站是否开放api呢？有3种方法"></p>
+    <title>设计模式</title>
+    <url>/notes/19/</url>
+    <content><![CDATA[<p>笔记资源</p>
+<p><a href="https://www.cnblogs.com/tangkaishou/p/9246353.html">常见的设计模式python实现</a></p>
 ]]></content>
       <categories>
-        <category>数据开发</category>
+        <category>服务端开发</category>
       </categories>
       <tags>
-        <tag>开发经验</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -321,6 +305,22 @@
       </categories>
       <tags>
         <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>查找数据API</title>
+    <url>/notes/2/</url>
+    <content><![CDATA[<p><strong>如何查找一个网站的api接口</strong></p>
+<ul>
+<li>主要是通过百度查询api，搜一下，基本上都有</li>
+</ul>
+<p><img src="https://i.loli.net/2020/09/08/387TvyMekhRQsNr.png" alt="那么如何判断一个网站是否开放api呢？有3种方法"></p>
+]]></content>
+      <categories>
+        <category>数据开发</category>
+      </categories>
+      <tags>
+        <tag>开发经验</tag>
       </tags>
   </entry>
   <entry>
@@ -738,6 +738,25 @@
       </tags>
   </entry>
   <entry>
+    <title>Django-Mysql配置</title>
+    <url>/notes/37/</url>
+    <content><![CDATA[<h4 id="Django配置mysql数据库"><a href="#Django配置mysql数据库" class="headerlink" title="Django配置mysql数据库"></a>Django配置mysql数据库</h4><h5 id="1、安装PyMySQL"><a href="#1、安装PyMySQL" class="headerlink" title="1、安装PyMySQL"></a>1、安装PyMySQL</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install PyMySQL</span><br></pre></td></tr></table></figure>
+
+<h5 id="2、-在Django的工程同名子目录的init-py文件中添加如下语句"><a href="#2、-在Django的工程同名子目录的init-py文件中添加如下语句" class="headerlink" title="2、 在Django的工程同名子目录的init.py文件中添加如下语句"></a>2、 在Django的工程同名子目录的<strong>init</strong>.py文件中添加如下语句</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pymysql <span class="keyword">import</span> install_as_MySQLdb</span><br><span class="line">install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
+
+<h5 id="3、修改settings-py中DATABASES配置信息"><a href="#3、修改settings-py中DATABASES配置信息" class="headerlink" title="3、修改settings.py中DATABASES配置信息"></a>3、修改settings.py中DATABASES配置信息</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,  <span class="comment"># 数据库主机</span></span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="number">3306</span>,  <span class="comment"># 数据库端口</span></span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,  <span class="comment"># 数据库用户名</span></span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;mysql&#x27;</span>,  <span class="comment"># 数据库用户密码</span></span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;django_demo&#x27;</span>  <span class="comment"># 数据库名字</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="4、在MySQL中创建数据库"><a href="#4、在MySQL中创建数据库" class="headerlink" title="4、在MySQL中创建数据库"></a>4、在MySQL中创建数据库</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">create database django_demo default charset=utf8;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python内存管理</title>
     <url>/notes/38/</url>
     <content><![CDATA[<h3 id="Python-的内存管理机制及调优手段？"><a href="#Python-的内存管理机制及调优手段？" class="headerlink" title="Python 的内存管理机制及调优手段？"></a>Python 的内存管理机制及调优手段？</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 内存管理机制：引用计数、垃圾回收、内存池</span></span><br></pre></td></tr></table></figure>
@@ -760,25 +779,6 @@
       <tags>
         <tag>python</tag>
         <tag>基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Django-Mysql配置</title>
-    <url>/notes/37/</url>
-    <content><![CDATA[<h4 id="Django配置mysql数据库"><a href="#Django配置mysql数据库" class="headerlink" title="Django配置mysql数据库"></a>Django配置mysql数据库</h4><h5 id="1、安装PyMySQL"><a href="#1、安装PyMySQL" class="headerlink" title="1、安装PyMySQL"></a>1、安装PyMySQL</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pip install PyMySQL</span><br></pre></td></tr></table></figure>
-
-<h5 id="2、-在Django的工程同名子目录的init-py文件中添加如下语句"><a href="#2、-在Django的工程同名子目录的init-py文件中添加如下语句" class="headerlink" title="2、 在Django的工程同名子目录的init.py文件中添加如下语句"></a>2、 在Django的工程同名子目录的<strong>init</strong>.py文件中添加如下语句</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> pymysql <span class="keyword">import</span> install_as_MySQLdb</span><br><span class="line">install_as_MySQLdb()</span><br></pre></td></tr></table></figure>
-
-<h5 id="3、修改settings-py中DATABASES配置信息"><a href="#3、修改settings-py中DATABASES配置信息" class="headerlink" title="3、修改settings.py中DATABASES配置信息"></a>3、修改settings.py中DATABASES配置信息</h5><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">&#x27;default&#x27;</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;ENGINE&#x27;</span>: <span class="string">&#x27;django.db.backends.mysql&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;HOST&#x27;</span>: <span class="string">&#x27;127.0.0.1&#x27;</span>,  <span class="comment"># 数据库主机</span></span><br><span class="line">        <span class="string">&#x27;PORT&#x27;</span>: <span class="number">3306</span>,  <span class="comment"># 数据库端口</span></span><br><span class="line">        <span class="string">&#x27;USER&#x27;</span>: <span class="string">&#x27;root&#x27;</span>,  <span class="comment"># 数据库用户名</span></span><br><span class="line">        <span class="string">&#x27;PASSWORD&#x27;</span>: <span class="string">&#x27;mysql&#x27;</span>,  <span class="comment"># 数据库用户密码</span></span><br><span class="line">        <span class="string">&#x27;NAME&#x27;</span>: <span class="string">&#x27;django_demo&#x27;</span>  <span class="comment"># 数据库名字</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="4、在MySQL中创建数据库"><a href="#4、在MySQL中创建数据库" class="headerlink" title="4、在MySQL中创建数据库"></a>4、在MySQL中创建数据库</h5><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">create database django_demo default charset=utf8;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>django</tag>
       </tags>
   </entry>
   <entry>
@@ -893,37 +893,6 @@
       </tags>
   </entry>
   <entry>
-    <title>复习笔记</title>
-    <url>/notes/42/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">修改不可变数据会抛出TypeError异常</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span> 方法默认调用 sys.stdout.write 方法</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 文件路径操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_directory_contents</span>(<span class="params">abs_path</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    :param abs_path: 文件夹绝对地址</span></span><br><span class="line"><span class="string">    :return: 该文件夹中文件路径+包含的文件夹的文件路径</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">import</span> os</span><br><span class="line">    <span class="keyword">for</span> child_path <span class="keyword">in</span> os.listdir(abs_path):</span><br><span class="line">        abs_child_path = os.path.join(abs_path, child_path)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(abs_child_path):</span><br><span class="line">            print_directory_contents(abs_child_path)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(abs_child_path)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">os.remove()删除文件</span></span><br><span class="line"><span class="string">os.rename()重命名文件</span></span><br><span class="line"><span class="string">os.walk()生成目录树下的所有文件名</span></span><br><span class="line"><span class="string">os.chdir()改变目录</span></span><br><span class="line"><span class="string">os.mkdir/makedirs 创建目录/多层目录</span></span><br><span class="line"><span class="string">os.rmdir/removedirs 删除目录/多层目录</span></span><br><span class="line"><span class="string">os.listdir()列出指定目录的文件</span></span><br><span class="line"><span class="string">os.getcwd()取得当前工作目录</span></span><br><span class="line"><span class="string">os.chmod()改变目录权限</span></span><br><span class="line"><span class="string">os.path.basename()去掉目录路径，返回文件名</span></span><br><span class="line"><span class="string">os.path.dirname()去掉文件名，返回目录路径</span></span><br><span class="line"><span class="string">os.path.join()将分离的各部分组合成一个路径名</span></span><br><span class="line"><span class="string">os.path.split()返回（dirname(),basename())元组</span></span><br><span class="line"><span class="string">os.path.splitext()(返回 filename,extension)元组</span></span><br><span class="line"><span class="string">os.path.getatime\ctime\mtime 分别返回最近访问、创建、修改时间</span></span><br><span class="line"><span class="string">os.path.getsize()返回文件大小</span></span><br><span class="line"><span class="string">os.path.exists()是否存在</span></span><br><span class="line"><span class="string">os.path.isabs()是否为绝对路径</span></span><br><span class="line"><span class="string">os.path.isdir()是否为目录</span></span><br><span class="line"><span class="string">os.path.isfile()是否为文件</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拷贝</span></span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">copy.deepcopy(a)  <span class="comment"># 深拷贝</span></span><br><span class="line"><span class="comment"># &#x27;原子&#x27;类型的对象拷贝,都是返回引用,不是新创建</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># random模块</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line">random.random()  <span class="comment"># [0,1) float</span></span><br><span class="line">random.uniform(a, b)  <span class="comment"># [a,b] float</span></span><br><span class="line">random.randint(a, b)  <span class="comment"># [a,b] int</span></span><br><span class="line">random.randrange(a, b, step)  <span class="comment"># [a,b) step为步长，随机一个数字</span></span><br><span class="line">random.choice(sequence)  <span class="comment"># list中随机一个元素</span></span><br><span class="line">random.shuffle(alist)  <span class="comment"># 打乱顺序，无返回值</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># datetime</span></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line">date1 = datetime.date(year=<span class="built_in">int</span>(<span class="number">100</span>),month=<span class="built_in">int</span>(<span class="number">2</span>),day=<span class="built_in">int</span>(<span class="number">22</span>))</span><br><span class="line">print((date1-date1).days + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># sys模块</span></span><br><span class="line">sys.path 主要是对 Python 解释器的系统环境参数的操作（动态的改变 Python 解释器搜索路径）</span><br><span class="line">sys.argv 命令行参数 List，第一个元素是程序本身代码（即此.py程序）<span class="comment"># 有时候带路径</span></span><br><span class="line">sys.exit(n) 退出程序，正常退出时 exit(<span class="number">0</span>)</span><br><span class="line">sys.maxint 最大的 Int 值</span><br><span class="line">sys.maxunicode 最大的 Unicode 值</span><br><span class="line">sys.stdout 标准输出</span><br><span class="line">sys.stdin 标准输入</span><br><span class="line">sys.stderr 错误输出</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Python 是强语言类型还是弱语言类型?</span></span><br><span class="line">Python 是强类型的动态脚本语言。  <span class="comment"># 强类型</span></span><br><span class="line">强类型：不允许不同类型相加。</span><br><span class="line">动态：不使用显示数据类型声明，且确定一个变量的类型是在第一次给它赋值的时候。</span><br><span class="line">脚本语言：一般也是解释型语言，运行代码只需要一个解释器，不需要编译。</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.woola.net/detail/2016-08-28-python-object-introspection.html">Python自省 (introspection)</a></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># PEP8 规范</span></span><br><span class="line"><span class="comment"># 模块和包:除特殊模块 __init__ 之外，模块名称都使用不带下划线的小写字母。若是它们实现一个协议，那么通常使用lib为后缀</span></span><br><span class="line"><span class="comment"># 使用 has 或 is 前缀命名布尔元素 is_connect = True  has_member = False</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 性能分析</span></span><br><span class="line"><span class="keyword">import</span> cProfile</span><br><span class="line">cProfile.run(<span class="string">&#x27;func(agrs)&#x27;</span>)   <span class="comment"># 字符串</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>温故而知新</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>操作Csv文件</title>
     <url>/notes/43/</url>
     <content><![CDATA[<h3 id="使用csv操作excel、csv文件"><a href="#使用csv操作excel、csv文件" class="headerlink" title="使用csv操作excel、csv文件"></a>使用csv操作excel、csv文件</h3><p>Translation</p>
@@ -959,6 +928,37 @@
 ]]></content>
       <categories>
         <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>复习笔记</title>
+    <url>/notes/42/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">修改不可变数据会抛出TypeError异常</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span> 方法默认调用 sys.stdout.write 方法</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 文件路径操作</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_directory_contents</span>(<span class="params">abs_path</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    :param abs_path: 文件夹绝对地址</span></span><br><span class="line"><span class="string">    :return: 该文件夹中文件路径+包含的文件夹的文件路径</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">import</span> os</span><br><span class="line">    <span class="keyword">for</span> child_path <span class="keyword">in</span> os.listdir(abs_path):</span><br><span class="line">        abs_child_path = os.path.join(abs_path, child_path)</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(abs_child_path):</span><br><span class="line">            print_directory_contents(abs_child_path)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(abs_child_path)</span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">os.remove()删除文件</span></span><br><span class="line"><span class="string">os.rename()重命名文件</span></span><br><span class="line"><span class="string">os.walk()生成目录树下的所有文件名</span></span><br><span class="line"><span class="string">os.chdir()改变目录</span></span><br><span class="line"><span class="string">os.mkdir/makedirs 创建目录/多层目录</span></span><br><span class="line"><span class="string">os.rmdir/removedirs 删除目录/多层目录</span></span><br><span class="line"><span class="string">os.listdir()列出指定目录的文件</span></span><br><span class="line"><span class="string">os.getcwd()取得当前工作目录</span></span><br><span class="line"><span class="string">os.chmod()改变目录权限</span></span><br><span class="line"><span class="string">os.path.basename()去掉目录路径，返回文件名</span></span><br><span class="line"><span class="string">os.path.dirname()去掉文件名，返回目录路径</span></span><br><span class="line"><span class="string">os.path.join()将分离的各部分组合成一个路径名</span></span><br><span class="line"><span class="string">os.path.split()返回（dirname(),basename())元组</span></span><br><span class="line"><span class="string">os.path.splitext()(返回 filename,extension)元组</span></span><br><span class="line"><span class="string">os.path.getatime\ctime\mtime 分别返回最近访问、创建、修改时间</span></span><br><span class="line"><span class="string">os.path.getsize()返回文件大小</span></span><br><span class="line"><span class="string">os.path.exists()是否存在</span></span><br><span class="line"><span class="string">os.path.isabs()是否为绝对路径</span></span><br><span class="line"><span class="string">os.path.isdir()是否为目录</span></span><br><span class="line"><span class="string">os.path.isfile()是否为文件</span></span><br><span class="line"><span class="string">&#x27;&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拷贝</span></span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">copy.deepcopy(a)  <span class="comment"># 深拷贝</span></span><br><span class="line"><span class="comment"># &#x27;原子&#x27;类型的对象拷贝,都是返回引用,不是新创建</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># random模块</span></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line">random.random()  <span class="comment"># [0,1) float</span></span><br><span class="line">random.uniform(a, b)  <span class="comment"># [a,b] float</span></span><br><span class="line">random.randint(a, b)  <span class="comment"># [a,b] int</span></span><br><span class="line">random.randrange(a, b, step)  <span class="comment"># [a,b) step为步长，随机一个数字</span></span><br><span class="line">random.choice(sequence)  <span class="comment"># list中随机一个元素</span></span><br><span class="line">random.shuffle(alist)  <span class="comment"># 打乱顺序，无返回值</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># datetime</span></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line">date1 = datetime.date(year=<span class="built_in">int</span>(<span class="number">100</span>),month=<span class="built_in">int</span>(<span class="number">2</span>),day=<span class="built_in">int</span>(<span class="number">22</span>))</span><br><span class="line">print((date1-date1).days + <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># sys模块</span></span><br><span class="line">sys.path 主要是对 Python 解释器的系统环境参数的操作（动态的改变 Python 解释器搜索路径）</span><br><span class="line">sys.argv 命令行参数 List，第一个元素是程序本身代码（即此.py程序）<span class="comment"># 有时候带路径</span></span><br><span class="line">sys.exit(n) 退出程序，正常退出时 exit(<span class="number">0</span>)</span><br><span class="line">sys.maxint 最大的 Int 值</span><br><span class="line">sys.maxunicode 最大的 Unicode 值</span><br><span class="line">sys.stdout 标准输出</span><br><span class="line">sys.stdin 标准输入</span><br><span class="line">sys.stderr 错误输出</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Python 是强语言类型还是弱语言类型?</span></span><br><span class="line">Python 是强类型的动态脚本语言。  <span class="comment"># 强类型</span></span><br><span class="line">强类型：不允许不同类型相加。</span><br><span class="line">动态：不使用显示数据类型声明，且确定一个变量的类型是在第一次给它赋值的时候。</span><br><span class="line">脚本语言：一般也是解释型语言，运行代码只需要一个解释器，不需要编译。</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.woola.net/detail/2016-08-28-python-object-introspection.html">Python自省 (introspection)</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># PEP8 规范</span></span><br><span class="line"><span class="comment"># 模块和包:除特殊模块 __init__ 之外，模块名称都使用不带下划线的小写字母。若是它们实现一个协议，那么通常使用lib为后缀</span></span><br><span class="line"><span class="comment"># 使用 has 或 is 前缀命名布尔元素 is_connect = True  has_member = False</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 性能分析</span></span><br><span class="line"><span class="keyword">import</span> cProfile</span><br><span class="line">cProfile.run(<span class="string">&#x27;func(agrs)&#x27;</span>)   <span class="comment"># 字符串</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>温故而知新</category>
       </categories>
       <tags>
         <tag>python</tag>
@@ -1280,6 +1280,25 @@
       </tags>
   </entry>
   <entry>
+    <title>高阶函数</title>
+    <url>/notes/52/</url>
+    <content><![CDATA[<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">把func作用在iterator每一个元素上，并返回一个iterator</span><br></pre></td></tr></table></figure>
+
+<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">累积计算  # func(x,y)必须两个参数</span><br></pre></td></tr></table></figure>
+
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">过滤函数 </span><br><span class="line"># 把func作用在iterator每一个元素上，然后根据返回值是Ture还是False决定保留还是丢弃该元素</span><br><span class="line"># 返回值是原来iterator的子序列</span><br></pre></td></tr></table></figure>
+
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">map、reduce、filter都是两个参数（第一个func，第二个iterator）</span><br><span class="line">返回值都是惰性iterator，需要list()才能转换为list</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python虚拟环境</title>
     <url>/notes/51/</url>
     <content><![CDATA[<h2 id="Virtualenv-amp-Virtualenvwrapper"><a href="#Virtualenv-amp-Virtualenvwrapper" class="headerlink" title="Virtualenv&amp;Virtualenvwrapper"></a>Virtualenv&amp;Virtualenvwrapper</h2><p>virtualenv是一个python虚拟环境，能够和系统环境相隔离，保持环境的纯净。</p>
@@ -1291,25 +1310,6 @@
 <h4 id="使用virtualenv"><a href="#使用virtualenv" class="headerlink" title="使用virtualenv"></a>使用virtualenv</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">virtualenv virenv1</span><br></pre></td></tr></table></figure>
 
 <h4 id="使用virtualenvwrapper"><a href="#使用virtualenvwrapper" class="headerlink" title="使用virtualenvwrapper"></a>使用virtualenvwrapper</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkvirtualenv env1  # 默认创建</span><br><span class="line">mkvirtualenv --python=/usr/bin/python2.7 env  # 创建 --python可以指定python</span><br><span class="line">lsvirtualenv -b # 列出虚拟环境</span><br><span class="line">workon env1 # 切换虚拟环境</span><br><span class="line">cpvirtualenv env1 env3  # 复制虚拟环境</span><br><span class="line">deactivate # 退出虚拟环境</span><br><span class="line">rmvirtualenv env1 # 删除虚拟环境</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>高阶函数</title>
-    <url>/notes/52/</url>
-    <content><![CDATA[<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">把func作用在iterator每一个元素上，并返回一个iterator</span><br></pre></td></tr></table></figure>
-
-<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">累积计算  # func(x,y)必须两个参数</span><br></pre></td></tr></table></figure>
-
-<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">过滤函数 </span><br><span class="line"># 把func作用在iterator每一个元素上，然后根据返回值是Ture还是False决定保留还是丢弃该元素</span><br><span class="line"># 返回值是原来iterator的子序列</span><br></pre></td></tr></table></figure>
-
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">map、reduce、filter都是两个参数（第一个func，第二个iterator）</span><br><span class="line">返回值都是惰性iterator，需要list()才能转换为list</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -1337,22 +1337,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Nginx笔记</title>
-    <url>/notes/54/</url>
-    <content><![CDATA[<p>nginx的简单使用和配置笔记</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 配置文件</span><br><span class="line">&#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在ubuntu系统上，找到nginx.conf文件的位置</span><br><span class="line">在终端窗口中，输入命令：nginx -t</span><br><span class="line">回显中就可以看到nginx.conf文件的路径了</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>运维测试</category>
-      </categories>
-      <tags>
-        <tag>nginx</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Linux笔记</title>
     <url>/notes/55/</url>
     <content><![CDATA[<h4 id="Linux笔记"><a href="#Linux笔记" class="headerlink" title="Linux笔记"></a>Linux笔记</h4><h5 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 1.添加用户</span><br><span class="line">useradd xm</span><br><span class="line">useradd -d &#x2F;home&#x2F;xm xm  # 指定家目录</span><br><span class="line">useradd -g gxm xm  # 指定用户组gxm</span><br><span class="line"># 2.密码</span><br><span class="line">passwd xm</span><br><span class="line"># 3.删除用户</span><br><span class="line">userdel xm</span><br><span class="line">userdel -r xm  # 删除家目录</span><br><span class="line"># 4.查询用户信息</span><br><span class="line">id xm</span><br><span class="line"># 5.切换用户</span><br><span class="line">su xm</span><br><span class="line">exit  # 退回原来的用户</span><br><span class="line"># 6.修改用户的组</span><br><span class="line">usermod -g gxm xm</span><br><span class="line"># 7.修改用户家目录</span><br><span class="line">usermod -d &#x2F;home&#x2F;xm xm</span><br></pre></td></tr></table></figure>
@@ -1371,6 +1355,22 @@
       </categories>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx笔记</title>
+    <url>/notes/54/</url>
+    <content><![CDATA[<p>nginx的简单使用和配置笔记</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 配置文件</span><br><span class="line">&#x2F;etc&#x2F;nginx&#x2F;nginx.conf</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在ubuntu系统上，找到nginx.conf文件的位置</span><br><span class="line">在终端窗口中，输入命令：nginx -t</span><br><span class="line">回显中就可以看到nginx.conf文件的路径了</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>运维测试</category>
+      </categories>
+      <tags>
+        <tag>nginx</tag>
       </tags>
   </entry>
   <entry>
@@ -2024,18 +2024,6 @@
       </tags>
   </entry>
   <entry>
-    <title>RESTful API 设计指南</title>
-    <url>/notes/80/</url>
-    <content><![CDATA[<p><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html">RESTful API 设计指南</a></p>
-]]></content>
-      <categories>
-        <category>服务端开发</category>
-      </categories>
-      <tags>
-        <tag>django</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Sql男女性别</title>
     <url>/notes/81/</url>
     <content><![CDATA[<p>Sql语句将0，1转化为男女性别</p>
@@ -2048,6 +2036,18 @@
       <tags>
         <tag>开发经验</tag>
         <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RESTful API 设计指南</title>
+    <url>/notes/80/</url>
+    <content><![CDATA[<p><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html">RESTful API 设计指南</a></p>
+]]></content>
+      <categories>
+        <category>服务端开发</category>
+      </categories>
+      <tags>
+        <tag>django</tag>
       </tags>
   </entry>
   <entry>
@@ -2460,6 +2460,41 @@
       </categories>
       <tags>
         <tag>开发经验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>管理的一些触动</title>
+    <url>/notes/97/</url>
+    <content><![CDATA[<h4 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h4><ul>
+<li>有效的管理是在期望的时间以可能的最低成本完成期望的品质。</li>
+</ul>
+<h4 id="会议"><a href="#会议" class="headerlink" title="会议"></a>会议</h4><ul>
+<li>会议是为了解决问题，会议核心很重要，不能偏题，形式性的会议尽量减少。</li>
+<li>凡是会议都要有会议记录，可以查阅会议结果。</li>
+<li>会议一定要有一个主持者，避免陷入两人交谈。</li>
+<li>主持者最好是一个职位较高的人，可以避免同级全体综合征。</li>
+</ul>
+<h4 id="沟通"><a href="#沟通" class="headerlink" title="沟通"></a>沟通</h4><ul>
+<li>规律周期性的一对一沟通是非常有必要的，尤其是对于不喜欢主动沟通的属下。</li>
+<li>需要建立有效沟通机制和处理问题的模式，如例会，避免下属缺乏反应问题的渠道而抱怨。</li>
+</ul>
+<h4 id="权利与责任"><a href="#权利与责任" class="headerlink" title="权利与责任"></a>权利与责任</h4><ul>
+<li>可以把权利下放，但必须对其结果承担所有的责任。把赞扬留给团队，承认失败并公开的承担责任。</li>
+</ul>
+<h4 id="团队人员"><a href="#团队人员" class="headerlink" title="团队人员"></a>团队人员</h4><ul>
+<li>亚马逊的两张比萨饼团队：任何一个团队的规模不能大过两张比萨所能喂饱的人数，超过则需要拆分。</li>
+<li>人员精简，可以提高效率，人少且稳定，沟通成本低，人均福利也会好很多。</li>
+<li>团队负责人是团队核心，需要统筹大局，协调队员。</li>
+</ul>
+<h4 id="事故和问题的区别"><a href="#事故和问题的区别" class="headerlink" title="事故和问题的区别"></a>事故和问题的区别</h4><ul>
+<li>事故需要立刻解决，而问题是要找到事故的原因。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>管理感悟</tag>
       </tags>
   </entry>
 </search>
