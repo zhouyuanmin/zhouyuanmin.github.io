@@ -210,6 +210,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/18/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
+      <meta itemprop="name" content="Myard">
+      <meta itemprop="description" content="Simple is better than complex.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Myard">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/notes/18/" class="post-title-link" itemprop="url">复习笔记</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-13 01:19:32" itemprop="dateCreated datePublished" datetime="2020-11-13T01:19:32+08:00">2020-11-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">温故而知新</span>
+                  </a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.8k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="系统编程"><a href="#系统编程" class="headerlink" title="系统编程"></a>系统编程</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进程总结</span></span><br><span class="line"><span class="comment"># 程序运行在操作系统上的一个实例，就称之为进程。</span></span><br><span class="line"><span class="comment"># 进程需要相应的系统资源：内存、时间片、pid</span></span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line"></span><br><span class="line">proc = Process(target=func, args=(<span class="number">1</span>,), kwargs=&#123;<span class="string">&#x27;a&#x27;</span>: <span class="string">&#x27;a&#x27;</span>&#125;, name=<span class="string">&#x27;proc_1&#x27;</span>)</span><br><span class="line">proc.start()</span><br><span class="line">proc.is_alive()  <span class="comment"># 是否还活着</span></span><br><span class="line">proc.join(timeout=<span class="number">10</span>)  <span class="comment"># 等结束，或者等10秒</span></span><br><span class="line">proc.terminate()  <span class="comment"># 强制关闭</span></span><br><span class="line">proc.name</span><br><span class="line">proc.pid</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/73/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -605,156 +694,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.myard.cn/notes/15/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://q4.qlogo.cn/g?b=qq&nk=1837722596&s=100">
-      <meta itemprop="name" content="Myard">
-      <meta itemprop="description" content="Simple is better than complex.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Myard">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/notes/15/" class="post-title-link" itemprop="url">Git基础</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-13 01:11:20" itemprop="dateCreated datePublished" datetime="2020-11-13T01:11:20+08:00">2020-11-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机基础</span>
-                  </a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-file-word-o"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>2.8k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-clock-o"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>3 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h3><h4 id="查看不同"><a href="#查看不同" class="headerlink" title="查看不同"></a>查看不同</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
-
-<h4 id="回退"><a href="#回退" class="headerlink" title="回退"></a>回退</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard HEAD^ </span><br><span class="line"><span class="meta">#</span><span class="bash"> HEAD 表示当前版本，^和^^, 或者直接是版本id号</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 1094a</span><br><span class="line"><span class="meta">#</span><span class="bash"> git reset --hard commit_id</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="查看日志"><a href="#查看日志" class="headerlink" title="查看日志"></a>查看日志</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git log [--pretty=oneline]</span><br><span class="line"><span class="meta">#</span><span class="bash"> git <span class="built_in">log</span> --graph命令可以看到分支合并图</span></span><br><span class="line">git log --graph --pretty=oneline --abbrev-commit</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看历史命令"><a href="#查看历史命令" class="headerlink" title="查看历史命令"></a>查看历史命令</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看工作区和版本库里面最新版本的区别"><a href="#查看工作区和版本库里面最新版本的区别" class="headerlink" title="查看工作区和版本库里面最新版本的区别"></a>查看工作区和版本库里面最新版本的区别</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff HEAD -- readme.txt</span><br></pre></td></tr></table></figure>
-
-<h4 id="丢弃修改"><a href="#丢弃修改" class="headerlink" title="丢弃修改"></a>丢弃修改</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- readme.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> git checkout -- file</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 只能丢弃未add的</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 如果已经add了，则需要使用git reset HEAD &lt;file&gt;命令，再调用git checkout -- readme.txt</span></span><br><span class="line">git reset HEAD readme.txt # 撤销add的文件</span><br><span class="line">git checkout -- readme.txt</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 先删除文件，再使用命令删除版本库里面的文件，并且再commit</span></span><br><span class="line">git rm test.txt</span><br><span class="line">git commit -m &quot;remove test.txt&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果误删则git checkout -- test.txt还原</span></span><br><span class="line">git checkout -- test.txt</span><br></pre></td></tr></table></figure>
-
-<h4 id="关联仓库"><a href="#关联仓库" class="headerlink" title="关联仓库"></a>关联仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin &quot;url&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 把本地库的所有内容推送到远程库上</span></span><br><span class="line">git push -u origin master</span><br><span class="line"><span class="meta">#</span><span class="bash"> 由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="推送代码"><a href="#推送代码" class="headerlink" title="推送代码"></a>推送代码</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br><span class="line"><span class="meta">#</span><span class="bash"> master 是仓库</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 创建+切换分支</span></span><br><span class="line">git checkout -b dev</span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建分支</span></span><br><span class="line">git branch &lt;name&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;name&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看当前分支"><a href="#查看当前分支" class="headerlink" title="查看当前分支"></a>查看当前分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 会列出所有分支，当前分支前面会标一个*号</span></span><br><span class="line">git branch</span><br></pre></td></tr></table></figure>
-
-<h4 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 分支走在了主分支前面，并没有变成两个不同分支</span></span><br><span class="line">git merge dev</span><br><span class="line"><span class="meta">#</span><span class="bash"> Fast-forward <span class="string">&quot;快进模式&quot;</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 切换回主分支，再合并（重点理解为什么）</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch -d dev # 和查看当前分支相同</span><br><span class="line">git branch -D feature-vulcan # 强制删除未合并的分支</span><br></pre></td></tr></table></figure>
-
-<h4 id="禁用Fast-forward-：”快进模式”"><a href="#禁用Fast-forward-：”快进模式”" class="headerlink" title="禁用Fast-forward ：”快进模式”"></a>禁用Fast-forward ：”快进模式”</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git merge --no-ff -m &quot;merge with no-ff&quot; dev</span><br><span class="line"><span class="meta">#</span><span class="bash"> 因为本次合并要创建一个新的commit，所以加上-m参数，把commit描述写进去。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="保存现场"><a href="#保存现场" class="headerlink" title="保存现场"></a>保存现场</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git stash</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看保存的现场</span></span><br><span class="line">git stash list</span><br><span class="line"><span class="meta">#</span><span class="bash"> 恢复现场方法一</span></span><br><span class="line">git stash apply</span><br><span class="line">git stash drop</span><br><span class="line">git stash apply stash@&#123;0&#125; # 好像没什么区别</span><br><span class="line"><span class="meta">#</span><span class="bash"> 恢复现场方法二</span></span><br><span class="line">git stash pop # 常用</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看远程库信息"><a href="#查看远程库信息" class="headerlink" title="查看远程库信息"></a>查看远程库信息</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote [-v]</span><br><span class="line"><span class="meta">#</span><span class="bash"> 加上-v，信息更详细</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="分支推送原则"><a href="#分支推送原则" class="headerlink" title="分支推送原则"></a>分支推送原则</h4><ul>
-<li><code>master</code>分支是主分支，因此要时刻与远程同步；</li>
-<li><code>dev</code>分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</li>
-<li><code>bug</code>分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</li>
-<li><code>feature</code>分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</li>
-</ul>
-<h4 id="拷贝远程分支到本地（远程合作常用）"><a href="#拷贝远程分支到本地（远程合作常用）" class="headerlink" title="拷贝远程分支到本地（远程合作常用）"></a>拷贝远程分支到本地（远程合作常用）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev origin/dev</span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置dev和origin/dev的链接</span></span><br><span class="line">git branch --set-upstream-to=origin/dev dev</span><br><span class="line"><span class="meta">#</span><span class="bash"> git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;</span></span><br><span class="line">git pull # 下载更新 </span><br></pre></td></tr></table></figure>
-
-<h4 id="特殊命令（多人合作）"><a href="#特殊命令（多人合作）" class="headerlink" title="特殊命令（多人合作）"></a>特殊命令（多人合作）</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git rebase</span><br><span class="line"><span class="meta">#</span><span class="bash"> rebase操作可以把本地未push的分叉提交历史整理成直线；</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> rebase的目的是使得我们在查看历史提交的变化时更容易，因为分叉的提交需要三方对比。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="创建标签"><a href="#创建标签" class="headerlink" title="创建标签"></a>创建标签</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag v1.0</span><br><span class="line"><span class="meta">#</span><span class="bash"> git tag &lt;name&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="对commit打标签"><a href="#对commit打标签" class="headerlink" title="对commit打标签"></a>对commit打标签</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git tag v0.9 f52c633  # id号</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看标签"><a href="#查看标签" class="headerlink" title="查看标签"></a>查看标签</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git tag # 查看标签</span><br><span class="line">git show v0.9  # git show &lt;tagname&gt;查看标签信息</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注意，标签不是按时间顺序列出，而是按字母排序的。</span></span><br><span class="line"></span><br><span class="line">git tag -a v0.1 -m &quot;version 0.1 released&quot; 1094adb</span><br><span class="line"><span class="meta">#</span><span class="bash"> 还可以创建带有说明的标签，用-a指定标签名，-m指定说明文字</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 标签总是和某个commit挂钩。如果这个commit既出现在master分支，又出现在dev分支，那么在这两个分支上都可以看到这个标签</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="标签操作"><a href="#标签操作" class="headerlink" title="标签操作"></a>标签操作</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 删除标签</span></span><br><span class="line">git tag -d v0.1  # 命令git tag -d &lt;tagname&gt;可以删除一个本地标签；</span><br><span class="line"><span class="meta">#</span><span class="bash"> git push origin &lt;tagname&gt; 推送标签到远程库</span></span><br><span class="line">git push origin v1.0 # 某一个</span><br><span class="line">git push origin --tags  # 所有标签</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除</span></span><br><span class="line">git tag -d v0.9</span><br><span class="line">git push origin :refs/tags/v0.9</span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令git push origin :refs/tags/&lt;tagname&gt;可以删除一个远程标签。</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> .gitignore文件（不想被git提示的，文件名写入其中即可）</span></span><br><span class="line">git check-ignore # 查找错误规则</span><br><span class="line">git add -f App.class # 强制添加</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 别名</span></span><br><span class="line">git config --global alias.st status # git status改为git st (即status改为st)</span><br><span class="line"><span class="meta">#</span><span class="bash"> 丧心病狂</span></span><br><span class="line">git config --global alias.lg &quot;log --color --graph --pretty=format:&#x27;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#x27; --abbrev-commit&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置文件cat .git/config ,直接修改[<span class="built_in">alias</span>]即可还原</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/15/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><span class="page-number current">16</span><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/17/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -800,7 +744,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">95</span>
+          <span class="site-state-item-count">96</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -861,7 +805,7 @@
 </div>
   <div class="theme-info">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <span class="post-count">博客全站共&nbsp;33.3k&nbsp;字</span>
+    <span class="post-count">博客全站共&nbsp;33.4k&nbsp;字</span>
   </div>
 
 
